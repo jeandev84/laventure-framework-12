@@ -149,24 +149,6 @@ class Container implements ContainerInterface, \ArrayAccess
 
 
     /**
-     * @param array $bindings
-     * @return $this
-    */
-    public function singletons(array $bindings): static
-    {
-        foreach ($bindings as $id => $value) {
-            $this->singleton($id, $value);
-        }
-
-        return $this;
-    }
-
-
-
-
-
-
-    /**
      * @param string $id
      * @param object $object
      * @return $this
@@ -174,23 +156,6 @@ class Container implements ContainerInterface, \ArrayAccess
     public function instance(string $id, object $object): static
     {
         $this->instances[$id] = $object;
-
-        return $this;
-    }
-
-
-
-
-
-    /**
-     * @param array $instances
-     * @return $this
-    */
-    public function instances(array $instances): static
-    {
-        foreach ($instances as $id => $object) {
-            $this->instance($id, $object);
-        }
 
         return $this;
     }
