@@ -13,7 +13,7 @@ use Laventure\Dotenv\DotenvInterface;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Dotenv\Adapters
+ * @package  Laventure\Dotenv\Adapters
  */
 class LucasDotenvAdapter implements DotenvInterface
 {

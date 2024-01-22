@@ -14,7 +14,7 @@ use Laventure\Dotenv\Exception\WrongProcessException;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Dotenv
+ * @package  Laventure\Dotenv
  */
 class Dotenv implements DotenvInterface
 {

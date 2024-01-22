@@ -11,7 +11,7 @@ namespace Laventure\Dotenv\Exception;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Dotenv\Exception
+ * @package  Laventure\Dotenv\Exception
  */
 class WrongProcessException extends \RuntimeException
 {

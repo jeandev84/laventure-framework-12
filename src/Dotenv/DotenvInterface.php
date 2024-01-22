@@ -11,7 +11,7 @@ namespace Laventure\Dotenv;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Dotenv\Contract
+ * @package  Laventure\Dotenv\Contract
  */
 interface DotenvInterface
 {
