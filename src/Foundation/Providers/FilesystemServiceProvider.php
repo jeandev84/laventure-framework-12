@@ -1,10 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Laventure\Foundation\Service\Providers;
+namespace Laventure\Foundation\Providers;
 
 use Laventure\Component\Container\Provider\ServiceProvider;
 use Laventure\Component\Filesystem\Filesystem;
+use Laventure\Component\Filesystem\FilesystemInterface;
 
 /**
  * FilesystemServiceProvider
@@ -13,7 +14,7 @@ use Laventure\Component\Filesystem\Filesystem;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Foundation\Service\Providers
+ * @package  Laventure\Foundation\Providers
 */
 class FilesystemServiceProvider extends ServiceProvider
 {
@@ -22,7 +23,9 @@ class FilesystemServiceProvider extends ServiceProvider
      * @var array
     */
     protected array $provides = [
-
+       Filesystem::class => [
+           FilesystemInterface::class
+       ]
     ];
 
 
@@ -31,8 +34,6 @@ class FilesystemServiceProvider extends ServiceProvider
     */
     public function register(): void
     {
-        $this->app->singleton(Filesystem::class, function () {
-             return new Filesystem($this->app['basePath']);
-        });
+        $this->app->singleton(Filesystem::class, Filesystem::class);
     }
 }

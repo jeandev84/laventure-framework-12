@@ -9,7 +9,11 @@ use Laventure\Component\Http\Kernel\Contract\TerminableInterface;
 use Laventure\Contract\Application\ApplicationInterface;
 use Laventure\Foundation\Http\Request\Request;
 use Laventure\Foundation\Http\Response\Response;
-use Laventure\Foundation\Service\Providers\FilesystemServiceProvider;
+use Laventure\Foundation\Providers\ApplicationServiceProvider;
+use Laventure\Foundation\Providers\ConfigurationServiceProvider;
+use Laventure\Foundation\Providers\DatabaseServiceProvider;
+use Laventure\Foundation\Providers\EventServiceProvider;
+use Laventure\Foundation\Providers\FilesystemServiceProvider;
 use Laventure\Traits\Application\ApplicationTrait;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
@@ -61,9 +65,7 @@ final class Application implements ApplicationInterface, TerminableInterface, Co
     */
     public function singletons(array $bindings): static
     {
-        foreach ($bindings as $id => $value) {
-            $this->container->singleton($id, $value);
-        }
+        $this->container->singletons($bindings);
 
         return $this;
     }
@@ -162,10 +164,12 @@ final class Application implements ApplicationInterface, TerminableInterface, Co
     private function registerBaseProviders(Container $container): Container
     {
         $container->addProviders([
-            FilesystemServiceProvider::class
+            ApplicationServiceProvider::class,
+            FilesystemServiceProvider::class,
+            ConfigurationServiceProvider::class,
+            EventServiceProvider::class,
+            DatabaseServiceProvider::class
         ]);
-
-        $container['basePath'];
 
         return $container;
     }
