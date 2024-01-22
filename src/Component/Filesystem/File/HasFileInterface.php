@@ -20,4 +20,12 @@ interface HasFileInterface
       * @return string
      */
      public function getFile(): string;
+
+
+
+
+     /**
+      * @return bool
+     */
+     public function hasFile(): bool;
 }

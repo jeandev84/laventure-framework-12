@@ -53,6 +53,29 @@ trait HasFileTrait
 
 
 
+
+      /**
+       * @return bool
+      */
+      public function hasFile(): bool
+      {
+          return $this->file !== '';
+      }
+
+
+
+      /**
+       * @return bool
+      */
+      public function hasContext(): bool
+      {
+          return !is_null($this->context);
+      }
+
+
+
+
+
       /**
        * @param mixed $context
        * @return $this
@@ -66,8 +89,10 @@ trait HasFileTrait
 
 
 
+
+
       /**
-       * @inheritDoc
+       * @return mixed
       */
       public function getContext(): mixed
       {

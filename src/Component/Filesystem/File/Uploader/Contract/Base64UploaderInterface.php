@@ -5,10 +5,10 @@ namespace Laventure\Component\Filesystem\File\Uploader\Contract;
 
 
 use Laventure\Component\Filesystem\Contract\Uploader\UploaderInterface;
-use Laventure\Component\Filesystem\File\Base64\Base64FileInterface;
+use Laventure\Component\Filesystem\File\Base64\Contract\HasBase64FileInterface;
 
 /**
- * Base64FileUploaderInterface
+ * Base64UploaderInterface
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
@@ -16,11 +16,6 @@ use Laventure\Component\Filesystem\File\Base64\Base64FileInterface;
  *
  * @package  Laventure\Component\Filesystem\File\Uploader\Contract
  */
-interface Base64FileUploaderInterface extends UploaderInterface
+interface Base64UploaderInterface extends UploaderInterface, HasBase64FileInterface
 {
-
-      /**
-       * @return Base64FileInterface
-      */
-      public function getFileBase64(): Base64FileInterface;
 }

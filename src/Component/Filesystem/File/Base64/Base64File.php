@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Base64;
 
+use Laventure\Component\Filesystem\File\Base64\Contract\Base64FileInterface;
 use Laventure\Component\Filesystem\File\Base64\Utils\Encoder\Base64Encoder;
 
 /**
@@ -12,7 +13,7 @@ use Laventure\Component\Filesystem\File\Base64\Utils\Encoder\Base64Encoder;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Filesystem\File\Base64
+ * @package  Laventure\Component\Filesystem\File\Base64FileFile
  */
 class Base64File implements Base64FileInterface
 {
@@ -29,7 +30,7 @@ class Base64File implements Base64FileInterface
     /**
      * @inheritDoc
     */
-    public function getSource(): string
+    public function getEncodedString(): string
     {
         return $this->encodedString;
     }

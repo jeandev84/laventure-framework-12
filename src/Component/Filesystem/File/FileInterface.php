@@ -156,6 +156,16 @@ interface FileInterface
 
 
     /**
+     * @return mixed
+    */
+    public function dump(): mixed;
+
+
+
+
+
+
+    /**
      * Replace patterns in stub file
      *
      * @param array $patterns

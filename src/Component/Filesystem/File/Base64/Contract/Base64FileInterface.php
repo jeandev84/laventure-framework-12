@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Laventure\Component\Filesystem\File\Base64;
+namespace Laventure\Component\Filesystem\File\Base64\Contract;
 
 
 /**
@@ -11,7 +11,7 @@ namespace Laventure\Component\Filesystem\File\Base64;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Filesystem\File\Base64
+ * @package  Laventure\Component\Filesystem\File\Base64\Contract
  */
 interface Base64FileInterface
 {
@@ -21,7 +21,7 @@ interface Base64FileInterface
        *
        * @return string
       */
-      public function getSource(): string;
+      public function getEncodedString(): string;
 
 
 

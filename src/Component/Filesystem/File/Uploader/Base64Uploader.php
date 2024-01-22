@@ -3,12 +3,13 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Uploader;
 
-use Laventure\Component\Filesystem\File\Base64\Base64FileInterface;
-use Laventure\Component\Filesystem\File\Uploader\Contract\Base64FileUploaderInterface;
+use Laventure\Component\Filesystem\File\Base64\Contract\Base64FileInterface;
+use Laventure\Component\Filesystem\File\Base64\Traits\HasBase64Trait;
+use Laventure\Component\Filesystem\File\Uploader\Contract\Base64UploaderInterface;
 use Laventure\Component\Filesystem\File\Writer\Contract\FileWriterInterface;
 
 /**
- * Base64FileUploader
+ * Base64Uploader
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
@@ -16,15 +17,10 @@ use Laventure\Component\Filesystem\File\Writer\Contract\FileWriterInterface;
  *
  * @package  Laventure\Component\Filesystem\File\Uploader
 */
-class Base64FileUploader implements Base64FileUploaderInterface
+class Base64Uploader implements Base64UploaderInterface
 {
 
-
-    /**
-     * @var Base64FileInterface
-    */
-    protected Base64FileInterface $file;
-
+    use HasBase64Trait;
 
 
     /**
@@ -39,26 +35,11 @@ class Base64FileUploader implements Base64FileUploaderInterface
      *
      * @param Base64FileInterface $file
     */
-    public function __construct(
-        FileWriterInterface $writer,
-        Base64FileInterface $file
-    )
+    public function __construct(FileWriterInterface $writer, Base64FileInterface $file)
     {
         $this->writer = $writer;
-        $this->file   = $file;
+        $this->withBase64($file);
     }
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function getFileBase64(): Base64FileInterface
-    {
-        return $this->file;
-    }
-
 
 
 
@@ -67,7 +48,7 @@ class Base64FileUploader implements Base64FileUploaderInterface
     */
     public function upload(): mixed
     {
-         $data = $this->getFileBase64()->getData();
+         $data = $this->getBase64()->getData();
 
          return $this->writer->write($data);
     }
