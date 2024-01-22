@@ -28,7 +28,7 @@ class MiddlewareStackHandler implements HandlerInterface
 
 
      /**
-      * @var HandlerInterface $fallbackHandler
+      * @var NotFoundHandler $fallbackHandler
      */
      protected $fallbackHandler;
 
@@ -37,7 +37,7 @@ class MiddlewareStackHandler implements HandlerInterface
      /**
       * @param NotFoundHandler $fallbackHandler
      */
-     public function __construct(HandlerInterface $fallbackHandler)
+     public function __construct(NotFoundHandler $fallbackHandler)
      {
          $this->fallbackHandler = $fallbackHandler;
      }

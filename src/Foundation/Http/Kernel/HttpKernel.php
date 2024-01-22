@@ -78,8 +78,11 @@ class HttpKernel implements HttpKernelInterface
         try {
             $response =  $this->dispatchRoute($request);
         } catch (Throwable $e) {
-
+            $response = $this->exceptionResponse($e);
         }
+
+        // TODO load events before returns response
+        return $response;
     }
 
 
@@ -89,13 +92,25 @@ class HttpKernel implements HttpKernelInterface
      * @param Request $request
      * @return Response
     */
-    public function dispatchRoute(Request $request): Response
+    private function dispatchRoute(Request $request): Response
     {
         $this->container->instance(Request::class, $request);
 
         return (new Pipeline($this->container))
                ->pipe($this->middlewareStack())
                ->handle($request);
+    }
+
+
+
+
+
+    /**
+     * @param Throwable $e
+     * @return Response
+    */
+    private function exceptionResponse(Throwable $e) {
+        return new Response($e->getMessage());
     }
 
 
