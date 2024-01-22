@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Exception;
@@ -14,5 +15,4 @@ namespace Laventure\Component\Filesystem\File\Exception;
  */
 class FileException extends \RuntimeException
 {
-
 }

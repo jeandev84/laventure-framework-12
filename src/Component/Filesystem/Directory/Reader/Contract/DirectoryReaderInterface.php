@@ -1,11 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\Directory\Reader\Contract;
 
-
-use Laventure\Component\Filesystem\Contract\Reader\ReaderInterface;
 use Laventure\Component\Filesystem\Directory\Contract\HasDirectoryInterface;
+use Laventure\Contract\Reader\ReaderInterface;
 
 /**
  * DirectoryReaderInterface
@@ -18,5 +18,4 @@ use Laventure\Component\Filesystem\Directory\Contract\HasDirectoryInterface;
  */
 interface DirectoryReaderInterface extends ReaderInterface, HasDirectoryInterface
 {
-
 }

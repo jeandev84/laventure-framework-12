@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\Directory\Iterator\Decorator;
@@ -18,7 +19,6 @@ use SeekableIterator;
 */
 class DirectoryIteratorDecorator implements DirectoryIteratorDecoratorInterface
 {
-
     /**
      * @var DirectoryIterator
     */

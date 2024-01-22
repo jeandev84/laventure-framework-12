@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\Directory;
@@ -21,109 +22,107 @@ use SplFileInfo;
 */
 class Directory implements DirectoryInterface
 {
-
-      /**
-       * @var string
-      */
-      protected string $path;
-
-
-      /**
-       * @var DirectoryReader
-      */
-      protected DirectoryReader $reader;
+    /**
+     * @var string
+    */
+    protected string $path;
 
 
-
-      /**
-       * @param string $path
-      */
-      public function __construct(string $path)
-      {
-          $this->path   = $path;
-          $this->reader = new DirectoryReader($path);
-      }
+    /**
+     * @var DirectoryReader
+    */
+    protected DirectoryReader $reader;
 
 
 
-
-      /**
-       * @return SplFileInfo
-      */
-      public function info(): SplFileInfo
-      {
-         return new DirectoryInfo($this->path);
-      }
-
-
-
-      /**
-       * @param string $extension
-       *
-       * @return DirectoryIterator
-      */
-      public function iterate(string $extension): DirectoryIterator
-      {
-          return new DirectoryIterator($this->path, $extension);
-      }
+    /**
+     * @param string $path
+    */
+    public function __construct(string $path)
+    {
+        $this->path   = $path;
+        $this->reader = new DirectoryReader($path);
+    }
 
 
 
-      /**
-       * @inheritDoc
-      */
-      public function scan(): array|false
-      {
-          if (!$this->exists()) {
 
-          }
+    /**
+     * @return SplFileInfo
+    */
+    public function info(): SplFileInfo
+    {
+        return new DirectoryInfo($this->path);
+    }
 
-          return scandir($this->path);
-      }
+
+
+    /**
+     * @param string $extension
+     *
+     * @return DirectoryIterator
+    */
+    public function iterate(string $extension): DirectoryIterator
+    {
+        return new DirectoryIterator($this->path, $extension);
+    }
+
+
+    /**
+     * @inheritdoc
+    */
+    public function scan(): array|false
+    {
+        if (!$this->exists()) {
+            return false;
+        }
+
+        return scandir($this->path);
+    }
 
 
 
 
 
-      /**
-       * @inheritDoc
-      */
-      public function make(): bool
-      {
-          return DirectoryMaker::make($this->path);
-      }
+    /**
+     * @inheritDoc
+    */
+    public function make(): bool
+    {
+        return DirectoryMaker::make($this->path);
+    }
 
 
 
 
-      /**
-       * @inheritDoc
-      */
-      public function exists(): bool
-      {
-         return $this->info()->isDir();
-      }
+    /**
+     * @inheritDoc
+    */
+    public function exists(): bool
+    {
+        return $this->info()->isDir();
+    }
 
 
 
 
 
-      /**
-       * @return mixed
-      */
-      public function read(): mixed
-      {
-         return $this->reader->read();
-      }
+    /**
+     * @return mixed
+    */
+    public function read(): mixed
+    {
+        return $this->reader->read();
+    }
 
 
 
 
-      /**
-       * @return string
-      */
-      public function getPath(): string
-      {
-          return $this->path;
-      }
+    /**
+     * @return string
+    */
+    public function getPath(): string
+    {
+        return $this->path;
+    }
 }

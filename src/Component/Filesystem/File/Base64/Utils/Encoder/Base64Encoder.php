@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Base64\Utils\Encoder;
@@ -14,26 +15,25 @@ namespace Laventure\Component\Filesystem\File\Base64\Utils\Encoder;
  */
 class Base64Encoder
 {
-
-     /**
-      * @param string $str
-      * @return string
-     */
-     public static function encode(string $str): string
-     {
-         return base64_encode($str);
-     }
-
+    /**
+     * @param string $str
+     * @return string
+    */
+    public static function encode(string $str): string
+    {
+        return base64_encode($str);
+    }
 
 
 
-     /**
-      * @param string $str
-      * @param bool $strict
-      * @return string
-     */
-     public static function decode(string $str, bool $strict = false): string
-     {
-         return strval(base64_decode($str, $strict));
-     }
+
+    /**
+     * @param string $str
+     * @param bool $strict
+     * @return string
+    */
+    public static function decode(string $str, bool $strict = false): string
+    {
+        return strval(base64_decode($str, $strict));
+    }
 }

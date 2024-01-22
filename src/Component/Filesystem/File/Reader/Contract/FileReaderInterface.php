@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Reader\Contract;
 
-use Laventure\Component\Filesystem\Contract\Reader\ReaderInterface;
 use Laventure\Component\Filesystem\File\Contract\HasFileInterface;
+use Laventure\Contract\Reader\ReaderInterface;
 
 /**
  * ReaderInterface
@@ -18,11 +18,10 @@ use Laventure\Component\Filesystem\File\Contract\HasFileInterface;
 */
 interface FileReaderInterface extends ReaderInterface, HasFileInterface
 {
-
-       /**
-        * Read file as array
-        *
-        * @return array
-       */
-       public function readAsArray(): array;
+    /**
+     * Read file as array
+     *
+     * @return array
+    */
+    public function readAsArray(): array;
 }

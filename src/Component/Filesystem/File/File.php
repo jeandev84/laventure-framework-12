@@ -24,7 +24,6 @@ use Laventure\Component\Filesystem\Utils\DirectoryMaker;
 */
 class File implements FileInterface
 {
-
     /**
      * @var string
     */
@@ -104,9 +103,9 @@ class File implements FileInterface
     */
     public function makeDir(): bool
     {
-         $dirname = $this->directory();
+        $dirname = $this->dir();
 
-         return DirectoryMaker::make($dirname);
+        return DirectoryMaker::make($dirname);
     }
 
 
@@ -130,7 +129,7 @@ class File implements FileInterface
     /**
      * @inheritDoc
     */
-    public function directory(): string
+    public function dir(): string
     {
         return $this->info()->getPath();
     }
@@ -143,11 +142,11 @@ class File implements FileInterface
     */
     public function read(): string
     {
-         if (!$this->exists()) {
-             throw new FileException("Could not read file $this->path");
-         }
+        if (!$this->exists()) {
+            throw new FileException("Could not read file $this->path");
+        }
 
-         return $this->reader->read();
+        return $this->reader->read();
     }
 
 
@@ -170,12 +169,12 @@ class File implements FileInterface
     */
     public function write(string $content, bool $append = false): false|int
     {
-         if ($append) {
-             $content .= PHP_EOL;
-             $this->writer->flags(FILE_APPEND|LOCK_EX);
-         }
+        if ($append) {
+            $content .= PHP_EOL;
+            $this->writer->flags(FILE_APPEND | LOCK_EX);
+        }
 
-         return $this->writer->write($content);
+        return $this->writer->write($content);
     }
 
 
@@ -186,9 +185,9 @@ class File implements FileInterface
     */
     public function rewrite(string $content): bool|int
     {
-         $this->remove();
+        $this->remove();
 
-         return $this->write($content);
+        return $this->write($content);
     }
 
 
@@ -287,6 +286,8 @@ class File implements FileInterface
     {
         return $this->loader;
     }
+
+
 
 
     /**

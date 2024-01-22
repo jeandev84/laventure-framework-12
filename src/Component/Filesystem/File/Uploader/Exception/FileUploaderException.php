@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Uploader\Exception;
@@ -14,5 +15,4 @@ namespace Laventure\Component\Filesystem\File\Uploader\Exception;
  */
 class FileUploaderException extends \RuntimeException
 {
-
 }

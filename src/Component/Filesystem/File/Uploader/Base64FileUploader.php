@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Uploader;
@@ -19,7 +20,6 @@ use Laventure\Component\Filesystem\File\Writer\Contract\FileWriterInterface;
 */
 class Base64FileUploader implements Base64FileUploaderInterface
 {
-
     use HasBase64Trait;
 
 
@@ -48,8 +48,8 @@ class Base64FileUploader implements Base64FileUploaderInterface
     */
     public function upload(): mixed
     {
-         $data = $this->getBase64()->getData();
+        $data = $this->getBase64()->getData();
 
-         return $this->writer->write($data);
+        return $this->writer->write($data);
     }
 }

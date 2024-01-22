@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\Directory\Reader;
@@ -17,7 +18,6 @@ use Laventure\Component\Filesystem\Directory\Traits\HasDirectoryTrait;
  */
 class DirectoryReader implements DirectoryReaderInterface
 {
-
     use HasDirectoryTrait;
 
 
@@ -25,7 +25,7 @@ class DirectoryReader implements DirectoryReaderInterface
     /**
      * @param string $directory
     */
-    public function __construct(string $directory = '')
+    public function __construct(string $directory)
     {
         $this->setDirectory($directory);
     }
@@ -36,8 +36,8 @@ class DirectoryReader implements DirectoryReaderInterface
     /**
      * @inheritDoc
     */
-    public function read(): mixed
+    public function read(): array|false
     {
-       return '';
+        return glob($this->directory);
     }
 }

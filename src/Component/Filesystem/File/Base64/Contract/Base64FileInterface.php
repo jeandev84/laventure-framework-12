@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Base64\Contract;
-
 
 /**
  * Base64FileInterface
@@ -15,71 +15,70 @@ namespace Laventure\Component\Filesystem\File\Base64\Contract;
  */
 interface Base64FileInterface
 {
-
-      /**
-       * Returns encoded string
-       *
-       * @return string
-      */
-      public function getEncodedString(): string;
-
-
-
-
-      /**
-       * @param bool $strict
-       * @return string
-      */
-      public function decode(bool $strict = false): string;
+    /**
+     * Returns encoded string
+     *
+     * @return string
+    */
+    public function getEncodedString(): string;
 
 
 
 
-      /**
-       * Determine if encoded string if valid
-       *
-       * @return bool
-      */
-      public function valid(): bool;
+    /**
+     * @param bool $strict
+     * @return string
+    */
+    public function decode(bool $strict = false): string;
 
 
 
 
-      /**
-       * Returns data
-       *
-       * @return string
-      */
-      public function getData(): string;
+    /**
+     * Determine if encoded string if valid
+     *
+     * @return bool
+    */
+    public function valid(): bool;
 
 
 
 
-      /**
-       * Returns extension
-       *
-       * @return string
-      */
-      public function getExtension(): string;
+    /**
+     * Returns data
+     *
+     * @return string
+    */
+    public function getData(): string;
 
 
 
 
-      /**
-       * Returns data size
-       *
-       * @return int|mixed
-      */
-      public function getSize(): mixed;
+    /**
+     * Returns extension
+     *
+     * @return string
+    */
+    public function getExtension(): string;
+
+
+
+
+    /**
+     * Returns data size
+     *
+     * @return int|mixed
+    */
+    public function getSize(): mixed;
 
 
 
 
 
-      /**
-       * Returns mime type
-       *
-       * @return string|mixed
-      */
-      public function getClientMimeType(): mixed;
+    /**
+     * Returns mime type
+     *
+     * @return string|mixed
+    */
+    public function getClientMimeType(): mixed;
 }

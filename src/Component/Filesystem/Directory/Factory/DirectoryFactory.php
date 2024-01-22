@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\Directory\Factory;
@@ -16,13 +17,12 @@ use Laventure\Component\Filesystem\Directory\Directory;
  */
 class DirectoryFactory
 {
-
     /**
      * @param string $directory
      * @return Directory
      */
-     public function create(string $directory): Directory
-     {
-         return new Directory($directory);
-     }
+    public function create(string $directory): Directory
+    {
+        return new Directory($directory);
+    }
 }

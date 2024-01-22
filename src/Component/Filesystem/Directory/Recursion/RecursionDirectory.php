@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\Directory\Recursion;
@@ -18,68 +19,66 @@ use RecursiveIteratorIterator;
 */
 class RecursionDirectory implements HasDirectoryInterface
 {
+    /**
+     * @var string
+    */
+    protected string $directory;
 
 
-      /**
-       * @var string
-      */
-      protected string $directory;
-
-
-      /**
-       * @var RecursiveDirectoryIterator
-      */
-      protected RecursiveDirectoryIterator $directoryIterator;
-
-
-
-      /**
-       * @var RecursiveIteratorIterator
-      */
-      protected RecursiveIteratorIterator $recursiveIterator;
+    /**
+     * @var RecursiveDirectoryIterator
+    */
+    protected RecursiveDirectoryIterator $directoryIterator;
 
 
 
-      /**
-       * @param string $directory
-      */
-      public function __construct(string $directory)
-      {
-          $this->directoryIterator = new RecursiveDirectoryIterator($directory);
-          $this->recursiveIterator = new RecursiveIteratorIterator($this->directoryIterator);
-          $this->directory         = $directory;
-      }
+    /**
+     * @var RecursiveIteratorIterator
+    */
+    protected RecursiveIteratorIterator $recursiveIterator;
 
 
 
-      /**
-       * @return RecursiveDirectoryIterator
-      */
-      public function getDirectoryIterator(): RecursiveDirectoryIterator
-      {
-          return $this->directoryIterator;
-      }
+    /**
+     * @param string $directory
+    */
+    public function __construct(string $directory)
+    {
+        $this->directoryIterator = new RecursiveDirectoryIterator($directory);
+        $this->recursiveIterator = new RecursiveIteratorIterator($this->directoryIterator);
+        $this->directory         = $directory;
+    }
 
 
 
-
-      /**
-       * @return RecursiveIteratorIterator
-      */
-      public function getRecursiveIterator(): RecursiveIteratorIterator
-      {
-          return $this->recursiveIterator;
-      }
+    /**
+     * @return RecursiveDirectoryIterator
+    */
+    public function getDirectoryIterator(): RecursiveDirectoryIterator
+    {
+        return $this->directoryIterator;
+    }
 
 
 
 
-      /**
-       * @inheritdoc
-      */
-      public function getDirectory(): string
-      {
-          return $this->directory;
-      }
+    /**
+     * @return RecursiveIteratorIterator
+    */
+    public function getRecursiveIterator(): RecursiveIteratorIterator
+    {
+        return $this->recursiveIterator;
+    }
+
+
+
+
+    /**
+     * @inheritdoc
+    */
+    public function getDirectory(): string
+    {
+        return $this->directory;
+    }
 
 }

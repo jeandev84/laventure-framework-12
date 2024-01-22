@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Base64\Traits;
-
 
 use Laventure\Component\Filesystem\File\Base64\Contract\Base64FileInterface;
 
@@ -17,21 +17,20 @@ use Laventure\Component\Filesystem\File\Base64\Contract\Base64FileInterface;
  */
 trait HasBase64Trait
 {
-
-     /**
-      * @var Base64FileInterface|null
-     */
-     protected ?Base64FileInterface $source = null;
-
+    /**
+     * @var Base64FileInterface|null
+    */
+    protected ?Base64FileInterface $source = null;
 
 
-     /**
-      * @return Base64FileInterface
-     */
-     public function getBase64(): Base64FileInterface
-     {
-         return $this->source;
-     }
+
+    /**
+     * @return Base64FileInterface
+    */
+    public function getBase64(): Base64FileInterface
+    {
+        return $this->source;
+    }
 
 
 

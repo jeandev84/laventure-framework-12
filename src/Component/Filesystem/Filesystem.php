@@ -26,8 +26,6 @@ use Laventure\Component\Filesystem\Stream\Stream;
 */
 class Filesystem implements FilesystemInterface
 {
-
-
     /**
      * @var FileLocator
     */

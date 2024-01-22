@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Base64\Contract;
-
 
 /**
  * HasBase64FileInterface

@@ -1,8 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\Directory\Contract;
 
+use Laventure\Contract\Scanner\ScannerInterface;
 
 /**
  * DirectoryInterface
@@ -13,9 +15,8 @@ namespace Laventure\Component\Filesystem\Directory\Contract;
  *
  * @package  Laventure\Component\Filesystem\Directory\Contract
  */
-interface DirectoryInterface
+interface DirectoryInterface extends ScannerInterface
 {
-
     /**
      * @return mixed
     */
@@ -54,15 +55,6 @@ interface DirectoryInterface
      * @return string
     */
     public function getPath(): string;
-
-
-
-
-
-    /**
-     * @return mixed
-    */
-    public function scan(): mixed;
 
 
 

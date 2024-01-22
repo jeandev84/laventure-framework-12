@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Factory;
@@ -17,14 +18,13 @@ use Laventure\Component\Filesystem\File\File;
  */
 class FileCollectionFactory
 {
-
-      /**
-       * @param File[] $files
-       *
-       * @return FileCollection
-      */
-      public function create(array $files): FileCollection
-      {
-          return new FileCollection($files);
-      }
+    /**
+     * @param File[] $files
+     *
+     * @return FileCollection
+    */
+    public function create(array $files): FileCollection
+    {
+        return new FileCollection($files);
+    }
 }

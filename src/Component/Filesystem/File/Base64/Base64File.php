@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Base64;
@@ -17,13 +18,10 @@ use Laventure\Component\Filesystem\File\Base64\Utils\Encoder\Base64Encoder;
  */
 class Base64File implements Base64FileInterface
 {
-
-
     public function __construct(
         protected string $encodedString,
         protected string $extension = ''
-    )
-    {
+    ) {
     }
 
 
@@ -100,7 +98,7 @@ class Base64File implements Base64FileInterface
     */
     public function getSize(): array|bool
     {
-       return getimagesize($this->encodedString);
+        return getimagesize($this->encodedString);
     }
 
 

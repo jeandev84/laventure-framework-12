@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\Directory\Iterator\Contract;
-
 
 /**
  * DirectoryIteratorInterface
@@ -15,5 +15,5 @@ namespace Laventure\Component\Filesystem\Directory\Iterator\Contract;
 */
 interface DirectoryIteratorInterface
 {
-     public function iterate(): mixed;
+    public function iterate(): mixed;
 }

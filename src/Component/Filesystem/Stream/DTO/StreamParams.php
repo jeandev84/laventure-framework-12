@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\Stream\DTO;
@@ -14,7 +15,6 @@ namespace Laventure\Component\Filesystem\Stream\DTO;
 */
 class StreamParams
 {
-
     /**
      * @param string $filename
      * @param string $mode
@@ -26,8 +26,7 @@ class StreamParams
         public string $mode = 'r',
         public bool $useIncludePath = false,
         public $context = null
-    )
-    {
+    ) {
     }
 
 

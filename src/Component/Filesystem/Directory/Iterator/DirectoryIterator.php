@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\Directory\Iterator;
@@ -21,7 +22,6 @@ use RecursiveIteratorIterator;
  */
 class DirectoryIterator extends FilterIterator
 {
-
     /**
      * @var string
     */

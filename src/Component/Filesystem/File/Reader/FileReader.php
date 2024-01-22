@@ -18,7 +18,6 @@ use Laventure\Component\Filesystem\File\Traits\HasFileTrait;
  */
 class FileReader implements FileReaderInterface
 {
-
     use HasFileTrait;
 
 
@@ -38,7 +37,7 @@ class FileReader implements FileReaderInterface
     */
     public function readAsArray(): array
     {
-        $flags = FILE_IGNORE_NEW_LINES|FILE_SKIP_EMPTY_LINES;
+        $flags = FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES;
 
         $data  = file($this->file, $flags);
 
@@ -54,6 +53,6 @@ class FileReader implements FileReaderInterface
     */
     public function read(): string
     {
-       return strval(file_get_contents($this->file));
+        return strval(file_get_contents($this->file));
     }
 }

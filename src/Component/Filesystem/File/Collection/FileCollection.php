@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Collection;
@@ -16,7 +17,6 @@ use Laventure\Component\Filesystem\File\File;
 */
 class FileCollection implements FileCollectionInterface
 {
-
     /**
      * @var File[]
     */
@@ -55,7 +55,7 @@ class FileCollection implements FileCollectionInterface
     */
     public function addFiles(array $files): static
     {
-        foreach ($files as $file){
+        foreach ($files as $file) {
             $this->addFile($file);
         }
 
@@ -72,6 +72,6 @@ class FileCollection implements FileCollectionInterface
     */
     public function getFiles(): array
     {
-         return $this->files;
+        return $this->files;
     }
 }

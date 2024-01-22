@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\Directory\Traits;
-
 
 /**
  * HasDirectoryTrait
@@ -15,31 +15,30 @@ namespace Laventure\Component\Filesystem\Directory\Traits;
 */
 trait HasDirectoryTrait
 {
-
-     /**
-      * @var string
-     */
-     protected string $directory = '';
-
-
-     /**
-      * @param string $directory
-      * @return $this
-     */
-     public function setDirectory(string $directory): static
-     {
-         $this->directory = $directory;
-
-         return $this;
-     }
+    /**
+     * @var string
+    */
+    protected string $directory = '';
 
 
+    /**
+     * @param string $directory
+     * @return $this
+    */
+    public function setDirectory(string $directory): static
+    {
+        $this->directory = $directory;
 
-     /**
-      * @return string
-     */
-     public function getDirectory(): string
-     {
+        return $this;
+    }
+
+
+
+    /**
+     * @return string
+    */
+    public function getDirectory(): string
+    {
         return $this->directory;
-     }
+    }
 }

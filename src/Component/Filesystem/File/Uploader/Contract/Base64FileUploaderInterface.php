@@ -1,11 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Uploader\Contract;
 
-
-use Laventure\Component\Filesystem\Contract\Uploader\UploaderInterface;
 use Laventure\Component\Filesystem\File\Base64\Contract\HasBase64FileInterface;
+use Laventure\Contract\Uploader\UploaderInterface;
 
 /**
  * Base64FileUploaderInterface

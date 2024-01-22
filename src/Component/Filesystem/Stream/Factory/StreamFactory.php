@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\Stream\Factory;
@@ -16,7 +17,6 @@ use Laventure\Component\Filesystem\Stream\Stream;
 */
 class StreamFactory
 {
-
     /**
      * @param string $filename
      * @param string $mode
@@ -29,8 +29,7 @@ class StreamFactory
         string $mode = 'r',
         bool $useIncludePath = false,
         $context = null
-    ): Stream
-    {
-         return new Stream($filename, $mode, $useIncludePath, $context);
+    ): Stream {
+        return new Stream($filename, $mode, $useIncludePath, $context);
     }
 }

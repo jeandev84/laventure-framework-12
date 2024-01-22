@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Contract;
-
 
 /**
  * HasFileInterface
@@ -15,17 +15,16 @@ namespace Laventure\Component\Filesystem\File\Contract;
  */
 interface HasFileInterface
 {
-
-     /**
-      * @return string
-     */
-     public function getFile(): string;
-
+    /**
+     * @return string
+    */
+    public function getFile(): string;
 
 
 
-     /**
-      * @return bool
-     */
-     public function hasFile(): bool;
+
+    /**
+     * @return bool
+    */
+    public function hasFile(): bool;
 }

@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Info;
-
 
 /**
  * FileInfoInterface
@@ -15,11 +15,10 @@ namespace Laventure\Component\Filesystem\File\Info;
 */
 interface FileInfoInterface
 {
-
-     /**
-      * Returns file infos as array
-      *
-      * @return array
-     */
-     public function toArray(): array;
+    /**
+     * Returns file infos as array
+     *
+     * @return array
+    */
+    public function toArray(): array;
 }

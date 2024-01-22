@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Contract;
-
 
 /**
  * FileInterface
@@ -15,58 +15,57 @@ namespace Laventure\Component\Filesystem\File\Contract;
  */
 interface FileInterface
 {
-
-     /**
-      * Determine if file exist
-      *
-      * @return bool
-     */
-     public function exists(): bool;
-
-
-
-
-
-     /**
-      * Load file
-      *
-      * @return mixed
-     */
-     public function load(): mixed;
+    /**
+     * Determine if file exist
+     *
+     * @return bool
+    */
+    public function exists(): bool;
 
 
 
 
 
-
-     /**
-      * Make file
-      *
-      * @return mixed
-     */
-     public function make(): mixed;
-
-
-
-
-
-     /**
-      * Make file directory
-      *
-      * @return mixed
-     */
-     public function makeDir(): mixed;
+    /**
+     * Load file
+     *
+     * @return mixed
+    */
+    public function load(): mixed;
 
 
 
 
 
-     /**
-      * Returns info about directory file
-      *
-      * @return mixed
-     */
-     public function directory(): mixed;
+
+    /**
+     * Make file
+     *
+     * @return mixed
+    */
+    public function make(): mixed;
+
+
+
+
+
+    /**
+     * Make file directory
+     *
+     * @return mixed
+    */
+    public function makeDir(): mixed;
+
+
+
+
+
+    /**
+     * Returns info about directory file
+     *
+     * @return mixed
+    */
+    public function dir(): mixed;
 
 
 
@@ -133,21 +132,21 @@ interface FileInterface
       *
       * @return bool
      */
-     public function copyTo(string $destination, $context = null): bool;
+    public function copyTo(string $destination, $context = null): bool;
 
 
 
 
 
 
-     /**
-      * Move file to given destination
-      *
-      * @param string $destination
-      *
-      * @return bool
-     */
-     public function moveTo(string $destination): bool;
+    /**
+     * Move file to given destination
+     *
+     * @param string $destination
+     *
+     * @return bool
+    */
+    public function moveTo(string $destination): bool;
 
 
 

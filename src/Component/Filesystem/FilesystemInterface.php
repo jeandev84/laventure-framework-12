@@ -17,8 +17,6 @@ use Laventure\Component\Filesystem\Stream\DTO\StreamParams;
  */
 interface FilesystemInterface
 {
-
-
     /**
      * set base path
      *

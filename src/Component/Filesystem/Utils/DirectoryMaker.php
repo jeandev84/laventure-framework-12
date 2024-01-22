@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\Utils;
@@ -18,12 +19,12 @@ class DirectoryMaker
      * @param string $directory
      * @return bool
    */
-   public static function make(string $directory): bool
-   {
-       if (is_dir($directory)) {
-           return true;
-       }
+    public static function make(string $directory): bool
+    {
+        if (is_dir($directory)) {
+            return true;
+        }
 
-       return mkdir($directory, 0777, true);
-   }
+        return mkdir($directory, 0777, true);
+    }
 }

@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Loader\Contract;
-
 
 /**
  * YamlFileLoaderInterface
@@ -15,5 +15,4 @@ namespace Laventure\Component\Filesystem\File\Loader\Contract;
  */
 interface YamlFileLoaderInterface extends FileLoaderInterface
 {
-
 }

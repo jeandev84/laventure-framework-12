@@ -1,10 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Loader\Contract;
 
-
-use Laventure\Component\Filesystem\Contract\Loader\LoaderInterface;
+use Laventure\Contract\Loader\LoaderInterface;
 
 /**
  * FileLoaderInterface
@@ -17,7 +17,6 @@ use Laventure\Component\Filesystem\Contract\Loader\LoaderInterface;
 */
 interface FileLoaderInterface extends LoaderInterface
 {
-
     /**
      * @return string
     */

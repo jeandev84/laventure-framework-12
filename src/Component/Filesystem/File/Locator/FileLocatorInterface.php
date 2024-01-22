@@ -15,7 +15,6 @@ namespace Laventure\Component\Filesystem\File\Locator;
 */
 interface FileLocatorInterface
 {
-
     /**
      * @param string $root
      *

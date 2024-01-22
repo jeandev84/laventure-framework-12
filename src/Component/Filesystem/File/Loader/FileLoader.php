@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Loader;
@@ -16,8 +17,6 @@ use Laventure\Component\Filesystem\File\Loader\Contract\FileLoaderInterface;
  */
 class FileLoader implements FileLoaderInterface
 {
-
-
     /**
      * @var string
     */
@@ -51,6 +50,6 @@ class FileLoader implements FileLoaderInterface
     */
     public function load(): mixed
     {
-       return require_once $this->file;
+        return require_once $this->file;
     }
 }
