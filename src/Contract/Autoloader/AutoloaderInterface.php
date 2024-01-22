@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Contract\Autoloader;
-
 
 /**
  * AutoloaderInterface
@@ -15,9 +15,8 @@ namespace Laventure\Contract\Autoloader;
 */
 interface AutoloaderInterface
 {
-
-      /**
-       * @return mixed
-      */
-      public function autoload(): mixed;
+    /**
+     * @return mixed
+    */
+    public function autoload(): mixed;
 }

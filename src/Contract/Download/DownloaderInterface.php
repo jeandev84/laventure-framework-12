@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Contract\Download;
-
 
 /**
  * DownloaderInterface
@@ -15,9 +15,8 @@ namespace Laventure\Contract\Download;
  */
 interface DownloaderInterface
 {
-
-     /**
-      * @return mixed
-     */
-     public function download(): mixed;
+    /**
+     * @return mixed
+    */
+    public function download(): mixed;
 }

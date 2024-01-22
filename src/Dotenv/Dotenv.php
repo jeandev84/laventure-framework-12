@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Dotenv;
+namespace Laventure\Dotenv;
 
-use Laventure\Component\Dotenv\Exception\DotenvException;
-use Laventure\Component\Dotenv\Exception\WrongProcessException;
+use Laventure\Dotenv\Exception\DotenvException;
+use Laventure\Dotenv\Exception\WrongProcessException;
 
 /**
  * Dotenv

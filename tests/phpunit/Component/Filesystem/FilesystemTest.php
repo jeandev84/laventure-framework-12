@@ -18,4 +18,8 @@ use PHPUnit\Framework\TestCase;
 */
 class FilesystemTest extends TestCase
 {
+    public function testItWorks(): void
+    {
+        $this->assertTrue(true);
+    }
 }

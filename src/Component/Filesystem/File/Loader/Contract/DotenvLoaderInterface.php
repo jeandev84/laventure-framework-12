@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Loader\Contract;
-
 
 use Laventure\Component\Filesystem\File\Contract\HasFileInterface;
 use Laventure\Contract\Matcher\MatcherInterface;
@@ -18,5 +18,5 @@ use Laventure\Contract\Matcher\MatcherInterface;
 */
 interface DotenvLoaderInterface extends FileLoaderInterface, MatcherInterface, HasFileInterface
 {
-    const EXTENSION = '.env';
+    public const EXTENSION = '.env';
 }

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Dotenv\Adapters;
+namespace Laventure\Dotenv\Adapters;
 
-use Laventure\Component\Dotenv\DotenvInterface;
+use Laventure\Dotenv\DotenvInterface;
 
 /**
  * LucasDotenvAdapter

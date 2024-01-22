@@ -18,5 +18,5 @@ use Laventure\Contract\Matcher\MatcherInterface;
 */
 interface YamlFileLoaderInterface extends FileLoaderInterface, MatcherInterface, HasFileInterface
 {
-    const EXTENSION = 'yaml';
+    public const EXTENSION = 'yaml';
 }
