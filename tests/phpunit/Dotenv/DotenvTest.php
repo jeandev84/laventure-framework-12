@@ -1,7 +1,7 @@
 <?php
-namespace PHPUnitTest\Component\Dotenv;
+namespace PHPUnitTest\Dotenv;
 
-use Laventure\Component\Dotenv\Dotenv;
+use Laventure\Dotenv\Dotenv;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  PHPUnitTest\Component\Dotenv
+ * @package  PHPUnitTest\Dotenv
  */
 class DotenvTest extends TestCase
 {

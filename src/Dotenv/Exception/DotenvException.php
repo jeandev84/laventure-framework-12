@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Dotenv\Exception;
+namespace Laventure\Dotenv\Exception;
 
 /**
  * DotenvException
@@ -11,7 +11,7 @@ namespace Laventure\Component\Dotenv\Exception;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Dotenv\Exception
+ * @package  Laventure\Dotenv\Exception
  */
 class DotenvException extends \RuntimeException
 {
