@@ -1,13 +1,7 @@
 .idea
 composer.lock
 vendor
-public
-views
 tools
-storage/*
-.env
-.env.local
-fixer.php
 .php-cs-fixer.cache
 .phpunit.result.cache
 

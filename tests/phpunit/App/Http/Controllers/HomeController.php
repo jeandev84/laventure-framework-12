@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPUnitTest\App\Http\Controllers;
@@ -14,8 +15,8 @@ namespace PHPUnitTest\App\Http\Controllers;
 */
 class HomeController
 {
-     public function __invoke(array $params): string
-     {
-         return __METHOD__;
-     }
+    public function __invoke(array $params): string
+    {
+        return __METHOD__;
+    }
 }

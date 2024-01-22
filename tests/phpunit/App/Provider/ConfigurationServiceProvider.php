@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPUnitTest\App\Provider;
@@ -18,7 +19,6 @@ use PHPUnitTest\App\Config\ConfigServiceInterface;
  */
 class ConfigurationServiceProvider extends ServiceProvider
 {
-
     protected array $provides = [
         ConfigService::class => [
             'config.php',

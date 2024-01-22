@@ -38,8 +38,6 @@ use ReflectionException;
 */
 class RouteCollector implements RouteCollectorInterface
 {
-
-
     /**
      * @var RouteCollectionInterface
      */

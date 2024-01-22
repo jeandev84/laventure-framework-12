@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPUnitTest\App\Config;
@@ -14,22 +15,21 @@ namespace PHPUnitTest\App\Config;
  */
 class ConfigService
 {
+    /**
+     * @param array $env
+    */
+    public function __construct(protected array $env)
+    {
+    }
 
-      /**
-       * @param array $env
-      */
-     public function __construct(protected array $env)
-     {
-     }
 
-
-     /**
-      * @param $id
-      * @param $default
-      * @return mixed
-     */
-     public function get($id, $default = null): mixed
-     {
-         return $this->env[$id] ?? $default;
-     }
+    /**
+     * @param $id
+     * @param $default
+     * @return mixed
+    */
+    public function get($id, $default = null): mixed
+    {
+        return $this->env[$id] ?? $default;
+    }
 }

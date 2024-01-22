@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPUnitTest\Component\Routing\Router;
-
 
 use Laventure\Component\Routing\Route\Collector\RouteCollector;
 use Laventure\Component\Routing\Route\Resource\Contract\ResourceInterface;
@@ -103,21 +103,21 @@ class RouterTest extends TestCase
 
     public function testMatchWithQueryString(): void
     {
-            $router = RouterTestFactory::create();
+        $router = RouterTestFactory::create();
 
-            $func1 = function () { return "Get Book from storage";};
-            $router->get('/admin/books/{slug}-{id}', $func1, 'books.show')
-                   ->whereSlug('slug')->whereId()->middlewares([AuthenticatedMiddleware::class]);
+        $func1 = function () { return "Get Book from storage";};
+        $router->get('/admin/books/{slug}-{id}', $func1, 'books.show')
+               ->whereSlug('slug')->whereId()->middlewares([AuthenticatedMiddleware::class]);
 
-            $actual1 = $router->match('GET', '/admin/books/my-new-book-1?page=3&sort=users.id&direction=asc');
-            $actual2 = $router->match('GET', '/admin/books/my-new-book-1');
-            $actual3 = $router->match('POST', '/admin/books/my-new-book-1');
-            $actual4 = $router->match('GET', '/sdfdsgshsdjd');
+        $actual1 = $router->match('GET', '/admin/books/my-new-book-1?page=3&sort=users.id&direction=asc');
+        $actual2 = $router->match('GET', '/admin/books/my-new-book-1');
+        $actual3 = $router->match('POST', '/admin/books/my-new-book-1');
+        $actual4 = $router->match('GET', '/sdfdsgshsdjd');
 
-            $this->assertInstanceOf(RouteInterface::class, $actual1);
-            $this->assertInstanceOf(RouteInterface::class, $actual2);
-            $this->assertFalse($actual3);
-            $this->assertFalse($actual4);
+        $this->assertInstanceOf(RouteInterface::class, $actual1);
+        $this->assertInstanceOf(RouteInterface::class, $actual2);
+        $this->assertFalse($actual3);
+        $this->assertFalse($actual4);
     }
 
 
@@ -126,20 +126,20 @@ class RouterTest extends TestCase
 
     public function testResource(): void
     {
-         $router = RouterTestFactory::create();
-         $router->patterns(['id' => '\d+']);
-         $router->resource('users', UserController::class);
-         $router->apiResource('books', BookController::class);
+        $router = RouterTestFactory::create();
+        $router->patterns(['id' => '\d+']);
+        $router->resource('users', UserController::class);
+        $router->apiResource('books', BookController::class);
 
 
-         $this->assertTrue($router->hasResource('users'));
-         $this->assertTrue($router->hasApiResource('books'));
+        $this->assertTrue($router->hasResource('users'));
+        $this->assertTrue($router->hasApiResource('books'));
 
-         $this->assertInstanceOf(ResourceInterface::class, $router->getResource('users'));
-         $this->assertInstanceOf(WebResource::class, $router->getResource('users'));
+        $this->assertInstanceOf(ResourceInterface::class, $router->getResource('users'));
+        $this->assertInstanceOf(WebResource::class, $router->getResource('users'));
 
-         $this->assertInstanceOf(ResourceInterface::class, $router->getApiResource('books'));
-         $this->assertInstanceOf(ApiResource::class, $router->getApiResource('books'));
+        $this->assertInstanceOf(ResourceInterface::class, $router->getApiResource('books'));
+        $this->assertInstanceOf(ApiResource::class, $router->getApiResource('books'));
     }
 
 

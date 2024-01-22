@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPUnitTest\App\Services;
@@ -16,8 +17,8 @@ use PHPUnitTest\App\Entity\User;
  */
 class MailerService
 {
-      public function sendMail(User $user): string
-      {
-          return "Sending message to email (". $user->getEmail() . ")";
-      }
+    public function sendMail(User $user): string
+    {
+        return "Sending message to email (". $user->getEmail() . ")";
+    }
 }

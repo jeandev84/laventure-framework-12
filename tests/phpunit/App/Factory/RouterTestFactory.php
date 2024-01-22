@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPUnitTest\App\Factory;
@@ -16,10 +17,10 @@ use Laventure\Component\Routing\Router\Router;
 */
 class RouterTestFactory
 {
-     const NAMESPACE = "PHPUnitTest\App\Http\Controllers";
+    public const NAMESPACE = "PHPUnitTest\App\Http\Controllers";
 
-     public static function create(): Router
-     {
-         return new Router(self::NAMESPACE);
-     }
+    public static function create(): Router
+    {
+        return new Router(self::NAMESPACE);
+    }
 }

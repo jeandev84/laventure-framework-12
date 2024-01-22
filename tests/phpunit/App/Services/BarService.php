@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPUnitTest\App\Services;
@@ -16,7 +17,6 @@ use PHPUnitTest\App\Entity\User;
 */
 class BarService
 {
-
     protected FooService $fooService;
     protected MailerService $mailerService;
     protected string $baseUrl;
@@ -26,8 +26,7 @@ class BarService
         FooService $fooService,
         MailerService $mailerService,
         string $baseUrl
-    )
-    {
+    ) {
         $this->fooService = $fooService;
         $this->mailerService = $mailerService;
         $this->baseUrl       = $baseUrl;

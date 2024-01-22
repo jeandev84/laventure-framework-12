@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPUnitTest\App\Http\Middlewares;
@@ -14,5 +15,4 @@ namespace PHPUnitTest\App\Http\Middlewares;
  */
 class MethodOverrideMiddleware
 {
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPUnitTest\App\Provider;
@@ -17,7 +18,6 @@ use PHPUnitTest\App\Services\FooService;
  */
 class FooServiceProvider extends ServiceProvider
 {
-
     /**
      * @inheritDoc
     */

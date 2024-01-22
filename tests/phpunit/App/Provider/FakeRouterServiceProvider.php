@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPUnitTest\App\Provider;
@@ -17,8 +18,7 @@ use Laventure\Component\Routing\Router\Router;
  */
 class FakeRouterServiceProvider extends ServiceProvider
 {
-
-    const NAMESPACE = "App\\Http\\Controllers";
+    public const NAMESPACE = "App\\Http\\Controllers";
 
 
 

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPUnitTest\App\Repository;
@@ -14,5 +15,4 @@ namespace PHPUnitTest\App\Repository;
  */
 class UserRepository
 {
-
 }

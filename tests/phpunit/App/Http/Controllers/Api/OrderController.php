@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPUnitTest\App\Http\Controllers\Api;
@@ -14,11 +15,9 @@ use Laventure\Component\Routing\Route\Attributes\Route;
  *
  * @package  PHPUnitTest\App\Http\Controllers\Api
  */
-#[Route(path: '/api/orders',  name: 'api.orders.')]
+#[Route(path: '/api/orders', name: 'api.orders.')]
 class OrderController
 {
-
-
     #[Route(path: '/', methods: ['GET'], name: 'list')]
     public function index(): string
     {
