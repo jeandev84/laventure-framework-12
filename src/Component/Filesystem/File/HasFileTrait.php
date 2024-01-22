@@ -22,6 +22,13 @@ trait HasFileTrait
       protected string $file = '';
 
 
+
+      /**
+       * @var mixed|null
+      */
+      protected mixed $context = null;
+
+
       /**
        * @param string $file
        * @return $this
@@ -42,5 +49,28 @@ trait HasFileTrait
       public function getFile(): string
       {
          return $this->file;
+      }
+
+
+
+      /**
+       * @param mixed $context
+       * @return $this
+      */
+      public function context(mixed $context): static
+      {
+          $this->context = $context;
+
+          return $this;
+      }
+
+
+
+      /**
+       * @inheritDoc
+      */
+      public function getContext(): mixed
+      {
+         return $this->context;
       }
 }

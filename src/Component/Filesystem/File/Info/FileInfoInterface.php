@@ -1,13 +1,11 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Info;
 
-use SplFileInfo;
 
 /**
- * FileInfo
+ * FileInfoInterface
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
@@ -15,14 +13,13 @@ use SplFileInfo;
  *
  * @package  Laventure\Component\Filesystem\File\Info
 */
-class FileInfo extends SplFileInfo implements FileInfoInterface
+interface FileInfoInterface
 {
 
-    /**
-     * @inheritDoc
-    */
-    public function toArray(): array
-    {
-        return pathinfo($this->getRealPath());
-    }
+     /**
+      * Returns file infos as array
+      *
+      * @return array
+     */
+     public function toArray(): array;
 }

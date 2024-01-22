@@ -56,4 +56,13 @@ interface DirectoryInterface
      * @return mixed
     */
     public function scan(): mixed;
+
+
+
+
+
+    /**
+     * @return mixed
+    */
+    public function make(): mixed;
 }

@@ -53,6 +53,17 @@ interface FileInterface
 
 
      /**
+      * Make file directory
+      *
+      * @return mixed
+     */
+     public function makeDir(): mixed;
+
+
+
+
+
+     /**
       * Returns info about directory file
       *
       * @return mixed

@@ -4,6 +4,9 @@ declare(strict_types=1);
 namespace Laventure\Component\Filesystem\File\Uploader\Contract;
 
 
+use Laventure\Component\Filesystem\Contract\Uploader\UploaderInterface;
+use Laventure\Component\Filesystem\File\HasFileInterface;
+
 /**
  * FileUploaderInterface
  *
@@ -13,12 +16,29 @@ namespace Laventure\Component\Filesystem\File\Uploader\Contract;
  *
  * @package  Laventure\Component\Filesystem\File\Uploader\Contract
  */
-interface FileUploaderInterface
+interface FileUploaderInterface extends UploaderInterface, HasFileInterface
 {
+
       /**
-       * @param $file
-       *
+       * @param string $from
+       * @return static
+      */
+      public function from(string $from): static;
+
+
+
+      /**
+       * @param string $destination
+       * @return FileUploaderInterface
+      */
+      public function to(string $destination): static;
+
+
+
+
+      /**
+       * @param $context
        * @return mixed
       */
-      public function upload($file): mixed;
+      public function copy($context = null): mixed;
 }

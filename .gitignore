@@ -4,5 +4,6 @@ vendor
 tools
 .php-cs-fixer.cache
 .phpunit.result.cache
+console.php
 
 

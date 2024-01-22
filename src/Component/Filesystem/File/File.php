@@ -8,6 +8,8 @@ use Laventure\Component\Filesystem\File\Info\FileInfo;
 use Laventure\Component\Filesystem\File\Loader\FileLoader;
 use Laventure\Component\Filesystem\File\Reader\FileReader;
 use Laventure\Component\Filesystem\File\Uploader\FileUploader;
+use Laventure\Component\Filesystem\File\Writer\FileWriter;
+use Laventure\Component\Filesystem\Utils\DirectoryMaker;
 
 /**
  * File
@@ -46,6 +48,14 @@ class File implements FileInterface
     protected FileUploader $uploader;
 
 
+
+    /**
+     * @var FileWriter
+    */
+    protected FileWriter $writer;
+
+
+
     /**
      * @param string $path
     */
@@ -55,6 +65,7 @@ class File implements FileInterface
         $this->reader   = new FileReader($path);
         $this->loader   = new FileLoader($path);
         $this->uploader = new FileUploader($path);
+        $this->writer   = new FileWriter($path);
     }
 
 
@@ -76,7 +87,7 @@ class File implements FileInterface
     public function load(): mixed
     {
         if (! $this->exists()) {
-            return false;
+            throw new FileException("Could not load file $this->path");
         }
 
         return $this->loader->load();
@@ -85,12 +96,41 @@ class File implements FileInterface
 
 
 
+
+    /**
+     * @inheritdoc
+    */
+    public function makeDir(): bool
+    {
+         $dirname = $this->dir();
+
+         return DirectoryMaker::make($dirname);
+    }
+
+
+
+
+
     /**
      * @inheritDoc
     */
-    public function make(): mixed
+    public function make(): bool
     {
+        $this->makeDir();
 
+        return touch($this->getPath());
+    }
+
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function dir(): string
+    {
+        return $this->info()->getPath();
     }
 
 
@@ -99,20 +139,13 @@ class File implements FileInterface
     /**
      * @inheritDoc
     */
-    public function dir(): mixed
+    public function read(): string
     {
+         if (!$this->exists()) {
+             throw new FileException("Could not read file $this->path");
+         }
 
-    }
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function read(): mixed
-    {
-
+         return $this->reader->read();
     }
 
 
@@ -123,7 +156,7 @@ class File implements FileInterface
     */
     public function readAsArray(): array
     {
-
+        return $this->reader->readAsArray();
     }
 
 
@@ -135,7 +168,12 @@ class File implements FileInterface
     */
     public function write(string $content, bool $append = false): false|int
     {
+         if ($append) {
+             $content .= PHP_EOL;
+             $this->writer->flags(FILE_APPEND|LOCK_EX);
+         }
 
+         return $this->writer->write($content);
     }
 
 
@@ -157,7 +195,9 @@ class File implements FileInterface
     */
     public function copyTo(string $destination, $context = null): bool
     {
-
+        return $this->uploader->from($this->getPath())
+                              ->to($destination)
+                              ->copy($context);
     }
 
 
@@ -168,7 +208,9 @@ class File implements FileInterface
     */
     public function moveTo(string $destination): bool
     {
-
+        return $this->uploader->from($this->getPath())
+                              ->to($destination)
+                              ->upload();
     }
 
 

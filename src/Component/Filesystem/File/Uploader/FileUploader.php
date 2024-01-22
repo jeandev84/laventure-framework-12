@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Uploader;
 
+use Laventure\Component\Filesystem\File\HasFileTrait;
 use Laventure\Component\Filesystem\File\Uploader\Contract\FileUploaderInterface;
+use Laventure\Component\Filesystem\File\Uploader\Exception\FileUploaderException;
 
 /**
  * FileUploader
@@ -14,14 +16,45 @@ use Laventure\Component\Filesystem\File\Uploader\Contract\FileUploaderInterface;
  *
  * @package  Laventure\Component\Filesystem\File\Uploader
  */
-class FileUploader implements FileUploaderInterface
+class FileUploader extends AbstractFileUploader
 {
 
-    /**
-     * @inheritDoc
-    */
-    public function upload($file): mixed
-    {
+     /**
+      * @inheritDoc
+     */
+     public function upload(): bool
+     {
+         $this->makeSureHasCredentials();
 
-    }
+         return move_uploaded_file($this->from, $this->destination);
+     }
+
+
+
+     /**
+      * @inheritDoc
+     */
+     public function copy($context = null): bool
+     {
+         $this->makeSureHasCredentials();
+
+         return copy($this->from, $this->destination, $context);
+     }
+
+
+
+
+     /**
+      * @return void
+     */
+     protected function makeSureHasCredentials(): void
+     {
+          if (!$this->from) {
+              throw new FileUploaderException("Could not found from file");
+          }
+
+          if (!$this->destination) {
+             throw new FileUploaderException("Could not found destination");
+          }
+     }
 }

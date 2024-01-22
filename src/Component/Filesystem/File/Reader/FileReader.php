@@ -38,8 +38,14 @@ class FileReader implements FileReaderInterface
     */
     public function readAsArray(): array
     {
-        return file($this->file) ?: [];
+        $flags = FILE_IGNORE_NEW_LINES|FILE_SKIP_EMPTY_LINES;
+
+        $data  = file($this->file, $flags);
+
+        return $data ?: [];
     }
+
+
 
 
 
