@@ -102,7 +102,7 @@ class File implements FileInterface
     */
     public function makeDir(): bool
     {
-         $dirname = $this->dir();
+         $dirname = $this->directory();
 
          return DirectoryMaker::make($dirname);
     }
@@ -128,7 +128,7 @@ class File implements FileInterface
     /**
      * @inheritDoc
     */
-    public function dir(): string
+    public function directory(): string
     {
         return $this->info()->getPath();
     }
@@ -242,6 +242,17 @@ class File implements FileInterface
         }
 
         return unlink($this->getPath());
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function dump(): mixed
+    {
+        return false;
     }
 
 

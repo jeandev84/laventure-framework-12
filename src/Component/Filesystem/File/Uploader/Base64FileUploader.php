@@ -5,11 +5,11 @@ namespace Laventure\Component\Filesystem\File\Uploader;
 
 use Laventure\Component\Filesystem\File\Base64\Contract\Base64FileInterface;
 use Laventure\Component\Filesystem\File\Base64\Traits\HasBase64Trait;
-use Laventure\Component\Filesystem\File\Uploader\Contract\Base64UploaderInterface;
+use Laventure\Component\Filesystem\File\Uploader\Contract\Base64FileUploaderInterface;
 use Laventure\Component\Filesystem\File\Writer\Contract\FileWriterInterface;
 
 /**
- * Base64Uploader
+ * Base64FileUploader
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
@@ -17,7 +17,7 @@ use Laventure\Component\Filesystem\File\Writer\Contract\FileWriterInterface;
  *
  * @package  Laventure\Component\Filesystem\File\Uploader
 */
-class Base64Uploader implements Base64UploaderInterface
+class Base64FileUploader implements Base64FileUploaderInterface
 {
 
     use HasBase64Trait;

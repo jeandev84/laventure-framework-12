@@ -66,7 +66,7 @@ interface FileInterface
       *
       * @return mixed
      */
-     public function dir(): mixed;
+     public function directory(): mixed;
 
 
 
