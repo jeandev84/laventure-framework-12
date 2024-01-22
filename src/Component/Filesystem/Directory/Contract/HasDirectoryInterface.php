@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Laventure\Component\Filesystem\Directory;
+namespace Laventure\Component\Filesystem\Directory\Contract;
 
 
 /**
@@ -11,7 +11,7 @@ namespace Laventure\Component\Filesystem\Directory;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Filesystem\Directory
+ * @package  Laventure\Component\Filesystem\Directory\Contract
  */
 interface HasDirectoryInterface
 {

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\Directory\Recursion;
 
-use Laventure\Component\Filesystem\Directory\HasDirectoryInterface;
+use Laventure\Component\Filesystem\Directory\Contract\HasDirectoryInterface;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 

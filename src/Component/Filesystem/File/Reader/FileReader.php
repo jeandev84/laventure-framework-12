@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Reader;
 
-use Laventure\Component\Filesystem\File\HasFileTrait;
 use Laventure\Component\Filesystem\File\Reader\Contract\FileReaderInterface;
+use Laventure\Component\Filesystem\File\Traits\HasFileTrait;
 
 /**
  * FileReader

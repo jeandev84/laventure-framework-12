@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\Directory\Reader;
 
-use Laventure\Component\Filesystem\Directory\HasDirectoryTrait;
 use Laventure\Component\Filesystem\Directory\Reader\Contract\DirectoryReaderInterface;
+use Laventure\Component\Filesystem\Directory\Traits\HasDirectoryTrait;
 
 /**
  * DirectoryReader

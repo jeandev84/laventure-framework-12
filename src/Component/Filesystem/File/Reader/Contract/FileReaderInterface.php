@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Laventure\Component\Filesystem\File\Reader\Contract;
 
 use Laventure\Component\Filesystem\Contract\Reader\ReaderInterface;
-use Laventure\Component\Filesystem\File\HasFileInterface;
+use Laventure\Component\Filesystem\File\Contract\HasFileInterface;
 
 /**
  * ReaderInterface

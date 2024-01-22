@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Writer;
 
-use Laventure\Component\Filesystem\File\HasFileTrait;
+use Laventure\Component\Filesystem\File\Traits\HasFileTrait;
 use Laventure\Component\Filesystem\File\Writer\Contract\FileWriterInterface;
 
 /**

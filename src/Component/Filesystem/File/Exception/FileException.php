@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Laventure\Component\Filesystem\File;
+namespace Laventure\Component\Filesystem\File\Exception;
 
 /**
  * FileException
@@ -10,7 +10,7 @@ namespace Laventure\Component\Filesystem\File;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Filesystem\File
+ * @package  Laventure\Component\Filesystem\File\Exception
  */
 class FileException extends \RuntimeException
 {

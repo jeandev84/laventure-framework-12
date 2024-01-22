@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File;
 
+use Laventure\Component\Filesystem\File\Contract\FileInterface;
+use Laventure\Component\Filesystem\File\Exception\FileException;
 use Laventure\Component\Filesystem\File\Info\FileInfo;
 use Laventure\Component\Filesystem\File\Loader\FileLoader;
 use Laventure\Component\Filesystem\File\Reader\FileReader;

@@ -1,10 +1,8 @@
 <?php
 declare(strict_types=1);
 
-namespace Laventure\Component\Filesystem\Directory;
+namespace Laventure\Component\Filesystem\Directory\Contract;
 
-
-use Laventure\Component\Filesystem\Directory\Iterator\DirectoryIterator;
 
 /**
  * DirectoryInterface
@@ -13,7 +11,7 @@ use Laventure\Component\Filesystem\Directory\Iterator\DirectoryIterator;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Filesystem\Directory
+ * @package  Laventure\Component\Filesystem\Directory\Contract
  */
 interface DirectoryInterface
 {
@@ -22,6 +20,15 @@ interface DirectoryInterface
      * @return mixed
     */
     public function info(): mixed;
+
+
+
+
+
+    /**
+     * @return bool
+    */
+    public function exists(): bool;
 
 
 

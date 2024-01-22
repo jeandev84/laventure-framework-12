@@ -5,7 +5,7 @@ namespace Laventure\Component\Filesystem\File\Uploader\Contract;
 
 
 use Laventure\Component\Filesystem\Contract\Uploader\UploaderInterface;
-use Laventure\Component\Filesystem\File\HasFileInterface;
+use Laventure\Component\Filesystem\File\Contract\HasFileInterface;
 
 /**
  * FileUploaderInterface

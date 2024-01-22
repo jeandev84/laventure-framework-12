@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Laventure\Component\Filesystem\Directory;
+namespace Laventure\Component\Filesystem\Directory\Traits;
 
 
 /**

@@ -5,7 +5,7 @@ namespace Laventure\Component\Filesystem\Directory\Reader\Contract;
 
 
 use Laventure\Component\Filesystem\Contract\Reader\ReaderInterface;
-use Laventure\Component\Filesystem\Directory\HasDirectoryInterface;
+use Laventure\Component\Filesystem\Directory\Contract\HasDirectoryInterface;
 
 /**
  * DirectoryReaderInterface

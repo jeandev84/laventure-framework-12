@@ -5,7 +5,7 @@ namespace Laventure\Component\Filesystem\File\Writer\Contract;
 
 
 use Laventure\Component\Filesystem\Contract\Writer\WriterInterface;
-use Laventure\Component\Filesystem\File\HasFileInterface;
+use Laventure\Component\Filesystem\File\Contract\HasFileInterface;
 
 /**
  * FileWriterInterface

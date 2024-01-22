@@ -3,9 +3,11 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\Directory;
 
+use Laventure\Component\Filesystem\Directory\Contract\DirectoryInterface;
 use Laventure\Component\Filesystem\Directory\Info\DirectoryInfo;
 use Laventure\Component\Filesystem\Directory\Iterator\DirectoryIterator;
 use Laventure\Component\Filesystem\Directory\Reader\DirectoryReader;
+use Laventure\Component\Filesystem\Utils\DirectoryMaker;
 use SplFileInfo;
 
 /**
@@ -17,7 +19,7 @@ use SplFileInfo;
  *
  * @package  Laventure\Component\Filesystem\Directory
 */
-class Directory
+class Directory implements DirectoryInterface
 {
 
       /**
@@ -63,6 +65,43 @@ class Directory
       public function iterate(string $extension): DirectoryIterator
       {
           return new DirectoryIterator($this->path, $extension);
+      }
+
+
+
+      /**
+       * @inheritDoc
+      */
+      public function scan(): array|false
+      {
+          if (!$this->exists()) {
+
+          }
+
+          return scandir($this->path);
+      }
+
+
+
+
+
+      /**
+       * @inheritDoc
+      */
+      public function make(): bool
+      {
+          return DirectoryMaker::make($this->path);
+      }
+
+
+
+
+      /**
+       * @inheritDoc
+      */
+      public function exists(): bool
+      {
+         return $this->info()->isDir();
       }
 
 

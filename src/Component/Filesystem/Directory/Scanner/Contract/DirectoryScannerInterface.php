@@ -5,7 +5,7 @@ namespace Laventure\Component\Filesystem\Directory\Scanner\Contract;
 
 
 use Laventure\Component\Filesystem\Contract\Scanner\ScannerInterface;
-use Laventure\Component\Filesystem\Directory\HasDirectoryInterface;
+use Laventure\Component\Filesystem\Directory\Contract\HasDirectoryInterface;
 
 /**
  * DirectoryScannerInterface
