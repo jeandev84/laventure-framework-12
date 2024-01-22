@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace Laventure\Foundation\Http\Handlers;
 
-use Psr\Http\Message\ResponseFactoryInterface;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
+
+use Laventure\Foundation\Http\Handlers\Contract\HandlerInterface;
+use Laventure\Foundation\Http\Request\Request;
+use Laventure\Foundation\Http\Response\Response;
 
 /**
  * NotFoundHandler
@@ -17,18 +17,14 @@ use Psr\Http\Server\RequestHandlerInterface;
  *
  * @package  Laventure\Foundation\Http\Handlers
 */
-class NotFoundHandler implements RequestHandlerInterface
+class NotFoundHandler implements HandlerInterface
 {
 
-    public function __construct()
-    {
-    }
-
-    /**
-     * @inheritDoc
-    */
-    public function handle(ServerRequestInterface $request): ResponseInterface
-    {
-
-    }
+      /**
+       * @inheritdoc
+      */
+      public function handle(Request $request): Response
+      {
+           return new Response(__METHOD__);
+      }
 }

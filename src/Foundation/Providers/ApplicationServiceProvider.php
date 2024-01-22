@@ -7,7 +7,9 @@ namespace Laventure\Foundation\Providers;
 use Laventure\Component\Container\Provider\Contract\BootableServiceProvider;
 use Laventure\Component\Container\Provider\ServiceProvider;
 use Laventure\Component\Http\Handlers\QueueRequestHandler;
+use Laventure\Component\Http\Message\Response\Factory\ResponseFactory;
 use Laventure\Foundation\Facade\Route\Route;
+use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 /**
@@ -24,7 +26,11 @@ class ApplicationServiceProvider extends ServiceProvider implements BootableServ
     /**
      * @var array
      */
-    protected array $provides = [];
+    protected array $provides = [
+        ResponseFactoryInterface::class => [
+            ResponseFactory::class
+        ]
+    ];
 
 
 
@@ -44,9 +50,9 @@ class ApplicationServiceProvider extends ServiceProvider implements BootableServ
      * @inheritDoc
     */
     public function register(): void {
-        $this->app->singleton(RequestHandlerInterface::class, function () {
-            return new QueueRequestHandler();
-        });
+        $this->app->singletons([
+            ResponseFactoryInterface::class => ResponseFactory::class
+        ]);
     }
 
 

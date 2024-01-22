@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Laventure\Foundation;
 
 use Laventure\Component\Container\Container;
+use Laventure\Component\Container\Utils\DTO\BoundInterface;
 use Laventure\Component\Http\Kernel\Contract\TerminableInterface;
 use Laventure\Contract\Application\ApplicationInterface;
 use Laventure\Foundation\Http\Request\Request;
@@ -75,7 +76,6 @@ final class Application implements ApplicationInterface, TerminableInterface, Co
 
 
 
-
     /**
      * @inheritDoc
     */
@@ -137,6 +137,9 @@ final class Application implements ApplicationInterface, TerminableInterface, Co
     }
 
 
+
+
+
     /**
      * @param Container $container
      * @param string $basePath
@@ -157,11 +160,6 @@ final class Application implements ApplicationInterface, TerminableInterface, Co
 
     /**
      * @param Container $container
-     *
-     * @return Container
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
-     * @throws \ReflectionException
     */
     private function registerBaseProviders(Container $container): Container
     {

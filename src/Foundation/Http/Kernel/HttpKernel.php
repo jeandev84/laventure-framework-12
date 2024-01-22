@@ -7,8 +7,11 @@ namespace Laventure\Foundation\Http\Kernel;
 use Laventure\Component\Container\Container;
 use Laventure\Component\Http\Kernel\Contract\HttpKernelInterface;
 use Laventure\Foundation\Application;
+use Laventure\Foundation\Http\Handlers\Bus\Pipeline;
 use Laventure\Foundation\Http\Request\Request;
 use Laventure\Foundation\Http\Response\Response;
+use Throwable;
+
 
 /**
  * HttpKernel
@@ -27,12 +30,21 @@ class HttpKernel implements HttpKernelInterface
     protected Application $app;
 
 
+
+
+    /**
+     * @var Container
+    */
+    protected Container $container;
+
+
+
     /**
      * priority middlewares
      *
      * @var string[]
     */
-    protected array $middlewarePriority = [];
+    private array $middlewarePriority = [];
 
 
 
@@ -51,7 +63,8 @@ class HttpKernel implements HttpKernelInterface
     */
     public function __construct(Application $app)
     {
-        $this->app = $app;
+        $this->app       = $app;
+        $this->container = $app->getContainer();
     }
 
 
@@ -62,7 +75,11 @@ class HttpKernel implements HttpKernelInterface
     */
     public function handle($request): Response
     {
-        return $this->dispatchRoute($request);
+        try {
+            $response =  $this->dispatchRoute($request);
+        } catch (Throwable $e) {
+
+        }
     }
 
 
@@ -74,10 +91,13 @@ class HttpKernel implements HttpKernelInterface
     */
     public function dispatchRoute(Request $request): Response
     {
-        dump($request);
-        dd($this->app->getContainer());
-        return new Response('Dispatched Response');
+        $this->container->instance(Request::class, $request);
+
+        return (new Pipeline($this->container))
+               ->pipe($this->middlewareStack())
+               ->handle($request);
     }
+
 
 
 
@@ -88,5 +108,15 @@ class HttpKernel implements HttpKernelInterface
     public function terminate($request, $response): void
     {
         $this->app->terminate($request, $response);
+    }
+
+
+
+    private function middlewareStack(): array
+    {
+        return array_merge(
+            $this->middlewarePriority,
+            $this->routeMiddlewares
+        );
     }
 }
