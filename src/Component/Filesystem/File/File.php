@@ -184,7 +184,9 @@ class File implements FileInterface
     */
     public function rewrite(string $content): bool|int
     {
+         $this->remove();
 
+         return $this->write($content);
     }
 
 
@@ -262,5 +264,41 @@ class File implements FileInterface
     public function getPath(): string
     {
         return $this->path;
+    }
+
+
+    /**
+     * @return FileLoader
+     */
+    public function getLoader(): FileLoader
+    {
+        return $this->loader;
+    }
+
+
+    /**
+     * @return FileReader
+     */
+    public function getReader(): FileReader
+    {
+        return $this->reader;
+    }
+
+
+    /**
+     * @return FileUploader
+    */
+    public function getUploader(): FileUploader
+    {
+        return $this->uploader;
+    }
+
+
+    /**
+     * @return FileWriter
+    */
+    public function getWriter(): FileWriter
+    {
+        return $this->writer;
     }
 }
