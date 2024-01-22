@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Reader;
 
+use Laventure\Component\Filesystem\File\HasFileTrait;
 use Laventure\Component\Filesystem\File\Reader\Contract\FileReaderInterface;
 
 /**
@@ -17,11 +18,36 @@ use Laventure\Component\Filesystem\File\Reader\Contract\FileReaderInterface;
  */
 class FileReader implements FileReaderInterface
 {
+
+    use HasFileTrait;
+
+
+    /**
+     * @param string $file
+    */
+    public function __construct(string $file = '')
+    {
+        $this->setFile($file);
+    }
+
+
+
+
     /**
      * @inheritDoc
     */
-    public function read(string $file): mixed
+    public function readAsArray(): array
     {
+        return file($this->file) ?: [];
+    }
 
+
+
+    /**
+     * @inheritDoc
+    */
+    public function read(): string
+    {
+       return strval(file_get_contents($this->file));
     }
 }

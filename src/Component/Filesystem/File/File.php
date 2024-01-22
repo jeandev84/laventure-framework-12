@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace Laventure\Component\Filesystem\File;
 
 use Laventure\Component\Filesystem\File\Info\FileInfo;
+use Laventure\Component\Filesystem\File\Loader\FileLoader;
+use Laventure\Component\Filesystem\File\Reader\FileReader;
+use Laventure\Component\Filesystem\File\Uploader\FileUploader;
 
 /**
  * File
@@ -24,13 +27,34 @@ class File implements FileInterface
     protected string $path;
 
 
+    /**
+     * @var FileReader
+    */
+    protected FileReader $reader;
+
+
+    /**
+     * @var FileLoader $loader
+    */
+    protected FileLoader $loader;
+
+
+
+    /**
+     * @var FileUploader
+    */
+    protected FileUploader $uploader;
+
 
     /**
      * @param string $path
     */
     public function __construct(string $path)
     {
-        $this->path = $path;
+        $this->path     = $path;
+        $this->reader   = new FileReader($path);
+        $this->loader   = new FileLoader($path);
+        $this->uploader = new FileUploader($path);
     }
 
 
@@ -48,10 +72,14 @@ class File implements FileInterface
 
     /**
      * @inheritDoc
-     */
+    */
     public function load(): mixed
     {
+        if (! $this->exists()) {
+            return false;
+        }
 
+        return $this->loader->load();
     }
 
 
@@ -70,7 +98,7 @@ class File implements FileInterface
 
     /**
      * @inheritDoc
-     */
+    */
     public function dir(): mixed
     {
 
@@ -163,7 +191,7 @@ class File implements FileInterface
     /**
      * @inheritDoc
     */
-    public function remove(): mixed
+    public function remove(): bool
     {
         if (! $this->exists()) {
             return false;
