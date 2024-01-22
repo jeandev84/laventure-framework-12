@@ -2,17 +2,19 @@
 
 declare(strict_types=1);
 
-namespace PHPUnitTest\Component\Container\Utils;
+namespace Laventure\Component\Filesystem;
+
+use SplFileInfo;
 
 /**
- * FakeContainer
+ * FileInfo
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  PHPUnitTest\Component\Container\Utils
+ * @package  Laventure\Component\Filesystem
 */
-class FakeContainer
+class FileInfo extends SplFileInfo
 {
 }

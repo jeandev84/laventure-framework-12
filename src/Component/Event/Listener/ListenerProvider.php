@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Event\Listener;
@@ -17,7 +18,6 @@ use Psr\EventDispatcher\ListenerProviderInterface;
 */
 class ListenerProvider implements ListenerProviderInterface
 {
-
     /**
      * @var array
     */

@@ -1,10 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Event;
 
 use Psr\EventDispatcher\StoppableEventInterface;
-
 
 /**
  * Event
@@ -17,7 +17,6 @@ use Psr\EventDispatcher\StoppableEventInterface;
  */
 class Event implements StoppableEventInterface
 {
-
     /**
      * @var bool Whether no further event listeners should be triggered
     */

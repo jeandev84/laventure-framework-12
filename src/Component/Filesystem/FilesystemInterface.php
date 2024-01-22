@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace PHPUnitTest\Component\Container\Utils;
+namespace Laventure\Component\Filesystem;
 
 /**
- * FakeContainer
+ * FilesystemInterface
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  PHPUnitTest\Component\Container\Utils
-*/
-class FakeContainer
+ * @package  Laventure\Component\Filesystem
+ */
+interface FilesystemInterface
 {
 }

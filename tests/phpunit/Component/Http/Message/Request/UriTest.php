@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPUnitTest\Component\Http\Message\Request;
@@ -17,7 +18,6 @@ use PHPUnit\Framework\TestCase;
  */
 class UriTest extends TestCase
 {
-
     public function testParsingURI(): void
     {
         $uri = new Uri('http://localhost:8000/users/profile?username=john&active=1#anchor1');

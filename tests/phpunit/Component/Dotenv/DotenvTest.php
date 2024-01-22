@@ -1,4 +1,5 @@
 <?php
+
 namespace PHPUnitTest\Component\Dotenv;
 
 use Laventure\Component\Dotenv\Dotenv;
