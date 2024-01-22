@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Foundation\Providers;
@@ -16,7 +17,6 @@ use Laventure\Component\Container\Provider\ServiceProvider;
 */
 class DatabaseServiceProvider extends ServiceProvider
 {
-
     /**
      * @inheritDoc
     */

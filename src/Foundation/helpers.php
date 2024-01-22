@@ -16,17 +16,16 @@
 
 use Laventure\Component\Container\Container;
 
-
 if (! function_exists('app')) {
 
-    function app(): Container {
+    function app(): Container
+    {
         return Container::getInstance();
     }
 }
 
 
-if(! function_exists('env'))
-{
+if(! function_exists('env')) {
     /**
      * Get item from environment or default value
      *

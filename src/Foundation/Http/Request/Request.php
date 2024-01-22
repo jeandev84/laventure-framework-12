@@ -195,7 +195,7 @@ final class Request
     */
     public function baseUrl(): string
     {
-       return $this->server->getBaseUrl();
+        return $this->server->getBaseUrl();
     }
 
 

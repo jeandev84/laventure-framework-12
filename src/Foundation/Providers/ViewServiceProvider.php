@@ -1,15 +1,14 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Laventure\Foundation\Providers;
 
 use Laventure\Component\Container\Provider\ServiceProvider;
-use Laventure\Component\Filesystem\Filesystem;
-use Laventure\Component\Filesystem\FilesystemInterface;
+use Laventure\Component\Templating\Renderer\Renderer;
+use Laventure\Component\Templating\Renderer\RendererInterface;
 
 /**
- * FilesystemServiceProvider
+ * ViewServiceProvider
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
@@ -17,16 +16,18 @@ use Laventure\Component\Filesystem\FilesystemInterface;
  *
  * @package  Laventure\Foundation\Providers
 */
-class FilesystemServiceProvider extends ServiceProvider
+class ViewServiceProvider extends ServiceProvider
 {
+
     /**
      * @var array
     */
     protected array $provides = [
-       Filesystem::class => [
-           FilesystemInterface::class
-       ]
+        RendererInterface::class => [
+            Renderer::class
+        ]
     ];
+
 
 
     /**
@@ -34,6 +35,8 @@ class FilesystemServiceProvider extends ServiceProvider
     */
     public function register(): void
     {
-        $this->app->singleton(Filesystem::class, Filesystem::class);
+        $this->app->singleton(RendererInterface::class, function () {
+            return new \stdClass();
+        });
     }
 }

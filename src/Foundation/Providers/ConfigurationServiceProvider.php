@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Foundation\Providers;
@@ -23,8 +24,6 @@ use ReflectionException;
  */
 class ConfigurationServiceProvider extends ServiceProvider implements BootableServiceProvider
 {
-
-
     /**
      * @inheritDoc
      */

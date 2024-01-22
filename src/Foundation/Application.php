@@ -14,6 +14,8 @@ use Laventure\Foundation\Providers\ConfigurationServiceProvider;
 use Laventure\Foundation\Providers\DatabaseServiceProvider;
 use Laventure\Foundation\Providers\EventServiceProvider;
 use Laventure\Foundation\Providers\FilesystemServiceProvider;
+use Laventure\Foundation\Providers\RouterServiceProvider;
+use Laventure\Foundation\Providers\ViewServiceProvider;
 use Laventure\Traits\Application\ApplicationTrait;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
@@ -126,28 +128,28 @@ final class Application implements ApplicationInterface, TerminableInterface, Co
 
 
 
-     /**
-      * @return Container
-     */
-     public function getContainer(): Container
-     {
+    /**
+     * @return Container
+    */
+    public function getContainer(): Container
+    {
         return $this->container;
-     }
+    }
 
 
-     /**
-      * @param Container $container
-      * @param string $basePath
-      * @return Container
-     */
-     private function registerBaseBindings(Container $container, string $basePath): Container
-     {
-         $container->bindings(compact('basePath'));
-         $container->instance(self::class, $this);
-         $container->instance(Container::class, $container);
-         $container->instance(ContainerInterface::class, $container);
+    /**
+     * @param Container $container
+     * @param string $basePath
+     * @return Container
+    */
+    private function registerBaseBindings(Container $container, string $basePath): Container
+    {
+        $container->bindings(compact('basePath'));
+        $container->instance(self::class, $this);
+        $container->instance(Container::class, $container);
+        $container->instance(ContainerInterface::class, $container);
 
-         return $container;
+        return $container;
     }
 
 
@@ -167,8 +169,10 @@ final class Application implements ApplicationInterface, TerminableInterface, Co
             ApplicationServiceProvider::class,
             FilesystemServiceProvider::class,
             ConfigurationServiceProvider::class,
+            RouterServiceProvider::class,
             EventServiceProvider::class,
-            DatabaseServiceProvider::class
+            DatabaseServiceProvider::class,
+            ViewServiceProvider::class
         ]);
 
         return $container;

@@ -1,18 +1,14 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Foundation\Providers;
 
-use Laventure\Component\Container\Exception\ContainerException;
 use Laventure\Component\Container\Provider\Contract\BootableServiceProvider;
 use Laventure\Component\Container\Provider\ServiceProvider;
-use Laventure\Component\Filesystem\Filesystem;
-use Laventure\Component\Filesystem\FilesystemInterface;
-use Laventure\Dotenv\Dotenv;
-use Laventure\Dotenv\DotenvInterface;
+use Laventure\Component\Http\Handlers\QueueRequestHandler;
 use Laventure\Foundation\Facade\Route\Route;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 /**
  * ApplicationServiceProvider
@@ -25,7 +21,6 @@ use Psr\Container\NotFoundExceptionInterface;
  */
 class ApplicationServiceProvider extends ServiceProvider implements BootableServiceProvider
 {
-
     /**
      * @var array
      */
@@ -48,8 +43,10 @@ class ApplicationServiceProvider extends ServiceProvider implements BootableServ
     /**
      * @inheritDoc
     */
-    public function register(): void
-    {
+    public function register(): void {
+        $this->app->singleton(RequestHandlerInterface::class, function () {
+            return new QueueRequestHandler();
+        });
     }
 
 
@@ -64,9 +61,8 @@ class ApplicationServiceProvider extends ServiceProvider implements BootableServ
 
     private function loadFacades(): void
     {
-        #Route::get('', '', '')->wheres();
         $this->app->addFacades([
-
+            Route::class,
         ]);
     }
 }

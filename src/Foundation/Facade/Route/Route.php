@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Foundation\Facade\Route;
@@ -9,7 +10,6 @@ use Laventure\Component\Routing\Route\Collector\RouteCollector;
 use Laventure\Component\Routing\Route\RouteInterface;
 use Laventure\Component\Routing\Router\Router;
 use Laventure\Component\Routing\Router\RouterInterface;
-
 
 /**
  * Route
@@ -39,12 +39,11 @@ use Laventure\Component\Routing\Router\RouterInterface;
 */
 class Route extends Facade
 {
-
-       /**
-        * @return string
-       */
-       protected static function getFacadeAccessor(): string
-       {
-           return RouterInterface::class;
-       }
+    /**
+     * @return string
+    */
+    protected static function getFacadeAccessor(): string
+    {
+        return RouterInterface::class;
+    }
 }
