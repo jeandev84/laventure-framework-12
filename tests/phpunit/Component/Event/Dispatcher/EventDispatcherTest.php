@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPUnitTest\Component\Event\Dispatcher;
@@ -17,8 +18,8 @@ use PHPUnit\Framework\TestCase;
  */
 class EventDispatcherTest extends TestCase
 {
-      public function testItWorks(): void
-      {
-          $this->assertTrue(true);
-      }
+    public function testItWorks(): void
+    {
+        $this->assertTrue(true);
+    }
 }

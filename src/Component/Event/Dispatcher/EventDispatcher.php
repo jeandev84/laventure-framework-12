@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Event\Dispatcher;
@@ -18,8 +19,6 @@ use Psr\EventDispatcher\StoppableEventInterface;
  */
 class EventDispatcher implements EventDispatcherInterface
 {
-
-
     /**
      * @param ListenerProviderInterface $listenerProvider
     */
