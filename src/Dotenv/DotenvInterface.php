@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Dotenv;
+namespace Laventure\Dotenv;
 
 /**
  * DotenvInterface
@@ -11,7 +11,7 @@ namespace Laventure\Component\Dotenv;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Dotenv\Contract
+ * @package  Laventure\Dotenv\Contract
  */
 interface DotenvInterface
 {

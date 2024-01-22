@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Dotenv\Adapters;
+namespace Laventure\Dotenv\Adapters;
 
-use Laventure\Component\Dotenv\DotenvInterface;
+use Laventure\Dotenv\DotenvInterface;
 
 /**
  * LucasDotenvAdapter
@@ -13,7 +13,7 @@ use Laventure\Component\Dotenv\DotenvInterface;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Dotenv\Adapters
+ * @package  Laventure\Dotenv\Adapters
  */
 class LucasDotenvAdapter implements DotenvInterface
 {
