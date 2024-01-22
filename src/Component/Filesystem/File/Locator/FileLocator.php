@@ -30,7 +30,19 @@ class FileLocator implements FileLocatorInterface
     */
     public function __construct(string $root)
     {
+        $this->setBasePath($root);
+    }
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function setBasePath(string $root): static
+    {
         $this->root = $this->normalizeBasePath($root);
+
+        return $this;
     }
 
 
@@ -62,7 +74,7 @@ class FileLocator implements FileLocatorInterface
     /**
      * @inheritDoc
     */
-    public function root(): string
+    public function getBasePath(): string
     {
         return $this->root;
     }
@@ -89,5 +101,4 @@ class FileLocator implements FileLocatorInterface
     {
         return rtrim($root, DIRECTORY_SEPARATOR);
     }
-
 }

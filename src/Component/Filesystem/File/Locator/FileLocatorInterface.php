@@ -15,6 +15,29 @@ namespace Laventure\Component\Filesystem\File\Locator;
 */
 interface FileLocatorInterface
 {
+
+    /**
+     * @param string $root
+     *
+     * @return mixed
+    */
+    public function setBasePath(string $root): mixed;
+
+
+
+
+
+    /**
+     * Returns base path
+     *
+     * @return string
+    */
+    public function getBasePath(): string;
+
+
+
+
+
     /**
      * Localize full path
      *
@@ -34,16 +57,4 @@ interface FileLocatorInterface
      * @return array
     */
     public function locateResources(string $pattern): array;
-
-
-
-
-
-
-    /**
-     * Returns base path
-     *
-     * @return string
-    */
-    public function root(): string;
 }

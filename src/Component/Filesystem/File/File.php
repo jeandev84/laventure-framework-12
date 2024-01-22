@@ -15,7 +15,7 @@ use Laventure\Component\Filesystem\File\Info\FileInfo;
  *
  * @package  Laventure\Component\Filesystem
 */
-class File
+class File implements FileInterface
 {
 
     /**
@@ -35,31 +35,52 @@ class File
 
 
 
-
     /**
-     * @return mixed
+     * @inheritDoc
     */
-    public function info(): FileInfo
+    public function exists(): bool
     {
-       return new FileInfo($this->path);
-    }
-
-
-    /**
-     * @param string $directory
-     * @param string $extension
-     * @return mixed
-    */
-    public function iterate(string $directory, string $extension): mixed
-    {
-
+        return file_exists($this->path);
     }
 
 
 
 
     /**
-     * @return mixed
+     * @inheritDoc
+     */
+    public function load(): mixed
+    {
+
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function make(): mixed
+    {
+
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+     */
+    public function dir(): mixed
+    {
+
+    }
+
+
+
+
+    /**
+     * @inheritDoc
     */
     public function read(): mixed
     {
@@ -70,7 +91,103 @@ class File
 
 
     /**
-     * @return string
+     * @inheritDoc
+    */
+    public function readAsArray(): array
+    {
+
+    }
+
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function write(string $content, bool $append = false): false|int
+    {
+
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function rewrite(string $content): bool|int
+    {
+
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function copyTo(string $destination, $context = null): bool
+    {
+
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function moveTo(string $destination): bool
+    {
+
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function stub(array $patterns): string
+    {
+        $searched = array_keys($patterns);
+        $replaced = array_values($patterns);
+
+        return (string) str_replace($searched, $replaced, $this->read());
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function remove(): mixed
+    {
+        if (! $this->exists()) {
+            return false;
+        }
+
+        return unlink($this->getPath());
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function info(): FileInfo
+    {
+        return new FileInfo($this->getPath());
+    }
+
+
+
+
+    /**
+     * @inheritDoc
     */
     public function getPath(): string
     {

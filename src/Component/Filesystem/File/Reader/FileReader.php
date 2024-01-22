@@ -13,7 +13,7 @@ use Laventure\Component\Filesystem\File\Reader\Contract\FileReaderInterface;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Filesystem\Reader
+ * @package  Laventure\Component\Filesystem\Contract
  */
 class FileReader implements FileReaderInterface
 {

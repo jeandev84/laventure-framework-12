@@ -17,11 +17,40 @@ use Laventure\Component\Filesystem\File\Loader\Contract\FileLoaderInterface;
 class FileLoader implements FileLoaderInterface
 {
 
+
+    /**
+     * @var string
+    */
+    protected string $file;
+
+
+
+    /**
+     * @param string $file
+    */
+    public function __construct(string $file)
+    {
+        $this->file = $file;
+    }
+
+
+
     /**
      * @inheritDoc
     */
-    public function load(string $file): mixed
+    public function getFile(): string
     {
+        return $this->file;
+    }
 
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function load(): mixed
+    {
+       return require_once $this->file;
     }
 }

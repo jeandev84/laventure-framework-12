@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace Laventure\Component\Filesystem\File\Loader\Contract;
 
 
+use Laventure\Component\Filesystem\Contract\Loader\LoaderInterface;
+
 /**
  * FileLoaderInterface
  *
@@ -13,12 +15,11 @@ namespace Laventure\Component\Filesystem\File\Loader\Contract;
  *
  * @package  Laventure\Component\Filesystem\File\Loader\Contract
 */
-interface FileLoaderInterface
+interface FileLoaderInterface extends LoaderInterface
 {
+
     /**
-     * @param string $file
-     *
-     * @return mixed
+     * @return string
     */
-    public function load(string $file): mixed;
+    public function getFile(): string;
 }

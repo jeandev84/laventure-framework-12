@@ -3,6 +3,11 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\Directory;
 
+use Laventure\Component\Filesystem\Directory\Info\DirectoryInfo;
+use Laventure\Component\Filesystem\Directory\Iterator\DirectoryIterator;
+use Laventure\Component\Filesystem\Directory\Reader\DirectoryReader;
+use SplFileInfo;
+
 /**
  * Directory
  *
@@ -18,32 +23,68 @@ class Directory
       /**
        * @var string
       */
-      protected string $directory;
+      protected string $path;
 
 
       /**
-       * @param string $directory
+       * @var DirectoryReader
       */
-      public function __construct(string $directory)
+      protected DirectoryReader $reader;
+
+
+
+      /**
+       * @param string $path
+      */
+      public function __construct(string $path)
       {
+          $this->path   = $path;
+          $this->reader = new DirectoryReader($path);
       }
 
 
-      public function info(): mixed
-      {
 
+
+      /**
+       * @return SplFileInfo
+      */
+      public function info(): SplFileInfo
+      {
+         return new DirectoryInfo($this->path);
       }
 
 
 
-      public function iterate(): mixed
+      /**
+       * @param string $extension
+       *
+       * @return DirectoryIterator
+      */
+      public function iterate(string $extension): DirectoryIterator
       {
-
+          return new DirectoryIterator($this->path, $extension);
       }
 
 
+
+
+
+      /**
+       * @return mixed
+      */
       public function read(): mixed
       {
+         return $this->reader->read();
+      }
 
+
+
+
+      /**
+       * @return string
+      */
+      public function getPath(): string
+      {
+          return $this->path;
       }
 }

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\Directory\Recursion;
 
+use Laventure\Component\Filesystem\Directory\HasDirectoryInterface;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
@@ -15,7 +16,7 @@ use RecursiveIteratorIterator;
  *
  * @package  Laventure\Component\Filesystem\Directory\Recursive
 */
-class RecursionDirectory
+class RecursionDirectory implements HasDirectoryInterface
 {
 
 
@@ -74,8 +75,8 @@ class RecursionDirectory
 
 
       /**
-       * @return string
-       */
+       * @inheritdoc
+      */
       public function getDirectory(): string
       {
           return $this->directory;
