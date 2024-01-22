@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Filesystem\Reader;
+namespace Laventure\Component\Filesystem\File\Reader\Contract;
 
 /**
  * FileReaderInterface
@@ -11,7 +11,7 @@ namespace Laventure\Component\Filesystem\Reader;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Filesystem\Reader
+ * @package  Laventure\Component\Filesystem\File\Reader\Contract
 */
 interface FileReaderInterface
 {

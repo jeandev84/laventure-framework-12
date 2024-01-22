@@ -1,20 +1,19 @@
 <?php
-
 declare(strict_types=1);
 
-namespace Laventure\Component\Filesystem;
+namespace Laventure\Component\Filesystem\File;
 
-use SplFileInfo;
 
 /**
- * FileInfo
+ * FileInterface
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Filesystem
-*/
-class FileInfo extends SplFileInfo
+ * @package  Laventure\Component\Filesystem\File
+ */
+interface FileInterface
 {
+
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PHPUnitTest\Component\Filesystem\Locator;
 
-use Laventure\Component\Filesystem\Locator\FileLocator;
+use Laventure\Component\Filesystem\File\Locator\FileLocator;
 use PHPUnit\Framework\TestCase;
 
 /**

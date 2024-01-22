@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Filesystem\Locator;
+namespace Laventure\Component\Filesystem\File\Locator;
 
 /**
  * FileLocator
@@ -57,11 +57,23 @@ class FileLocator implements FileLocatorInterface
 
 
 
+
+
+    /**
+     * @inheritDoc
+    */
+    public function root(): string
+    {
+        return $this->root;
+    }
+
+
+
     /**
      * @param string $path
      * @return string
-    */
-    public function normalizePath(string $path): string
+     */
+    private function normalizePath(string $path): string
     {
         return str_replace(["\\", "/"], DIRECTORY_SEPARATOR, trim($path, '\\/'));
     }
@@ -72,21 +84,10 @@ class FileLocator implements FileLocatorInterface
     /**
      * @param string $root
      * @return string
-    */
-    public function normalizeBasePath(string $root): string
+     */
+    private function normalizeBasePath(string $root): string
     {
         return rtrim($root, DIRECTORY_SEPARATOR);
     }
 
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function root(): string
-    {
-        return $this->root;
-    }
 }

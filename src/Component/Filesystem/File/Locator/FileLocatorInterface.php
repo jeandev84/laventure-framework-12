@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Filesystem\Locator;
+namespace Laventure\Component\Filesystem\File\Locator;
 
 /**
  * FileLocatorInterface

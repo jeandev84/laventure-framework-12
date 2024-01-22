@@ -2,17 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Filesystem\Reader;
+namespace Laventure\Component\Filesystem\File\Info;
+
+use SplFileInfo;
 
 /**
- * FileReader
+ * FileInfo
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Filesystem\Reader
- */
-class FileReader
+ * @package  Laventure\Component\Filesystem\File\Info
+*/
+class FileInfo extends SplFileInfo
 {
 }
