@@ -4,8 +4,6 @@ declare(strict_types=1);
 namespace Laventure\Component\Filesystem\File;
 
 
-use SplFileInfo;
-
 /**
  * FileInterface
  *

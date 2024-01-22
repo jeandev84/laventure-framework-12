@@ -3,8 +3,7 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Uploader;
 
-use Laventure\Component\Filesystem\File\HasFileTrait;
-use Laventure\Component\Filesystem\File\Uploader\Contract\FileUploaderInterface;
+use Laventure\Component\Filesystem\File\Uploader\Common\AbstractFileUploader;
 use Laventure\Component\Filesystem\File\Uploader\Exception\FileUploaderException;
 
 /**

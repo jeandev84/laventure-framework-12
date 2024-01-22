@@ -25,12 +25,22 @@ interface Base64FileInterface
 
 
 
+
+      /**
+       * @param bool $strict
+       * @return string
+      */
+      public function decode(bool $strict = false): string;
+
+
+
+
       /**
        * Determine if encoded string if valid
        *
        * @return bool
       */
-      public function isValid(): bool;
+      public function valid(): bool;
 
 
 
@@ -58,9 +68,9 @@ interface Base64FileInterface
       /**
        * Returns data size
        *
-       * @return int
+       * @return int|mixed
       */
-      public function getSize(): int;
+      public function getSize(): mixed;
 
 
 
@@ -69,7 +79,7 @@ interface Base64FileInterface
       /**
        * Returns mime type
        *
-       * @return string
+       * @return string|mixed
       */
-      public function getClientMimeType(): string;
+      public function getClientMimeType(): mixed;
 }
