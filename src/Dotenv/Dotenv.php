@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Dotenv;
+namespace Laventure\Dotenv;
 
-use Laventure\Component\Dotenv\Exception\DotenvException;
-use Laventure\Component\Dotenv\Exception\WrongProcessException;
+use Laventure\Dotenv\Exception\DotenvException;
+use Laventure\Dotenv\Exception\WrongProcessException;
 
 /**
  * Dotenv
@@ -14,7 +14,7 @@ use Laventure\Component\Dotenv\Exception\WrongProcessException;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Dotenv
+ * @package  Laventure\Dotenv
  */
 class Dotenv implements DotenvInterface
 {
