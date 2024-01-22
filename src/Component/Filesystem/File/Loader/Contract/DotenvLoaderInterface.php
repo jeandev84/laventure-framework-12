@@ -1,14 +1,14 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Loader\Contract;
+
 
 use Laventure\Component\Filesystem\File\Contract\HasFileInterface;
 use Laventure\Contract\Matcher\MatcherInterface;
 
 /**
- * YamlFileLoaderInterface
+ * DotenvLoaderInterface
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
@@ -16,7 +16,7 @@ use Laventure\Contract\Matcher\MatcherInterface;
  *
  * @package  Laventure\Component\Filesystem\File\Loader\Contract
 */
-interface YamlFileLoaderInterface extends FileLoaderInterface, MatcherInterface, HasFileInterface
+interface DotenvLoaderInterface extends FileLoaderInterface, MatcherInterface, HasFileInterface
 {
-    const EXTENSION = 'yaml';
+    const EXTENSION = '.env';
 }

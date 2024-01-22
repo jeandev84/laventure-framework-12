@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Psr4;
@@ -14,7 +15,6 @@ namespace Laventure\Psr4;
 */
 class Autoloader
 {
-
     /**
      * @var string
     */
@@ -131,7 +131,7 @@ class Autoloader
      */
     public static function load(string $root): void
     {
-        $autoloader = new static($root);
+        $autoloader = new self($root);
         $prefixes   = $autoloader->loadParams()['psr-4'] ?? [];
         $autoloader->addPrefixes($prefixes);
         $autoloader->register();

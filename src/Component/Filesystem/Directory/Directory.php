@@ -8,7 +8,6 @@ use Laventure\Component\Filesystem\Directory\Contract\DirectoryInterface;
 use Laventure\Component\Filesystem\Directory\Info\DirectoryInfo;
 use Laventure\Component\Filesystem\Directory\Iterator\DirectoryIterator;
 use Laventure\Component\Filesystem\Directory\Reader\DirectoryReader;
-use Laventure\Component\Filesystem\Utils\DirectoryMaker;
 use SplFileInfo;
 
 /**
@@ -89,8 +88,13 @@ class Directory implements DirectoryInterface
     */
     public function make(): bool
     {
-        return DirectoryMaker::make($this->path);
+        if ($this->exists()) {
+            return true;
+        }
+
+        return mkdir($this->path, 0777, true);
     }
+
 
 
 
