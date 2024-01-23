@@ -64,4 +64,15 @@ interface DirectoryInterface extends ScannerInterface
      * @return mixed
     */
     public function make(): mixed;
+
+
+
+
+    /**
+     * Returns all files in directory
+     *
+     * @param string $extension
+     * @return array
+     */
+    public function getFiles(string $extension = 'php'): array;
 }
