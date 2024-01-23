@@ -6,6 +6,7 @@ namespace Laventure\Foundation\Http\Controller;
 
 use Laventure\Component\Container\Common\ContainerAwareTrait;
 use Laventure\Component\Container\ContainerAwareInterface;
+use Laventure\Foundation\Http\Response\Response;
 
 /**
  * AbstractController
@@ -19,4 +20,10 @@ use Laventure\Component\Container\ContainerAwareInterface;
 abstract class AbstractController implements ContainerAwareInterface
 {
     use ContainerAwareTrait;
+
+
+    public function render(string $template, array $data = []): Response
+    {
+         return new Response();
+    }
 }

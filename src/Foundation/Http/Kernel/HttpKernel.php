@@ -8,6 +8,7 @@ use Laventure\Component\Container\Container;
 use Laventure\Component\Http\Kernel\Contract\HttpKernelInterface;
 use Laventure\Foundation\Application;
 use Laventure\Foundation\Http\Handlers\Bus\Pipeline;
+use Laventure\Foundation\Http\Middlewares\RouteDispatcherMiddleware;
 use Laventure\Foundation\Http\Request\Request;
 use Laventure\Foundation\Http\Response\Response;
 use Throwable;
@@ -36,7 +37,9 @@ class HttpKernel implements HttpKernelInterface
      *
      * @var string[]
     */
-    private array $middlewarePriority = [];
+    private array $middlewarePriority = [
+        RouteDispatcherMiddleware::class
+    ];
 
 
 

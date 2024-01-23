@@ -117,14 +117,6 @@ class RouteCollector implements RouteCollectorInterface
 
 
     /**
-     * @var array
-     */
-    protected array $controllers = [];
-
-
-
-
-    /**
      * @param string $namespace
      */
     public function __construct(string $namespace)

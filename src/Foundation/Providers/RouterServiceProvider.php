@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Laventure\Foundation\Providers;
 
+use App\Http\Controllers\WelcomeController;
 use Laventure\Component\Container\Provider\ServiceProvider;
 use Laventure\Component\Routing\Route\Collector\RouteCollector;
 use Laventure\Component\Routing\Route\Collector\RouteCollectorInterface;
@@ -45,7 +46,9 @@ class RouterServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(RouterInterface::class, function () {
-            return new Router($this->namespace);
+            $router = new Router($this->namespace);
+            $handler = require $this->app['basePath'] . '/config/routes/web.php';
+            return call_user_func($handler, $router);
         });
     }
 }

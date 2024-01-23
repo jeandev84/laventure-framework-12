@@ -202,6 +202,27 @@ final class Request
 
 
 
+    /**
+     * @return UriInterface
+    */
+    public function getUri(): UriInterface
+    {
+        return $this->uri;
+    }
+
+
+
+
+    /**
+     * @return string
+    */
+    public function getMethod(): string
+    {
+        return $this->method;
+    }
+
+
+
 
     /**
      * @return static
