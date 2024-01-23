@@ -2,14 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Foundation\Http\Kernel;
+namespace Laventure\Foundation\Http;
 
 use Laventure\Component\Http\Kernel\Contract\HttpKernelInterface;
 use Laventure\Component\Http\Message\Response\Response;
 use Laventure\Foundation\Application;
 use Laventure\Foundation\Http\Handlers\Pipeline;
 use Laventure\Foundation\Http\Message\Request\Request;
+use Laventure\Foundation\Http\Middlewares\AuthenticatedMiddleware;
+use Laventure\Foundation\Http\Middlewares\BufferMiddleware;
+use Laventure\Foundation\Http\Middlewares\CsrfTokenMiddleware;
+use Laventure\Foundation\Http\Middlewares\GuestMiddleware;
+use Laventure\Foundation\Http\Middlewares\MethodOverrideMiddleware;
 use Laventure\Foundation\Http\Middlewares\RouteDispatcherMiddleware;
+use Laventure\Foundation\Http\Middlewares\SessionStartingMiddleware;
 use Throwable;
 
 /**
@@ -36,6 +42,12 @@ class HttpKernel implements HttpKernelInterface
      * @var string[]
     */
     private array $middlewarePriority = [
+        BufferMiddleware::class,
+        SessionStartingMiddleware::class,
+        MethodOverrideMiddleware::class,
+        CsrfTokenMiddleware::class,
+        AuthenticatedMiddleware::class,
+        GuestMiddleware::class,
         RouteDispatcherMiddleware::class
     ];
 
@@ -89,7 +101,7 @@ class HttpKernel implements HttpKernelInterface
         $this->app->instance([Request::class => $request]);
 
         return (new Pipeline($this->app))
-               ->pipe($this->middlewareStack())
+               ->pipe($this->middlewares())
                ->handle($request);
     }
 
@@ -125,7 +137,7 @@ class HttpKernel implements HttpKernelInterface
 
 
 
-    private function middlewareStack(): array
+    private function middlewares(): array
     {
         return array_merge(
             $this->middlewarePriority,
