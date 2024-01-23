@@ -109,7 +109,8 @@ class HttpKernel implements HttpKernelInterface
      * @param Throwable $e
      * @return Response
     */
-    private function exceptionResponse(Throwable $e) {
+    private function exceptionResponse(Throwable $e): Response
+    {
         return new Response($e->getMessage());
     }
 
