@@ -24,7 +24,7 @@ interface FilesystemInterface
      *
      * @return mixed
     */
-    public function root(string $path): mixed;
+    public function setBasePath(string $path): mixed;
 
 
 

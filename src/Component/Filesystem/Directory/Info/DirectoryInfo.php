@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\Directory\Info;
 
-use Hoa\File\SplFileInfo;
+use SplFileInfo;
 
 /**
  * DirectoryInfo

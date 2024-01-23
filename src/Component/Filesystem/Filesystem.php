@@ -57,11 +57,11 @@ class Filesystem implements FilesystemInterface
 
 
     /**
-     * @param string $root
+     * @param string $basePath
     */
-    public function __construct(string $root)
+    public function __construct(string $basePath)
     {
-        $this->fileLocator           = new FileLocator($root);
+        $this->fileLocator           = new FileLocator($basePath);
         $this->fileFactory           = new FileFactory();
         $this->directoryFactory      = new DirectoryFactory();
         $this->streamFactory         = new StreamFactory();
@@ -73,11 +73,23 @@ class Filesystem implements FilesystemInterface
     /**
      * @inheritDoc
     */
-    public function root(string $path): static
+    public function setBasePath(string $path): static
     {
         $this->fileLocator->setBasePath($path);
 
         return $this;
+    }
+
+
+
+
+
+    /**
+     * @return string
+    */
+    public function getBasePath(): string
+    {
+        return $this->fileLocator->getBasePath();
     }
 
 
@@ -113,6 +125,23 @@ class Filesystem implements FilesystemInterface
         return $this->fileFactory->create(
             $this->locate($filename)
         );
+    }
+
+
+
+
+
+    /**
+     * @param string $filename
+     * @param string $content
+     * @return mixed
+    */
+    public function cache(string $filename, string $content): mixed
+    {
+        $file = $this->file($filename);
+        $file->make();
+        $file->write($content);
+        return $this->locate($filename);
     }
 
 
