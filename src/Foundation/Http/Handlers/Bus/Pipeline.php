@@ -5,6 +5,7 @@ namespace Laventure\Foundation\Http\Handlers\Bus;
 
 use Laventure\Component\Container\Container;
 use Laventure\Component\Http\Handlers\Contract\PipelineInterface;
+use Laventure\Foundation\Application;
 use Laventure\Foundation\Http\Handlers\MiddlewareStackHandler;
 use Laventure\Foundation\Http\Response\Response;
 use Psr\Container\ContainerExceptionInterface;
@@ -26,9 +27,9 @@ class Pipeline implements PipelineInterface
 
 
       /**
-       * @var Container
+       * @var Application
       */
-      protected Container $app;
+      protected Application $app;
 
 
       /**
@@ -37,10 +38,12 @@ class Pipeline implements PipelineInterface
       protected MiddlewareStackHandler $handler;
 
 
+
+
       /**
-       * @param Container $app
+       * @param Application $app
       */
-      public function __construct(Container $app)
+      public function __construct(Application $app)
       {
           $this->app     = $app;
           $this->handler = $app[MiddlewareStackHandler::class];

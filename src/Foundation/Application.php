@@ -31,7 +31,7 @@ use Psr\Container\NotFoundExceptionInterface;
  *
  * @package  Laventure\Foundation
  */
-final class Application implements ApplicationInterface, TerminableInterface, ContainerInterface
+final class Application implements ApplicationInterface, TerminableInterface, ContainerInterface, \ArrayAccess
 {
     use ApplicationTrait;
 
@@ -66,9 +66,23 @@ final class Application implements ApplicationInterface, TerminableInterface, Co
      * @param array $bindings
      * @return $this
     */
-    public function singletons(array $bindings): static
+    public function singleton(array $bindings): static
     {
         $this->container->singletons($bindings);
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * @param array $instances
+     * @return $this
+    */
+    public function instance(array $instances): static
+    {
+        $this->container->instances($instances);
 
         return $this;
     }
@@ -174,5 +188,49 @@ final class Application implements ApplicationInterface, TerminableInterface, Co
         ]);
 
         return $container;
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function offsetExists(mixed $offset): bool
+    {
+        return $this->container->offsetExists($offset);
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function offsetGet(mixed $offset): mixed
+    {
+        return $this->container->offsetGet($offset);
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function offsetSet(mixed $offset, mixed $value): void
+    {
+        $this->container->offsetSet($offset, $value);
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function offsetUnset(mixed $offset): void
+    {
+        $this->container->offsetUnset($offset);
     }
 }

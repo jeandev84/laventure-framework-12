@@ -179,6 +179,22 @@ class Container implements ContainerInterface, \ArrayAccess
 
 
 
+    /**
+     * @param array $instances
+     *
+     * @return $this
+    */
+    public function instances(array $instances): static
+    {
+        foreach ($instances as $id => $instance) {
+            $this->instance($id, $instance);
+        }
+
+        return $this;
+    }
+
+
+
 
 
 
@@ -352,6 +368,24 @@ class Container implements ContainerInterface, \ArrayAccess
     {
         return $this->bound($id);
     }
+
+
+
+
+
+    /**
+     * @param string $id
+     * @return void
+    */
+    public function remove(string $id): void
+    {
+        unset(
+            $this->bindings[$id],
+            $this->instances[$id],
+            $this->resolved[$id]
+        );
+    }
+
 
 
 
@@ -762,7 +796,7 @@ class Container implements ContainerInterface, \ArrayAccess
     */
     public function offsetUnset(mixed $offset): void
     {
-        unset($this->bindings[$offset]);
+        $this->remove($offset);
     }
 
 

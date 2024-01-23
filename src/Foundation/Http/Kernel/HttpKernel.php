@@ -31,14 +31,6 @@ class HttpKernel implements HttpKernelInterface
 
 
 
-
-    /**
-     * @var Container
-    */
-    protected Container $container;
-
-
-
     /**
      * priority middlewares
      *
@@ -63,8 +55,7 @@ class HttpKernel implements HttpKernelInterface
     */
     public function __construct(Application $app)
     {
-        $this->app       = $app;
-        $this->container = $app->getContainer();
+        $this->app = $app;
     }
 
 
@@ -94,9 +85,9 @@ class HttpKernel implements HttpKernelInterface
     */
     private function dispatchRoute(Request $request): Response
     {
-        $this->container->instance(Request::class, $request);
+        $this->app->instance([Request::class => $request]);
 
-        return (new Pipeline($this->container))
+        return (new Pipeline($this->app))
                ->pipe($this->middlewareStack())
                ->handle($request);
     }
@@ -125,6 +116,8 @@ class HttpKernel implements HttpKernelInterface
     {
         $this->app->terminate($request, $response);
     }
+
+
 
 
 
