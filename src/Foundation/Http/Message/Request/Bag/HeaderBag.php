@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Foundation\Http\Request\Bag;
+namespace Laventure\Foundation\Http\Message\Request\Bag;
 
 /**
- * InputBag
+ * HeaderBag
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
  * @package  Laventure\Foundation\Http\Request\Bag
- */
-class InputBag extends ParameterBag
+*/
+class HeaderBag extends ParameterBag
 {
 }

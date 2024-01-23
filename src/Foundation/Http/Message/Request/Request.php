@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Foundation\Http\Request;
+namespace Laventure\Foundation\Http\Message\Request;
 
 use Laventure\Component\Http\Message\Request\ServerRequest;
 use Laventure\Component\Http\Storage\Session\SessionInterface;
-use Laventure\Foundation\Http\Request\Bag\HeaderBag;
-use Laventure\Foundation\Http\Request\Bag\InputBag;
-use Laventure\Foundation\Http\Request\Bag\ParameterBag;
-use Laventure\Foundation\Http\Request\Bag\ServerBag;
+use Laventure\Foundation\Http\Message\Request\Bag\HeaderBag;
+use Laventure\Foundation\Http\Message\Request\Bag\InputBag;
+use Laventure\Foundation\Http\Message\Request\Bag\ParameterBag;
+use Laventure\Foundation\Http\Message\Request\Bag\ServerBag;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;

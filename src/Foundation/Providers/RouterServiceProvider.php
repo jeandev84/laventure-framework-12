@@ -35,7 +35,8 @@ class RouterServiceProvider extends ServiceProvider
         RouterInterface::class => [
             Router::class,
             RouteCollector::class,
-            RouteCollectorInterface::class
+            RouteCollectorInterface::class,
+            'router'
         ]
     ];
 

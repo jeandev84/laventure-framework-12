@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Foundation\Http\Request\Bag;
+namespace Laventure\Foundation\Http\Message\Request\Bag;
 
 use Laventure\Component\Http\Utils\Params\Parameter;
 

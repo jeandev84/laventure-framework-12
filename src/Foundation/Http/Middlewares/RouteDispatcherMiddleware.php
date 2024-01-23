@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Laventure\Foundation\Http\Middlewares;
 
 use Laventure\Component\Container\Container;
+use Laventure\Component\Http\Message\Response\Response;
 use Laventure\Component\Routing\Router\Router;
 use Laventure\Foundation\Http\Handlers\Contract\HandlerInterface;
 use Laventure\Foundation\Http\Handlers\Middleware\Middleware;
-use Laventure\Foundation\Http\Request\Request;
-use Laventure\Foundation\Http\Response\Response;
+use Laventure\Foundation\Http\Message\Request\Request;
 
 /**
  * RouteDispatchedMiddleware

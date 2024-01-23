@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace Laventure\Foundation;
 
 use Laventure\Component\Container\Container;
-use Laventure\Component\Container\Utils\DTO\BoundInterface;
 use Laventure\Component\Http\Kernel\Contract\TerminableInterface;
+use Laventure\Component\Http\Message\Response\Response;
 use Laventure\Contract\Application\ApplicationInterface;
-use Laventure\Foundation\Http\Request\Request;
-use Laventure\Foundation\Http\Response\Response;
+use Laventure\Foundation\Http\Message\Request\Request;
 use Laventure\Foundation\Providers\ApplicationServiceProvider;
 use Laventure\Foundation\Providers\ConfigurationServiceProvider;
 use Laventure\Foundation\Providers\DatabaseServiceProvider;

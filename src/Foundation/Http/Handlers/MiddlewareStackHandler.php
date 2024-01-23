@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Laventure\Foundation\Http\Handlers;
 
+use Laventure\Component\Http\Message\Response\Response;
 use Laventure\Foundation\Http\Handlers\Contract\HandlerInterface;
 use Laventure\Foundation\Http\Handlers\Middleware\Middleware;
-use Laventure\Foundation\Http\Request\Request;
-use Laventure\Foundation\Http\Response\Response;
+use Laventure\Foundation\Http\Message\Request\Request;
 
 /**
  * MiddlewareStackHandler

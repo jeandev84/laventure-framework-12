@@ -2,12 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Foundation\Http\Request\Bag;
-
-use Laventure\Component\Http\Message\Request\Utils\Params\ServerParams;
+namespace Laventure\Foundation\Http\Message\Request\Bag;
 
 /**
- * ServerBag
+ * InputBag
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
@@ -15,6 +13,6 @@ use Laventure\Component\Http\Message\Request\Utils\Params\ServerParams;
  *
  * @package  Laventure\Foundation\Http\Request\Bag
  */
-class ServerBag extends ServerParams
+class InputBag extends ParameterBag
 {
 }

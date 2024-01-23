@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace Laventure\Foundation\Http\Handlers;
 
+use Laventure\Component\Http\Message\Response\Response;
 use Laventure\Component\Templating\Template\Template;
 use Laventure\Foundation\Http\Handlers\Contract\HandlerInterface;
-use Laventure\Foundation\Http\Request\Request;
-use Laventure\Foundation\Http\Response\Response;
-use Psr\Http\Message\ResponseFactoryInterface;
+use Laventure\Foundation\Http\Message\Request\Request;
 
 /**
  * NotFoundHandler
@@ -26,8 +25,8 @@ class NotFoundHandler implements HandlerInterface
     */
     public function handle(Request $request): Response
     {
-        $template = new Template(__DIR__.'/resource/views/404.phtml');
+        $template = new Template(__DIR__.'/resource/views/404.html');
 
-        return new Response(strval($template), 404);
+        return (new Response(404))->setContent(strval($template));
     }
 }
