@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Laventure\Component\Filesystem\File\Loader;
 
 use Laventure\Component\Filesystem\File\Loader\Contract\FileLoaderInterface;
+use Laventure\Component\Filesystem\File\Traits\HasFileTrait;
 
 /**
  * FileLoader
@@ -17,11 +18,7 @@ use Laventure\Component\Filesystem\File\Loader\Contract\FileLoaderInterface;
  */
 class FileLoader implements FileLoaderInterface
 {
-    /**
-     * @var string
-    */
-    protected string $file;
-
+    use HasFileTrait;
 
 
     /**
@@ -29,19 +26,8 @@ class FileLoader implements FileLoaderInterface
     */
     public function __construct(string $file)
     {
-        $this->file = $file;
+        $this->setFile($file);
     }
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function getFile(): string
-    {
-        return $this->file;
-    }
-
 
 
 

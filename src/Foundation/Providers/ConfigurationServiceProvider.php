@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Laventure\Foundation\Providers;
 
+use Laventure\Component\Config\Config;
+use Laventure\Component\Config\ConfigInterface;
 use Laventure\Component\Container\Exception\ContainerException;
 use Laventure\Component\Container\Provider\Contract\BootableServiceProvider;
 use Laventure\Component\Container\Provider\ServiceProvider;
+use Laventure\Dotenv\Contract\DotenvInterface;
 use Laventure\Dotenv\Dotenv;
-use Laventure\Dotenv\DotenvInterface;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use ReflectionException;
@@ -29,7 +31,7 @@ class ConfigurationServiceProvider extends ServiceProvider implements BootableSe
      */
     public function boot(): void
     {
-        $this->loadEnvironments();
+        $this->dotEnv()->load();
     }
 
 
@@ -39,25 +41,11 @@ class ConfigurationServiceProvider extends ServiceProvider implements BootableSe
     */
     public function register(): void
     {
+        $this->app->bind('app.env', $_ENV);
+        $this->app->singleton(ConfigInterface::class, function () {
 
-    }
-
-
-
-
-
-
-    /**
-     * @return void
-     * @throws ContainerException
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
-     * @throws ReflectionException
-     */
-    private function loadEnvironments(): void
-    {
-        $dotenv = $this->makeDotEnv();
-        $dotenv->load('.env.local'); // TODO reviews load correct file depended of environment DEV or PROD
+            return new Config([]);
+        });
     }
 
 
@@ -72,7 +60,7 @@ class ConfigurationServiceProvider extends ServiceProvider implements BootableSe
      * @throws NotFoundExceptionInterface
      * @throws ReflectionException
     */
-    private function makeDotEnv(): DotenvInterface
+    private function dotEnv(): DotenvInterface
     {
         return $this->app->make(Dotenv::class);
     }

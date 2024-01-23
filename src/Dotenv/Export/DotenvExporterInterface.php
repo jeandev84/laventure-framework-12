@@ -2,20 +2,22 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Filesystem\File\Loader\Contract;
+namespace Laventure\Dotenv\Export;
 
 use Laventure\Component\Filesystem\File\Contract\HasFileInterface;
+use Laventure\Contract\Export\ExportInterface;
 use Laventure\Contract\Loader\LoaderInterface;
+use Laventure\Dotenv\Contract\HasEnvironments;
 
 /**
- * FileLoaderInterface
+ * DotenvExporterInterface
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Filesystem\File\Loader\Contract
-*/
-interface FileLoaderInterface extends LoaderInterface, HasFileInterface
+ * @package  Laventure\Dotenv\Export
+ */
+interface DotenvExporterInterface extends ExportInterface, HasFileInterface, HasEnvironments
 {
 }
