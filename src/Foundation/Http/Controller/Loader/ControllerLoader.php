@@ -71,7 +71,10 @@ class ControllerLoader implements LoaderInterface
         $paths = array_keys($collection->getPaths());
 
         foreach ($paths as $path) {
-            $controllers[] =  $this->replacePath($path);
+            $classname     = $this->replacePath($path);
+            if (class_exists($classname)) {
+                $controllers[] =  $classname;
+            }
         }
 
         return $controllers;
