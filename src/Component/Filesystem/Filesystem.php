@@ -136,7 +136,7 @@ class Filesystem implements FilesystemInterface
      * @param string $content
      * @return mixed
     */
-    public function cache(string $filename, string $content): mixed
+    public function dump(string $filename, string $content): mixed
     {
         $file = $this->file($filename);
         $file->make();

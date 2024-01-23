@@ -47,7 +47,7 @@ class TemplateCache implements TemplateCacheInterface
     public function cache(string $key, string|TemplateInterface $template): string
     {
         try {
-            return $this->filesystem->cache(md5($key) .'.php', strval($template));
+            return $this->filesystem->dump(md5($key) .'.php', strval($template));
         } catch (\Throwable $e) {
             throw new TemplateCacheException($e->getMessage());
         }
