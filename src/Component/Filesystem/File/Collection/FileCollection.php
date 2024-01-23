@@ -23,6 +23,10 @@ class FileCollection implements FileCollectionInterface
     protected array $files = [];
 
 
+    /**
+     * @var array
+     */
+    private array $paths = [];
 
 
     /**
@@ -42,8 +46,11 @@ class FileCollection implements FileCollectionInterface
     */
     public function addFile(File $file): File
     {
+        $this->paths[$file->getPath()] = $file;
         return $this->files[] = $file;
     }
+
+
 
 
 
@@ -69,9 +76,20 @@ class FileCollection implements FileCollectionInterface
 
     /**
      * @inheritDoc
+     * @return File[]
     */
     public function getFiles(): array
     {
         return $this->files;
+    }
+
+
+
+    /**
+     * @return array
+     */
+    public function getPaths(): array
+    {
+        return $this->paths;
     }
 }

@@ -190,6 +190,21 @@ class Filesystem implements FilesystemInterface
     }
 
 
+    /**
+     * @param string $directory
+     * @param string $extension
+     * @return FileCollection
+    */
+    public function directoryFileCollection(string $directory, string $extension = 'php'): FileCollection
+    {
+        $files = $this->dir($directory)->getFiles($extension);
+
+        $files = $this->fileFactory->createFromArray($files);
+
+        return $this->fileCollectionFactory->create($files);
+    }
+
+
 
 
 

@@ -279,6 +279,18 @@ class File implements FileInterface
     }
 
 
+
+
+
+    /**
+     * @return string
+    */
+    public function getName(): string
+    {
+        return $this->info()->toArray()['filename'];
+    }
+
+
     /**
      * @return FileLoader
      */

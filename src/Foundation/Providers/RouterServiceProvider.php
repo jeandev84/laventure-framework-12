@@ -5,11 +5,14 @@ declare(strict_types=1);
 namespace Laventure\Foundation\Providers;
 
 use App\Http\Controllers\WelcomeController;
+use Laventure\Component\Container\Provider\Contract\BootableServiceProvider;
 use Laventure\Component\Container\Provider\ServiceProvider;
+use Laventure\Component\Filesystem\Filesystem;
 use Laventure\Component\Routing\Route\Collector\RouteCollector;
 use Laventure\Component\Routing\Route\Collector\RouteCollectorInterface;
 use Laventure\Component\Routing\Router\Router;
 use Laventure\Component\Routing\Router\RouterInterface;
+use Laventure\Foundation\Http\Controller\Loader\ControllerLoader;
 
 /**
  * RouterServiceProvider
@@ -20,13 +23,14 @@ use Laventure\Component\Routing\Router\RouterInterface;
  *
  * @package  Laventure\Foundation\Providers
  */
-class RouterServiceProvider extends ServiceProvider
+class RouterServiceProvider extends ServiceProvider implements BootableServiceProvider
 {
     /**
      * @var string
     */
     protected string $namespace = "App\\Http\\Controllers";
 
+    protected string $controllerPath = "app/Http/Controllers";
 
     /**
      * @var array
@@ -44,12 +48,39 @@ class RouterServiceProvider extends ServiceProvider
     /**
      * @inheritDoc
     */
+    public function boot(): void
+    {
+        $this->app->singleton(ControllerLoader::class, function () {
+            return new ControllerLoader(
+                $this->app[Filesystem::class],
+                $this->namespace,
+                $this->controllerPath
+            );
+        });
+
+    }
+
+
+    /**
+     * @inheritDoc
+    */
     public function register(): void
     {
         $this->app->singleton(RouterInterface::class, function () {
             $router = new Router($this->namespace);
-            $handler = require $this->app['basePath'] . '/config/routes/web.php';
-            return call_user_func($handler, $router);
+            $router->registerControllers($this->loadControllers());
+            return $router;
         });
+    }
+
+
+
+
+    /**
+     * @return string[]
+    */
+    private function loadControllers(): array
+    {
+        return $this->app[ControllerLoader::class]->load();
     }
 }

@@ -15,4 +15,21 @@ $iterator = $filesystem->dir('app/Http/Controllers')->iterate('php');
 dd($iterator->getRecursion());
 */
 
-dd($filesystem->dir('app/Http/Controllers')->getFiles());
+/*
+$collection = $filesystem->directoryFileCollection('app/Http/Controllers');
+$basePath = $filesystem->getBasePath();
+$controllers = [];
+$paths = array_keys($collection->getPaths());
+foreach ($paths as $path) {
+    $path     = str_replace($basePath, '', $path);
+    $path     = ltrim($path, '/');
+    $info     = pathinfo($path);
+    #dd($info);
+    $dirname  = str_replace(
+        ['app/Http/Controllers', '/'], ["App\\Http\\Controllers", "\\"], $info['dirname']);
+    $filename = $info['filename'];
+    $controllers[] =  "$dirname\\$filename";
+}
+
+dd($controllers);
+*/
