@@ -10,6 +10,7 @@ use Laventure\Component\Templating\Template\Compiler\CompilerInterface;
 use Laventure\Component\Templating\Template\Compiler\Echos\EchosCompiler;
 use Laventure\Component\Templating\Template\Compiler\Echos\EscapedEchoCompiler;
 use Laventure\Component\Templating\Template\Compiler\Php\PhpCompiler;
+use Laventure\Component\Templating\Template\Factory\TemplateFactory;
 use Laventure\Component\Templating\Template\Factory\TemplateFactoryInterface;
 use Laventure\Component\Templating\Template\Loader\TemplateLoaderInterface;
 use Laventure\Component\Templating\Template\TemplateInterface;
@@ -54,22 +55,20 @@ class TemplateEngine implements TemplateEngineInterface
     protected array $compilers = [];
 
 
-
-
     /**
      * @param TemplateLoaderInterface $loader
      *
      * @param TemplateCacheInterface $cache
-     * @param TemplateFactoryInterface $templateFactory
+     * @param TemplateFactoryInterface|null $templateFactory
      */
     public function __construct(
         TemplateLoaderInterface $loader,
         TemplateCacheInterface  $cache,
-        TemplateFactoryInterface $templateFactory
+        TemplateFactoryInterface $templateFactory = null
     ) {
         $this->loader = $loader;
         $this->cache  = $cache;
-        $this->templateFactory = $templateFactory;
+        $this->templateFactory = $templateFactory ?: new TemplateFactory();
         $this->addCompilers($this->getDefaultCompilers());
     }
 

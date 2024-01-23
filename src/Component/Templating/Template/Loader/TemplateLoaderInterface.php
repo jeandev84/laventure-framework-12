@@ -19,7 +19,7 @@ interface TemplateLoaderInterface
      * @param string $path
      * @return string
     */
-    public function loadPath(string $path): string;
+    public function locatePath(string $path): string;
 
 
 
