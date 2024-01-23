@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Foundation\Http\Middlewares;
@@ -21,7 +22,6 @@ use Laventure\Foundation\Http\Response\Response;
  */
 class RouteDispatcherMiddleware implements Middleware
 {
-
     /**
      * @var Container
     */
@@ -53,32 +53,32 @@ class RouteDispatcherMiddleware implements Middleware
     */
     public function process(Request $request, HandlerInterface $next): Response
     {
-           $path   = $request->getUri()->getPath();
-           $method = $request->getMethod();
-           $route  = $this->router->match($method, $path);
+        $path   = $request->getUri()->getPath();
+        $method = $request->getMethod();
+        $route  = $this->router->match($method, $path);
 
-           if (!$route) {
-               return $next->handle($request);
-           }
+        if (!$route) {
+            return $next->handle($request);
+        }
 
-           $request->attributes->add([
-               '_route' => $route
-           ]);
+        $request->attributes->add([
+            '_route' => $route
+        ]);
 
-           $callback = $route->getAction();
-           $middlewares = $route->getMiddlewares();
+        $callback = $route->getAction();
+        $middlewares = $route->getMiddlewares();
 
-           if ($route->callable()) {
-               return $this->app->callAnonymous($callback, [$request, $route->getParams()]);
-           }
+        if ($route->callable()) {
+            return $this->app->callAnonymous($callback, [$request, $route->getParams()]);
+        }
 
-           [$controller, $action] = explode('::', $callback);
+        [$controller, $action] = explode('::', $callback);
 
-           $request->attributes->add([
-               '_controller' => $route->getAction()
-           ]);
+        $request->attributes->add([
+            '_controller' => $route->getAction()
+        ]);
 
-           /* return call_user_func_array($callback, [$request]); */
-           return $this->app->call($controller, $action, $route->getParams());
+        /* return call_user_func_array($callback, [$request]); */
+        return $this->app->call($controller, $action, $route->getParams());
     }
 }

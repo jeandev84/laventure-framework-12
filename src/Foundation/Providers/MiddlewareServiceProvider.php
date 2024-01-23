@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Foundation\Providers;
@@ -20,7 +21,6 @@ use Psr\Http\Server\RequestHandlerInterface;
  */
 class MiddlewareServiceProvider extends ServiceProvider
 {
-
     /**
      * @var array
     */

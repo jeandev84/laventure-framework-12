@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Foundation\Http\Handlers\Middleware;
@@ -19,13 +20,12 @@ use Psr\Http\Server\RequestHandlerInterface;
  */
 interface Middleware
 {
-
-     /**
-      * @param Request $request
-      *
-      * @param HandlerInterface $next
-      *
-      * @return Response
-     */
-     public function process(Request $request, HandlerInterface $next): Response;
+    /**
+     * @param Request $request
+     *
+     * @param HandlerInterface $next
+     *
+     * @return Response
+    */
+    public function process(Request $request, HandlerInterface $next): Response;
 }

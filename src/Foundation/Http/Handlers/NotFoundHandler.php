@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Foundation\Http\Handlers;
-
 
 use Laventure\Component\Templating\Template\Template;
 use Laventure\Foundation\Http\Handlers\Contract\HandlerInterface;
@@ -21,14 +21,13 @@ use Psr\Http\Message\ResponseFactoryInterface;
 */
 class NotFoundHandler implements HandlerInterface
 {
+    /**
+     * @inheritdoc
+    */
+    public function handle(Request $request): Response
+    {
+        $template = new Template(__DIR__.'/resource/views/404.phtml');
 
-      /**
-       * @inheritdoc
-      */
-      public function handle(Request $request): Response
-      {
-           $template = new Template(__DIR__.'/resource/views/404.phtml');
-
-           return new Response(strval($template), 404);
-      }
+        return new Response(strval($template), 404);
+    }
 }

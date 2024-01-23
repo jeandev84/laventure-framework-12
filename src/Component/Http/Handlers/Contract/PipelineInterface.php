@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Http\Handlers\Contract;
-
 
 use Psr\Http\Message\ResponseInterface;
 
@@ -17,19 +17,18 @@ use Psr\Http\Message\ResponseInterface;
  */
 interface PipelineInterface
 {
-
-      /**
-       * @param array $middlewares
-       * @return mixed
-      */
-      public function pipe(array $middlewares): mixed;
-
+    /**
+     * @param array $middlewares
+     * @return mixed
+    */
+    public function pipe(array $middlewares): mixed;
 
 
 
-      /**
-       * @param $request
-       * @return mixed
-      */
-      public function handle($request): mixed;
+
+    /**
+     * @param $request
+     * @return mixed
+    */
+    public function handle($request): mixed;
 }

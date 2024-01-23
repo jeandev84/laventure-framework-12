@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Foundation\Templating\Loader;
@@ -35,7 +36,7 @@ class TemplateLoader implements TemplateLoaderInterface
     */
     public function locatePath(string $path): string
     {
-         return $this->filesystem->locate($path);
+        return $this->filesystem->locate($path);
     }
 
 
@@ -57,9 +58,9 @@ class TemplateLoader implements TemplateLoaderInterface
     */
     public function setResourcePath(string $path): static
     {
-         $this->filesystem->setBasePath($path);
+        $this->filesystem->setBasePath($path);
 
-         return $this;
+        return $this;
     }
 
 
@@ -70,8 +71,8 @@ class TemplateLoader implements TemplateLoaderInterface
     */
     public function getResourcePath(): string
     {
-         return $this->filesystem
-                     ->getFileLocator()
-                     ->getBasePath();
+        return $this->filesystem
+                    ->getFileLocator()
+                    ->getBasePath();
     }
 }

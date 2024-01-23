@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Foundation\Http\Handlers\Contract;
-
 
 use Laventure\Foundation\Http\Request\Request;
 use Laventure\Foundation\Http\Response\Response;

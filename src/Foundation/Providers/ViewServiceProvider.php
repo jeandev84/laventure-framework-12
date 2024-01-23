@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Foundation\Providers;
@@ -22,7 +23,6 @@ use Laventure\Foundation\Templating\Loader\TemplateLoader;
 */
 class ViewServiceProvider extends ServiceProvider
 {
-
     /**
      * @var array
     */

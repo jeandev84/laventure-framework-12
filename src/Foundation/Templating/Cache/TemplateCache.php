@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Foundation\Templating\Cache;
@@ -19,8 +20,6 @@ use Laventure\Component\Templating\Template\TemplateInterface;
  */
 class TemplateCache implements TemplateCacheInterface
 {
-
-
     /**
      * @param Filesystem $filesystem
      */

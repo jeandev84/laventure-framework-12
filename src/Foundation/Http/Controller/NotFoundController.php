@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Foundation\Http\Controller;
@@ -16,8 +17,8 @@ use Laventure\Foundation\Http\Response\Response;
 */
 class NotFoundController
 {
-       public function index(): Response
-       {
-          return new Response();
-       }
+    public function index(): Response
+    {
+        return new Response();
+    }
 }

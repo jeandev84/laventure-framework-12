@@ -19,7 +19,7 @@ use Laventure\Foundation\Http\Response\Response;
  */
 abstract class AbstractController implements ContainerAwareInterface
 {
-     use ContainerAwareTrait;
+    use ContainerAwareTrait;
 
 
     /**
@@ -29,7 +29,7 @@ abstract class AbstractController implements ContainerAwareInterface
     */
     public function render(string $template, array $data = []): Response
     {
-         return new Response($this->renderView($template, $data));
+        return new Response($this->renderView($template, $data));
     }
 
 

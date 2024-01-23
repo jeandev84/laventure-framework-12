@@ -49,7 +49,8 @@ class ApplicationServiceProvider extends ServiceProvider implements BootableServ
     /**
      * @inheritDoc
     */
-    public function register(): void {
+    public function register(): void
+    {
         $this->app->singletons([
             ResponseFactoryInterface::class => ResponseFactory::class
         ]);

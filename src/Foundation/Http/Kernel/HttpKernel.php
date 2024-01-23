@@ -13,7 +13,6 @@ use Laventure\Foundation\Http\Request\Request;
 use Laventure\Foundation\Http\Response\Response;
 use Throwable;
 
-
 /**
  * HttpKernel
  *

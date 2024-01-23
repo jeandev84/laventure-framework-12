@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Foundation\Http\Handlers\Bus;
@@ -24,54 +25,52 @@ use Psr\Http\Server\RequestHandlerInterface;
 */
 class Pipeline implements PipelineInterface
 {
+    /**
+     * @var Application
+    */
+    protected Application $app;
 
 
-      /**
-       * @var Application
-      */
-      protected Application $app;
-
-
-      /**
-       * @var MiddlewareStackHandler
-      */
-      protected MiddlewareStackHandler $handler;
-
-
-
-
-      /**
-       * @param Application $app
-      */
-      public function __construct(Application $app)
-      {
-          $this->app     = $app;
-          $this->handler = $app[MiddlewareStackHandler::class];
-      }
+    /**
+     * @var MiddlewareStackHandler
+    */
+    protected MiddlewareStackHandler $handler;
 
 
 
 
-      /**
-       * @inheritdoc
-      */
-      public function pipe(array $middlewares): static
-      {
-           foreach ($middlewares as $middleware) {
-               $this->handler->add($this->app->get($middleware));
-           }
-
-           return $this;
-      }
+    /**
+     * @param Application $app
+    */
+    public function __construct(Application $app)
+    {
+        $this->app     = $app;
+        $this->handler = $app[MiddlewareStackHandler::class];
+    }
 
 
 
 
-     /**
-      * @inheritDoc
-     */
-     public function handle($request): Response
-     {
-          return $this->handler->handle($request);
-     }
+    /**
+     * @inheritdoc
+    */
+    public function pipe(array $middlewares): static
+    {
+        foreach ($middlewares as $middleware) {
+            $this->handler->add($this->app->get($middleware));
+        }
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function handle($request): Response
+    {
+        return $this->handler->handle($request);
+    }
 }

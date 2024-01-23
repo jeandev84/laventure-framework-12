@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Foundation\Http\Handlers;
@@ -19,58 +20,57 @@ use Laventure\Foundation\Http\Response\Response;
 */
 class MiddlewareStackHandler implements HandlerInterface
 {
-
-     /**
-      * @var Middleware[]
-     */
-     protected array $middlewares = [];
-
-
-
-     /**
-      * @var NotFoundHandler $fallbackHandler
-     */
-     protected $fallbackHandler;
+    /**
+     * @var Middleware[]
+    */
+    protected array $middlewares = [];
 
 
 
-     /**
-      * @param NotFoundHandler $fallbackHandler
-     */
-     public function __construct(NotFoundHandler $fallbackHandler)
-     {
-         $this->fallbackHandler = $fallbackHandler;
-     }
+    /**
+     * @var NotFoundHandler $fallbackHandler
+    */
+    protected $fallbackHandler;
 
 
 
-
-     /**
-      * @param Middleware $middleware
-      *
-      * @return $this
-     */
-     public function add(Middleware $middleware): static
-     {
-         $this->middlewares[] = $middleware;
-
-         return $this;
-     }
+    /**
+     * @param NotFoundHandler $fallbackHandler
+    */
+    public function __construct(NotFoundHandler $fallbackHandler)
+    {
+        $this->fallbackHandler = $fallbackHandler;
+    }
 
 
 
 
-     /**
-      * @inheritdoc
-     */
-     public function handle(Request $request): Response
-     {
-         // Last middleware in the queue has called on the request handler.
-         if (0 === count($this->middlewares)) {
-             return $this->fallbackHandler->handle($request);
-         }
+    /**
+     * @param Middleware $middleware
+     *
+     * @return $this
+    */
+    public function add(Middleware $middleware): static
+    {
+        $this->middlewares[] = $middleware;
 
-         $middleware = array_shift($this->middlewares);
-         return $middleware->process($request, $this);
-     }
+        return $this;
+    }
+
+
+
+
+    /**
+     * @inheritdoc
+    */
+    public function handle(Request $request): Response
+    {
+        // Last middleware in the queue has called on the request handler.
+        if (0 === count($this->middlewares)) {
+            return $this->fallbackHandler->handle($request);
+        }
+
+        $middleware = array_shift($this->middlewares);
+        return $middleware->process($request, $this);
+    }
 }
