@@ -67,6 +67,27 @@ class Directory implements DirectoryInterface
     }
 
 
+
+    /**
+     * @inheritDoc
+     */
+    public function getFiles(string $extension = 'php'): array
+    {
+        $iterator  = $this->iterate($extension);
+        $recursionIterator = $iterator->getRecursion()->getRecursiveIterator();
+
+        $files = [];
+
+        foreach ($recursionIterator as $file) {
+            if (!$file->isDir()) {
+                $files[] = $file->getPathname();
+            }
+        }
+
+        return $files;
+    }
+
+
     /**
      * @inheritdoc
     */
