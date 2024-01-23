@@ -108,10 +108,10 @@ final class Application implements ApplicationInterface, TerminableInterface, Co
     */
     private function emit(Request $request, Response $response): void
     {
-        echo __CLASS__ . " works! with next response :)";
-        echo '<hr>';
+        //echo __CLASS__ . " works! with next response :)";
+        //echo '<hr>';
 
-        echo (string)$response;
+        echo $response;
     }
 
 

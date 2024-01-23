@@ -32,7 +32,7 @@ class Response implements Stringable
 
     public function send(): void
     {
-        echo "Headers sent ...\n";
+        //echo "Headers sent ...\n";
     }
 
 
