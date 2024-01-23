@@ -9,8 +9,10 @@ use Laventure\Component\Config\ConfigInterface;
 use Laventure\Component\Container\Exception\ContainerException;
 use Laventure\Component\Container\Provider\Contract\BootableServiceProvider;
 use Laventure\Component\Container\Provider\ServiceProvider;
+use Laventure\Component\Filesystem\Filesystem;
 use Laventure\Dotenv\Contract\DotenvInterface;
 use Laventure\Dotenv\Dotenv;
+use Laventure\Foundation\Config\Loader\ConfigLoader;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use ReflectionException;
@@ -26,6 +28,20 @@ use ReflectionException;
  */
 class ConfigurationServiceProvider extends ServiceProvider implements BootableServiceProvider
 {
+    private string $pattern = '/config/params/*.php';
+
+
+    /**
+     * @var array
+     */
+    protected array $provides = [
+        ConfigInterface::class => [
+            Config::class,
+            'config'
+        ]
+    ];
+
+
     /**
      * @inheritDoc
      */
@@ -42,24 +58,18 @@ class ConfigurationServiceProvider extends ServiceProvider implements BootableSe
     public function register(): void
     {
         $this->app->bind('app.env', $_ENV);
+        $this->app->singleton(ConfigLoader::class, function () {
+            return new ConfigLoader($this->app[Filesystem::class], $this->pattern);
+        });
         $this->app->singleton(ConfigInterface::class, function () {
-
-            return new Config([]);
+            $loader = $this->app[ConfigLoader::class];
+            return new Config($loader->load());
         });
     }
 
 
 
 
-
-
-    /**
-     * @return DotenvInterface
-     * @throws ContainerException
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
-     * @throws ReflectionException
-    */
     private function dotEnv(): DotenvInterface
     {
         return $this->app->make(Dotenv::class);

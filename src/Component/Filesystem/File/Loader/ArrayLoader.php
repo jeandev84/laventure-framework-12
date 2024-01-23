@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Loader;
 
+use Laventure\Component\Filesystem\File\Collection\FileCollection;
+use Laventure\Contract\Loader\LoaderInterface;
+
 /**
  * ArrayLoader
  *
@@ -13,6 +16,34 @@ namespace Laventure\Component\Filesystem\File\Loader;
  *
  * @package  Laventure\Component\Filesystem\File\Loader
  */
-class ArrayLoader
+class ArrayLoader implements LoaderInterface
 {
+    /**
+     * @var FileCollection
+    */
+    protected FileCollection $files;
+
+
+    /**
+     * @param FileCollection $files
+    */
+    public function __construct(FileCollection $files)
+    {
+        $this->files = $files;
+    }
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function load(): array
+    {
+        $data = [];
+        foreach ($this->files->getFiles() as $file) {
+            $data[$file->getName()] = $file->load();
+        }
+
+        return $data;
+    }
 }
