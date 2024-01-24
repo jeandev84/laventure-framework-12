@@ -14,7 +14,7 @@ use Laventure\Component\Templating\Template\Function\TemplateFunction;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Templating\Template\Extension
+ * @package  Laventure\Component\Templating\Template\ConnectionExtension
  */
 interface ExtensionInterface
 {
