@@ -36,7 +36,7 @@ class MysqlConnection extends DriverConnection implements MysqlConnectionInterfa
     */
     public function getDatabases(): array
     {
-
+        return [];
     }
 
 
@@ -48,7 +48,7 @@ class MysqlConnection extends DriverConnection implements MysqlConnectionInterfa
      */
     public function createDatabase(): mixed
     {
-
+        return false;
     }
 
 
@@ -60,20 +60,9 @@ class MysqlConnection extends DriverConnection implements MysqlConnectionInterfa
     */
     public function dropDatabase(): mixed
     {
-
+        return false;
     }
 
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function hasDatabase(): bool
-    {
-
-    }
 
 
 
@@ -84,7 +73,7 @@ class MysqlConnection extends DriverConnection implements MysqlConnectionInterfa
     */
     public function hasTable(string $name): bool
     {
-
+        return false;
     }
 
 
@@ -96,6 +85,6 @@ class MysqlConnection extends DriverConnection implements MysqlConnectionInterfa
     */
     public function getTables(): array
     {
-
+        return [];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection;
@@ -23,41 +24,39 @@ use Laventure\Component\Database\Manager\ExtensionException;
  */
 class ConnectionStack
 {
+    /**
+     * @param string $extension
+     * @return array
+    */
+    public static function connections(string $extension): array
+    {
+        $client = match($extension) {
+            'pdo'     => new PdoClient(),
+            'mysqli'  => new MysqliClient(),
+            default   => throw new ExtensionException("Could not resolve extension $extension")
+        };
 
-       /**
-        * @param string $extension
-        * @return array
-       */
-       public static function connections(string $extension): array
-       {
-
-            $client = match($extension) {
-                'pdo'     => new PdoClient(),
-                'mysqli'  => new MysqliClient(),
-                default   => throw new ExtensionException("Could not resolve extension $extension")
-            };
-
-            return self::get($extension, $client);
-       }
+        return self::get($extension, $client);
+    }
 
 
 
 
-       /**
-        * @param string $extension
-        * @param ClientConnectionInterface $client
-        * @return array
-       */
-       private static function get(string $extension, ClientConnectionInterface $client): array
-       {
-            return [
-               'mysqli' => [new MysqlConnection($client)],
-               'pdo'    => [
-                   new MysqlConnection($client),
-                   new PgsqlConnection($client),
-                   new SqliteConnection($client),
-                   new OracleConnection($client)
-               ]
-            ][$extension] ?? [];
-       }
+    /**
+     * @param string $extension
+     * @param ClientConnectionInterface $client
+     * @return array
+    */
+    private static function get(string $extension, ClientConnectionInterface $client): array
+    {
+        return [
+           'mysqli' => [new MysqlConnection($client)],
+           'pdo'    => [
+               new MysqlConnection($client),
+               new PgsqlConnection($client),
+               new SqliteConnection($client),
+               new OracleConnection($client)
+           ]
+        ][$extension] ?? [];
+    }
 }

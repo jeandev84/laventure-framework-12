@@ -1,11 +1,14 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client\Mysqli;
 
 use Closure;
 use Laventure\Component\Database\Configuration\Contract\ConfigurationInterface;
+use Laventure\Component\Database\Connection\Client\Mysqli\Query\QueryBuilder;
 use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
+use Laventure\Component\Database\Connection\Query\NullQuery;
 use Laventure\Component\Database\Connection\Query\QueryInterface;
 
 /**
@@ -19,7 +22,6 @@ use Laventure\Component\Database\Connection\Query\QueryInterface;
  */
 class MysqliClient implements MysqliClientInterface
 {
-
     /**
      * @inheritDoc
      */
@@ -32,97 +34,137 @@ class MysqliClient implements MysqliClientInterface
 
     /**
      * @inheritDoc
-     */
+    */
     public function connect(ConfigurationInterface $config): void
     {
-        // TODO: Implement connect() method.
+
     }
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function connected(): bool
     {
-        // TODO: Implement connected() method.
+        return false;
     }
+
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function disconnect(): void
     {
-        // TODO: Implement disconnect() method.
+
     }
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function disconnected(): bool
     {
-        // TODO: Implement disconnected() method.
+        return false;
     }
+
+
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function getConnection(): mixed
     {
-        // TODO: Implement getConnection() method.
+        return null;
     }
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function createQueryBuilder(): QueryBuilderInterface
     {
-        // TODO: Implement createQueryBuilder() method.
+        return new QueryBuilder();
     }
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function createQuery(): QueryInterface
     {
-        // TODO: Implement createQuery() method.
+        return new NullQuery();
     }
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function beginTransaction(): bool
     {
-        // TODO: Implement beginTransaction() method.
+        return false;
     }
+
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function hasActiveTransaction(): bool
     {
-        // TODO: Implement hasActiveTransaction() method.
+        return false;
     }
+
+
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function commit(): bool
     {
-        // TODO: Implement commit() method.
+        return false;
     }
+
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function rollback(): bool
     {
-        // TODO: Implement rollback() method.
+        return false;
     }
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function transaction(Closure $func): mixed
     {
-        // TODO: Implement transaction() method.
+        return false;
     }
 }

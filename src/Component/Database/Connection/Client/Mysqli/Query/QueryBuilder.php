@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client\Mysqli\Query;
 
+use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
+
 /**
  * QueryBuilder
  *
@@ -13,6 +15,6 @@ namespace Laventure\Component\Database\Connection\Client\Mysqli\Query;
  *
  * @package  Laventure\Component\Database\Connection\Client\Mysqli
  */
-class QueryBuilder
+class QueryBuilder implements QueryBuilderInterface
 {
 }

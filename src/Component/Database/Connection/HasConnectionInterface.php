@@ -17,6 +17,16 @@ use Laventure\Component\Database\Configuration\Contract\ConfigurationInterface;
  */
 interface HasConnectionInterface
 {
+
+    /**
+     * Returns connection name
+     *
+     * @return string
+    */
+    public function getName(): string;
+
+
+
     /**
      * Connect to the database
      *

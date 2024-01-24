@@ -31,46 +31,55 @@ class SqliteConnection extends DriverConnection implements SqliteConnectionInter
      */
     public function getDatabases(): array
     {
-        // TODO: Implement getDatabases() method.
+        return [];
     }
+
+
+
+
 
     /**
      * @inheritDoc
      */
     public function createDatabase(): mixed
     {
-        // TODO: Implement createDatabase() method.
+        return false;
     }
+
+
+
+
 
     /**
      * @inheritDoc
      */
     public function dropDatabase(): mixed
     {
-        // TODO: Implement dropDatabase() method.
+        return false;
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function hasDatabase(): bool
-    {
-        // TODO: Implement hasDatabase() method.
-    }
+
+
+
+
 
     /**
      * @inheritDoc
      */
     public function hasTable(string $name): bool
     {
-        // TODO: Implement hasTable() method.
+        return false;
     }
+
+
+
+
 
     /**
      * @inheritDoc
      */
     public function getTables(): array
     {
-        // TODO: Implement getTables() method.
+        return [];
     }
 }

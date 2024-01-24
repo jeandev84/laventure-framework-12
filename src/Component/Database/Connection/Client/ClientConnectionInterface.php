@@ -21,8 +21,5 @@ use Laventure\Component\Database\Connection\Transaction\TransactionInterface;
 */
 interface ClientConnectionInterface extends HasConnectionInterface, QueryFactoryInterface, QueryBuilderFactoryInterface, TransactionInterface
 {
-    /**
-     * @return string
-    */
-    public function getName(): string;
+
 }

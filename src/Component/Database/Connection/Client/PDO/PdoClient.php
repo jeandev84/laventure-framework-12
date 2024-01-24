@@ -200,6 +200,9 @@ class PdoClient implements PdoClientInterface
 
 
 
+
+
+
     /**
      * @return QueryInterface
     */
@@ -220,6 +223,9 @@ class PdoClient implements PdoClientInterface
     {
         return new QueryBuilder($this);
     }
+
+
+
 
 
 

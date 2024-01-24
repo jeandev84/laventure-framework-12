@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Query;
 
+use Laventure\Component\Database\Connection\Query\Result\QueryResultInterface;
+
 /**
  * QueryInterface
  *
@@ -39,6 +41,44 @@ interface QueryInterface
 
 
     /**
+     * @param $param
+     * @param $value
+     * @param int $type
+     * @return $this
+    */
+    public function bindParam($param, $value, int $type): static;
+
+
+
+
+
+    /**
+     * @param $param
+     * @param $value
+     * @param int $type
+     * @return $this
+    */
+    public function bindValue($param, $value, int $type): static;
+
+
+
+
+
+    /**
+     * @param $column
+     * @param $value
+     * @param int $type
+     * @return $this
+    */
+    public function bindColumn($column, $value, int $type): static;
+
+
+
+
+
+
+
+    /**
      * Set query params
      *
      * @param array $params
@@ -53,9 +93,9 @@ interface QueryInterface
     /**
      * Execute query
      *
-     * @return bool
+     * @return mixed
     */
-    public function execute(): bool;
+    public function execute(): mixed;
 
 
 
@@ -65,7 +105,7 @@ interface QueryInterface
      * @param string $sql
      * @return bool
     */
-    public function exec(string $sql): bool;
+    public function exec(string $sql): mixed;
 
 
 
@@ -77,4 +117,36 @@ interface QueryInterface
      * @return int
     */
     public function lastInsertId(string $name = null): int;
+
+
+
+
+
+    /**
+     * Save the class name to fetch
+     *
+     * @param string $classname
+     *
+     * @return $this
+    */
+    public function map(string $classname): static;
+
+
+
+
+
+    /**
+     * @return QueryResultInterface
+    */
+    public function fetch(): QueryResultInterface;
+
+
+
+
+
+
+    /**
+     * @return string
+    */
+    public function getSQL(): string;
 }
