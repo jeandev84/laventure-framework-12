@@ -167,7 +167,6 @@ class PdoClient implements PdoClientInterface
         try {
 
             $func($this);
-
             return $this->commit();
 
         } catch (PDOException $e) {

@@ -180,9 +180,9 @@ final class Application implements ApplicationInterface, TerminableInterface, Co
             ApplicationServiceProvider::class,
             FilesystemServiceProvider::class,
             ConfigurationServiceProvider::class,
+            DatabaseServiceProvider::class,
             RouterServiceProvider::class,
             EventServiceProvider::class,
-            DatabaseServiceProvider::class,
             ViewServiceProvider::class
         ]);
 

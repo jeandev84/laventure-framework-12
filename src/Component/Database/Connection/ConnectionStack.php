@@ -28,7 +28,7 @@ class ConnectionStack
         * @param string $extension
         * @return array
        */
-       public static function connections(string $extension = 'pdo'): array
+       public static function connections(string $extension): array
        {
 
             $client = match($extension) {

@@ -6,6 +6,7 @@ namespace Laventure\Foundation\Http\Controller;
 
 use Laventure\Component\Container\Common\ContainerAwareTrait;
 use Laventure\Component\Container\ContainerAwareInterface;
+use Laventure\Component\Database\Connection\ConnectionInterface;
 use Laventure\Component\Http\Message\Response\JsonResponse;
 use Laventure\Component\Http\Message\Response\RedirectResponse;
 use Laventure\Component\Http\Message\Response\Response;
@@ -62,6 +63,19 @@ abstract class AbstractController implements ContainerAwareInterface
     {
         return new JsonResponse($data);
     }
+
+
+
+
+    /**
+     * @return ConnectionInterface
+    */
+    public function getConnection(): ConnectionInterface
+    {
+         return $this->container['db']->connection();
+    }
+
+
 
 
 

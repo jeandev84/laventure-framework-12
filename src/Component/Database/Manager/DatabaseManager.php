@@ -31,7 +31,7 @@ class DatabaseManager implements DatabaseManagerInterface
     /**
      * @var string|null
     */
-    protected ?string $extension = null;
+    protected ?string $extension = 'pdo';
 
 
 
@@ -74,7 +74,7 @@ class DatabaseManager implements DatabaseManagerInterface
     */
     public function open(string $name, array $credentials): static
     {
-        $this->connections(ConnectionStack::connections());
+        $this->connections(ConnectionStack::connections($this->extension));
         $this->connection = $name;
         $this->config($name, $credentials);
 
@@ -107,7 +107,7 @@ class DatabaseManager implements DatabaseManagerInterface
     */
     public function extension(string $extension): static
     {
-        $this->connections(ConnectionStack::connections());
+        $this->connections(ConnectionStack::connections($extension));
 
         $this->extension = $extension;
 
@@ -172,7 +172,7 @@ class DatabaseManager implements DatabaseManagerInterface
     */
     public function connection(string $name = ''): ConnectionInterface
     {
-        $name        = $name ?: $this->currentConnection();
+        $name        = $name ?: $this->getCurrentConnection();
         $credentials = $this->configuration($name);
 
         if (!$this->hasConnection($name)) {
@@ -280,7 +280,7 @@ class DatabaseManager implements DatabaseManagerInterface
     /**
      * @return string|null
     */
-    public function currentConnection(): ?string
+    public function getCurrentConnection(): ?string
     {
         return $this->connection;
     }
