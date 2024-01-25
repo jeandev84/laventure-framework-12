@@ -15,7 +15,7 @@ use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
 use Laventure\Component\Database\Connection\Query\QueryInterface;
 
 /**
- * DriverConnection
+ * Connection
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
@@ -23,7 +23,7 @@ use Laventure\Component\Database\Connection\Query\QueryInterface;
  *
  * @package  Laventure\Component\Database\Connection\Drivers
 */
-abstract class DriverConnection implements ConnectionInterface
+abstract class Connection implements ConnectionInterface
 {
     /**
      * @var ClientConnectionInterface

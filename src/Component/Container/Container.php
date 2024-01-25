@@ -749,7 +749,7 @@ class Container implements ContainerInterface, \ArrayAccess
     public static function getInstance(): static
     {
         if (!static::$instance) {
-            static::$instance = new self();
+            static::$instance = new static();
         }
 
         return static::$instance;

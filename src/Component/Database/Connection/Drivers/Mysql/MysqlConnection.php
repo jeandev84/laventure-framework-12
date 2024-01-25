@@ -6,7 +6,7 @@ namespace Laventure\Component\Database\Connection\Drivers\Mysql;
 
 use Closure;
 use Laventure\Component\Database\Configuration\Contract\ConfigurationInterface;
-use Laventure\Component\Database\Connection\Drivers\DriverConnection;
+use Laventure\Component\Database\Connection\Drivers\Connection;
 use Laventure\Component\Database\Connection\Query\QueryInterface;
 
 /**
@@ -18,7 +18,7 @@ use Laventure\Component\Database\Connection\Query\QueryInterface;
  *
  * @package  Laventure\Component\Database\Connection\Drivers
 */
-class MysqlConnection extends DriverConnection implements MysqlConnectionInterface
+class MysqlConnection extends Connection implements MysqlConnectionInterface
 {
     /**
      * @inheritDoc

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Drivers\Oracle;
 
-use Laventure\Component\Database\Connection\Drivers\DriverConnection;
+use Laventure\Component\Database\Connection\Drivers\Connection;
 
 /**
  * OracleConnection
@@ -15,7 +15,7 @@ use Laventure\Component\Database\Connection\Drivers\DriverConnection;
  *
  * @package  Laventure\Component\Database\Connection\Drivers
  */
-class OracleConnection extends DriverConnection implements OracleConnectionInterface
+class OracleConnection extends Connection implements OracleConnectionInterface
 {
     /**
      * @inheritDoc

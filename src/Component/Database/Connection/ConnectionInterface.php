@@ -19,8 +19,6 @@ use Laventure\Component\Database\Connection\Query\QueryInterface;
 */
 interface ConnectionInterface extends HasConnectionInterface
 {
-
-
     /**
      * Prepare query
      *

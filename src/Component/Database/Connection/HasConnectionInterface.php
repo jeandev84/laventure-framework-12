@@ -17,7 +17,6 @@ use Laventure\Component\Database\Configuration\Contract\ConfigurationInterface;
  */
 interface HasConnectionInterface
 {
-
     /**
      * Returns connection name
      *

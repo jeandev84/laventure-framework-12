@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Drivers\Pgsql;
 
-use Laventure\Component\Database\Connection\Drivers\DriverConnection;
+use Laventure\Component\Database\Connection\Drivers\Connection;
 
 /**
  * PgsqlConnection
@@ -15,7 +15,7 @@ use Laventure\Component\Database\Connection\Drivers\DriverConnection;
  *
  * @package  Laventure\Component\Database\Connection\Drivers
 */
-class PgsqlConnection extends DriverConnection implements PgsqlConnectionInterface
+class PgsqlConnection extends Connection implements PgsqlConnectionInterface
 {
     /**
      * @inheritDoc

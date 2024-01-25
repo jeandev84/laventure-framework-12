@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Laventure\Component\Database\Connection\Drivers\Sqlite;
 
 use http\Exception;
-use Laventure\Component\Database\Connection\Drivers\DriverConnection;
+use Laventure\Component\Database\Connection\Drivers\Connection;
 
 /**
  * SqliteConnection
@@ -16,7 +16,7 @@ use Laventure\Component\Database\Connection\Drivers\DriverConnection;
  *
  * @package  Laventure\Component\Database\Connection\Drivers
  */
-class SqliteConnection extends DriverConnection implements SqliteConnectionInterface
+class SqliteConnection extends Connection implements SqliteConnectionInterface
 {
     /**
      * @inheritDoc
