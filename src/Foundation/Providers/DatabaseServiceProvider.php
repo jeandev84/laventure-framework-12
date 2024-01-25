@@ -6,8 +6,8 @@ namespace Laventure\Foundation\Providers;
 
 use Laventure\Component\Container\Container;
 use Laventure\Component\Container\Provider\ServiceProvider;
-use Laventure\Component\Database\Manager\DatabaseManager;
-use Laventure\Component\Database\Manager\DatabaseManagerInterface;
+#use Laventure\Component\Database\Manager\DatabaseManager;
+#use Laventure\Component\Database\Manager\DatabaseManagerInterface;
 
 /**
  * DatabaseServiceProvider
@@ -24,7 +24,7 @@ class DatabaseServiceProvider extends ServiceProvider
      * @var array|array[]
     */
     protected array $provides = [
-        DatabaseManagerInterface::class => [DatabaseManager::class, 'db']
+        #DatabaseManagerInterface::class => [DatabaseManager::class, 'db']
     ];
 
 
@@ -34,6 +34,7 @@ class DatabaseServiceProvider extends ServiceProvider
     */
     public function register(): void
     {
+        /*
         $this->app->singleton(DatabaseManagerInterface::class, function () {
             $config        = $this->app['config'];
             $connection    = $config->get('database.connection');
@@ -45,5 +46,6 @@ class DatabaseServiceProvider extends ServiceProvider
             $database->extension($extension);
             return $database;
         });
+        */
     }
 }
