@@ -311,6 +311,7 @@ class PdoClient implements PdoClientInterface
     {
         return [
             'host'     => $config->host(),
+            'port'     => $config->port(),
             'dbname'   => $config->database(),
             'charset'  => $config->charset() ?? 'utf8',
             'username' => $config->username() ?? '',
