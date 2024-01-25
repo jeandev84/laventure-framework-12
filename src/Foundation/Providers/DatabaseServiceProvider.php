@@ -6,8 +6,8 @@ namespace Laventure\Foundation\Providers;
 
 use Laventure\Component\Container\Container;
 use Laventure\Component\Container\Provider\ServiceProvider;
-#use Laventure\Component\Database\Manager\DatabaseManager;
-#use Laventure\Component\Database\Manager\DatabaseManagerInterface;
+#use Laventure\Component\Database\Runner\DatabaseManager;
+#use Laventure\Component\Database\Runner\DatabaseManagerInterface;
 
 /**
  * DatabaseServiceProvider
