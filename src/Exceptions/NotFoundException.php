@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Laventure\Component\Debug\Exception;
+namespace Laventure\Exceptions;
 
 /**
  * NotFoundException
@@ -10,8 +10,8 @@ namespace Laventure\Component\Debug\Exception;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Debug\Exception
- */
+ * @package  Laventure\Exceptions
+*/
 class NotFoundException extends BaseException
 {
 

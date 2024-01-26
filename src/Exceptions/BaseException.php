@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Laventure\Component\Debug\Exception;
+namespace Laventure\Exceptions;
 
+use Exception;
 use Throwable;
 
 /**
@@ -14,7 +15,7 @@ use Throwable;
  *
  * @package  Laventure\Component\Debug\Exception
  */
-abstract class BaseException extends \Exception
+abstract class BaseException extends Exception
 {
     /**
      * @var array
@@ -45,7 +46,7 @@ abstract class BaseException extends \Exception
      * @param $value
      * @return void
     */
-    public function setData(string $key, $value): void
+    public function data(string $key, $value): void
     {
         $this->data[$key] = $value;
     }
