@@ -19,7 +19,7 @@ interface RunnerInterface
      /**
       * Run something
       *
-      * @return mixed
+      * @return mixed|void
      */
      public function run();
 }

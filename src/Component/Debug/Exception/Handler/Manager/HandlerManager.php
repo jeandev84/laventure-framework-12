@@ -3,8 +3,10 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Debug\Exception\Handler\Manager;
 
-use Laventure\Component\Debug\Exception\Handler\Register\HandleRegisterInterface;
-use Laventure\Contract\Runner\RunnerInterface;
+use Laventure\Component\Debug\Exception\Handler\ErrorHandlerInterface;
+use Laventure\Component\Debug\Exception\Handler\ExceptionHandlerInterface;
+use Laventure\Component\Debug\Exception\Handler\HandlerInterface;
+use Laventure\Component\Debug\Exception\Handler\Register\HandlerRegistryInterface;
 
 /**
  * HandlerManager
@@ -20,30 +22,83 @@ class HandlerManager implements HandlerManagerInterface
 
 
     /**
-     * @var array
+     * @var HandlerRegistryInterface
+    */
+    protected HandlerRegistryInterface $register;
+
+
+
+    /**
+     * @var HandlerInterface[]
     */
     protected array $handlers = [];
 
 
 
+    /**
+     * @var ExceptionHandlerInterface[]|callable[]
+    */
+    protected array $exceptionHandlers = [];
+
 
 
     /**
-     * @param HandleRegisterInterface $register
+     * @var ErrorHandlerInterface[]|callable[]
     */
-    public function __construct(HandleRegisterInterface $register)
+    protected array $errorHandlers = [];
+
+
+
+
+    /**
+     * @param HandlerRegistryInterface $register
+    */
+    public function __construct(HandlerRegistryInterface $register)
     {
+        $this->register = $register;
     }
+
+
+
+
+    /**
+     * @param HandlerInterface $handler
+     * @return $this
+    */
+    public function pushHandler(HandlerInterface $handler): static
+    {
+        $this->handlers[] = $handler;
+
+        return $this;
+    }
+
+
+    /**
+     * @param ExceptionHandlerInterface|callable $handler
+     * @return $this
+    */
+    public function pushExceptionHandler(ExceptionHandlerInterface|callable $handler): static
+    {
+        $this->exceptionHandlers[] = $handler;
+
+        return $this;
+    }
+
+
 
 
 
     /**
      * @inheritDoc
     */
-    public function run()
+    public function run(): void
     {
-
+        $this->registerHandlers();
+        $this->registerErrorHandlers();
+        $this->registerExceptionHandlers();
     }
+
+
 
 
 
@@ -54,5 +109,39 @@ class HandlerManager implements HandlerManagerInterface
     public function getHandlers(): array
     {
         return $this->handlers;
+    }
+
+
+
+
+
+    /**
+     * @return void
+    */
+    private function registerHandlers(): void
+    {
+        foreach ($this->handlers as $handler) {
+            $this->register->registerHandler($handler);
+        }
+    }
+
+
+
+    private function registerExceptionHandlers(): void
+    {
+        foreach ($this->exceptionHandlers as $handler) {
+            $this->register->registerExceptionHandler($handler);
+        }
+    }
+
+
+
+
+
+    private function registerErrorHandlers(): void
+    {
+        foreach ($this->errorHandlers as $handler) {
+            $this->register->registerErrorHandler($handler);
+        }
     }
 }

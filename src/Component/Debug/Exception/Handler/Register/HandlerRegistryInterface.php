@@ -7,7 +7,7 @@ namespace Laventure\Component\Debug\Exception\Handler\Register;
 use Laventure\Component\Debug\Exception\Handler\HandlerInterface;
 
 /**
- * HandleRegisterInterface
+ * HandlerRegistryInterface
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
@@ -15,7 +15,7 @@ use Laventure\Component\Debug\Exception\Handler\HandlerInterface;
  *
  * @package  Laventure\Component\Debug\Exception\Handler\Register
  */
-interface HandleRegisterInterface
+interface HandlerRegistryInterface
 {
 
 
