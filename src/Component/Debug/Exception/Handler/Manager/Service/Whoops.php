@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Debug\Exception\Handler\Manager\Service;
@@ -18,8 +19,8 @@ use Laventure\Component\Debug\Exception\Handler\Register\HandlerRegistryInterfac
  */
 class Whoops extends HandlerManager
 {
-     public function __construct()
-     {
-         parent::__construct(new HandlerRegistry());
-     }
+    public function __construct()
+    {
+        parent::__construct(new HandlerRegistry());
+    }
 }

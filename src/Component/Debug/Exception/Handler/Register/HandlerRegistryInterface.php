@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Debug\Exception\Handler\Register;
-
 
 use Laventure\Component\Debug\Exception\Handler\HandlerInterface;
 
@@ -17,8 +17,6 @@ use Laventure\Component\Debug\Exception\Handler\HandlerInterface;
  */
 interface HandlerRegistryInterface
 {
-
-
     /**
      * Set error handler
      *

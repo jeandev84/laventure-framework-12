@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Contract\Collection;
-
 
 /**
  * ArrayCollectionInterface
@@ -15,5 +15,4 @@ namespace Laventure\Contract\Collection;
 */
 interface ArrayCollectionInterface
 {
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Foundation\Debug\Logger\Writer;
@@ -19,7 +20,6 @@ use Laventure\Foundation\Debug\Logger\Writer\DTO\LoggerWriterDto;
 */
 class LoggerWriter extends AbstractLoggerWriter
 {
-
     /**
      * @var LoggerWriterDto
     */
@@ -42,9 +42,9 @@ class LoggerWriter extends AbstractLoggerWriter
     */
     public function write(): false|int
     {
-         $file  = new File($this->getLogPath());
-         $file->make();
-         return $file->write($this->getDetails(), true);
+        $file  = new File($this->getLogPath());
+        $file->make();
+        return $file->write($this->getDetails(), true);
     }
 
 
@@ -70,10 +70,11 @@ class LoggerWriter extends AbstractLoggerWriter
     */
     public function getLogPath(): string
     {
-         return sprintf("%s/%s-%s.log",
-             $this->dto->logPath,
-             $this->dto->environment,
-             date("j.n.Y")
-         );
+        return sprintf(
+            "%s/%s-%s.log",
+            $this->dto->logPath,
+            $this->dto->environment,
+            date("j.n.Y")
+        );
     }
 }

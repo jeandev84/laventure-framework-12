@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Debug\Logger\Common;
@@ -18,7 +19,6 @@ use Stringable;
  */
 abstract class AbstractLogger implements LoggerInterface
 {
-
     /**
      * @inheritDoc
     */

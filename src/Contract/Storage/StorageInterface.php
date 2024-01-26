@@ -18,7 +18,6 @@ use Laventure\Contract\Parameter\ParameterInterface;
 */
 interface StorageInterface extends ParameterInterface
 {
-
     /**
      * session destroy
      *

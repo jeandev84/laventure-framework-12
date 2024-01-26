@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Contract\Storage;
-
 
 /**
  * SaveInterface
@@ -15,11 +15,10 @@ namespace Laventure\Contract\Storage;
  */
 interface SaveInterface
 {
-
-     /**
-      * Save something
-      *
-      * @return mixed
-     */
-     public function save(): mixed;
+    /**
+     * Save something
+     *
+     * @return mixed
+    */
+    public function save(): mixed;
 }

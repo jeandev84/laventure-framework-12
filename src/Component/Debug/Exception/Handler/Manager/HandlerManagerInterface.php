@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Debug\Exception\Handler\Manager;
-
 
 use Laventure\Contract\Runner\RunnerInterface;
 
@@ -17,11 +17,10 @@ use Laventure\Contract\Runner\RunnerInterface;
  */
 interface HandlerManagerInterface extends RunnerInterface
 {
-
-      /**
-       * Returns handlers stack
-       *
-       * @return array
-      */
-      public function getHandlers(): array;
+    /**
+     * Returns handlers stack
+     *
+     * @return array
+    */
+    public function getHandlers(): array;
 }

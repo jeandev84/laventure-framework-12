@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Debug\Logger\Exception;
@@ -16,5 +17,4 @@ use Laventure\Exceptions\BaseException;
 */
 class InvalidLogLevelArgument extends BaseException
 {
-
 }

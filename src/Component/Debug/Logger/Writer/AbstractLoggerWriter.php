@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Debug\Logger\Writer;
-
 
 /**
  * AbstractLoggerWriter
@@ -15,5 +15,5 @@ namespace Laventure\Component\Debug\Logger\Writer;
 */
 abstract class AbstractLoggerWriter implements LoggerWriterInterface
 {
-     use LoggerWriterTrait;
+    use LoggerWriterTrait;
 }

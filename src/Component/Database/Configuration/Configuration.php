@@ -19,7 +19,6 @@ use Laventure\Utils\Parameter\Parameter;
  */
 class Configuration extends Parameter implements ConfigurationInterface
 {
-
     /**
      * @inheritDoc
      */

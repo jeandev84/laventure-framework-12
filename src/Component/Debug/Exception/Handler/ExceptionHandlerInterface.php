@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Debug\Exception\Handler;
-
 
 use Exception;
 
@@ -17,10 +17,9 @@ use Exception;
 */
 interface ExceptionHandlerInterface
 {
-
-     /**
-      * @param Exception $e
-      * @return mixed
-     */
-     public function handleException(Exception $e): mixed;
+    /**
+     * @param Exception $e
+     * @return mixed
+    */
+    public function handleException(Exception $e): mixed;
 }

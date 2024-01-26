@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Contract\Runner;
-
 
 /**
  * RunnerInterface
@@ -15,11 +15,10 @@ namespace Laventure\Contract\Runner;
  */
 interface RunnerInterface
 {
-
-     /**
-      * Run something
-      *
-      * @return mixed|void
-     */
-     public function run();
+    /**
+     * Run something
+     *
+     * @return mixed|void
+    */
+    public function run();
 }

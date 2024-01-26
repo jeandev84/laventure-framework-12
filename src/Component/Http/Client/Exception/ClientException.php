@@ -7,7 +7,7 @@ namespace Laventure\Component\Http\Client\Exception;
 use Psr\Http\Client\ClientExceptionInterface;
 
 /**
- * ClientException
+ * ClientConnectionException
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *

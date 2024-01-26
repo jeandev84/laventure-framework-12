@@ -94,7 +94,7 @@ class Parameter implements ParameterInterface
         return empty($this->params[$key]);
     }
 
-    
+
 
 
 
@@ -118,7 +118,7 @@ class Parameter implements ParameterInterface
         return $this->params[$id] ?? $default;
     }
 
-    
+
 
 
     /**

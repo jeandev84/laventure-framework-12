@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPUnitTest\Component\Debug\Logger;
@@ -20,19 +21,19 @@ use Psr\Log\LogLevel;
  */
 class LoggerTest extends TestCase
 {
-      public function testItLog(): void
-      {
+    public function testItLog(): void
+    {
 
-          #$dto     = new LoggerWriterDto(date('Y-m-d H:i:s'), __DIR__.'/temp/log', 'dev');
-          #$dto     = new LoggerWriterDto(date('Y-m-d H:i:s'), __DIR__.'/temp/log', 'local');
-          $dto     = new LoggerWriterDto(date('Y-m-d H:i:s'), __DIR__.'/temp/log', 'prod');
-          $writer  = new LoggerWriter($dto);
-          $logger  = new Logger($writer);
+        #$dto     = new LoggerWriterDto(date('Y-m-d H:i:s'), __DIR__.'/temp/log', 'dev');
+        #$dto     = new LoggerWriterDto(date('Y-m-d H:i:s'), __DIR__.'/temp/log', 'local');
+        $dto     = new LoggerWriterDto(date('Y-m-d H:i:s'), __DIR__.'/temp/log', 'prod');
+        $writer  = new LoggerWriter($dto);
+        $logger  = new Logger($writer);
 
-          $logger->log(LogLevel::NOTICE, 'something went wrong', [
-              'data' => ['file' => __FILE__]
-          ]);
+        $logger->log(LogLevel::NOTICE, 'something went wrong', [
+            'data' => ['file' => __FILE__]
+        ]);
 
-          $this->assertFileExists($writer->getLogPath());
-      }
+        $this->assertFileExists($writer->getLogPath());
+    }
 }

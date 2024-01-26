@@ -18,8 +18,6 @@ use Laventure\Contract\Parameter\ParameterInterface;
  */
 interface ConfigurationInterface extends ParameterInterface
 {
-
-
     /**
      * Returns host name
      *

@@ -28,7 +28,7 @@ use Laventure\Component\Http\Storage\Session\Name\SessionNameInterface;
  *
  * @package  Laventure\Component\Http\Message\Request\Session
 */
-class Session  implements SessionInterface
+class Session implements SessionInterface
 {
     /**
      * @var SessionCacheInterface

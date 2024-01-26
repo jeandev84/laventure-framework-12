@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Debug\Exception\Handler\Register;
@@ -18,19 +19,18 @@ use Laventure\Component\Debug\Exception\Handler\HandlerInterface;
 */
 class HandlerRegistry implements HandlerRegistryInterface
 {
-
     /**
      * @inheritDoc
     */
     public function registerErrorHandler(ErrorHandlerInterface|callable $handler): static
     {
-         if ($handler instanceof ErrorHandlerInterface) {
-             $handler = [$handler, 'handleError'];
-         }
+        if ($handler instanceof ErrorHandlerInterface) {
+            $handler = [$handler, 'handleError'];
+        }
 
-         set_error_handler($handler);
+        set_error_handler($handler);
 
-         return $this;
+        return $this;
     }
 
 
@@ -58,9 +58,9 @@ class HandlerRegistry implements HandlerRegistryInterface
     */
     public function registerShutdownFunction(callable $func): static
     {
-         register_shutdown_function($func);
+        register_shutdown_function($func);
 
-         return $this;
+        return $this;
     }
 
 

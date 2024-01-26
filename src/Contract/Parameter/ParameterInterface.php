@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Contract\Parameter;
-
 
 use ArrayAccess;
 
@@ -17,7 +17,6 @@ use ArrayAccess;
 */
 interface ParameterInterface extends ArrayAccess
 {
-
     /**
      * Set value
      *

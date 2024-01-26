@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Debug\Logger\Common;
@@ -16,5 +17,5 @@ use Psr\Log\LoggerAwareInterface;
 */
 abstract class AbstractLoggerAware implements LoggerAwareInterface
 {
-      use LoggerAwareTrait;
+    use LoggerAwareTrait;
 }

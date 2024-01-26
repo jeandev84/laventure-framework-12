@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Exceptions;
@@ -14,5 +15,4 @@ namespace Laventure\Exceptions;
 */
 class NotFoundException extends BaseException
 {
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Http\Storage\Session\Exception;
@@ -16,5 +17,4 @@ use Laventure\Exceptions\BaseException;
  */
 class SessionException extends BaseException
 {
-
 }

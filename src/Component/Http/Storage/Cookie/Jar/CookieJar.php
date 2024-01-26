@@ -22,7 +22,6 @@ use Laventure\Utils\Parameter\Parameter;
 */
 class CookieJar extends Parameter implements CookieJarInterface
 {
-
     use CookieParamsTrait;
 
 
@@ -34,8 +33,8 @@ class CookieJar extends Parameter implements CookieJarInterface
         parent::__construct($params ?: $_COOKIE);
     }
 
-    
-    
+
+
 
     /**
      * @inheritDoc

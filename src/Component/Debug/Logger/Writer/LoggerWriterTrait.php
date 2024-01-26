@@ -1,7 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Debug\Logger\Writer;
+
 use Stringable;
 
 /**

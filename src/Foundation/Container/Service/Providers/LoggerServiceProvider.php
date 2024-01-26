@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Foundation\Container\Service\Providers;
@@ -20,7 +21,6 @@ use Psr\Log\LoggerInterface;
  */
 class LoggerServiceProvider extends ServiceProvider
 {
-
     /**
      * @var array
     */
@@ -51,7 +51,9 @@ class LoggerServiceProvider extends ServiceProvider
         $env      = $this->app->get('app.env');
 
         $dto = new LoggerWriterDto(
-            $date, $logPath, $env
+            $date,
+            $logPath,
+            $env
         );
 
         return $this->app->make(LoggerWriter::class, [

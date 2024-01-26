@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Debug\Logger;
@@ -21,7 +22,6 @@ use Stringable;
 */
 class Logger extends AbstractLogger
 {
-
     /**
      * @var LoggerWriterInterface
     */
@@ -47,7 +47,7 @@ class Logger extends AbstractLogger
         $object = new ReflectionClass(LogLevel::class);
         $validLogLevelsArray = $object->getConstants();
 
-        if(!in_array($level, $validLogLevelsArray)){
+        if(!in_array($level, $validLogLevelsArray)) {
             throw new InvalidLogLevelArgument($level, $validLogLevelsArray);
         }
 

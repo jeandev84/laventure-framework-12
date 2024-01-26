@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Debug\Exception\Handler\Manager;
@@ -19,8 +20,6 @@ use Laventure\Component\Debug\Exception\Handler\Register\HandlerRegistryInterfac
  */
 class HandlerManager implements HandlerManagerInterface
 {
-
-
     /**
      * @var HandlerRegistryInterface
     */

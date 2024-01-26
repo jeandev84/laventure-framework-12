@@ -7,7 +7,6 @@ namespace Laventure\Component\Http\Message\Request\Utils\Params;
 use Laventure\Component\Http\Message\Request\Uri;
 use Laventure\Utils\Parameter\Parameter;
 
-
 /**
  * ServerParams
  *

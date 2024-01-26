@@ -95,12 +95,12 @@ final class Application extends Container implements ApplicationInterface, Termi
     */
     private function setPath(string $basePath): static
     {
-         $this->bindings(compact('basePath'));
-         $this->bindings([
-             'app.path' => $basePath
-         ]);
+        $this->bindings(compact('basePath'));
+        $this->bindings([
+            'app.path' => $basePath
+        ]);
 
-         return $this;
+        return $this;
     }
 
 
