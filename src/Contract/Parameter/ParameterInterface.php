@@ -15,7 +15,7 @@ use ArrayAccess;
  *
  * @package  Laventure\Contract\Parameter
 */
-interface ArrayParameterInterface extends ArrayAccess
+interface ParameterInterface extends ArrayAccess
 {
 
     /**
@@ -99,4 +99,33 @@ interface ArrayParameterInterface extends ArrayAccess
      * @return array
     */
     public function all(): array;
+
+
+
+
+
+
+
+    /**
+     * Returns the value required.
+     * If parameter is not defined we'll throw exception
+     *
+     * @param $key
+     * @return mixed
+    */
+    public function required($key): mixed;
+
+
+
+
+
+
+
+    /**
+     * Determine if value empty
+     *
+     * @param $key
+     * @return bool
+     */
+    public function isEmpty($key): bool;
 }

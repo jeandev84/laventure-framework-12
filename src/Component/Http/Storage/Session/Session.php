@@ -9,6 +9,7 @@ use Laventure\Component\Http\Storage\Session\Cookies\SessionCookie;
 use Laventure\Component\Http\Storage\Session\Cookies\SessionCookieInterface;
 use Laventure\Component\Http\Storage\Session\Encoder\SessionEncoder;
 use Laventure\Component\Http\Storage\Session\Encoder\SessionEncoderInterface;
+use Laventure\Component\Http\Storage\Session\Exception\SessionException;
 use Laventure\Component\Http\Storage\Session\Flash\SessionFlash;
 use Laventure\Component\Http\Storage\Session\Flash\SessionFlashInterface;
 use Laventure\Component\Http\Storage\Session\Id\SessionId;
@@ -33,6 +34,13 @@ class Session  implements SessionInterface
      * @var SessionCacheInterface
     */
     protected SessionCacheInterface $cache;
+
+
+
+    /**
+     * @var string
+    */
+    protected string $sessionPath;
 
 
 
@@ -82,7 +90,7 @@ class Session  implements SessionInterface
 
     /**
      * @inheritDoc
-     */
+    */
     public function commit(): bool
     {
         return session_commit();
@@ -381,5 +389,57 @@ class Session  implements SessionInterface
     public function count(): int
     {
         return count($_SESSION);
+    }
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function required($key): mixed
+    {
+        if ($this->isEmpty($key)) {
+            throw new SessionException("session key $key is required.");
+        }
+
+        return $this->get($key);
+    }
+
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function isEmpty($key): bool
+    {
+        return empty($_SESSION[$key]);
+    }
+
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function sessionPath(string $path): static
+    {
+        $this->sessionPath = $path;
+
+        return $this;
+    }
+
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function save(): bool
+    {
+        return false;
     }
 }

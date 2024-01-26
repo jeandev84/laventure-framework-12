@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Laventure\Utils\Parameter;
 
-use Laventure\Contract\Parameter\ArrayParameterInterface;
+use Laventure\Contract\Parameter\ParameterInterface;
+use RuntimeException;
 
 /**
  * Parameter
@@ -14,8 +15,8 @@ use Laventure\Contract\Parameter\ArrayParameterInterface;
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
  * @package  Laventure\Utils\Params
- */
-class Parameter implements ArrayParameterInterface
+*/
+class Parameter implements ParameterInterface
 {
     /**
      * @var array
@@ -88,7 +89,7 @@ class Parameter implements ArrayParameterInterface
      * @param string $key
      * @return bool
     */
-    public function isEmpty(string $key): bool
+    public function isEmpty($key): bool
     {
         return empty($this->params[$key]);
     }
@@ -141,6 +142,35 @@ class Parameter implements ArrayParameterInterface
     public function all(): array
     {
         return $this->params;
+    }
+
+
+
+
+
+
+
+
+    /**
+     * @return array
+     */
+    public function keys(): array
+    {
+        return array_keys($this->params);
+    }
+
+
+
+
+
+    /**
+     * @return void
+    */
+    public function removeAll(): void
+    {
+        foreach ($this->keys() as $name) {
+            $this->remove($name);
+        }
     }
 
 
@@ -306,5 +336,20 @@ class Parameter implements ArrayParameterInterface
     public function offsetUnset(mixed $offset): void
     {
         $this->remove($offset);
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function required($key): mixed
+    {
+        if ($this->isEmpty($key)) {
+            throw new RuntimeException("parameter $key is required.");
+        }
+
+        return $this->get($key);
     }
 }

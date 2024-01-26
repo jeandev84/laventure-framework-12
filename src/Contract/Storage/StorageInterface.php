@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Laventure\Contract\Storage;
 
 use ArrayAccess;
-use Laventure\Contract\Parameter\ArrayParameterInterface;
+use Laventure\Contract\Parameter\ParameterInterface;
 
 /**
  * StorageInterface
@@ -16,7 +16,7 @@ use Laventure\Contract\Parameter\ArrayParameterInterface;
  *
  * @package  Laventure\Writer\Storage
 */
-interface StorageInterface extends ArrayParameterInterface
+interface StorageInterface extends ParameterInterface
 {
 
     /**

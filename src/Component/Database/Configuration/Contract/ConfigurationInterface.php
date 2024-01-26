@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Laventure\Component\Database\Configuration\Contract;
 
 use ArrayAccess;
+use Laventure\Contract\Parameter\ParameterInterface;
 
 /**
  * ConfigurationInterface
@@ -15,7 +16,7 @@ use ArrayAccess;
  *
  * @package  Laventure\Component\Database\Configuration\Contract
  */
-interface ConfigurationInterface extends ArrayAccess
+interface ConfigurationInterface extends ParameterInterface
 {
 
 
@@ -23,7 +24,7 @@ interface ConfigurationInterface extends ArrayAccess
      * Returns host name
      *
      * @return string
-     */
+    */
     public function host(): string;
 
 
@@ -126,68 +127,4 @@ interface ConfigurationInterface extends ArrayAccess
      * @return string
      */
     public function engine(): string;
-
-
-
-
-
-
-
-    /**
-     * Returns the value required.
-     * If parameter is not defined we'll throw exception
-     *
-     * @param string $name
-     * @return mixed
-    */
-    public function required(string $name): mixed;
-
-
-
-
-    /**
-     * Determine if the given param exist
-     *
-     * @param string $name
-     *
-     * @return bool
-    */
-    public function has(string $name): bool;
-
-
-
-
-
-    /**
-     * Remove param
-     *
-     * @param string $name
-     *
-     * @return bool
-     */
-    public function remove(string $name): bool;
-
-
-
-
-
-    /**
-     * Determine if value empty
-     *
-     * @param string $key
-     * @return bool
-    */
-    public function isEmpty(string $key): bool;
-
-
-
-
-
-
-    /**
-     * Returns all configuration params
-     *
-     * @return array
-     */
-    public function getParams(): array;
 }

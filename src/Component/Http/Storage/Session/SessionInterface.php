@@ -11,7 +11,7 @@ use Laventure\Component\Http\Storage\Session\Flash\SessionFlashInterface;
 use Laventure\Component\Http\Storage\Session\Id\SessionIdInterface;
 use Laventure\Component\Http\Storage\Session\Module\SessionModuleInterface;
 use Laventure\Component\Http\Storage\Session\Name\SessionNameInterface;
-use Laventure\Contract\Storage\SavePathInterface;
+use Laventure\Contract\Storage\SaveInterface;
 use Laventure\Contract\Storage\StorageInterface;
 
 /**
@@ -25,7 +25,7 @@ use Laventure\Contract\Storage\StorageInterface;
  *
  * @see https://www.php.net/manual/en/ref.session.php
 */
-interface SessionInterface extends StorageInterface, SavePathInterface
+interface SessionInterface extends StorageInterface, SaveInterface
 {
     /**
      * Returns the name of session
@@ -184,4 +184,14 @@ interface SessionInterface extends StorageInterface, SavePathInterface
      * @return SessionCookieInterface
     */
     public function cookie(): SessionCookieInterface;
+
+
+
+
+
+    /**
+     * @param string $path
+     * @return $this
+    */
+    public function sessionPath(string $path): static;
 }
