@@ -266,7 +266,7 @@ class Session implements SessionInterface
     /**
      * @inheritDoc
     */
-    public function forget($id): bool
+    public function remove($id): bool
     {
         unset($_SESSION[$id]);
 
@@ -336,7 +336,7 @@ class Session implements SessionInterface
     */
     public function offsetUnset(mixed $offset): void
     {
-        $this->forget($offset);
+        $this->remove($offset);
     }
 
 
@@ -349,5 +349,30 @@ class Session implements SessionInterface
     public function savePath(string $path): void
     {
 
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function add(array $params): static
+    {
+        $_SESSION = array_merge($_SESSION, $params);
+
+        return $this;
+    }
+
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function count(): int
+    {
+        return count($_SESSION);
     }
 }

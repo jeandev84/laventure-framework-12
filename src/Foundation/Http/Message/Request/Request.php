@@ -8,7 +8,7 @@ use Laventure\Component\Http\Message\Request\ServerRequest;
 use Laventure\Component\Http\Storage\Session\SessionInterface;
 use Laventure\Foundation\Http\Message\Request\Bag\HeaderBag;
 use Laventure\Foundation\Http\Message\Request\Bag\InputBag;
-use Laventure\Foundation\Http\Message\Request\Bag\ParameterBag;
+use Laventure\Foundation\Http\Message\Request\Bag\ArrayParameterBag;
 use Laventure\Foundation\Http\Message\Request\Bag\ServerBag;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
@@ -77,9 +77,9 @@ final class Request
 
 
     /**
-     * @var ParameterBag
+     * @var ArrayParameterBag
     */
-    public ParameterBag $attributes;
+    public ArrayParameterBag $attributes;
 
 
 
@@ -143,7 +143,7 @@ final class Request
         $this->body       = $request->getBody();
         $this->queries    = new InputBag($request->getQueryParams());
         $this->request    = new InputBag($request->getParsedBody());
-        $this->attributes = new ParameterBag($request->getAttributes());
+        $this->attributes = new ArrayParameterBag($request->getAttributes());
         $this->cookies    = new InputBag($request->getCookieParams());
         $this->files      = new InputBag($request->getUploadedFiles());
         $this->server     = new ServerBag($request->getServerParams());

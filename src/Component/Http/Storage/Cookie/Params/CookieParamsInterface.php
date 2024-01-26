@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Http\Storage\Cookie\DTO;
+namespace Laventure\Component\Http\Storage\Cookie\Params;
 
 /**
  * CookieParamsInterface
@@ -11,7 +11,7 @@ namespace Laventure\Component\Http\Storage\Cookie\DTO;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Http\Storage\ClientCookie
+ * @package  Laventure\Component\Http\Storage\Cookie\Params
 */
 interface CookieParamsInterface
 {

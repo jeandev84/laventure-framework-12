@@ -6,8 +6,10 @@ namespace Laventure\Component\Http\Storage\Cookie\Jar;
 
 use Laventure\Component\Http\Storage\Cookie\Cookie;
 use Laventure\Component\Http\Storage\Cookie\CookieInterface;
-use Laventure\Component\Http\Storage\Cookie\DTO\CookieParams;
-use Laventure\Component\Http\Storage\Cookie\DTO\CookieParamsInterface;
+use Laventure\Component\Http\Storage\Cookie\CookieParamsTrait;
+use Laventure\Component\Http\Storage\Cookie\Params\CookieParams;
+use Laventure\Component\Http\Storage\Cookie\Params\CookieParamsInterface;
+use Laventure\Utils\Parameter\ArrayParameter;
 
 /**
  * CookieJar
@@ -18,26 +20,22 @@ use Laventure\Component\Http\Storage\Cookie\DTO\CookieParamsInterface;
  *
  * @package  Laventure\Component\Http\Storage\ClientCookie\Jar
 */
-class CookieJar extends CookieParams implements CookieJarInterface
+class CookieJar extends ArrayParameter implements CookieJarInterface
 {
-    /**
-     * @var array
-    */
-    protected array $cookies = [];
 
-
+    use CookieParamsTrait;
 
 
     /**
-     * @param array $cookies
+     * @param array $params
     */
-    public function __construct(array $cookies = [])
+    public function __construct(array $params = [])
     {
-        $this->cookies = $cookies ?: $_COOKIE;
+        parent::__construct($params ?: $_COOKIE);
     }
 
-
-
+    
+    
 
     /**
      * @inheritDoc
@@ -50,54 +48,19 @@ class CookieJar extends CookieParams implements CookieJarInterface
 
 
 
-    /**
-     * @inheritDoc
-    */
-    public function has($id): bool
-    {
-        return isset($this->cookies[$id]);
-    }
-
-
-
 
     /**
      * @inheritDoc
     */
-    public function get($id, $default = null): mixed
-    {
-        return $this->cookies[$id] ?? $default;
-    }
-
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function forget($id): bool
+    public function remove($id): bool
     {
         $this->set($id, '')
              ->expireAfter(time() - 3600)
              ->save();
 
-        unset($this->cookies[$id]);
-
-        return !$this->has($id);
+        return parent::remove($id);
     }
 
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function all(): array
-    {
-        return $this->cookies;
-    }
 
 
 
@@ -107,11 +70,11 @@ class CookieJar extends CookieParams implements CookieJarInterface
     */
     public function destroy(): bool
     {
-        foreach (array_keys($this->cookies) as $id) {
-            $this->forget($id);
+        foreach (array_keys($this->all()) as $id) {
+            $this->remove($id);
         }
 
-        return empty($this->cookies);
+        return $this->empty();
     }
 
 
@@ -123,48 +86,5 @@ class CookieJar extends CookieParams implements CookieJarInterface
     public function save(): CookieInterface
     {
         return new Cookie($this);
-    }
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function offsetExists(mixed $offset): bool
-    {
-        return $this->has($offset);
-    }
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->get($offset);
-    }
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        $this->set($offset, $value);
-    }
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function offsetUnset(mixed $offset): void
-    {
-        $this->forget($offset);
     }
 }

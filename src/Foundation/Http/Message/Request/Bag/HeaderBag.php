@@ -13,6 +13,6 @@ namespace Laventure\Foundation\Http\Message\Request\Bag;
  *
  * @package  Laventure\Foundation\Http\Request\Bag
 */
-class HeaderBag extends ParameterBag
+class HeaderBag extends ArrayParameterBag
 {
 }

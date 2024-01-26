@@ -1,57 +1,63 @@
 <?php
-
 declare(strict_types=1);
 
-namespace Laventure\Component\Http\Storage\Cookie\DTO;
+namespace Laventure\Component\Http\Storage\Cookie;
+
 
 /**
- * @inheritdoc
-*/
-class CookieParams implements CookieParamsInterface
+ * CookieParamsTrait
+ *
+ * @author Jean-Claude <jeanyao@ymail.com>
+ *
+ * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
+ *
+ * @package  Laventure\Component\Http\Storage\Cookie
+ */
+trait CookieParamsTrait
 {
     /**
      * @var string
-    */
+     */
     protected string $name;
 
 
     /**
      * @var string
-    */
+     */
     protected string $value;
 
 
     /**
      * @var int
-    */
+     */
     protected int $expires = 0;
 
 
 
     /**
      * @var string
-    */
+     */
     protected string $path = '';
 
 
 
     /**
      * @var string
-    */
+     */
     protected string $domain = '';
 
 
 
     /**
      * @var bool
-    */
+     */
     protected bool $secure = false;
 
 
 
     /**
      * @var bool
-    */
+     */
     protected bool $httpOnly = false;
 
 
@@ -61,7 +67,7 @@ class CookieParams implements CookieParamsInterface
     /**
      * @param string $name
      * @return $this
-    */
+     */
     public function name(string $name): static
     {
         $this->name = $name;
@@ -91,7 +97,7 @@ class CookieParams implements CookieParamsInterface
      * @param int $times
      *
      * @return mixed
-    */
+     */
     public function expireAfter(int $times): static
     {
         $this->expires = $times;
@@ -133,7 +139,6 @@ class CookieParams implements CookieParamsInterface
 
 
 
-
     /**
      * @param bool $secure
      * @return $this
@@ -150,7 +155,6 @@ class CookieParams implements CookieParamsInterface
 
     /**
      * @param bool $httpOnly
-     *
      * @return $this
     */
     public function httpOnly(bool $httpOnly): static
@@ -165,8 +169,8 @@ class CookieParams implements CookieParamsInterface
 
 
     /**
-     * @inheritDoc
-     */
+     * @return string
+    */
     public function getName(): string
     {
         return $this->name;
@@ -177,8 +181,8 @@ class CookieParams implements CookieParamsInterface
 
 
     /**
-     * @inheritDoc
-     */
+     * @return string
+    */
     public function getValue(): string
     {
         return $this->value;
@@ -187,8 +191,9 @@ class CookieParams implements CookieParamsInterface
 
 
 
+
     /**
-     * @inheritDoc
+     * @return int
     */
     public function getExpires(): int
     {
@@ -199,7 +204,7 @@ class CookieParams implements CookieParamsInterface
 
 
     /**
-     * @inheritDoc
+     * @return string
     */
     public function getPath(): string
     {
@@ -211,7 +216,7 @@ class CookieParams implements CookieParamsInterface
 
 
     /**
-     * @inheritDoc
+     * @return string
     */
     public function getDomain(): string
     {
@@ -222,7 +227,7 @@ class CookieParams implements CookieParamsInterface
 
 
     /**
-     * @inheritDoc
+     * @return bool
     */
     public function getSecure(): bool
     {
@@ -232,9 +237,8 @@ class CookieParams implements CookieParamsInterface
 
 
 
-
     /**
-     * @inheritDoc
+     * @return bool
     */
     public function getHttpOnly(): bool
     {

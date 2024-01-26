@@ -1,35 +1,43 @@
 <?php
-
 declare(strict_types=1);
 
-namespace Laventure\Component\Http\Utils\Params;
+namespace Laventure\Contract\Parameter;
+
+
+use ArrayAccess;
 
 /**
- * ParameterInterface
+ * ArrayParameterInterface
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Http\Utils\Parameter
- */
-interface ParameterInterface
+ * @package  Laventure\Contract\Parameter
+*/
+interface ArrayParameterInterface extends ArrayAccess
 {
+
     /**
+     * Set value
+     *
      * @param $id
      * @param $value
      * @return mixed
-     */
+    */
     public function set($id, $value): mixed;
 
 
 
 
+
     /**
+     * Add params
+     *
      * @param array $params
      *
      * @return mixed
-     */
+    */
     public function add(array $params): mixed;
 
 
@@ -37,9 +45,11 @@ interface ParameterInterface
 
 
     /**
+     * Determine if parameter exist
+     *
      * @param $id
      * @return bool
-     */
+    */
     public function has($id): bool;
 
 
@@ -50,6 +60,8 @@ interface ParameterInterface
 
 
     /**
+     * Returns count of params
+     *
      * @return int
     */
     public function count(): int;
@@ -73,15 +85,17 @@ interface ParameterInterface
     /**
      * @param $id
      *
-     * @return void
+     * @return mixed
     */
-    public function remove($id): void;
+    public function remove($id): mixed;
 
 
 
 
 
     /**
+     * Returns all params
+     *
      * @return array
     */
     public function all(): array;

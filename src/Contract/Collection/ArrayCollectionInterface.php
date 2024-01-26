@@ -1,18 +1,19 @@
 <?php
-
 declare(strict_types=1);
 
-namespace Laventure\Foundation\Http\Message\Request\Bag;
+namespace Laventure\Contract\Collection;
+
 
 /**
- * InputBag
+ * ArrayCollectionInterface
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Foundation\Http\Request\Bag
- */
-class InputBag extends ArrayParameterBag
+ * @package  Laventure\Contract\Collection
+*/
+interface ArrayCollectionInterface
 {
+
 }

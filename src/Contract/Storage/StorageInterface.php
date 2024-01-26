@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Laventure\Contract\Storage;
 
 use ArrayAccess;
+use Laventure\Contract\Parameter\ArrayParameterInterface;
 
 /**
  * StorageInterface
@@ -15,57 +16,8 @@ use ArrayAccess;
  *
  * @package  Laventure\Writer\Storage
 */
-interface StorageInterface extends ArrayAccess
+interface StorageInterface extends ArrayParameterInterface
 {
-    /**
-     * @param $id
-     * @param $value
-     * @return mixed
-    */
-    public function set($id, $value): mixed;
-
-
-
-
-    /**
-     * @param $id
-     * @return bool
-    */
-    public function has($id): bool;
-
-
-
-
-
-    /**
-     * @param $id
-     * @param $default
-     * @return mixed
-    */
-    public function get($id, $default = null): mixed;
-
-
-
-
-
-    /**
-     * @param $id
-     * @return mixed
-    */
-    public function forget($id): mixed;
-
-
-
-
-
-    /**
-     * @return array
-    */
-    public function all(): array;
-
-
-
-
 
     /**
      * session destroy

@@ -97,7 +97,7 @@ class SessionFlash implements SessionFlashInterface
     /**
      * @inheritDoc
     */
-    public function forget($id): bool
+    public function remove($id): bool
     {
         unset($id);
 

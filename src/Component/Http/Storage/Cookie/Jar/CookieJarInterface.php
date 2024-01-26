@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Laventure\Component\Http\Storage\Cookie\Jar;
 
 use Laventure\Component\Http\Storage\Cookie\CookieInterface;
-use Laventure\Component\Http\Storage\Cookie\DTO\CookieParamsInterface;
+use Laventure\Component\Http\Storage\Cookie\Params\CookieParamsInterface;
 use Laventure\Contract\Storage\StorageInterface;
 
 /**
