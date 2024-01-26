@@ -15,6 +15,6 @@ use Laventure\Utils\Parameter\ArrayParameter;
  *
  * @package  Laventure\Foundation\Http\Request\Bag
 */
-class ArrayParameterBag extends ArrayParameter
+class ParameterBag extends ArrayParameter
 {
 }
