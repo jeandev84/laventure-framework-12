@@ -5,6 +5,7 @@ namespace Laventure\Foundation\Container\Service\Providers;
 
 use Laventure\Component\Container\Service\Provider\ServiceProvider;
 use Laventure\Component\Debug\Logger\Logger;
+use Laventure\Foundation\Debug\Logger\Writer\DTO\LoggerWriterDto;
 use Laventure\Foundation\Debug\Logger\Writer\LoggerWriter;
 use Psr\Log\LoggerInterface;
 
@@ -34,8 +35,27 @@ class LoggerServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(LoggerInterface::class, function () {
-            $writer = new LoggerWriter($this->app);
-            return new Logger($writer);
+            return new Logger($this->makeLoggerWriter());
         });
+    }
+
+
+
+
+
+
+    private function makeLoggerWriter(): LoggerWriter
+    {
+        $date     = $this->app->get('app.serve.time')->format('Y-m-d H:i:s');
+        $logPath  = $this->app->get('app.log.path');
+        $env      = $this->app->get('app.env');
+
+        $dto = new LoggerWriterDto(
+            $date, $logPath, $env
+        );
+
+        return $this->app->make(LoggerWriter::class, [
+            'dto' => $dto
+        ]);
     }
 }

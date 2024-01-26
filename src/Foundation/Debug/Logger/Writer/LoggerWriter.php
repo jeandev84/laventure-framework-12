@@ -6,6 +6,7 @@ namespace Laventure\Foundation\Debug\Logger\Writer;
 use Laventure\Component\Container\Container;
 use Laventure\Component\Debug\Logger\Writer\AbstractLoggerWriter;
 use Laventure\Component\Filesystem\File\File;
+use Laventure\Foundation\Debug\Logger\Writer\DTO\LoggerWriterDto;
 
 /**
  * LoggerWriter
@@ -20,40 +21,59 @@ class LoggerWriter extends AbstractLoggerWriter
 {
 
     /**
-     * @var Container
+     * @var LoggerWriterDto
     */
-    protected Container $app;
+    protected LoggerWriterDto $dto;
 
 
     /**
-     * @param Container $app
+     * @param LoggerWriterDto $dto
     */
-    public function __construct(Container $app)
+    public function __construct(LoggerWriterDto $dto)
     {
-        $this->app = $app;
+        $this->dto = $dto;
     }
+
+
 
 
     /**
      * @inheritDoc
     */
-    public function write(): mixed
+    public function write(): false|int
     {
-         $date     = $this->app->get('app.serve.time')->format('Y-m-d H:i:s');
-         $logPath  = $this->app->get('app.log.path');
-         $env      = $this->app->get('app.env');
+         $file  = new File($this->getLogPath());
+         $file->make();
+         return $file->write($this->getDetails(), true);
+    }
 
-         $details = sprintf(
-     "%s - Level: %s - Message: %s - Context: %s",
-            $date,
+
+
+
+    /**
+     * @return string
+    */
+    private function getDetails(): string
+    {
+        return sprintf(
+            "%s - Level: %s - Message: %s - Context: %s",
+            $this->dto->date,
             $this->level,
             $this->message,
             json_encode($this->context)
-         );
+        );
+    }
 
-         $filePath = sprintf("%s/%s-%s.log", $logPath, $env, date("j.n.Y"));
-         $file     = new File($filePath);
-         $file->make();
-         return $file->write($details, true);
+
+    /**
+     * @return string
+    */
+    private function getLogPath(): string
+    {
+         return sprintf("%s/%s-%s.log",
+             $this->dto->logPath,
+             $this->dto->environment,
+             date("j.n.Y")
+         );
     }
 }
