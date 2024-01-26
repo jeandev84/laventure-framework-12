@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Container\Provider;
+namespace Laventure\Component\Container\Service\Provider;
 
-use Laventure\Component\Container\Provider\Common\ServiceProviderTrait;
-use Laventure\Component\Container\Provider\Contract\ServiceProviderInterface;
+use Laventure\Component\Container\Service\Provider\Common\ServiceProviderTrait;
+use Laventure\Component\Container\Service\Provider\Contract\ServiceProviderInterface;
 
 /**
  * ServiceProvider

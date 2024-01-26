@@ -14,7 +14,7 @@ use Laventure\Contract\Reader\ReaderInterface;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Filesystem\File\Contract\Contract
+ * @package  Laventure\Component\Filesystem\File\Writer\Writer
 */
 interface FileReaderInterface extends ReaderInterface, HasFileInterface
 {

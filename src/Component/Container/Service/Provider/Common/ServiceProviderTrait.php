@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Container\Provider\Common;
+namespace Laventure\Component\Container\Service\Provider\Common;
 
 use Laventure\Component\Container\Container;
 

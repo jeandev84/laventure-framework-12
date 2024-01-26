@@ -11,7 +11,7 @@ namespace Laventure\Contract\Metadata\Annotation;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Contract\Metadata\Annotation
+ * @package  Laventure\Writer\Metadata\Annotation
  */
 class AnnotationManagerInterface
 {

@@ -15,7 +15,7 @@ use Laventure\Dotenv\Loader\DotenvLoaderInterface;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Dotenv\Contract
+ * @package  Laventure\Dotenv\Writer
  */
 interface DotenvInterface extends LoaderInterface
 {

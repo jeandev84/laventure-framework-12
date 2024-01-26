@@ -11,7 +11,7 @@ namespace Laventure\Contract\Download;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Contract\Download
+ * @package  Laventure\Writer\Download
  */
 interface DownloaderInterface
 {

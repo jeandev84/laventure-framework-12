@@ -11,7 +11,7 @@ namespace Laventure\Contract\Reader;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Contract\Reader
+ * @package  Laventure\Writer\Reader
  */
 interface ReaderInterface
 {

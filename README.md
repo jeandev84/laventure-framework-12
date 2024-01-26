@@ -28,5 +28,6 @@ tools/php-cs-fixer/vendor/bin/php-cs-fixer fix tests
 - https://phpunit.de/
 ```bash
 ./vendor/bin/phpunit tests
+./vendor/bin/phpunit tests --testdox --filter DatabaseConnectionTest
 ```
 

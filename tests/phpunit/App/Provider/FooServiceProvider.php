@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PHPUnitTest\App\Provider;
 
-use Laventure\Component\Container\Provider\ServiceProvider;
+use Laventure\Component\Container\Service\Provider\ServiceProvider;
 use PHPUnitTest\App\Services\FooService;
 
 /**

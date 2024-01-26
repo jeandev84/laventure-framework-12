@@ -11,13 +11,14 @@ namespace Laventure\Contract\Writer;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Contract\Writer
+ * @package  Laventure\Writer\Writer
 */
 interface WriterInterface
 {
     /**
-     * @param string $content
+     * Write something
+     *
      * @return mixed
     */
-    public function write(string $content): mixed;
+    public function write(): mixed;
 }

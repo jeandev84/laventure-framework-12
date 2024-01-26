@@ -2,13 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Foundation\Providers;
+namespace Laventure\Foundation\Container\Service\Providers;
 
-use Laventure\Component\Container\Provider\ServiceProvider;
+use Laventure\Component\Container\Service\Provider\ServiceProvider;
 use Laventure\Component\Http\Handlers\QueueRequestHandler;
-use Laventure\Component\Http\Message\Response\Factory\ResponseFactory;
 use Laventure\Foundation\Http\Handlers\MiddlewareStackHandler;
-use Psr\Http\Server\RequestHandlerInterface;
 
 /**
  * MiddlewareServiceProvider

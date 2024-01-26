@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Container\Provider\Contract;
+namespace Laventure\Component\Container\Service\Provider\Contract;
 
 /**
  * ServiceProviderInterface
@@ -11,7 +11,7 @@ namespace Laventure\Component\Container\Provider\Contract;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Container\Provider\Contract
+ * @package  Laventure\Component\Container\Service\Provider\Contract
  */
 interface ServiceProviderInterface
 {

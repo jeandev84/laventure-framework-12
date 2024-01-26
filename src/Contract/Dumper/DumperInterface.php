@@ -11,7 +11,7 @@ namespace Laventure\Contract\Dumper;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Contract\Dumper
+ * @package  Laventure\Writer\Dumper
  */
 interface DumperInterface
 {

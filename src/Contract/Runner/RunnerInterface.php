@@ -11,7 +11,7 @@ namespace Laventure\Contract\Runner;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Contract\Runner
+ * @package  Laventure\Writer\Runner
  */
 interface RunnerInterface
 {

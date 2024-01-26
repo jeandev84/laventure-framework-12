@@ -11,7 +11,7 @@ namespace Laventure\Contract\Loader;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Contract\Loader
+ * @package  Laventure\Writer\Loader
  */
 interface LoaderInterface
 {

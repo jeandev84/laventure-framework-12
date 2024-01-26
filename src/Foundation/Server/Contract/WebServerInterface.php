@@ -11,7 +11,7 @@ namespace Laventure\Foundation\Server\Contract;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Foundation\Web\Server\Contract
+ * @package  Laventure\Foundation\Web\Server\Writer
  */
 interface WebServerInterface
 {

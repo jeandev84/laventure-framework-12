@@ -13,7 +13,7 @@ use ReflectionClass;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Contract\Metadata\Attributes
+ * @package  Laventure\Writer\Metadata\Attributes
 */
 interface AttributeManagerInterface
 {

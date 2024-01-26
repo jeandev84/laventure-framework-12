@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Foundation\Providers;
+namespace Laventure\Foundation\Container\Service\Providers;
 
-use App\Http\Controllers\WelcomeController;
-use Laventure\Component\Container\Provider\Contract\BootableServiceProvider;
-use Laventure\Component\Container\Provider\ServiceProvider;
+use Laventure\Component\Container\Service\Provider\Contract\BootableServiceProvider;
+use Laventure\Component\Container\Service\Provider\ServiceProvider;
 use Laventure\Component\Filesystem\Filesystem;
 use Laventure\Component\Routing\Route\Collector\RouteCollector;
 use Laventure\Component\Routing\Route\Collector\RouteCollectorInterface;

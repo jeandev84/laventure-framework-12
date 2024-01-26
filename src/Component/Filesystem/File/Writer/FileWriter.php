@@ -29,6 +29,12 @@ class FileWriter implements FileWriterInterface
 
 
     /**
+     * @var string
+    */
+    protected string $content;
+
+
+    /**
      * @param string $file
      * @param int $flags
      * @param $context
@@ -47,11 +53,11 @@ class FileWriter implements FileWriterInterface
     /**
      * @inheritDoc
     */
-    public function write(string $content): int
+    public function write(): int
     {
         return intval(file_put_contents(
             $this->file,
-            $content,
+            $this->content,
             $this->flags,
             $this->context
         ));
@@ -65,6 +71,19 @@ class FileWriter implements FileWriterInterface
     public function flags(int $flags): static
     {
         $this->flags = $flags;
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function content(string $content): static
+    {
+        $this->content = $content;
 
         return $this;
     }

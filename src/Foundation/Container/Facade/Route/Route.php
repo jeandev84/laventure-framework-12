@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Foundation\Facade\Route;
+namespace Laventure\Foundation\Container\Facade\Route;
 
 use Closure;
 use Laventure\Component\Container\Facade\Facade;
 use Laventure\Component\Routing\Route\Collector\RouteCollector;
 use Laventure\Component\Routing\Route\RouteInterface;
-use Laventure\Component\Routing\Router\Router;
 use Laventure\Component\Routing\Router\RouterInterface;
 
 /**
@@ -35,7 +34,7 @@ use Laventure\Component\Routing\Router\RouterInterface;
  * @method static RouteInterface group(array $attributes, Closure $routes)
  * @method static string generate(string $name, array $parameters = [])
  *
- * @package  Laventure\Foundation\Facade\Route
+ * @package  Laventure\Foundation\Container\Facade\Route
 */
 class Route extends Facade
 {

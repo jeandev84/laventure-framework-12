@@ -13,7 +13,7 @@ use ArrayAccess;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Contract\Storage
+ * @package  Laventure\Writer\Storage
 */
 interface StorageInterface extends ArrayAccess
 {

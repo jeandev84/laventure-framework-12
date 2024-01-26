@@ -11,7 +11,7 @@ namespace Laventure\Contract\Uploader;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Contract\Uploader
+ * @package  Laventure\Writer\Uploader
 */
 interface UploaderInterface
 {

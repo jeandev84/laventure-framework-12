@@ -11,7 +11,7 @@ namespace Laventure\Contract\Scanner;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Contract\Scanner
+ * @package  Laventure\Writer\Scanner
  */
 interface ScannerInterface
 {

@@ -11,7 +11,7 @@ namespace Laventure\Contract\Matcher;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Contract\Matcher
+ * @package  Laventure\Writer\Matcher
 */
 interface MatcherInterface
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Foundation\Providers;
+namespace Laventure\Foundation\Container\Service\Providers;
 
-use Laventure\Component\Container\Provider\ServiceProvider;
+use Laventure\Component\Container\Service\Provider\ServiceProvider;
 use Laventure\Component\Filesystem\Filesystem;
 use Laventure\Component\Filesystem\FilesystemInterface;
 

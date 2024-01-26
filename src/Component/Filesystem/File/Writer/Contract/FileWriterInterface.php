@@ -14,7 +14,7 @@ use Laventure\Contract\Writer\WriterInterface;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Filesystem\File\Writer\Contract
+ * @package  Laventure\Component\Filesystem\File\Writer\Writer
 */
 interface FileWriterInterface extends WriterInterface, HasFileInterface
 {
@@ -24,4 +24,13 @@ interface FileWriterInterface extends WriterInterface, HasFileInterface
      * @return static
     */
     public function flags(int $flags): static;
+
+
+
+
+    /**
+     * @param string $content
+     * @return $this
+    */
+    public function content(string $content): static;
 }

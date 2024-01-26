@@ -174,7 +174,7 @@ class File implements FileInterface
             $this->writer->flags(FILE_APPEND | LOCK_EX);
         }
 
-        return $this->writer->write($content);
+        return $this->writer->content($content)->write();
     }
 
 

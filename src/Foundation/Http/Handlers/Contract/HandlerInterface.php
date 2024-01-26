@@ -14,7 +14,7 @@ use Laventure\Foundation\Http\Message\Request\Request;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Foundation\Http\Handlers\Contract
+ * @package  Laventure\Foundation\Http\Handlers\Writer
  */
 interface HandlerInterface
 {

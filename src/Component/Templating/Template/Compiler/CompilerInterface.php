@@ -11,7 +11,7 @@ namespace Laventure\Component\Templating\Template\Compiler;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Templating\Template\Compiler\Contract
+ * @package  Laventure\Component\Templating\Template\Compiler\Writer
  */
 interface CompilerInterface
 {

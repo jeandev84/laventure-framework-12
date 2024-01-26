@@ -50,6 +50,6 @@ class Base64FileUploader implements Base64FileUploaderInterface
     {
         $data = $this->getBase64()->getData();
 
-        return $this->writer->write($data);
+        return $this->writer->content($data)->write();
     }
 }

@@ -15,7 +15,7 @@ use ReflectionParameter;
 use ReflectionUnionType;
 
 /**
- * Dependency
+ * Container
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *

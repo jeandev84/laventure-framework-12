@@ -11,7 +11,7 @@ namespace Laventure\Contract\Export;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Contract\Export
+ * @package  Laventure\Writer\Export
  */
 interface ExportInterface
 {
