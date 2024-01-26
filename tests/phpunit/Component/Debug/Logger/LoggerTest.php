@@ -4,7 +4,10 @@ declare(strict_types=1);
 namespace PHPUnitTest\Component\Debug\Logger;
 
 use Laventure\Component\Debug\Logger\Logger;
+use Laventure\Foundation\Debug\Logger\Writer\DTO\LoggerWriterDto;
+use Laventure\Foundation\Debug\Logger\Writer\LoggerWriter;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\LogLevel;
 
 /**
  * LoggerTest
@@ -17,5 +20,19 @@ use PHPUnit\Framework\TestCase;
  */
 class LoggerTest extends TestCase
 {
+      public function testItLog(): void
+      {
 
+          #$dto     = new LoggerWriterDto(date('Y-m-d H:i:s'), __DIR__.'/temp/log', 'dev');
+          #$dto     = new LoggerWriterDto(date('Y-m-d H:i:s'), __DIR__.'/temp/log', 'local');
+          $dto     = new LoggerWriterDto(date('Y-m-d H:i:s'), __DIR__.'/temp/log', 'prod');
+          $writer  = new LoggerWriter($dto);
+          $logger  = new Logger($writer);
+
+          $logger->log(LogLevel::NOTICE, 'something went wrong', [
+              'data' => ['file' => __FILE__]
+          ]);
+
+          $this->assertFileExists($writer->getLogPath());
+      }
 }

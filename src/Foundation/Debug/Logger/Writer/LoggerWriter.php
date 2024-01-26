@@ -53,7 +53,7 @@ class LoggerWriter extends AbstractLoggerWriter
     /**
      * @return string
     */
-    private function getDetails(): string
+    public function getDetails(): string
     {
         return sprintf(
             "%s - Level: %s - Message: %s - Context: %s",
@@ -68,7 +68,7 @@ class LoggerWriter extends AbstractLoggerWriter
     /**
      * @return string
     */
-    private function getLogPath(): string
+    public function getLogPath(): string
     {
          return sprintf("%s/%s-%s.log",
              $this->dto->logPath,
