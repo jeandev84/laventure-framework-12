@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Http\Client\Traits;
 
-use Laventure\Utils\Parameter\ArrayParameter;
+use Laventure\Utils\Parameter\Parameter;
 
 /**
  * HasOptionsTrait
@@ -23,7 +23,7 @@ trait HasOptionsTrait
     */
     public function withOptions(array $options): static
     {
-        $options = new ArrayParameter($options);
+        $options = new Parameter($options);
 
         foreach ($options->all() as $key => $value) {
             if (!empty($value)) {

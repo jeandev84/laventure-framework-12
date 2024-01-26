@@ -168,4 +168,20 @@ class SessionFlash implements SessionFlashInterface
     {
 
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function add(array $params): mixed
+    {
+        // TODO: Implement add() method.
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function count(): int
+    {
+        // TODO: Implement count() method.
+    }
 }

@@ -30,61 +30,23 @@ use Psr\Container\NotFoundExceptionInterface;
  *
  * @package  Laventure\Foundation
  */
-final class Application implements ApplicationInterface, TerminableInterface, ContainerInterface, \ArrayAccess
+final class Application extends Container implements ApplicationInterface, TerminableInterface
 {
     use ApplicationTrait;
 
 
 
-    /**
-     * @var Container
-    */
-    protected Container $container;
-
-
 
     /**
-     * @param Container $container
      * @param string $basePath
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
-     * @throws \ReflectionException
     */
-    public function __construct(Container $container, string $basePath)
+    public function __construct(string $basePath)
     {
-        $this->registerBaseBindings($container, $basePath);
-        $this->registerBaseProviders($container);
-        $this->container = $container;
+        $this->setPath($basePath);
+        $this->registerBaseBindings();
+        $this->registerBaseProviders();
     }
 
-
-
-
-
-    /**
-     * @param array $bindings
-     * @return $this
-    */
-    public function singleton(array $bindings): static
-    {
-        $this->container->singletons($bindings);
-
-        return $this;
-    }
-
-
-
-
-    /**
-     * @param array $instances
-     * @return $this
-    */
-    public function instance(array $instances): static
-    {
-        $this->container->instances($instances);
-
-        return $this;
-    }
 
 
 
@@ -117,66 +79,53 @@ final class Application implements ApplicationInterface, TerminableInterface, Co
 
 
 
-
     /**
-     * @inheritDoc
+     * @return void
     */
-    public function get(string $id)
+    private function loadHelpers(): void
     {
-        return $this->container->get($id);
+        require_once realpath(__DIR__.'/../helpers.php');
     }
 
 
 
-
     /**
-     * @inheritDoc
-    */
-    public function has(string $id): bool
-    {
-        return $this->container->has($id);
-    }
-
-
-
-
-
-    /**
-     * @return Container
-    */
-    public function getContainer(): Container
-    {
-        return $this->container;
-    }
-
-
-
-
-
-    /**
-     * @param Container $container
      * @param string $basePath
-     * @return Container
+     * @return $this
     */
-    private function registerBaseBindings(Container $container, string $basePath): Container
+    private function setPath(string $basePath): static
     {
-        $container->bindings(compact('basePath'));
-        $container->instance(self::class, $this);
-        $container->instance(Container::class, $container);
-        $container->instance(ContainerInterface::class, $container);
+         $this->bindings(compact('basePath'));
+         $this->bindings([
+             'app.path' => $basePath
+         ]);
 
-        return $container;
+         return $this;
     }
 
 
 
 
     /**
-     * @param Container $container
+     * @return void
     */
-    private function registerBaseProviders(Container $container): Container
+    private function registerBaseBindings(): void
     {
-        $container->addProviders([
+        static::setInstance($this);
+        $this->instances([
+            self::class => $this,
+            Container::class => $this,
+            ContainerInterface::class => $this
+        ]);
+    }
+
+
+
+
+
+    private function registerBaseProviders(): void
+    {
+        $this->addProviders([
             ApplicationServiceProvider::class,
             FilesystemServiceProvider::class,
             ConfigurationServiceProvider::class,
@@ -185,51 +134,5 @@ final class Application implements ApplicationInterface, TerminableInterface, Co
             EventServiceProvider::class,
             ViewServiceProvider::class
         ]);
-
-        return $container;
-    }
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function offsetExists(mixed $offset): bool
-    {
-        return $this->container->offsetExists($offset);
-    }
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container->offsetGet($offset);
-    }
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        $this->container->offsetSet($offset, $value);
-    }
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function offsetUnset(mixed $offset): void
-    {
-        $this->container->offsetUnset($offset);
     }
 }

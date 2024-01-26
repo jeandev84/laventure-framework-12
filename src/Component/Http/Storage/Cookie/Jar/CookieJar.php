@@ -9,7 +9,7 @@ use Laventure\Component\Http\Storage\Cookie\CookieInterface;
 use Laventure\Component\Http\Storage\Cookie\CookieParamsTrait;
 use Laventure\Component\Http\Storage\Cookie\Params\CookieParams;
 use Laventure\Component\Http\Storage\Cookie\Params\CookieParamsInterface;
-use Laventure\Utils\Parameter\ArrayParameter;
+use Laventure\Utils\Parameter\Parameter;
 
 /**
  * CookieJar
@@ -20,7 +20,7 @@ use Laventure\Utils\Parameter\ArrayParameter;
  *
  * @package  Laventure\Component\Http\Storage\ClientCookie\Jar
 */
-class CookieJar extends ArrayParameter implements CookieJarInterface
+class CookieJar extends Parameter implements CookieJarInterface
 {
 
     use CookieParamsTrait;

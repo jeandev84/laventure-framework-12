@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Http\Client\Options;
 
-use Laventure\Utils\Parameter\ArrayParameter;
+use Laventure\Utils\Parameter\Parameter;
 
 /**
  * QueryParams
@@ -15,7 +15,7 @@ use Laventure\Utils\Parameter\ArrayParameter;
  *
  * @package  Laventure\Component\Http\Client\Options
  */
-class QueryParams extends ArrayParameter
+class QueryParams extends Parameter
 {
     protected string $separator;
 

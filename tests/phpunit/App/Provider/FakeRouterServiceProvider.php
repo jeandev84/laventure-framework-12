@@ -28,7 +28,7 @@ class FakeRouterServiceProvider extends ServiceProvider
     */
     public function register(): void
     {
-        $this->app->singleton(Router::class, function () {
+        $this->app->singletons(Router::class, function () {
             return $this->app->make(Router::class, [
                 'namespace' => self::NAMESPACE
             ]);

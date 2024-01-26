@@ -34,7 +34,7 @@ class LoggerServiceProvider extends ServiceProvider
     */
     public function register(): void
     {
-        $this->app->singleton(LoggerInterface::class, function () {
+        $this->app->singletons(LoggerInterface::class, function () {
             return new Logger($this->makeLoggerWriter());
         });
     }

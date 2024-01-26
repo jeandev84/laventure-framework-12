@@ -98,7 +98,7 @@ class HttpKernel implements HttpKernelInterface
     */
     private function dispatchRoute(Request $request): Response
     {
-        $this->app->instance([Request::class => $request]);
+        $this->app->instances([Request::class => $request]);
 
         return (new Pipeline($this->app))
                ->pipe($this->middlewares())

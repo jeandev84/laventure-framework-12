@@ -23,6 +23,6 @@ class FooServiceProvider extends ServiceProvider
     */
     public function register(): void
     {
-        $this->app->instance(FooService::class, $this->app->make(FooService::class));
+        $this->app->instances(FooService::class, $this->app->make(FooService::class));
     }
 }

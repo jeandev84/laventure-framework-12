@@ -19,9 +19,15 @@ use Laventure\Component\Http\Storage\Session\Name\SessionName;
 use Laventure\Component\Http\Storage\Session\Name\SessionNameInterface;
 
 /**
- * @inheritdoc
+ * Session ( This is used for unit testing for example )
+ *
+ * @author Jean-Claude <jeanyao@ymail.com>
+ *
+ * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
+ *
+ * @package  Laventure\Component\Http\Message\Request\Session
 */
-class Session implements SessionInterface
+class Session  implements SessionInterface
 {
     /**
      * @var SessionCacheInterface
@@ -53,7 +59,7 @@ class Session implements SessionInterface
 
     /**
      * @inheritDoc
-    */
+     */
     public function start(): void
     {
         session_start();
@@ -65,7 +71,7 @@ class Session implements SessionInterface
 
     /**
      * @inheritDoc
-    */
+     */
     public function abort(): bool
     {
         return session_abort();
@@ -88,7 +94,7 @@ class Session implements SessionInterface
 
     /**
      * @inheritDoc
-    */
+     */
     public function reset(): bool
     {
         return session_reset();
@@ -100,7 +106,7 @@ class Session implements SessionInterface
 
     /**
      * @inheritDoc
-    */
+     */
     public function unset(): bool
     {
         return session_unset();
@@ -112,7 +118,7 @@ class Session implements SessionInterface
 
     /**
      * @inheritDoc
-    */
+     */
     public function close(): bool
     {
         return session_write_close();
@@ -136,7 +142,7 @@ class Session implements SessionInterface
 
     /**
      * @inheritDoc
-    */
+     */
     public function register(string $name = null): void
     {
         session_register_shutdown();
@@ -149,7 +155,7 @@ class Session implements SessionInterface
 
     /**
      * @inheritDoc
-    */
+     */
     public function id(): SessionIdInterface
     {
         return new SessionId();
@@ -159,7 +165,7 @@ class Session implements SessionInterface
 
     /**
      * @inheritDoc
-    */
+     */
     public function name(): SessionNameInterface
     {
         return new SessionName();
@@ -170,7 +176,7 @@ class Session implements SessionInterface
 
     /**
      * @inheritDoc
-    */
+     */
     public function module(): SessionModuleInterface
     {
         return new SessionModule();
@@ -182,7 +188,7 @@ class Session implements SessionInterface
 
     /**
      * @inheritDoc
-    */
+     */
     public function flash(): SessionFlashInterface
     {
         return new SessionFlash($this);
@@ -193,7 +199,7 @@ class Session implements SessionInterface
 
     /**
      * @inheritDoc
-    */
+     */
     public function cache(): SessionCacheInterface
     {
         return $this->cache;
@@ -215,7 +221,7 @@ class Session implements SessionInterface
 
     /**
      * @inheritDoc
-    */
+     */
     public function cookie(): SessionCookieInterface
     {
         return new SessionCookie();
@@ -227,7 +233,7 @@ class Session implements SessionInterface
 
     /**
      * @inheritDoc
-    */
+     */
     public function set($id, $value): static
     {
         $_SESSION[$id] = $value;
@@ -241,7 +247,7 @@ class Session implements SessionInterface
 
     /**
      * @inheritDoc
-    */
+     */
     public function has($id): bool
     {
         return isset($_SESSION[$id]);
@@ -278,7 +284,7 @@ class Session implements SessionInterface
 
     /**
      * @inheritDoc
-    */
+     */
     public function all(): array
     {
         return $_SESSION;
@@ -290,7 +296,7 @@ class Session implements SessionInterface
 
     /**
      * @inheritDoc
-    */
+     */
     public function destroy(): bool
     {
         return session_destroy();
@@ -300,7 +306,7 @@ class Session implements SessionInterface
 
     /**
      * @inheritDoc
-    */
+     */
     public function offsetExists(mixed $offset): bool
     {
         return $this->has($offset);
@@ -311,7 +317,7 @@ class Session implements SessionInterface
 
     /**
      * @inheritDoc
-    */
+     */
     public function offsetGet(mixed $offset): mixed
     {
         return $this->get($offset);
@@ -322,7 +328,7 @@ class Session implements SessionInterface
 
     /**
      * @inheritDoc
-    */
+     */
     public function offsetSet(mixed $offset, mixed $value): void
     {
         $this->set($offset, $value);
@@ -343,8 +349,10 @@ class Session implements SessionInterface
 
 
 
+
     /**
-     * @inheritDoc
+     * @param string $path
+     * @return void
     */
     public function savePath(string $path): void
     {
@@ -363,7 +371,6 @@ class Session implements SessionInterface
 
         return $this;
     }
-
 
 
 

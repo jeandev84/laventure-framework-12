@@ -7,7 +7,7 @@ namespace Laventure\Utils\Parameter;
 use Laventure\Contract\Parameter\ArrayParameterInterface;
 
 /**
- * ArrayParameter
+ * Parameter
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
@@ -15,7 +15,7 @@ use Laventure\Contract\Parameter\ArrayParameterInterface;
  *
  * @package  Laventure\Utils\Params
  */
-class ArrayParameter implements ArrayParameterInterface
+class Parameter implements ArrayParameterInterface
 {
     /**
      * @var array
@@ -141,6 +141,124 @@ class ArrayParameter implements ArrayParameterInterface
     public function all(): array
     {
         return $this->params;
+    }
+
+
+
+
+
+
+
+    /**
+     * @param $id
+     * @param int $default
+     * @return int
+     */
+    public function integer($id, int $default = 0): int
+    {
+        return intval($this->get($id, $default));
+    }
+
+
+
+
+
+    /**
+     * @param $id
+     * @param string $default
+     * @return string
+     */
+    public function string($id, string $default = ''): string
+    {
+        return strval($this->get($id, $default));
+    }
+
+
+
+
+
+    /**
+     * @param $id
+     * @param float $default
+     * @return float
+     */
+    public function float($id, float $default = 0): float
+    {
+        return floatval($this->get($id, $default));
+    }
+
+
+
+
+
+
+    /**
+     * @param $id
+     * @param bool $default
+     * @return bool
+     */
+    public function boolean($id, bool $default = false): bool
+    {
+        return boolval($this->get($id, $default));
+    }
+
+
+
+
+    /**
+     * @param string $id
+     *
+     * @return string
+     */
+    public function toUpper(string $id): string
+    {
+        return strtoupper($this->string($id));
+    }
+
+
+
+
+
+    /**
+     * @param string $id
+     *
+     * @return string
+     */
+    public function toLower(string $id): string
+    {
+        return strtolower($this->string($id));
+    }
+
+
+
+
+
+
+
+    /**
+     * @param $id
+     * @param string $search
+     * @param string $replace
+     * @return array|mixed|string|string[]
+     */
+    public function replace($id, string $search, string $replace): mixed
+    {
+        return str_replace($search, $replace, $this->get($id));
+    }
+
+
+
+
+
+
+    /**
+     * @param $id
+     * @param $value
+     * @return bool
+     */
+    public function same($id, $value): bool
+    {
+        return $this->get($id) === $value;
     }
 
 

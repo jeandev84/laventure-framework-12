@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace Laventure\Component\Http\Message\Request\Utils\Params;
 
 use Laventure\Component\Http\Message\Request\Uri;
-use Laventure\Utils\Parameter\ArrayParameter;
+use Laventure\Utils\Parameter\Parameter;
+
 
 /**
  * ServerParams
@@ -16,7 +17,7 @@ use Laventure\Utils\Parameter\ArrayParameter;
  *
  * @package  Laventure\Component\Http\Message\Request\Utils\Params
 */
-class ServerParams extends ArrayParameter
+class ServerParams extends Parameter
 {
     /**
      * @return string

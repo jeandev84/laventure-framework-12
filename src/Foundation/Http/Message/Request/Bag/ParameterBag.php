@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Laventure\Foundation\Http\Message\Request\Bag;
 
-use Laventure\Utils\Parameter\ArrayParameter;
+use Laventure\Utils\Parameter\Parameter;
 
 /**
  * ParameterBag
@@ -15,6 +15,6 @@ use Laventure\Utils\Parameter\ArrayParameter;
  *
  * @package  Laventure\Foundation\Http\Request\Bag
 */
-class ParameterBag extends ArrayParameter
+class ParameterBag extends Parameter
 {
 }

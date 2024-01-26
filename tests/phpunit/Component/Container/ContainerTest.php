@@ -73,10 +73,10 @@ class ContainerTest extends TestCase
         $container->bind('name', 'jean');
         $container->bind('namespace', "App\\Http\\Controllers");
         $container->aliases(Container::class, ['app']);
-        $container->singleton(Container::class, $container);
-        $container->singleton(RouterInterface::class, Router::class);
-        $container->singleton(Router::class, Router::class);
-        $container->instance(Route::class, new Route(['GET'], '/', 'HomeConroller@index', 'home'));
+        $container->singletons(Container::class, $container);
+        $container->singletons(RouterInterface::class, Router::class);
+        $container->singletons(Router::class, Router::class);
+        $container->instances(Route::class, new Route(['GET'], '/', 'HomeConroller@index', 'home'));
         $container->bind('foo', function (Container $c) {
             return $c->get('name') . '-claude';
         });
@@ -102,7 +102,7 @@ class ContainerTest extends TestCase
         $container = Container::getInstance();
         $container->clear();
 
-        $container->instance(Container::class, $container);
+        $container->instances(Container::class, $container);
         $container->bind('config.php', require __DIR__.'/config/app.php');
         $container->bind(FooService::class, FooService::class);
         $container->bind(ContainerInterface::class, Container::class);
@@ -180,7 +180,7 @@ class ContainerTest extends TestCase
         $container->clear();
 
         $container->bind('env', require __DIR__.'/config/app.php');
-        $container->singleton(ConfigService::class, ConfigService::class);
+        $container->singletons(ConfigService::class, ConfigService::class);
         $container->aliases(ConfigService::class, [
             'config.php',
             'app.config.php',
