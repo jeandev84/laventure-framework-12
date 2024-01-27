@@ -1,10 +1,9 @@
 <?php
-
 declare(strict_types=1);
 
-namespace Laventure\Component\Database\Connection\Drivers\Sqlite;
+namespace Laventure\Component\Database\Connection\Client\PDO\Drivers\Sqlite;
 
-use Laventure\Component\Database\Connection\Connection;
+use Laventure\Component\Database\Connection\Client\PDO\Connection;
 use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
 use Laventure\Component\Database\DatabaseInterface;
 
@@ -15,37 +14,32 @@ use Laventure\Component\Database\DatabaseInterface;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Database\Connection\Drivers\Sqlite
+ * @package  Laventure\Component\Database\Connection\Client\PDO\Drivers\Sqlite
  */
-class SqliteConnection extends Connection implements SqliteConnectionInterface
+class SqliteConnection extends Connection
 {
+
     /**
      * @inheritDoc
-    */
+     */
     public function getName(): string
     {
-        return 'sqlite';
+        // TODO: Implement getName() method.
     }
-
-
-
 
     /**
      * @inheritDoc
-    */
+     */
     public function createQueryBuilder(): QueryBuilderInterface
     {
-        return new SqliteAbstractQueryBuilder($this);
+        // TODO: Implement createQueryBuilder() method.
     }
-
-
-
 
     /**
      * @inheritDoc
-    */
+     */
     public function getDatabase(): DatabaseInterface
     {
-        return new SqliteDatabase($this, $this->getDatabaseName());
+        // TODO: Implement getDatabase() method.
     }
 }

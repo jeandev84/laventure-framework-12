@@ -1,10 +1,10 @@
 <?php
-
 declare(strict_types=1);
 
-namespace Laventure\Component\Database\Connection\Drivers\Mysql;
+namespace Laventure\Component\Database\Connection\Client\PDO\Drivers\Mysql;
 
-use Laventure\Component\Database\Connection\Connection;
+use Laventure\Component\Database\Connection\Client\PDO\Connection;
+use Laventure\Component\Database\Connection\Drivers\Mysql\MysqlDatabase;
 use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
 use Laventure\Component\Database\DatabaseInterface;
 
@@ -15,10 +15,11 @@ use Laventure\Component\Database\DatabaseInterface;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Database\Connection\Drivers\Mysql
+ * @package  Laventure\Component\Database\Connection\Client\PDO\Drivers\Mysql
 */
-class MysqlConnection extends Connection implements MysqlConnectionInterface
+class MysqlConnection extends Connection
 {
+
     /**
      * @inheritDoc
     */
@@ -29,15 +30,13 @@ class MysqlConnection extends Connection implements MysqlConnectionInterface
 
 
 
-
     /**
      * @inheritDoc
     */
     public function createQueryBuilder(): QueryBuilderInterface
     {
-        return new MysqlAbstractQueryBuilder($this);
+        return new MysqlQueryBuilder($this);
     }
-
 
 
 

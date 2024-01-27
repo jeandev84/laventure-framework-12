@@ -1,11 +1,9 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Drivers\Mysql;
 
 use Laventure\Component\Database\Database;
-use Laventure\Component\Database\DatabaseInterface;
 
 /**
  * MysqlDatabase
@@ -18,35 +16,28 @@ use Laventure\Component\Database\DatabaseInterface;
 */
 class MysqlDatabase extends Database
 {
+
     /**
      * @inheritDoc
-    */
+     */
     public function create(): mixed
     {
-
+        // TODO: Implement create() method.
     }
-
-
-
-
 
     /**
      * @inheritDoc
-    */
+     */
     public function drop(): mixed
     {
-
+        // TODO: Implement drop() method.
     }
-
-
-
-
 
     /**
      * @inheritDoc
-    */
+     */
     public function getSchemas(): array
     {
-
+        // TODO: Implement getSchemas() method.
     }
 }

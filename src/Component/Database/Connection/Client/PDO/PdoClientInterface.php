@@ -1,9 +1,10 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client\PDO;
 
+
+use Laventure\Component\Database\Configuration\Contract\ConfigurationInterface;
 use Laventure\Component\Database\Connection\Client\ClientConnectionInterface;
 use PDO;
 
@@ -15,9 +16,21 @@ use PDO;
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
  * @package  Laventure\Component\Database\Connection\Client\PDO
- */
+*/
 interface PdoClientInterface extends ClientConnectionInterface
 {
+
+
+     /**
+      * Returns driver name
+      *
+      * @return string
+     */
+     public function getDriver(): string;
+
+
+
+
     /**
      * @param string $dsn
      * @param string|null $username
@@ -36,23 +49,22 @@ interface PdoClientInterface extends ClientConnectionInterface
 
 
     /**
-     * Returns instance of PDO
+     * @param ConfigurationInterface $config
      *
      * @return PDO
     */
-    public function getConnection(): PDO;
+    public function makeConnection(ConfigurationInterface $config): PDO;
 
 
 
 
 
     /**
-     * Determine if is available driver
+     * Determine if current driver is available
      *
-     * @param string $name
      * @return bool
     */
-    public function hasDriver(string $name): bool;
+    public function hasAvailableDriver(): bool;
 
 
 
@@ -62,6 +74,6 @@ interface PdoClientInterface extends ClientConnectionInterface
      * Returns all available drivers
      *
      * @return array
-     */
-    public function getDrivers(): array;
+    */
+    public function getAvailableDrivers(): array;
 }

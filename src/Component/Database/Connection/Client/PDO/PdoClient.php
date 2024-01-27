@@ -1,20 +1,11 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client\PDO;
 
-use Laventure\Component\Database\Configuration\Configuration;
 use Laventure\Component\Database\Configuration\Contract\ConfigurationInterface;
-use Laventure\Component\Database\Configuration\NullConfiguration;
-use Laventure\Component\Database\Connection\Client\ClientType;
-use Laventure\Component\Database\Connection\Client\PDO\Dsn\PdoDsnBuilder;
-use Laventure\Component\Database\Connection\Client\PDO\Query\Query;
-use Laventure\Component\Database\Connection\Client\PDO\Transaction\Transaction;
 use Laventure\Component\Database\Connection\ConnectionException;
-use Laventure\Component\Database\Connection\Drivers\DriverException;
-use Laventure\Component\Database\Connection\Query\QueryInterface;
-use Laventure\Component\Database\Connection\Transaction\TransactionInterface;
+use Laventure\Component\Database\Connection\ConnectionInterface;
 use PDO;
 use PDOException;
 
@@ -29,25 +20,11 @@ use PDOException;
 */
 class PdoClient implements PdoClientInterface
 {
-    /**
-     * @var Configuration
-     */
-    protected ConfigurationInterface $config;
-
-
-
-    /**
-     * @var PDO
-    */
-    protected $pdo;
-
-
-
 
 
     /**
      * @var array
-     */
+    */
     protected array $options = [
         PDO::ATTR_PERSISTENT          => true,
         PDO::ATTR_EMULATE_PREPARES    => 0,
@@ -58,33 +35,29 @@ class PdoClient implements PdoClientInterface
 
 
 
-    public function __construct()
-    {
-        $this->config = new NullConfiguration();
-    }
+    /**
+     * @var string
+    */
+    protected string $driver;
 
 
 
     /**
-     * @inheritDoc
+     * @var PdoConnectionFactory
     */
-    public function getName(): string
-    {
-        return ClientType::Pdo;
-    }
+    protected PdoConnectionFactory $factory;
 
 
 
 
 
     /**
-     * @inheritDoc
+     * @param string $driver
     */
-    public function credentials(ConfigurationInterface $config): static
+    public function __construct(string $driver = 'mysql')
     {
-        $this->config  = $config;
-
-        return $this;
+        $this->factory = new PdoConnectionFactory();
+        $this->driver  = $driver;
     }
 
 
@@ -94,87 +67,10 @@ class PdoClient implements PdoClientInterface
     /**
      * @inheritDoc
     */
-    public function connect(): static
+    public function getDriver(): string
     {
-        $this->pdo = $this->makePdo(
-            $this->makeDsn($this->config),
-            $this->config->username(),
-            $this->config->password(),
-            $this->config->get('options', [])
-        );
-
-        return $this;
+        return $this->driver;
     }
-
-
-
-
-    /**
-     * @inheritDoc
-     */
-    public function connected(): bool
-    {
-        return $this->pdo instanceof PDO;
-    }
-
-
-
-
-
-    /**
-     * @inheritDoc
-     */
-    public function disconnect(): void
-    {
-        $this->pdo = null;
-    }
-
-
-
-
-
-    /**
-     * @inheritDoc
-     */
-    public function disconnected(): bool
-    {
-        return is_null($this->pdo);
-    }
-
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function getConnection(): PDO
-    {
-        return $this->pdo;
-    }
-
-
-
-
-    /**
-     * @return QueryInterface
-     */
-    public function createQuery(): QueryInterface
-    {
-        return new Query($this->getConnection());
-    }
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function createTransaction(): TransactionInterface
-    {
-        return new Transaction($this->getConnection());
-    }
-
 
 
 
@@ -187,7 +83,8 @@ class PdoClient implements PdoClientInterface
         string $username = null,
         string $password = null,
         array $options = []
-    ): PDO {
+    ): PDO
+    {
         try {
             $pdo = new PDO($dsn, $username, $password, $this->options);
             foreach ($options as $key => $value) {
@@ -202,11 +99,37 @@ class PdoClient implements PdoClientInterface
 
 
 
+    /**
+     * @inheritDoc
+    */
+    public function makeConnection(ConfigurationInterface $config): PDO
+    {
+        return $this->makePdo(
+            $config->required('dsn'),
+            $config->username(),
+            $config->password(),
+            $config->get('options', [])
+        );
+    }
+
+
+
 
     /**
      * @inheritDoc
-     */
-    public function getDrivers(): array
+    */
+    public function hasAvailableDriver(): bool
+    {
+        return in_array($this->driver, $this->getAvailableDrivers());
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function getAvailableDrivers(): array
     {
         return PDO::getAvailableDrivers();
     }
@@ -214,60 +137,13 @@ class PdoClient implements PdoClientInterface
 
 
 
-
     /**
-     * @inheritdoc
-    */
-    public function hasDriver(string $name): bool
+     * @inheritDoc
+     */
+    public function getConnection(): ConnectionInterface
     {
-        return in_array($name, $this->getDrivers());
+
     }
-
-
-
-
-
-    /**
-     * @param ConfigurationInterface $config
-     *
-     * @return string
-    */
-    private function makeDsn(ConfigurationInterface $config): string
-    {
-        $driver = $config->required('driver');
-
-        if ($config->has('dsn')) {
-            $dsn = $config['dsn'];
-            if (is_array($dsn)) {
-                return strval(new PdoDsnBuilder($driver, $dsn));
-            }
-            return $dsn;
-        }
-
-        return strval(new PdoDsnBuilder($driver, $this->getDefaultDsnParams($config)));
-    }
-
-
-
-
-
-    /**
-     * @param ConfigurationInterface $config
-     * @return array
-    */
-    private function getDefaultDsnParams(ConfigurationInterface $config): array
-    {
-        return [
-            'host'     => $config->host(),
-            'port'     => $config->port(),
-            'dbname'   => $config->database(),
-            'charset'  => $config->charset() ?? 'utf8',
-            'username' => $config->username() ?? '',
-            'password' => $config->password() ?? ''
-        ];
-    }
-
-
 
 
 
@@ -275,21 +151,8 @@ class PdoClient implements PdoClientInterface
     /**
      * @inheritDoc
     */
-    public function reconnect(): static
+    public function getConnections(): array
     {
-        return $this->connect();
-    }
 
-
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function getConfiguration(): ConfigurationInterface
-    {
-        return $this->config;
     }
 }

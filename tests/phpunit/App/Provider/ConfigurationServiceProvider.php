@@ -32,7 +32,7 @@ class ConfigurationServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singletons(ConfigService::class, function () {
+        $this->app->singleton(ConfigService::class, function () {
             return $this->app->make(ConfigService::class, ['env' => $_ENV]);
         });
     }

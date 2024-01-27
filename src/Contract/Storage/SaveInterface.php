@@ -11,7 +11,7 @@ namespace Laventure\Contract\Storage;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Contract\Storage
+ * @package  Laventure\Drivers\Storage
  */
 interface SaveInterface
 {

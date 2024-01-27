@@ -1,30 +1,31 @@
 <?php
-
 declare(strict_types=1);
 
-namespace Laventure\Component\Database\Connection\Drivers\Pgsql;
+namespace Laventure\Component\Database\Connection\Client\PDO\Drivers\Oracle;
 
-use Laventure\Component\Database\Connection\Connection;
+use Laventure\Component\Database\Connection\Client\PDO\Connection;
+use Laventure\Component\Database\Connection\Drivers\Oracle\OracleDatabase;
 use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
 use Laventure\Component\Database\DatabaseInterface;
 
 /**
- * PgsqlConnection
+ * OracleConnection
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Database\Connection\Drivers\Pgsql
+ * @package  Laventure\Component\Database\Connection\Client\PDO\Drivers\Oracle
  */
-class PgsqlConnection extends Connection implements PgsqlConnectionInterface
+class OracleConnection extends Connection
 {
+
     /**
      * @inheritDoc
     */
     public function getName(): string
     {
-        return 'pgsql';
+        return 'oci';
     }
 
 
@@ -36,7 +37,7 @@ class PgsqlConnection extends Connection implements PgsqlConnectionInterface
     */
     public function createQueryBuilder(): QueryBuilderInterface
     {
-        return new PgsqlAbstractQueryBuilder($this);
+        return new OracleQueryBuilder($this);
     }
 
 
@@ -48,6 +49,6 @@ class PgsqlConnection extends Connection implements PgsqlConnectionInterface
     */
     public function getDatabase(): DatabaseInterface
     {
-        return new PgsqlDatabase($this, $this->getDatabaseName());
+        return new OracleDatabase($this, $this->getDatabaseName());
     }
 }

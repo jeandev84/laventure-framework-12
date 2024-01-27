@@ -1,12 +1,10 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection;
 
+
 use Laventure\Component\Database\Configuration\Contract\ConfigurationInterface;
-use Laventure\Component\Database\Connection\Client\ClientConnectionInterface;
-use Laventure\Component\Database\Connection\Query\Builder\AbstractQueryBuilder;
 use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
 use Laventure\Component\Database\Connection\Query\QueryInterface;
 use Laventure\Component\Database\Connection\Transaction\TransactionInterface;
@@ -20,8 +18,8 @@ use Laventure\Component\Database\DatabaseInterface;
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
  * @package  Laventure\Component\Database\Connection
-*/
-interface ConnectionInterface
+ */
+interface ConnectionInterface extends TransactionInterface
 {
     /**
      * Returns the name of connection
@@ -53,7 +51,7 @@ interface ConnectionInterface
      * Determine if connection established
      *
      * @return bool
-    */
+     */
     public function connected(): bool;
 
 
@@ -69,6 +67,33 @@ interface ConnectionInterface
      * @return void
     */
     public function disconnect(): void;
+
+
+
+
+
+
+
+    /**
+     * Purge connection
+     *
+     * @return void
+    */
+    public function purge(): void;
+
+
+
+
+
+
+
+    /**
+     * Determine if connection is not established
+     *
+     * @return bool
+    */
+    public function disconnected(): bool;
+
 
 
 
@@ -113,16 +138,6 @@ interface ConnectionInterface
 
 
 
-    /**
-     * Returns instance of query
-     *
-     * @return TransactionInterface
-    */
-    public function createTransaction(): TransactionInterface;
-
-
-
-
 
 
     /**
@@ -140,13 +155,38 @@ interface ConnectionInterface
 
 
 
+    /**
+     * Execute query
+     *
+     * @param string $sql
+     *
+     * @return bool
+    */
+    public function executeQuery(string $sql): bool;
+
+
+
+
+
 
     /**
-     * Returns instance of client
+     * Returns configuration credentials
      *
-     * @return ClientConnectionInterface
+     * @return ConfigurationInterface
     */
-    public function getClient(): ClientConnectionInterface;
+    public function configs(): ConfigurationInterface;
+
+
+
+
+    /**
+     * Returns value of given key
+     *
+     * @param $key
+     * @param $default
+     * @return mixed
+    */
+    public function config($key, $default = null): mixed;
 
 
 
@@ -159,17 +199,4 @@ interface ConnectionInterface
      * @return DatabaseInterface
     */
     public function getDatabase(): DatabaseInterface;
-
-
-
-
-
-
-
-    /**
-     * Returns config params
-     *
-     * @return ConfigurationInterface
-    */
-    public function configs(): ConfigurationInterface;
 }

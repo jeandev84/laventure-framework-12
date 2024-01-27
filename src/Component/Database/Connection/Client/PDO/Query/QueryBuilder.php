@@ -1,14 +1,10 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client\PDO\Query;
 
-use Laventure\Component\Database\Builder\SQL\Contract\DML\DeleteBuilderInterface;
-use Laventure\Component\Database\Builder\SQL\Contract\DML\InsertBuilderInterface;
-use Laventure\Component\Database\Builder\SQL\Contract\DML\UpdateBuilderInterface;
-use Laventure\Component\Database\Builder\SQL\Contract\DQL\SelectBuilderInterface;
-use Laventure\Component\Database\Builder\SQL\Contract\SqlQueryBuilderInterface;
+use Laventure\Component\Database\Connection\Client\PDO\PdoConnectionInterface;
+use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
 
 /**
  * QueryBuilder
@@ -19,48 +15,21 @@ use Laventure\Component\Database\Builder\SQL\Contract\SqlQueryBuilderInterface;
  *
  * @package  Laventure\Component\Database\Connection\Client\PDO\Query
 */
-class QueryBuilder implements SqlQueryBuilderInterface
+abstract class QueryBuilder implements QueryBuilderInterface
 {
-    /**
-     * @inheritDoc
-    */
-    public function select(string ...$columns): SelectBuilderInterface
-    {
 
-    }
+       /**
+        * @var PdoConnectionInterface
+       */
+       protected PdoConnectionInterface $connection;
 
 
 
-
-    /**
-     * @inheritDoc
-    */
-    public function insert(string $table): InsertBuilderInterface
-    {
-
-    }
-
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function update(string $table): UpdateBuilderInterface
-    {
-
-    }
-
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function delete(string $table): DeleteBuilderInterface
-    {
-
-    }
+       /**
+        * @param PdoConnectionInterface $connection
+       */
+       public function __construct(PdoConnectionInterface $connection)
+       {
+           $this->connection = $connection;
+       }
 }

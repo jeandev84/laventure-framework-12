@@ -11,7 +11,7 @@ namespace Laventure\Contract\Application;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Contract\Application
+ * @package  Laventure\Drivers\Application
 */
 interface ApplicationInfoInterface
 {

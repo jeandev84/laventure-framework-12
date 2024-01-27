@@ -1,11 +1,9 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Drivers\Sqlite;
 
 use Laventure\Component\Database\Database;
-use Laventure\Component\Database\DatabaseInterface;
 
 /**
  * SqliteDatabase
@@ -15,9 +13,10 @@ use Laventure\Component\Database\DatabaseInterface;
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
  * @package  Laventure\Component\Database\Connection\Drivers\Sqlite
-*/
+ */
 class SqliteDatabase extends Database
 {
+
     /**
      * @inheritDoc
     */
@@ -28,24 +27,19 @@ class SqliteDatabase extends Database
 
 
 
-
     /**
      * @inheritDoc
-    */
+     */
     public function drop(): mixed
     {
-
+        // TODO: Implement drop() method.
     }
-
-
-
-
 
     /**
      * @inheritDoc
-    */
+     */
     public function getSchemas(): array
     {
-
+        // TODO: Implement getSchemas() method.
     }
 }
