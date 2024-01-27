@@ -28,7 +28,7 @@ class Parameter implements ParameterInterface
     /**
      * @param array $params
     */
-    public function __construct(array $params = [])
+    public function __construct(array $params)
     {
         $this->params = $params;
     }

@@ -6,12 +6,15 @@ namespace Laventure\Component\Database\Connection\Client\PDO;
 
 use Laventure\Component\Database\Configuration\Configuration;
 use Laventure\Component\Database\Configuration\Contract\ConfigurationInterface;
+use Laventure\Component\Database\Configuration\NullConfiguration;
 use Laventure\Component\Database\Connection\Client\ClientType;
 use Laventure\Component\Database\Connection\Client\PDO\Dsn\PdoDsnBuilder;
 use Laventure\Component\Database\Connection\Client\PDO\Query\Query;
+use Laventure\Component\Database\Connection\Client\PDO\Transaction\Transaction;
 use Laventure\Component\Database\Connection\ConnectionException;
 use Laventure\Component\Database\Connection\Drivers\DriverException;
 use Laventure\Component\Database\Connection\Query\QueryInterface;
+use Laventure\Component\Database\Connection\Transaction\TransactionInterface;
 use PDO;
 use PDOException;
 
@@ -35,7 +38,7 @@ class PdoClient implements PdoClientInterface
 
     /**
      * @var PDO
-     */
+    */
     protected $pdo;
 
 
@@ -55,13 +58,31 @@ class PdoClient implements PdoClientInterface
 
 
 
+    public function __construct()
+    {
+        $this->config = new NullConfiguration();
+    }
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function getName(): string
+    {
+        return ClientType::Pdo;
+    }
+
+
+
+
 
     /**
      * @inheritDoc
     */
     public function credentials(ConfigurationInterface $config): static
     {
-        $this->config = $config;
+        $this->config  = $config;
 
         return $this;
     }
@@ -127,87 +148,10 @@ class PdoClient implements PdoClientInterface
     /**
      * @inheritDoc
     */
-    public function beginTransaction(): bool
-    {
-        return $this->getConnection()->beginTransaction();
-    }
-
-
-
-
-
-    /**
-     * @inheritDoc
-     */
-    public function hasActiveTransaction(): bool
-    {
-        return $this->getConnection()->inTransaction();
-    }
-
-
-
-
-    /**
-     * @inheritDoc
-     */
-    public function commit(): bool
-    {
-        return $this->getConnection()->commit();
-    }
-
-
-
-
-    /**
-     * @inheritDoc
-     */
-    public function rollback(): bool
-    {
-        return $this->getConnection()->rollBack();
-    }
-
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function transaction(callable $func): bool
-    {
-        $this->beginTransaction();
-
-        try {
-
-            $func($this);
-            return $this->commit();
-
-        } catch (PDOException $e) {
-
-            if ($this->hasActiveTransaction()) {
-                $this->rollBack();
-            }
-
-            $this->disconnect();
-
-            throw new PDOException($e->getMessage(), $e->getCode());
-        }
-    }
-
-
-
-
-
-
-    /**
-     * @inheritDoc
-    */
     public function getConnection(): PDO
     {
         return $this->pdo;
     }
-
-
 
 
 
@@ -223,26 +167,12 @@ class PdoClient implements PdoClientInterface
 
 
 
-
-
-
     /**
-     * @param ConfigurationInterface $config
-     * @return string
+     * @inheritDoc
     */
-    public function makeDsn(ConfigurationInterface $config): string
+    public function createTransaction(): TransactionInterface
     {
-        $driver = $config->required('driver');
-
-        if ($config->has('dsn')) {
-            $dsn = $config['dsn'];
-            if (is_array($dsn)) {
-                return strval(new PdoDsnBuilder($driver, $dsn));
-            }
-            return $dsn;
-        }
-
-        return strval(new PdoDsnBuilder($driver, $this->getDefaultDsnParams($config)));
+        return new Transaction($this->getConnection());
     }
 
 
@@ -297,6 +227,29 @@ class PdoClient implements PdoClientInterface
 
 
 
+    /**
+     * @param ConfigurationInterface $config
+     *
+     * @return string
+    */
+    private function makeDsn(ConfigurationInterface $config): string
+    {
+        $driver = $config->required('driver');
+
+        if ($config->has('dsn')) {
+            $dsn = $config['dsn'];
+            if (is_array($dsn)) {
+                return strval(new PdoDsnBuilder($driver, $dsn));
+            }
+            return $dsn;
+        }
+
+        return strval(new PdoDsnBuilder($driver, $this->getDefaultDsnParams($config)));
+    }
+
+
+
+
 
     /**
      * @param ConfigurationInterface $config
@@ -335,8 +288,8 @@ class PdoClient implements PdoClientInterface
     /**
      * @inheritDoc
     */
-    public function getName(): string
+    public function getConfiguration(): ConfigurationInterface
     {
-        return ClientType::Pdo;
+        return $this->config;
     }
 }

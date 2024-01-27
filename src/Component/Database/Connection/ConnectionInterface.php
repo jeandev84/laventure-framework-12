@@ -9,6 +9,7 @@ use Laventure\Component\Database\Connection\Client\ClientConnectionInterface;
 use Laventure\Component\Database\Connection\Query\Builder\AbstractQueryBuilder;
 use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
 use Laventure\Component\Database\Connection\Query\QueryInterface;
+use Laventure\Component\Database\Connection\Transaction\TransactionInterface;
 use Laventure\Component\Database\DatabaseInterface;
 
 /**
@@ -108,6 +109,16 @@ interface ConnectionInterface
     */
     public function createQueryBuilder(): QueryBuilderInterface;
 
+
+
+
+
+    /**
+     * Returns instance of query
+     *
+     * @return TransactionInterface
+    */
+    public function createTransaction(): TransactionInterface;
 
 
 

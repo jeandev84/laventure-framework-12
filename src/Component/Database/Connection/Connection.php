@@ -6,6 +6,7 @@ namespace Laventure\Component\Database\Connection;
 
 use Laventure\Component\Database\Configuration\Configuration;
 use Laventure\Component\Database\Configuration\Contract\ConfigurationInterface;
+use Laventure\Component\Database\Configuration\NullConfiguration;
 use Laventure\Component\Database\Connection\Client\ClientConnectionInterface;
 use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
 use Laventure\Component\Database\Connection\Query\QueryInterface;
@@ -31,22 +32,12 @@ abstract class Connection implements ConnectionInterface
 
 
     /**
-     * @var ConfigurationInterface
-    */
-    protected ConfigurationInterface $config;
-
-
-
-    /**
      * @param ClientConnectionInterface $client
      */
     public function __construct(ClientConnectionInterface $client)
     {
         $this->client = $client;
-        $this->config = new Configuration();
     }
-
-
 
 
 
@@ -58,9 +49,8 @@ abstract class Connection implements ConnectionInterface
     */
     public function connect(ConfigurationInterface $config): void
     {
-        $this->client->connect($config);
+        $this->client->credentials($config)->connect();
     }
-
 
 
 
@@ -147,14 +137,12 @@ abstract class Connection implements ConnectionInterface
 
 
 
-
-
     /**
      * @inheritDoc
     */
     public function getClient(): ClientConnectionInterface
     {
-
+        return $this->client;
     }
 
 
@@ -170,7 +158,7 @@ abstract class Connection implements ConnectionInterface
     */
     public function config($key, $default = null): mixed
     {
-        return $this->config->get($key, $default);
+        return $this->configs()->get($key, $default);
     }
 
 
@@ -181,7 +169,7 @@ abstract class Connection implements ConnectionInterface
     */
     public function configs(): ConfigurationInterface
     {
-        return $this->config;
+        return $this->client->getConfiguration();
     }
 
 
@@ -192,6 +180,67 @@ abstract class Connection implements ConnectionInterface
     */
     public function getDatabaseName(): string
     {
-        return $this->config->database();
+        return $this->configs()->database();
+    }
+
+
+
+
+    /**
+     * @return bool
+    */
+    public function beginTransaction(): bool
+    {
+
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+     */
+    public function hasActiveTransaction(): bool
+    {
+        // TODO: Implement hasActiveTransaction() method.
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function commit(): bool
+    {
+        // TODO: Implement commit() method.
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function rollback(): bool
+    {
+        // TODO: Implement rollback() method.
+    }
+
+
+
+
+    /**
+     * @param callable $func
+     * @return mixed
+    */
+    public function transaction(callable $func): mixed
+    {
+
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function createTransaction(): TransactionInterface
+    {
+        return $this->client->createTransaction();
     }
 }

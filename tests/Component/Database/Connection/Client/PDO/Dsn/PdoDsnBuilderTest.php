@@ -27,5 +27,23 @@ class PdoDsnBuilderTest extends TestCase
                 'dbname'   => 'homestead',
                 'charset'  => 'utf8'
             ]);
+
+            $pgsqlDsn = new PdoDsnBuilder('pgsql', [
+               'host'     => '127.0.0.1',
+               'port'     => '5432',
+               'username' => 'postgres',
+               'password' => '123456',
+               'dbname'   => 'homestead'
+            ]);
+
+            $this->assertSame(
+       'mysql:host=127.0.0.1;port=3306;username=root;password=secret;dbname=homestead;charset=utf8',
+                $mysqlDsn->build()
+            );
+
+            $this->assertSame(
+      'pgsql:host=127.0.0.1;port=5432;username=postgres;password=123456;dbname=homestead',
+               $pgsqlDsn->build()
+           );
        }
 }

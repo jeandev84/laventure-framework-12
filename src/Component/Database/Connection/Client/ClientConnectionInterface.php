@@ -23,7 +23,7 @@ use Laventure\Component\Database\Connection\Transaction\TransactionInterface;
  *
  * @package  Laventure\Component\Database\Connection\Client
 */
-interface ClientConnectionInterface extends ConnectionStatusInterface, TransactionInterface
+interface ClientConnectionInterface extends ConnectionStatusInterface
 {
     /**
      * Parse credentials
@@ -103,9 +103,12 @@ interface ClientConnectionInterface extends ConnectionStatusInterface, Transacti
 
 
     /**
-     * @return mixed
+     * Returns configuration
+     *
+     * @return ConfigurationInterface
     */
-    public function getSQLBuilder(): mixed;
+    public function getConfiguration(): ConfigurationInterface;
+
 
 
 
@@ -113,7 +116,20 @@ interface ClientConnectionInterface extends ConnectionStatusInterface, Transacti
 
 
     /**
+     * Create query
+     *
      * @return QueryInterface
     */
     public function createQuery(): QueryInterface;
+
+
+
+
+
+    /**
+     * Create a transaction
+     *
+     * @return TransactionInterface
+    */
+    public function createTransaction(): TransactionInterface;
 }

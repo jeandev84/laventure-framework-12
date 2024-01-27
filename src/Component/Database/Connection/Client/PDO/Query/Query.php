@@ -251,7 +251,7 @@ class Query implements QueryInterface
 
     /**
      * @inheritDoc
-     */
+    */
     public function fetch(): QueryResultInterface
     {
         $this->execute();
