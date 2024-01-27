@@ -54,5 +54,6 @@ class PdoClientTest extends TestCase
             $this->assertInstanceOf(ConnectionInterface::class, $this->connection);
             $this->assertInstanceOf(PdoConnectionInterface::class, $this->connection);
             $this->assertInstanceOf(PDO::class, $this->pdo);
+            $this->assertSame('laventure_test', $this->connection->getDatabase()->getName());
        }
 }

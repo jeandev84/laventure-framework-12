@@ -50,4 +50,15 @@ abstract class Database implements DatabaseInterface
     {
         return $this->name;
     }
+
+
+
+
+    /**
+     * @return bool
+    */
+    public function exists(): bool
+    {
+        return in_array($this->name, $this->list());
+    }
 }

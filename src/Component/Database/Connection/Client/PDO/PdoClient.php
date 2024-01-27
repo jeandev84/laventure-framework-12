@@ -99,7 +99,7 @@ class PdoClient implements PdoClientInterface
     /**
      * @inheritDoc
     */
-    public function makeConnection(ConfigurationInterface $config): PDO
+    public function make(ConfigurationInterface $config): PDO
     {
         return $this->makePdo(
             $config->required('dsn'),
@@ -152,22 +152,6 @@ class PdoClient implements PdoClientInterface
              'sqlite' => new SqliteConnection($this),
              default  => $this->abort("Could not resolve instance of connection $this->driver")
          };
-    }
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function getConnections(): array
-    {
-        return [
-            new MysqlConnection($this),
-            new PgsqlConnection($this),
-            new OracleConnection($this),
-            new SqliteConnection($this)
-        ];
     }
 
 

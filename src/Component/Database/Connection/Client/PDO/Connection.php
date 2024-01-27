@@ -6,13 +6,11 @@ namespace Laventure\Component\Database\Connection\Client\PDO;
 
 use Laventure\Component\Database\Configuration\Contract\ConfigurationInterface;
 use Laventure\Component\Database\Configuration\NullConfiguration;
-use Laventure\Component\Database\Connection\Client\PDO\Dsn\PdoDsnBuilder;
 use Laventure\Component\Database\Connection\Client\PDO\Query\Query;
-use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
 use Laventure\Component\Database\Connection\Query\QueryInterface;
-use Laventure\Component\Database\DatabaseInterface;
 use PDO;
 use PDOException;
+use RuntimeException;
 
 /**
  * Connection
@@ -51,12 +49,20 @@ abstract class Connection implements PdoConnectionInterface
 
 
     /**
+     * @var PdoConfigResolver
+    */
+    protected PdoConfigResolver $resolver;
+
+
+
+    /**
      * @param PdoClientInterface $client
     */
     public function __construct(PdoClientInterface $client)
     {
-        $this->client = $client;
-        $this->config = new NullConfiguration();
+        $this->client   = $client;
+        $this->config   = new NullConfiguration();
+        $this->resolver = new PdoConfigResolver($this->getName());
     }
 
 
@@ -67,8 +73,8 @@ abstract class Connection implements PdoConnectionInterface
     */
     public function connect(ConfigurationInterface $config): void
     {
-        $this->pdo = $this->client->makeConnection(
-            $this->resolveConfig($config)
+        $this->pdo = $this->client->make(
+            $this->resolver->resolve($config)
         );
         $this->config = $config;
     }
@@ -262,68 +268,45 @@ abstract class Connection implements PdoConnectionInterface
     }
 
 
-
-
     /**
      * Returns name of database
      *
      * @return string
-    */
+     */
     public function getDatabaseName(): string
     {
-        return $this->config->database();
-    }
-
-
-
-    /**
-     * @param ConfigurationInterface $config
-     * @return ConfigurationInterface
-    */
-    private function resolveConfig(ConfigurationInterface $config): ConfigurationInterface
-    {
-         $config['dsn'] = $this->resolveDsn($config);
-         return $config;
-    }
-
-
-
-
-    /**
-     * @param ConfigurationInterface $config
-     * @return string
-    */
-    private function resolveDsn(ConfigurationInterface $config): string
-    {
-        $driver = $config->get('driver', $this->getName());
-
-        if ($config->has('dsn')) {
-            $dsn = $config['dsn'];
-            if (is_array($dsn)) {
-                return strval(PdoDsnBuilder::create($driver, $dsn));
-            }
-            return $dsn;
+        if ($database = $this->config->database()) {
+            return $database;
         }
 
-        return strval(PdoDsnBuilder::create($driver, $this->getDefaultDsnParams($config)));
+        if (!$database = $this->retrieveDatabaseNameFromDsn()) {
+             throw new RuntimeException(
+             "Could not retrieve database name from (". $this->config('dsn') . ")"
+             );
+        }
+
+        return $database;
     }
 
 
 
 
     /**
-     * @param ConfigurationInterface $config
-     * @return array
+     * @return string|false
     */
-    private function getDefaultDsnParams(ConfigurationInterface $config): array
+    private function retrieveDatabaseNameFromDsn(): string|false
     {
-        return [
-            'host'     => $config->host(),
-            'port'     => $config->port(),
-            'dbname'   => $config->database(),
-            'charset'  => $config->charset() ?? 'utf8',
-            'username' => $config->username() ?? '',
-            'password' => $config->password() ?? ''
-        ];
+        $dsn    = $this->config('dsn');
+        $params = explode(':', $dsn, 2)[1];
+        $params = explode(';', $params);
+
+        foreach ($params as $param) {
+            [$search, $value] = explode('=', $param, 2);
+            if ($search === 'dbname') {
+                return $value;
+            }
+        }
+
+        return false;
     }
 }

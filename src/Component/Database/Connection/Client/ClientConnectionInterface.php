@@ -22,7 +22,7 @@ interface ClientConnectionInterface
       * @param ConfigurationInterface $config
       * @return mixed
      */
-     public function makeConnection(ConfigurationInterface $config): mixed;
+     public function make(ConfigurationInterface $config): mixed;
 
 
 

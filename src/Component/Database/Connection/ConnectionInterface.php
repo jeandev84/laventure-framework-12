@@ -74,6 +74,7 @@ interface ConnectionInterface extends TransactionInterface
 
 
 
+
     /**
      * Purge connection
      *

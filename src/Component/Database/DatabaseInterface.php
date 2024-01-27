@@ -69,4 +69,25 @@ interface DatabaseInterface
      * @return array
     */
     public function getSchemas(): array;
+
+
+
+
+
+    /**
+     * Determine if database created or exists
+     *
+     * @return bool
+    */
+    public function exists(): bool;
+
+
+
+
+    /**
+     * Show all databases
+     *
+     * @return array
+    */
+    public function list(): array;
 }

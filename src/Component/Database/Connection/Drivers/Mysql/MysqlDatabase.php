@@ -19,25 +19,56 @@ class MysqlDatabase extends Database
 
     /**
      * @inheritDoc
-     */
-    public function create(): mixed
+    */
+    public function create(): bool
     {
-        // TODO: Implement create() method.
+       $this->connection->executeQuery(
+       "CREATE DATABASE IF NOT EXISTS {$this->name};"
+       );
+
+       return $this->exists();
     }
+
+
+
 
     /**
      * @inheritDoc
-     */
-    public function drop(): mixed
+    */
+    public function drop(): bool
     {
-        // TODO: Implement drop() method.
+        $this->connection->executeQuery(
+            "DROP DATABASE IF EXISTS {$this->name};"
+        );
+
+        return !$this->exists();
     }
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function getSchemas(): array
     {
-        // TODO: Implement getSchemas() method.
+        return $this->connection
+                    ->statement("SHOW FULL TABLES FROM {$this->name};")
+                    ->fetch()
+                    ->columns();
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function list(): array
+    {
+        return $this->connection
+                    ->statement("SHOW DATABASES;")
+                    ->fetch()
+                    ->columns();
     }
 }

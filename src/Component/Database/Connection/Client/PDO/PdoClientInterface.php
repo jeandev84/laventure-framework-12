@@ -54,7 +54,7 @@ interface PdoClientInterface extends ClientConnectionInterface
      *
      * @return PDO
     */
-    public function makeConnection(ConfigurationInterface $config): PDO;
+    public function make(ConfigurationInterface $config): PDO;
 
 
 
@@ -77,16 +77,4 @@ interface PdoClientInterface extends ClientConnectionInterface
      * @return array
     */
     public function getAvailableDrivers(): array;
-
-
-
-
-
-
-    /**
-     * Returns all connections
-     *
-     * @return ConnectionInterface[]
-    */
-    public function getConnections(): array;
 }
