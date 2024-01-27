@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection;
 
+use Laventure\Component\Database\Configuration\Configuration;
 use Laventure\Component\Database\Configuration\Contract\ConfigurationInterface;
 use Laventure\Component\Database\Connection\Client\ClientConnectionInterface;
 use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
@@ -23,71 +24,26 @@ use Laventure\Component\Database\Connection\Transaction\TransactionInterface;
 abstract class Connection implements ConnectionInterface
 {
     /**
-     * @inheritDoc
+     * @var ClientConnectionInterface
     */
-    public function connected(): bool
-    {
-
-    }
-
-
-
+    protected ClientConnectionInterface $client;
 
 
 
     /**
-     * @inheritDoc
+     * @var ConfigurationInterface
     */
-    public function disconnect(): void
-    {
-
-    }
-
-
-
+    protected ConfigurationInterface $config;
 
 
 
     /**
-     * @inheritDoc
-    */
-    public function createQuery(): QueryInterface
+     * @param ClientConnectionInterface $client
+     */
+    public function __construct(ClientConnectionInterface $client)
     {
-
-    }
-
-
-
-
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function createQueryBuilder(): QueryBuilderInterface
-    {
-
-    }
-
-
-
-
-
-
-
-
-    /**
-     * Execute query
-     *
-     * @param string $sql
-     *
-     * @return bool
-    */
-    public function executeQuery(string $sql): bool
-    {
-
+        $this->client = $client;
+        $this->config = new Configuration();
     }
 
 
@@ -102,8 +58,36 @@ abstract class Connection implements ConnectionInterface
     */
     public function connect(ConfigurationInterface $config): void
     {
-
+        $this->client->connect($config);
     }
+
+
+
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function connected(): bool
+    {
+        return $this->client->connected();
+    }
+
+
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function disconnect(): void
+    {
+        $this->client->disconnect();
+    }
+
 
 
 
@@ -114,7 +98,7 @@ abstract class Connection implements ConnectionInterface
     */
     public function getConnection(): mixed
     {
-
+        return $this->client->getConnection();
     }
 
 
@@ -126,7 +110,37 @@ abstract class Connection implements ConnectionInterface
     */
     public function statement(string $sql): QueryInterface
     {
+        return $this->createQuery()->prepare($sql);
+    }
 
+
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function createQuery(): QueryInterface
+    {
+        return $this->client->createQuery();
+    }
+
+
+
+
+
+
+    /**
+     * Execute query
+     *
+     * @param string $sql
+     *
+     * @return bool
+    */
+    public function executeQuery(string $sql): mixed
+    {
+        return $this->createQuery()->exec($sql);
     }
 
 
@@ -156,7 +170,7 @@ abstract class Connection implements ConnectionInterface
     */
     public function config($key, $default = null): mixed
     {
-
+        return $this->config->get($key, $default);
     }
 
 
@@ -165,8 +179,19 @@ abstract class Connection implements ConnectionInterface
     /**
      * @inheritDoc
     */
-    public function getConfiguration(): ConfigurationInterface
+    public function configs(): ConfigurationInterface
     {
+        return $this->config;
+    }
 
+
+
+
+    /**
+     * @return string
+    */
+    public function getDatabaseName(): string
+    {
+        return $this->config->database();
     }
 }

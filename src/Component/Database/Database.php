@@ -29,8 +29,10 @@ abstract class Database implements DatabaseInterface
     }
 
 
+
+
     /**
-     * @return ConnectionInterface
+     * @inheritdoc
     */
     public function getConnection(): ConnectionInterface
     {

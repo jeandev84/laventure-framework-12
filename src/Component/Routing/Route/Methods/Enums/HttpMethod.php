@@ -11,7 +11,7 @@ namespace Laventure\Component\Routing\Route\Methods\Enums;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Routing\Route\Methods\Enums
+ * @package  Laventure\Component\Routing\Route\Methods\Bindings
 */
 enum HttpMethod: string
 {

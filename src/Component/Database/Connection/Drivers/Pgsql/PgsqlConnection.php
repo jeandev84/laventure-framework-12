@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Laventure\Component\Database\Connection\Drivers\Pgsql;
 
 use Laventure\Component\Database\Connection\Connection;
+use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
+use Laventure\Component\Database\DatabaseInterface;
 
 /**
  * PgsqlConnection
@@ -17,4 +19,35 @@ use Laventure\Component\Database\Connection\Connection;
  */
 class PgsqlConnection extends Connection implements PgsqlConnectionInterface
 {
+    /**
+     * @inheritDoc
+    */
+    public function getName(): string
+    {
+        return 'pgsql';
+    }
+
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function createQueryBuilder(): QueryBuilderInterface
+    {
+        return new PgsqlAbstractQueryBuilder($this);
+    }
+
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function getDatabase(): DatabaseInterface
+    {
+        return new PgsqlDatabase($this, $this->getDatabaseName());
+    }
 }

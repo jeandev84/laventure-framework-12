@@ -1,9 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Drivers\Oracle;
 
-use Laventure\Component\Database\Connection\Query\Builder\QueryBuilder;
+use Laventure\Component\Database\Connection\Query\Builder\AbstractQueryBuilder;
 
 /**
  * OracleQueryBuilder
@@ -14,7 +15,6 @@ use Laventure\Component\Database\Connection\Query\Builder\QueryBuilder;
  *
  * @package  Laventure\Component\Database\Connection\Drivers\Oracle
 */
-class OracleQueryBuilder extends QueryBuilder
+class OracleAbstractQueryBuilder extends AbstractQueryBuilder
 {
-
 }

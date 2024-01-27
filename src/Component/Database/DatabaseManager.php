@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Database\Connection\Manager;
+namespace Laventure\Component\Database;
 
 /**
- * ConnectionManager
+ * DatabaseManager
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Database\Connection\Manager
+ * @package  Laventure\Component\Database
  */
-class ConnectionManager
+class DatabaseManager
 {
 }

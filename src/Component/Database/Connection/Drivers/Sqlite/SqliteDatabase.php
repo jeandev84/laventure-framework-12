@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Drivers\Sqlite;
 
+use Laventure\Component\Database\Database;
 use Laventure\Component\Database\DatabaseInterface;
 
 /**
@@ -15,6 +16,36 @@ use Laventure\Component\Database\DatabaseInterface;
  *
  * @package  Laventure\Component\Database\Connection\Drivers\Sqlite
 */
-class SqliteDatabase implements DatabaseInterface
+class SqliteDatabase extends Database
 {
+    /**
+     * @inheritDoc
+    */
+    public function create(): mixed
+    {
+
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function drop(): mixed
+    {
+
+    }
+
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function getSchemas(): array
+    {
+
+    }
 }

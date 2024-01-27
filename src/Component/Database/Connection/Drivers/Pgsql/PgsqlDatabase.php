@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Drivers\Pgsql;
 
-use Laventure\Component\Database\DatabaseInterface;
+use Laventure\Component\Database\Database;
 
 /**
  * PgsqlDatabase
@@ -14,7 +14,37 @@ use Laventure\Component\Database\DatabaseInterface;
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
  * @package  Laventure\Component\Database\Connection\Drivers\Pgsql
- */
-class PgsqlDatabase implements DatabaseInterface
+*/
+class PgsqlDatabase extends Database
 {
+    /**
+     * @inheritDoc
+    */
+    public function create(): mixed
+    {
+
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function drop(): mixed
+    {
+
+    }
+
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function getSchemas(): array
+    {
+
+    }
 }

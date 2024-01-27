@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client;
@@ -14,6 +15,6 @@ namespace Laventure\Component\Database\Connection\Client;
 */
 enum ClientType
 {
-    const Pdo    = 'pdo';
-    const MyQSLi = 'mysqli';
+    public const Pdo    = 'pdo';
+    public const MyQSLi = 'mysqli';
 }

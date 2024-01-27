@@ -20,10 +20,9 @@ use Throwable;
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
  * @package  Laventure\Component\Database\Connection\Client\PDO\Query
- */
+*/
 class Query implements QueryInterface
 {
-
     /**
      * @var PDO
      */

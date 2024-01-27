@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Laventure\Component\Database\Connection\Drivers\Sqlite;
 
 use Laventure\Component\Database\Connection\Connection;
+use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
+use Laventure\Component\Database\DatabaseInterface;
 
 /**
  * SqliteConnection
@@ -17,4 +19,33 @@ use Laventure\Component\Database\Connection\Connection;
  */
 class SqliteConnection extends Connection implements SqliteConnectionInterface
 {
+    /**
+     * @inheritDoc
+    */
+    public function getName(): string
+    {
+        return 'sqlite';
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function createQueryBuilder(): QueryBuilderInterface
+    {
+        return new SqliteAbstractQueryBuilder($this);
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function getDatabase(): DatabaseInterface
+    {
+        return new SqliteDatabase($this, $this->getDatabaseName());
+    }
 }

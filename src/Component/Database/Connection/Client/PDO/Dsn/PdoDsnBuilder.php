@@ -1,7 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client\PDO\Dsn;
+
+use Laventure\Component\Database\Configuration\Contract\ConfigurationInterface;
 
 /**
  * PdoDsnBuilder
@@ -14,7 +17,6 @@ namespace Laventure\Component\Database\Connection\Client\PDO\Dsn;
  */
 class PdoDsnBuilder implements PdoDsnBuilderInterface
 {
-
     /**
      * @var string
      */
@@ -57,7 +59,7 @@ class PdoDsnBuilder implements PdoDsnBuilderInterface
 
     /**
      * @inheritDoc
-     */
+    */
     public function withParams(array $params): static
     {
         $this->params = array_merge($this->params, $params);
@@ -101,6 +103,18 @@ class PdoDsnBuilder implements PdoDsnBuilderInterface
         return "$this->driver:". http_build_query($this->params, '', ';');
     }
 
+
+
+
+//    /**
+//     * @param ConfigurationInterface $config
+//     *
+//     * @return string
+//    */
+//    public static function buildFromConfig(ConfigurationInterface $config): string
+//    {
+//
+//    }
 
 
 

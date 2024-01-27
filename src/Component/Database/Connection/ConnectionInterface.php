@@ -6,7 +6,7 @@ namespace Laventure\Component\Database\Connection;
 
 use Laventure\Component\Database\Configuration\Contract\ConfigurationInterface;
 use Laventure\Component\Database\Connection\Client\ClientConnectionInterface;
-use Laventure\Component\Database\Connection\Query\Builder\QueryBuilder;
+use Laventure\Component\Database\Connection\Query\Builder\AbstractQueryBuilder;
 use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
 use Laventure\Component\Database\Connection\Query\QueryInterface;
 use Laventure\Component\Database\DatabaseInterface;
@@ -160,5 +160,5 @@ interface ConnectionInterface
      *
      * @return ConfigurationInterface
     */
-    public function getConfiguration(): ConfigurationInterface;
+    public function configs(): ConfigurationInterface;
 }

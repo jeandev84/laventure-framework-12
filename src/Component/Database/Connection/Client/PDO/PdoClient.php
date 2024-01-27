@@ -26,7 +26,6 @@ use PDOException;
 */
 class PdoClient implements PdoClientInterface
 {
-
     /**
      * @var Configuration
      */
@@ -62,9 +61,9 @@ class PdoClient implements PdoClientInterface
     */
     public function credentials(ConfigurationInterface $config): static
     {
-          $this->config = $config;
+        $this->config = $config;
 
-          return $this;
+        return $this;
     }
 
 
@@ -230,13 +229,10 @@ class PdoClient implements PdoClientInterface
     /**
      * @param ConfigurationInterface $config
      * @return string
-     * @throws DriverException
     */
     public function makeDsn(ConfigurationInterface $config): string
     {
         $driver = $config->required('driver');
-
-        $this->makeSureDriverAvailable($driver);
 
         if ($config->has('dsn')) {
             $dsn = $config['dsn'];
@@ -316,27 +312,6 @@ class PdoClient implements PdoClientInterface
             'username' => $config->username() ?? '',
             'password' => $config->password() ?? ''
         ];
-    }
-
-
-
-
-
-
-    /**
-     * @param string $driver
-     * @return void
-     * @throws DriverException
-    */
-    private function makeSureDriverAvailable(string $driver): void
-    {
-        $drivers = join(', ', $this->getDrivers());
-
-        if (!$this->hasDriver($driver)) {
-            throw new DriverException("Unavailable driver $driver from config", [
-                'drivers' => "Available drivers in your machine ($drivers)"
-            ]);
-        }
     }
 
 

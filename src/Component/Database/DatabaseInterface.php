@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Database;
 
+use Laventure\Component\Database\Connection\ConnectionInterface;
+
 /**
  * DatabaseInterface
  *
@@ -21,6 +23,18 @@ interface DatabaseInterface
      * @return string
     */
     public function getName(): string;
+
+
+
+
+    /**
+     * Returns connection
+     *
+     * @return ConnectionInterface
+    */
+    public function getConnection(): ConnectionInterface;
+
+
 
 
 

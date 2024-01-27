@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client\Mysqli\Query;
@@ -17,7 +18,6 @@ use Laventure\Component\Database\Connection\Query\Result\QueryResultInterface;
  */
 class Query implements QueryInterface
 {
-
     /**
      * @inheritDoc
     */

@@ -158,6 +158,9 @@ interface QueryInterface
 
 
 
+
+
+
     /**
      * Returns query string
      *

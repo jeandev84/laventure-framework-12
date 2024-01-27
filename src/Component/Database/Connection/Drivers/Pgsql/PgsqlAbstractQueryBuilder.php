@@ -1,11 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Drivers\Pgsql;
 
-use Laventure\Component\Database\Connection\Query\Builder\QueryBuilder;
-
-
+use Laventure\Component\Database\Connection\Query\Builder\AbstractQueryBuilder;
 
 /**
  * PgsqlQueryBuilder
@@ -16,7 +15,6 @@ use Laventure\Component\Database\Connection\Query\Builder\QueryBuilder;
  *
  * @package  Laventure\Component\Database\Connection\Drivers\Pgsql
 */
-class PgsqlQueryBuilder extends QueryBuilder
+class PgsqlAbstractQueryBuilder extends AbstractQueryBuilder
 {
-
 }

@@ -23,8 +23,60 @@ use Laventure\Component\Database\Connection\Transaction\TransactionInterface;
  *
  * @package  Laventure\Component\Database\Connection\Client
 */
-interface ClientConnectionInterface extends ConnectibleInterface, TransactionInterface
+interface ClientConnectionInterface extends ConnectionStatusInterface, TransactionInterface
 {
+    /**
+     * Parse credentials
+     *
+     * @param ConfigurationInterface $config
+     * @return $this
+    */
+    public function credentials(ConfigurationInterface $config): static;
+
+
+
+
+
+
+    /**
+     * Connect to driver
+     *
+     * @return mixed
+    */
+    public function connect(): static;
+
+
+
+
+
+
+
+    /**
+     * Disconnect client
+     *
+     * @return void
+    */
+    public function disconnect(): void;
+
+
+
+
+
+
+
+    /**
+     * Reconnect client
+     *
+     * @return mixed
+    */
+    public function reconnect(): mixed;
+
+
+
+
+
+
+
 
     /**
      * Returns name of client
@@ -45,6 +97,15 @@ interface ClientConnectionInterface extends ConnectibleInterface, TransactionInt
      * @return mixed
     */
     public function getConnection(): mixed;
+
+
+
+
+
+    /**
+     * @return mixed
+    */
+    public function getSQLBuilder(): mixed;
 
 
 
