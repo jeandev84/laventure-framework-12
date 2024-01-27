@@ -2,22 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Database\Connection\Query\Builder;
+namespace Laventure\Component\Database\Builder\SQL\Contract\DQL;
 
-
-use Laventure\Component\Database\Connection\Query\QueryInterface;
-use Stringable;
 
 /**
- * QueryBuilderInterface
+ * SelectBuilderInterface
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Database\Connection\Query\Builder
+ * @package  Laventure\Component\Database\Builder\SQL\DQL
 */
-interface QueryBuilderInterface extends Stringable
+interface SelectBuilderInterface
 {
     /**
      * select columns
@@ -141,9 +138,6 @@ interface QueryBuilderInterface extends Stringable
 
 
 
-
-
-
     /**
      * @param string $column
      *
@@ -176,27 +170,23 @@ interface QueryBuilderInterface extends Stringable
 
 
 
-
-    /**
-     * @param string $condition
-     * @return $this
-    */
-    public function andHaving(string $condition): static;
-
-
-
-
-
-
-    /**
-     * @param string $condition
-     * @return $this
-    */
-    public function orHaving(string $condition): static;
-
-
-
-
+    //
+    //    /**
+    //     * @param string $condition
+    //     * @return $this
+    //    */
+    //    public function andHaving(string $condition): static;
+    //
+    //
+    //
+    //
+    //
+    //
+    //    /**
+    //     * @param string $condition
+    //     * @return $this
+    //    */
+    //    public function orHaving(string $condition): static;
 
 
 
@@ -228,7 +218,7 @@ interface QueryBuilderInterface extends Stringable
      *
      * @param int $limit
      * @return $this
-    */
+     */
     public function limit(int $limit): static;
 
 
@@ -248,180 +238,11 @@ interface QueryBuilderInterface extends Stringable
 
 
 
-    /**
-     * @param string $table
-     * @return $this
-     */
-    public function insert(string $table): static;
-
-
-
-
 
     /**
-     * @param array $values
-     * @return $this
-    */
-    public function values(array $values): static;
-
-
-
-
-
-    /**
-     * @param $column
-     * @param $value
-     * @return $this
-    */
-    public function setValue($column, $value): static;
-
-
-
-
-
-
-
-    /**
-     * @param string $table
-     * @return $this
-    */
-    public function update(string $table): static;
-
-
-
-
-
-
-
-
-    /**
-     * @param string $column
-     * @param $value
-     * @return $this
-    */
-    public function set(string $column, $value): static;
-
-
-
-
-
-
-
-    /**
-     * @param string $table
-     * @return $this
-    */
-    public function delete(string $table): static;
-
-
-
-
-
-    /**
-     * @param string $condition
-     * @return $this
-     */
-    public function where(string $condition): static;
-
-
-
-
-
-
-    /**
-     * @param string $condition
-     * @return $this
-    */
-    public function andWhere(string $condition): static;
-
-
-
-
-
-
-    /**
-     * @param string $condition
-     * @return $this
-    */
-    public function orWhere(string $condition): static;
-
-
-
-
-
-
-
-    /**
-     * @param $id
-     * @param $value
-     * @param $type
-     * @return $this
-    */
-    public function setParameter($id, $value, $type = null): static;
-
-
-
-
-
-
-    /**
-     * @param $id
-     * @return mixed
-    */
-    public function getParameter($id): mixed;
-
-
-
-
-
-
-
-
-    /**
-     * @param array $parameters
-     * @return $this
-    */
-    public function setParameters(array $parameters): static;
-
-
-
-
-
-
-    /**
-     * @return array
-    */
-    public function getParameters(): array;
-
-
-
-
-
-
-    /**
-     * Returns query string
+     * Returns select query
      *
      * @return string
     */
-    public function getSQL(): string;
-
-
-
-
-
-
-    /**
-     * @return QueryInterface
-    */
-    public function getQuery(): QueryInterface;
-
-
-
-
-
-
-    /**
-     * @return array
-    */
-    public function toArray(): array;
+    public function buildSelectQuery(): string;
 }
