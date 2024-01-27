@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace PHPUnitTest\Component\Database\Manager;
 
 use Laventure\Component\Database\Configuration\Configuration;
+use Laventure\Component\Database\Connection\Client\PDO\Drivers\Mysql\MysqlConnection;
 use Laventure\Component\Database\Connection\Client\PDO\PdoClient;
 use Laventure\Component\Database\Connection\Client\PDO\PdoConnectionInterface;
 use Laventure\Component\Database\Connection\ConnectionInterface;
@@ -22,17 +23,14 @@ use PHPUnit\Framework\TestCase;
  */
 class DatabaseManagerTest extends TestCase
 {
-    protected PdoClient $client;
+    protected DatabaseManager $manager;
 
     protected ConnectionInterface $connection;
 
-    protected PDO $pdo;
-
     protected function setUp(): void
     {
-        $client = new PdoClient();
-        $connection = $client->getConnection();
-        $connection->connect(new Configuration([
+        $manager = new DatabaseManager();
+        $manager->open('mysql', [
             'dsn' => 'mysql:host=127.0.0.1;dbname=laventure_test;charset=utf8',
             'username' => 'root',
             'password' => 'secret',
@@ -40,10 +38,10 @@ class DatabaseManagerTest extends TestCase
                 #PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
                 PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8'
             ],
-        ]));
-        $this->client     = $client;
-        $this->connection = $connection;
-        $this->pdo        = $connection->getConnection();
+        ]);
+
+        $this->connection = $manager->connection();
+        $this->manager    = $manager;
     }
 
 
@@ -52,7 +50,8 @@ class DatabaseManagerTest extends TestCase
     {
         $this->assertInstanceOf(ConnectionInterface::class, $this->connection);
         $this->assertInstanceOf(PdoConnectionInterface::class, $this->connection);
-        $this->assertInstanceOf(PDO::class, $this->pdo);
+        $this->assertInstanceOf(MysqlConnection::class, $this->connection);
+        $this->assertInstanceOf(PDO::class, $this->connection->getConnection());
         $this->assertSame('laventure_test', $this->connection->getDatabase()->getName());
     }
 }

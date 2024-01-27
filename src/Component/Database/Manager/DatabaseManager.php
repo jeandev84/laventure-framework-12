@@ -40,6 +40,8 @@ class DatabaseManager implements DatabaseManagerInterface
 
 
     /**
+     * PDO is default extension
+     *
      * @var string|null
     */
     protected ?string $extension = 'pdo';
@@ -86,6 +88,7 @@ class DatabaseManager implements DatabaseManagerInterface
     public function open(string $name, array $credentials): static
     {
         $this->connection = $name;
+        $this->config($name, $credentials);
 
         return $this;
     }

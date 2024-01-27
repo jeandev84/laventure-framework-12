@@ -19,17 +19,19 @@ use Laventure\Component\Database\Connection\ConnectionInterface;
 interface ClientConnectionInterface
 {
      /**
-      * @param ConfigurationInterface $config
-      * @return mixed
-     */
-     public function make(ConfigurationInterface $config): mixed;
-
-
-
-     /**
-      * Returns current connection
+      * Returns instance of connector
       *
       * @return ConnectionInterface
      */
      public function getConnection(): ConnectionInterface;
+
+
+
+     /**
+      * Returns instance of real connection
+      *
+      * @param ConfigurationInterface $config
+      * @return mixed
+     */
+     public function makeConnection(ConfigurationInterface $config): mixed;
 }

@@ -73,7 +73,7 @@ abstract class Connection implements PdoConnectionInterface
     */
     public function connect(ConfigurationInterface $config): void
     {
-        $this->pdo = $this->client->make(
+        $this->pdo = $this->client->makeConnection(
             $this->resolver->resolve($config)
         );
         $this->config = $config;
@@ -272,8 +272,8 @@ abstract class Connection implements PdoConnectionInterface
      * Returns name of database
      *
      * @return string
-     */
-    public function getDatabaseName(): string
+   */
+    protected function getDatabaseName(): string
     {
         if ($database = $this->config->database()) {
             return $database;

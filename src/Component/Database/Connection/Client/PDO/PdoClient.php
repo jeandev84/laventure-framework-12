@@ -10,7 +10,6 @@ use Laventure\Component\Database\Connection\Client\PDO\Drivers\Pgsql\PgsqlConnec
 use Laventure\Component\Database\Connection\Client\PDO\Drivers\Sqlite\SqliteConnection;
 use Laventure\Component\Database\Connection\ConnectionException;
 use Laventure\Component\Database\Connection\ConnectionInterface;
-use Laventure\Component\Database\Connection\Drivers\DriverException;
 use Laventure\Component\Database\Connection\Drivers\UnavailableDriverException;
 use PDO;
 use PDOException;
@@ -99,7 +98,7 @@ class PdoClient implements PdoClientInterface
     /**
      * @inheritDoc
     */
-    public function make(ConfigurationInterface $config): PDO
+    public function makeConnection(ConfigurationInterface $config): PDO
     {
         return $this->makePdo(
             $config->required('dsn'),
@@ -108,6 +107,32 @@ class PdoClient implements PdoClientInterface
             $config->get('options', [])
         );
     }
+
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function getConnection(): ConnectionInterface
+    {
+         if (!$this->hasAvailableDriver()) {
+             throw new UnavailableDriverException($this->driver, [
+                 'from' => __METHOD__
+             ]);
+         }
+
+         return match ($this->driver) {
+             'mysql'  => new MysqlConnection($this),
+             'pgsql'  => new PgsqlConnection($this),
+             'oci'    => new OracleConnection($this),
+             'sqlite' => new SqliteConnection($this),
+             default  => $this->abort("Could not resolve instance of connection $this->driver")
+         };
+    }
+
+
 
 
 
@@ -133,26 +158,6 @@ class PdoClient implements PdoClientInterface
 
 
 
-
-    /**
-     * @inheritDoc
-    */
-    public function getConnection(): ConnectionInterface
-    {
-         if (!$this->hasAvailableDriver()) {
-             throw new UnavailableDriverException($this->driver, [
-                 'from' => __METHOD__
-             ]);
-         }
-
-         return match ($this->driver) {
-             'mysql'  => new MysqlConnection($this),
-             'pgsql'  => new PgsqlConnection($this),
-             'oci'    => new OracleConnection($this),
-             'sqlite' => new SqliteConnection($this),
-             default  => $this->abort("Could not resolve instance of connection $this->driver")
-         };
-    }
 
 
 
