@@ -104,18 +104,15 @@ class PdoDsnBuilder implements PdoDsnBuilderInterface
     }
 
 
-
-
-//    /**
-//     * @param ConfigurationInterface $config
-//     *
-//     * @return string
-//    */
-//    public static function buildFromConfig(ConfigurationInterface $config): string
-//    {
-//
-//    }
-
+    /**
+     * @param string $driver
+     * @param array $params
+     * @return static
+    */
+    public static function create(string $driver, array $params): static
+    {
+        return new self($driver, $params);
+    }
 
 
 

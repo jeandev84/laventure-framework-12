@@ -32,16 +32,4 @@ interface ClientConnectionInterface
       * @return ConnectionInterface
      */
      public function getConnection(): ConnectionInterface;
-
-
-
-
-
-
-     /**
-      * Returns all connections
-      *
-      * @return ConnectionInterface[]
-     */
-     public function getConnections(): array;
 }

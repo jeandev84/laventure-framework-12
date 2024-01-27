@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PHPUnitTest\Component\Database\Connection;
 
-use Laventure\Component\Database\Connection\Connection;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -18,4 +17,8 @@ use PHPUnit\Framework\TestCase;
 */
 class ConnectionTest extends TestCase
 {
+     public function testItWorks(): void
+     {
+         $this->assertTrue(true);
+     }
 }

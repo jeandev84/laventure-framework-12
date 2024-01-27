@@ -4,8 +4,14 @@ declare(strict_types=1);
 namespace Laventure\Component\Database\Connection\Client\PDO;
 
 use Laventure\Component\Database\Configuration\Contract\ConfigurationInterface;
+use Laventure\Component\Database\Connection\Client\PDO\Drivers\Mysql\MysqlConnection;
+use Laventure\Component\Database\Connection\Client\PDO\Drivers\Oracle\OracleConnection;
+use Laventure\Component\Database\Connection\Client\PDO\Drivers\Pgsql\PgsqlConnection;
+use Laventure\Component\Database\Connection\Client\PDO\Drivers\Sqlite\SqliteConnection;
 use Laventure\Component\Database\Connection\ConnectionException;
 use Laventure\Component\Database\Connection\ConnectionInterface;
+use Laventure\Component\Database\Connection\Drivers\DriverException;
+use Laventure\Component\Database\Connection\Drivers\UnavailableDriverException;
 use PDO;
 use PDOException;
 
@@ -42,22 +48,13 @@ class PdoClient implements PdoClientInterface
 
 
 
-    /**
-     * @var PdoConnectionFactory
-    */
-    protected PdoConnectionFactory $factory;
-
-
-
-
 
     /**
      * @param string $driver
     */
     public function __construct(string $driver = 'mysql')
     {
-        $this->factory = new PdoConnectionFactory();
-        $this->driver  = $driver;
+        $this->driver = $driver;
     }
 
 
@@ -139,10 +136,22 @@ class PdoClient implements PdoClientInterface
 
     /**
      * @inheritDoc
-     */
+    */
     public function getConnection(): ConnectionInterface
     {
+         if (!$this->hasAvailableDriver()) {
+             throw new UnavailableDriverException($this->driver, [
+                 'from' => __METHOD__
+             ]);
+         }
 
+         return match ($this->driver) {
+             'mysql'  => new MysqlConnection($this),
+             'pgsql'  => new PgsqlConnection($this),
+             'oci'    => new OracleConnection($this),
+             'sqlite' => new SqliteConnection($this),
+             default  => $this->abort("Could not resolve instance of connection $this->driver")
+         };
     }
 
 
@@ -153,6 +162,24 @@ class PdoClient implements PdoClientInterface
     */
     public function getConnections(): array
     {
+        return [
+            new MysqlConnection($this),
+            new PgsqlConnection($this),
+            new OracleConnection($this),
+            new SqliteConnection($this)
+        ];
+    }
 
+
+
+
+    /**
+     * @param string $message
+     * @return mixed
+     * @throws ConnectionException
+    */
+    private function abort(string $message)
+    {
+        throw new ConnectionException($message, [], 500);
     }
 }

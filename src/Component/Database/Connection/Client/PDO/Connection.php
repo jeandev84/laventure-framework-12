@@ -6,6 +6,7 @@ namespace Laventure\Component\Database\Connection\Client\PDO;
 
 use Laventure\Component\Database\Configuration\Contract\ConfigurationInterface;
 use Laventure\Component\Database\Configuration\NullConfiguration;
+use Laventure\Component\Database\Connection\Client\PDO\Dsn\PdoDsnBuilder;
 use Laventure\Component\Database\Connection\Client\PDO\Query\Query;
 use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
 use Laventure\Component\Database\Connection\Query\QueryInterface;
@@ -66,7 +67,9 @@ abstract class Connection implements PdoConnectionInterface
     */
     public function connect(ConfigurationInterface $config): void
     {
-        $this->pdo    = $this->client->makeConnection($config);
+        $this->pdo = $this->client->makeConnection(
+            $this->resolveConfig($config)
+        );
         $this->config = $config;
     }
 
@@ -269,5 +272,58 @@ abstract class Connection implements PdoConnectionInterface
     public function getDatabaseName(): string
     {
         return $this->config->database();
+    }
+
+
+
+    /**
+     * @param ConfigurationInterface $config
+     * @return ConfigurationInterface
+    */
+    private function resolveConfig(ConfigurationInterface $config): ConfigurationInterface
+    {
+         $config['dsn'] = $this->resolveDsn($config);
+         return $config;
+    }
+
+
+
+
+    /**
+     * @param ConfigurationInterface $config
+     * @return string
+    */
+    private function resolveDsn(ConfigurationInterface $config): string
+    {
+        $driver = $config->get('driver', $this->getName());
+
+        if ($config->has('dsn')) {
+            $dsn = $config['dsn'];
+            if (is_array($dsn)) {
+                return strval(PdoDsnBuilder::create($driver, $dsn));
+            }
+            return $dsn;
+        }
+
+        return strval(PdoDsnBuilder::create($driver, $this->getDefaultDsnParams($config)));
+    }
+
+
+
+
+    /**
+     * @param ConfigurationInterface $config
+     * @return array
+    */
+    private function getDefaultDsnParams(ConfigurationInterface $config): array
+    {
+        return [
+            'host'     => $config->host(),
+            'port'     => $config->port(),
+            'dbname'   => $config->database(),
+            'charset'  => $config->charset() ?? 'utf8',
+            'username' => $config->username() ?? '',
+            'password' => $config->password() ?? ''
+        ];
     }
 }

@@ -19,7 +19,7 @@ class PdoDsnBuilderTest extends TestCase
 {
        public function testItBuildCorrectlyDsn(): void
        {
-            $mysqlDsn = new PdoDsnBuilder('mysql', [
+            $mysqlDsn = PdoDsnBuilder::create('mysql', [
                 'host'    => '127.0.0.1',
                 'port'     => '3306',
                 'username' => 'root',
@@ -28,7 +28,7 @@ class PdoDsnBuilderTest extends TestCase
                 'charset'  => 'utf8'
             ]);
 
-            $pgsqlDsn = new PdoDsnBuilder('pgsql', [
+            $pgsqlDsn = PdoDsnBuilder::create('pgsql', [
                'host'     => '127.0.0.1',
                'port'     => '5432',
                'username' => 'postgres',

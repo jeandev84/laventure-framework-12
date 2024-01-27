@@ -6,6 +6,7 @@ namespace Laventure\Component\Database\Connection\Client\PDO;
 
 use Laventure\Component\Database\Configuration\Contract\ConfigurationInterface;
 use Laventure\Component\Database\Connection\Client\ClientConnectionInterface;
+use Laventure\Component\Database\Connection\ConnectionInterface;
 use PDO;
 
 /**
@@ -76,4 +77,16 @@ interface PdoClientInterface extends ClientConnectionInterface
      * @return array
     */
     public function getAvailableDrivers(): array;
+
+
+
+
+
+
+    /**
+     * Returns all connections
+     *
+     * @return ConnectionInterface[]
+    */
+    public function getConnections(): array;
 }

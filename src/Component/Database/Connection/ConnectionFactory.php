@@ -6,6 +6,7 @@ namespace Laventure\Component\Database\Connection;
 use Laventure\Component\Database\Configuration\Contract\ConfigurationInterface;
 use Laventure\Component\Database\Connection\Client\Mysqli\MysqliClient;
 use Laventure\Component\Database\Connection\Client\PDO\PdoClient;
+use Laventure\Component\Database\Connection\Drivers\UnavailableDriverException;
 
 /**
  * ConnectionFactory
@@ -24,7 +25,8 @@ class ConnectionFactory
      * @param string $name
      * @return ConnectionInterface
      * @throws ExtensionException
-    */
+     * @throws UnavailableDriverException
+     */
     public function make(
         string $extension,
         string $name
