@@ -21,18 +21,18 @@ class ConnectionFactory
 {
 
     /**
-     * @param string $extension
      * @param string $name
+     * @param string $extension
      * @return ConnectionInterface
      * @throws ExtensionException
      * @throws UnavailableDriverException
-     */
+    */
     public function make(
-        string $extension,
-        string $name
+        string $name,
+        string $extension
     ): ConnectionInterface
     {
-        $client = match($extension) {
+        $client    = match($extension) {
             'pdo'     => new PdoClient($name),
             'mysqli'  => new MysqliClient(),
             default   => throw new ExtensionException("Could not resolve connection for extension $extension")

@@ -24,3 +24,4 @@
 2024-01-27 17:42:26 - Level: notice - Message: something went wrong - Context: {"data":{"file":"\/home\/yao\/Desktop\/php\/frameworks\/laventure\/framework\/tests\/phpunit\/Component\/Debug\/Logger\/LoggerTest.php"}}
 2024-01-27 17:44:19 - Level: notice - Message: something went wrong - Context: {"data":{"file":"\/home\/yao\/Desktop\/php\/frameworks\/laventure\/framework\/tests\/phpunit\/Component\/Debug\/Logger\/LoggerTest.php"}}
 2024-01-27 17:45:24 - Level: notice - Message: something went wrong - Context: {"data":{"file":"\/home\/yao\/Desktop\/php\/frameworks\/laventure\/framework\/tests\/phpunit\/Component\/Debug\/Logger\/LoggerTest.php"}}
+2024-01-27 18:01:54 - Level: notice - Message: something went wrong - Context: {"data":{"file":"\/home\/yao\/Desktop\/php\/frameworks\/laventure\/framework\/tests\/phpunit\/Component\/Debug\/Logger\/LoggerTest.php"}}
