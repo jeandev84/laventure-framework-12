@@ -64,7 +64,7 @@ abstract class Connection implements PdoConnectionInterface
     */
     public function connect(ConfigurationInterface $config): void
     {
-        $this->pdo = $this->client->connect(
+        $this->pdo = $this->client->makeConnection(
             $this->resolveConfig($config)
         );
         $this->config = $config;

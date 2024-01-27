@@ -96,7 +96,7 @@ class PdoClient implements PdoClientInterface
     /**
      * @inheritDoc
     */
-    public function connect(ConfigurationInterface $config): PDO
+    public function makeConnection(ConfigurationInterface $config): PDO
     {
         return $this->makePdo(
             $config->required('dsn'),
@@ -113,7 +113,7 @@ class PdoClient implements PdoClientInterface
     /**
      * @inheritDoc
     */
-    public function createConnection(): ConnectionInterface
+    public function getConnection(): ConnectionInterface
     {
         if (!$this->hasAvailableDriver()) {
             throw new UnavailableDriverException($this->driver, [

@@ -23,15 +23,15 @@ interface ClientConnectionInterface
      *
      * @return ConnectionInterface
     */
-    public function createConnection(): ConnectionInterface;
+    public function getConnection(): ConnectionInterface;
 
 
 
     /**
-     * Connect to real database and returns instance
+     * make real connection, returns instance of driver
      *
      * @param ConfigurationInterface $config
      * @return mixed
     */
-    public function connect(ConfigurationInterface $config): mixed;
+    public function makeConnection(ConfigurationInterface $config): mixed;
 }

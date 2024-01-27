@@ -37,6 +37,6 @@ class ConnectionFactory
             default   => throw new ExtensionException("Could not resolve connection for extension $extension")
         };
 
-        return $client->createConnection();
+        return $client->getConnection();
     }
 }

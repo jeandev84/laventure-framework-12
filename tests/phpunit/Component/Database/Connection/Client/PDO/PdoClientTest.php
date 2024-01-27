@@ -1,11 +1,9 @@
 <?php
-
 declare(strict_types=1);
 
 namespace PHPUnitTest\Component\Database\Connection\Client\PDO;
 
 use Laventure\Component\Database\Configuration\Configuration;
-use Laventure\Component\Database\Connection\Client\PDO\Dsn\PdoDsnBuilder;
 use Laventure\Component\Database\Connection\Client\PDO\PdoClient;
 use Laventure\Component\Database\Connection\Client\PDO\PdoConnectionInterface;
 use Laventure\Component\Database\Connection\ConnectionInterface;
@@ -29,10 +27,11 @@ class PdoClientTest extends TestCase
 
     protected PDO $pdo;
 
+
     protected function setUp(): void
     {
         $client     = new PdoClient();
-        $connection = $client->createConnection();
+        $connection = $client->getConnection();
         $connection->connect(new Configuration([
             'dsn' => 'mysql:host=127.0.0.1;dbname=laventure_test;charset=utf8',
             'username' => 'root',
