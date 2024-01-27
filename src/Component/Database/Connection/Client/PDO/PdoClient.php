@@ -98,7 +98,7 @@ class PdoClient implements PdoClientInterface
     /**
      * @inheritDoc
     */
-    public function makeConnection(ConfigurationInterface $config): PDO
+    public function connect(ConfigurationInterface $config): PDO
     {
         return $this->makePdo(
             $config->required('dsn'),

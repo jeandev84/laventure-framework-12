@@ -54,7 +54,7 @@ interface PdoClientInterface extends ClientConnectionInterface
      *
      * @return PDO
     */
-    public function makeConnection(ConfigurationInterface $config): PDO;
+    public function connect(ConfigurationInterface $config): PDO;
 
 
 

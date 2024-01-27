@@ -33,5 +33,5 @@ interface ClientConnectionInterface
       * @param ConfigurationInterface $config
       * @return mixed
      */
-     public function makeConnection(ConfigurationInterface $config): mixed;
+     public function connect(ConfigurationInterface $config): mixed;
 }

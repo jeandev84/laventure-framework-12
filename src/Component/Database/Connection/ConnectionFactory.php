@@ -35,7 +35,9 @@ class ConnectionFactory
         $client    = match($extension) {
             'pdo'     => new PdoClient($name),
             'mysqli'  => new MysqliClient(),
-            default   => throw new ExtensionException("Could not resolve connection for extension $extension")
+            default   => throw new ExtensionException(
+                "Could not resolve connection for extension $extension"
+            )
         };
 
         return $client->getConnection();
