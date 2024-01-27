@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client;
-
 
 use Laventure\Component\Database\Configuration\Contract\ConfigurationInterface;
 use Laventure\Component\Database\Connection\ConnectionInterface;
@@ -18,20 +18,20 @@ use Laventure\Component\Database\Connection\ConnectionInterface;
 */
 interface ClientConnectionInterface
 {
-     /**
-      * Returns instance of connector
-      *
-      * @return ConnectionInterface
-     */
-     public function getConnection(): ConnectionInterface;
+    /**
+     * Returns instance of connector
+     *
+     * @return ConnectionInterface
+    */
+    public function createConnection(): ConnectionInterface;
 
 
 
-     /**
-      * Returns instance of real connection
-      *
-      * @param ConfigurationInterface $config
-      * @return mixed
-     */
-     public function connect(ConfigurationInterface $config): mixed;
+    /**
+     * Connect to real database and returns instance
+     *
+     * @param ConfigurationInterface $config
+     * @return mixed
+    */
+    public function connect(ConfigurationInterface $config): mixed;
 }

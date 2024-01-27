@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Drivers\Mysql;
@@ -16,17 +17,16 @@ use Laventure\Component\Database\Database;
 */
 class MysqlDatabase extends Database
 {
-
     /**
      * @inheritDoc
     */
     public function create(): bool
     {
-       $this->connection->executeQuery(
-       "CREATE DATABASE IF NOT EXISTS {$this->name};"
-       );
+        $this->connection->executeQuery(
+            "CREATE DATABASE IF NOT EXISTS {$this->name};"
+        );
 
-       return $this->exists();
+        return $this->exists();
     }
 
 

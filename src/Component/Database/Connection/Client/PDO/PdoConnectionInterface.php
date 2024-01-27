@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client\PDO;
-
 
 use Laventure\Component\Database\Connection\ConnectionInterface;
 use PDO;
@@ -18,9 +18,8 @@ use PDO;
 */
 interface PdoConnectionInterface extends ConnectionInterface
 {
-
-     /**
-      * @return PDO
-     */
-     public function getConnection(): PDO;
+    /**
+     * @return PDO
+    */
+    public function getConnection(): PDO;
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client\PDO;
@@ -17,36 +18,34 @@ use Laventure\Component\Database\Connection\Client\PDO\Dsn\PdoDsnBuilder;
  */
 class PdoConfigResolver
 {
-
-
-     /**
-      * Connection name
-      *
-      * @var string
-     */
-     private string $name;
-
-
-
-     /**
-      * @param string $name
-     */
-     public function __construct(string $name)
-     {
-         $this->name = $name;
-     }
+    /**
+     * Connection name
+     *
+     * @var string
+    */
+    private string $name;
 
 
 
-     /**
-      * @param ConfigurationInterface $config
-      * @return ConfigurationInterface
-     */
-     public function resolve(ConfigurationInterface $config): ConfigurationInterface
-     {
-         $config['dsn'] = $this->resolveDsn($config);
-         return $config;
-     }
+    /**
+     * @param string $name
+    */
+    public function __construct(string $name)
+    {
+        $this->name = $name;
+    }
+
+
+
+    /**
+     * @param ConfigurationInterface $config
+     * @return ConfigurationInterface
+    */
+    public function resolve(ConfigurationInterface $config): ConfigurationInterface
+    {
+        $config['dsn'] = $this->resolveDsn($config);
+        return $config;
+    }
 
 
 

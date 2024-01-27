@@ -17,8 +17,8 @@ use PHPUnit\Framework\TestCase;
 */
 class ConnectionTest extends TestCase
 {
-     public function testItWorks(): void
-     {
-         $this->assertTrue(true);
-     }
+    public function testItWorks(): void
+    {
+        $this->assertTrue(true);
+    }
 }

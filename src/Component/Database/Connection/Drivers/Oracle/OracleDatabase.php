@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Drivers\Oracle;
@@ -16,7 +17,6 @@ use Laventure\Component\Database\Database;
  */
 class OracleDatabase extends Database
 {
-
     /**
      * @inheritDoc
      */

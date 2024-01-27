@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client\PDO\Drivers\Mysql;
@@ -16,5 +17,4 @@ use Laventure\Component\Database\Connection\Client\PDO\Query\QueryBuilder;
 */
 class MysqlQueryBuilder extends QueryBuilder
 {
-
 }

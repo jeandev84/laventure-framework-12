@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Configuration;
@@ -14,8 +15,8 @@ namespace Laventure\Component\Database\Configuration;
 */
 class NullConfiguration extends Configuration
 {
-      public function __construct()
-      {
-          parent::__construct([]);
-      }
+    public function __construct()
+    {
+        parent::__construct([]);
+    }
 }

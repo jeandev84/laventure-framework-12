@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client\PDO;
-
 
 use Laventure\Component\Database\Configuration\Contract\ConfigurationInterface;
 use Laventure\Component\Database\Configuration\NullConfiguration;
@@ -23,8 +23,6 @@ use RuntimeException;
 */
 abstract class Connection implements PdoConnectionInterface
 {
-
-
     /**
      * @var PdoClientInterface
     */
@@ -184,7 +182,7 @@ abstract class Connection implements PdoConnectionInterface
     */
     public function configs(): ConfigurationInterface
     {
-       return $this->config;
+        return $this->config;
     }
 
 
@@ -216,7 +214,7 @@ abstract class Connection implements PdoConnectionInterface
     */
     public function hasActiveTransaction(): bool
     {
-       return $this->pdo->inTransaction();
+        return $this->pdo->inTransaction();
     }
 
 
@@ -238,7 +236,7 @@ abstract class Connection implements PdoConnectionInterface
     */
     public function rollback(): bool
     {
-       return $this->pdo->rollBack();
+        return $this->pdo->rollBack();
     }
 
 
@@ -280,9 +278,9 @@ abstract class Connection implements PdoConnectionInterface
         }
 
         if (!$database = $this->retrieveDatabaseNameFromDsn()) {
-             throw new RuntimeException(
-             "Could not retrieve database name from (". $this->config('dsn') . ")"
-             );
+            throw new RuntimeException(
+                "Could not retrieve database name from (". $this->config('dsn') . ")"
+            );
         }
 
         return $database;

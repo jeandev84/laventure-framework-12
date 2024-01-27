@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Drivers;
@@ -16,12 +17,12 @@ use Throwable;
  */
 class UnavailableDriverException extends DriverException
 {
-     /**
-      * @param string $driver
-      * @param array $data
-     */
-     public function __construct(string $driver, array $data = [])
-     {
-         parent::__construct("Unavailable driver $driver on your system", $data, 400);
-     }
+    /**
+     * @param string $driver
+     * @param array $data
+    */
+    public function __construct(string $driver, array $data = [])
+    {
+        parent::__construct("Unavailable driver $driver on your system", $data, 400);
+    }
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client\PDO\Query;
@@ -17,19 +18,18 @@ use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
 */
 abstract class QueryBuilder implements QueryBuilderInterface
 {
-
-       /**
-        * @var PdoConnectionInterface
-       */
-       protected PdoConnectionInterface $connection;
-
+    /**
+     * @var PdoConnectionInterface
+    */
+    protected PdoConnectionInterface $connection;
 
 
-       /**
-        * @param PdoConnectionInterface $connection
-       */
-       public function __construct(PdoConnectionInterface $connection)
-       {
-           $this->connection = $connection;
-       }
+
+    /**
+     * @param PdoConnectionInterface $connection
+    */
+    public function __construct(PdoConnectionInterface $connection)
+    {
+        $this->connection = $connection;
+    }
 }

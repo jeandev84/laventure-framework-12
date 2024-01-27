@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection;
@@ -19,7 +20,6 @@ use Laventure\Component\Database\Connection\Drivers\UnavailableDriverException;
  */
 class ConnectionFactory
 {
-
     /**
      * @param string $name
      * @param string $extension
@@ -30,16 +30,13 @@ class ConnectionFactory
     public function make(
         string $name,
         string $extension
-    ): ConnectionInterface
-    {
+    ): ConnectionInterface {
         $client    = match($extension) {
             'pdo'     => new PdoClient($name),
             'mysqli'  => new MysqliClient(),
-            default   => throw new ExtensionException(
-                "Could not resolve connection for extension $extension"
-            )
+            default   => throw new ExtensionException("Could not resolve connection for extension $extension")
         };
 
-        return $client->getConnection();
+        return $client->createConnection();
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client\PDO;
@@ -25,8 +26,6 @@ use PDOException;
 */
 class PdoClient implements PdoClientInterface
 {
-
-
     /**
      * @var array
     */
@@ -79,8 +78,7 @@ class PdoClient implements PdoClientInterface
         string $username = null,
         string $password = null,
         array $options = []
-    ): PDO
-    {
+    ): PDO {
         try {
             $pdo = new PDO($dsn, $username, $password, $this->options);
             foreach ($options as $key => $value) {
@@ -115,21 +113,21 @@ class PdoClient implements PdoClientInterface
     /**
      * @inheritDoc
     */
-    public function getConnection(): ConnectionInterface
+    public function createConnection(): ConnectionInterface
     {
-         if (!$this->hasAvailableDriver()) {
-             throw new UnavailableDriverException($this->driver, [
-                 'from' => __METHOD__
-             ]);
-         }
+        if (!$this->hasAvailableDriver()) {
+            throw new UnavailableDriverException($this->driver, [
+                'from' => __METHOD__
+            ]);
+        }
 
-         return match ($this->driver) {
-             'mysql'  => new MysqlConnection($this),
-             'pgsql'  => new PgsqlConnection($this),
-             'oci'    => new OracleConnection($this),
-             'sqlite' => new SqliteConnection($this),
-             default  => $this->abort("Could not resolve instance of connection $this->driver")
-         };
+        return match ($this->driver) {
+            'mysql'  => new MysqlConnection($this),
+            'pgsql'  => new PgsqlConnection($this),
+            'oci'    => new OracleConnection($this),
+            'sqlite' => new SqliteConnection($this),
+            default  => $this->abort("Could not resolve instance of connection $this->driver")
+        };
     }
 
 

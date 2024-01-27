@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPUnitTest\Component\Database\Connection\Client\PDO\Dsn;
@@ -17,33 +18,33 @@ use PHPUnit\Framework\TestCase;
  */
 class PdoDsnBuilderTest extends TestCase
 {
-       public function testItBuildCorrectlyDsn(): void
-       {
-            $mysqlDsn = PdoDsnBuilder::create('mysql', [
-                'host'    => '127.0.0.1',
-                'port'     => '3306',
-                'username' => 'root',
-                'password' => 'secret',
-                'dbname'   => 'homestead',
-                'charset'  => 'utf8'
-            ]);
+    public function testItBuildCorrectlyDsn(): void
+    {
+        $mysqlDsn = PdoDsnBuilder::create('mysql', [
+            'host'    => '127.0.0.1',
+            'port'     => '3306',
+            'username' => 'root',
+            'password' => 'secret',
+            'dbname'   => 'homestead',
+            'charset'  => 'utf8'
+        ]);
 
-            $pgsqlDsn = PdoDsnBuilder::create('pgsql', [
-               'host'     => '127.0.0.1',
-               'port'     => '5432',
-               'username' => 'postgres',
-               'password' => '123456',
-               'dbname'   => 'homestead'
-            ]);
+        $pgsqlDsn = PdoDsnBuilder::create('pgsql', [
+           'host'     => '127.0.0.1',
+           'port'     => '5432',
+           'username' => 'postgres',
+           'password' => '123456',
+           'dbname'   => 'homestead'
+        ]);
 
-            $this->assertSame(
-       'mysql:host=127.0.0.1;port=3306;username=root;password=secret;dbname=homestead;charset=utf8',
-                $mysqlDsn->build()
-            );
+        $this->assertSame(
+            'mysql:host=127.0.0.1;port=3306;username=root;password=secret;dbname=homestead;charset=utf8',
+            $mysqlDsn->build()
+        );
 
-            $this->assertSame(
-      'pgsql:host=127.0.0.1;port=5432;username=postgres;password=123456;dbname=homestead',
-               $pgsqlDsn->build()
-           );
-       }
+        $this->assertSame(
+            'pgsql:host=127.0.0.1;port=5432;username=postgres;password=123456;dbname=homestead',
+            $pgsqlDsn->build()
+        );
+    }
 }
