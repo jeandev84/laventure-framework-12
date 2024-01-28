@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PHPUnitTest\Component\Database\Builder;
 
+use Laventure\Component\Database\Builder\SQL\DML\DeleteBuilder;
 use Laventure\Component\Database\Builder\SQL\DML\InsertBuilder;
 use Laventure\Component\Database\Builder\SQL\DML\UpdateBuilder;
 use Laventure\Component\Database\Builder\SQL\DQL\SelectBuilder;
@@ -176,9 +177,16 @@ class QueryBuilderTest extends TestCase
 
 
 
-
-    public function testQueryBuilder(): void
+    public function testDelete(): void
     {
-        $this->assertTrue(true);
+        $delete = new DeleteBuilder($this->connection, 'products');
+        $delete->where('id = :id');
+        $delete->setParameter('id', 3);
+
+        $this->assertSame(
+    'DELETE FROM products WHERE id = :id;',
+            $delete->getSQL()
+        );
+        $this->assertArrayHasKey('id', $delete->getParameters());
     }
 }
