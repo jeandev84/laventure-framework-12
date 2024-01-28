@@ -25,6 +25,9 @@ trait ConditionTrait
 
 
 
+    protected array $whereOperators = ['AND', 'OR'];
+
+
     /**
      * @param string $condition
      * @return $this
@@ -66,12 +69,34 @@ trait ConditionTrait
     }
 
 
+
+
+
     /**
      * @return array
     */
     public function getConditions(): array
     {
         return $this->wheres;
+    }
+
+
+
+
+
+    /**
+     * @return string
+    */
+    public function getConditionsAsString(): string
+    {
+        $conditions = [];
+        foreach ($this->whereOperators as $operator) {
+            if (!empty($this->wheres[$operator])) {
+                $conditions[] = join(' ', $this->wheres[$operator]);
+            }
+        }
+
+        return join(' ', $conditions);
     }
 
 
