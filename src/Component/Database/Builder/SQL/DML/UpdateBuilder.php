@@ -6,6 +6,7 @@ namespace Laventure\Component\Database\Builder\SQL\DML;
 use Laventure\Component\Database\Builder\SQL\BuilderTrait;
 use Laventure\Component\Database\Builder\SQL\Conditions\Traits\ConditionTrait;
 use Laventure\Component\Database\Builder\SQL\DML\Contract\UpdateBuilderInterface;
+use Laventure\Component\Database\Builder\SQL\Utils\QueryFormatter;
 
 /**
  * UpdateBuilder
@@ -62,9 +63,12 @@ class UpdateBuilder implements UpdateBuilderInterface
      public function getSQL(): string
      {
          $set   = sprintf('SET %s', join(', ', $this->set));
-         $sql[] = sprintf("UPDATE %s %s", $this->getTable(), $set);
-         $sql[] = $this->whereSQL();
-         return join(' ', array_filter($sql)).';';
+         $formatter = new QueryFormatter([
+             sprintf("UPDATE %s %s", $this->getTable(), $set),
+             $this->whereSQL()
+         ]);
+
+         return $formatter->format();
      }
 
 

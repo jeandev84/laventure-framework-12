@@ -6,6 +6,7 @@ namespace Laventure\Component\Database\Builder\SQL\DML;
 use Laventure\Component\Database\Builder\SQL\BuilderTrait;
 use Laventure\Component\Database\Builder\SQL\Conditions\Traits\ConditionTrait;
 use Laventure\Component\Database\Builder\SQL\DML\Contract\DeleteBuilderInterface;
+use Laventure\Component\Database\Builder\SQL\Utils\QueryFormatter;
 
 /**
  * DeleteBuilder
@@ -38,10 +39,12 @@ class DeleteBuilder implements DeleteBuilderInterface
     */
     public function getSQL(): string
     {
-        $sql[] = sprintf('DELETE FROM %s', $this->getTable());
-        $sql[] = $this->whereSQL();
+        $formatter = new QueryFormatter([
+            sprintf('DELETE FROM %s', $this->getTable()),
+            $this->whereSQL()
+        ]);
 
-        return join(' ', array_filter($sql)) . ";";
+        return $formatter->format();
     }
 
 

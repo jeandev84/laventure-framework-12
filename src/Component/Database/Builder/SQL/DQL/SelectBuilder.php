@@ -7,6 +7,7 @@ use Laventure\Component\Database\Builder\SQL\BuilderTrait;
 use Laventure\Component\Database\Builder\SQL\Conditions\Contract\ConditionInterface;
 use Laventure\Component\Database\Builder\SQL\Conditions\Traits\ConditionTrait;
 use Laventure\Component\Database\Builder\SQL\DQL\Contract\SelectBuilderInterface;
+use Laventure\Component\Database\Builder\SQL\Utils\QueryFormatter;
 
 /**
  * SelectBuilder
@@ -325,15 +326,17 @@ class SelectBuilder implements SelectBuilderInterface, ConditionInterface
     */
     public function getSQL(): string
     {
-        $sql[] = $this->selectSQL();
-        $sql[] = $this->joinSQL();
-        $sql[] = $this->whereSQL();
-        $sql[] = $this->groupBySQL();
-        $sql[] = $this->havingSQL();
-        $sql[] = $this->orderBySQL();
-        $sql[] = $this->limitSQL();
+        $formatter = new QueryFormatter([
+            $this->selectSQL(),
+            $this->joinSQL(),
+            $this->whereSQL(),
+            $this->groupBySQL(),
+            $this->havingSQL(),
+            $this->orderBySQL(),
+            $this->limitSQL()
+        ]);
 
-        return join(' ', array_filter($sql));
+        return $formatter->format();
     }
 
 
