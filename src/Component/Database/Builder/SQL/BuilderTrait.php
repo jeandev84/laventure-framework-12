@@ -28,7 +28,14 @@ trait BuilderTrait
     /**
      * @var array
      */
-    protected array $bindings = [];
+    protected array $bindingParams = [];
+
+
+    /**
+     * @var array
+    */
+    protected array $bindingValues = [];
+
 
 
 
@@ -88,18 +95,31 @@ trait BuilderTrait
 
 
 
+
     /**
-     * @param $id
-     * @param $value
-     * @param $type
-     * @return $this
-     */
+     * @inheritdoc
+    */
     public function bindParam($id, $value, $type = null): static
     {
-        $this->bindings[$id] = [$id, $value, $type];
+        $this->bindingParams[$id] = [$id, $value, intval($type)];
 
         return $this;
     }
+
+
+
+
+    /**
+     * @inheritdoc
+    */
+    public function bindValue($id, $value, $type = null): static
+    {
+        $this->bindingValues[$id] = [$id, $value, intval($type)];
+
+        return $this;
+    }
+
+
 
 
 
@@ -149,8 +169,28 @@ trait BuilderTrait
     public function getQuery(): QueryInterface
     {
         $statement = $this->connection->statement($this->getSQL());
-
+        $statement->bindParams($this->bindingParams);
+        $statement->bindValues($this->bindingValues);
         return $statement->withParams($this->parameters);
+    }
+
+
+
+
+    /**
+     * @param QueryInterface $statement
+     * @return QueryInterface
+    */
+    private function bindParams(QueryInterface $statement): QueryInterface
+    {
+        if ($this->bindingParams) {
+            foreach ($this->bindingParams as $params) {
+                [$id, $value, $type] = $params;
+                $statement->bindParam($id, $value, $type);
+            }
+        }
+
+        return $statement;
     }
 
 

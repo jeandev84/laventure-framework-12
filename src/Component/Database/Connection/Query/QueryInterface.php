@@ -53,6 +53,13 @@ interface QueryInterface
 
 
 
+    /**
+     * @param array $params
+     * @return $this
+    */
+    public function bindParams(array $params): static;
+
+
 
 
 
@@ -69,6 +76,17 @@ interface QueryInterface
 
 
 
+
+    /**
+     * @param array $values
+     * @return $this
+    */
+    public function bindValues(array $values): static;
+
+
+
+
+
     /**
      * @param $column
      * @param $value
@@ -80,6 +98,13 @@ interface QueryInterface
 
 
 
+
+
+    /**
+     * @param array $columns
+     * @return $this
+    */
+    public function bindColumns(array $columns): static;
 
 
 

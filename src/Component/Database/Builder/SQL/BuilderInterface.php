@@ -48,6 +48,7 @@ interface BuilderInterface extends Stringable
 
 
 
+
     /**
      * @param $id
      * @return mixed
@@ -68,6 +69,15 @@ interface BuilderInterface extends Stringable
 
 
 
+
+
+    /**
+     * @param $id
+     * @param $value
+     * @param $type
+     * @return $this
+    */
+    public function bindValue($id, $value, $type = null): static;
 
 
 

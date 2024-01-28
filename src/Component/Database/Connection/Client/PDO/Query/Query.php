@@ -160,6 +160,55 @@ class Query implements QueryInterface
 
 
 
+    /**
+     * @inheritDoc
+    */
+    public function bindParams(array $params): static
+    {
+        foreach ($params as $bind) {
+            [$id, $value, $type] = $bind;
+            $this->bindParam($id, $value, $type);
+        }
+
+        return $this;
+    }
+
+
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function bindValues(array $values): static
+    {
+        foreach ($values as $bind) {
+            [$id, $value, $type] = $bind;
+            $this->bindValue($id, $value, $type);
+        }
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * @inheritdoc
+    */
+    public function bindColumns(array $columns): static
+    {
+        foreach ($columns as $bind) {
+            [$id, $value, $type] = $bind;
+            $this->bindColumn($id, $value, $type);
+        }
+
+        return $this;
+    }
+
+
+
 
 
     /**
