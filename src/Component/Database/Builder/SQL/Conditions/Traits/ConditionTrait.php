@@ -83,25 +83,6 @@ trait ConditionTrait
 
 
 
-
-    /**
-     * @return string
-    */
-    public function getConditionsAsString(): string
-    {
-        $conditions = [];
-        foreach ($this->whereOperators as $operator) {
-            if (!empty($this->wheres[$operator])) {
-                $conditions[] = join(' ', $this->wheres[$operator]);
-            }
-        }
-
-        return join(' ', $conditions);
-    }
-
-
-
-
     /**
      * Returns conditions query
      *
@@ -113,6 +94,18 @@ trait ConditionTrait
              return '';
          }
 
+         return sprintf('WHERE %s', $this->buildConditions());
+    }
+
+
+
+
+
+    /**
+     * @return string
+    */
+    private function buildConditions(): string
+    {
         $wheres = [];
 
         $key = key($this->wheres);
@@ -126,6 +119,6 @@ trait ConditionTrait
             $wheres[] = implode(" $operator ", $conditions);
         }
 
-        return sprintf('WHERE %s', join(' ', $wheres));
+        return  join(' ', $wheres);
     }
 }
