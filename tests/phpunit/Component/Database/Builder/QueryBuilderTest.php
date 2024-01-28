@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PHPUnitTest\Component\Database\Builder;
 
 use Laventure\Component\Database\Builder\SQL\DML\InsertBuilder;
+use Laventure\Component\Database\Builder\SQL\DML\UpdateBuilder;
 use Laventure\Component\Database\Builder\SQL\DQL\SelectBuilder;
 use Laventure\Component\Database\Connection\Client\PDO\Drivers\Mysql\MysqlConnection;
 use Laventure\Component\Database\Connection\Client\PDO\PdoConnectionInterface;
@@ -132,7 +133,7 @@ class QueryBuilderTest extends TestCase
              'city'     => 'Moscow',
              'age'      => 25
          ]);
-         echo $insert2. PHP_EOL;
+
 
          $this->assertSame(
     'INSERT INTO users (username, password, city, age) VALUES (Brown, 6ff47afa5dc7daa42cc705a03fca8a9b, Moscow, 25);',
@@ -150,7 +151,27 @@ class QueryBuilderTest extends TestCase
 
     public function testUpdateQuery(): void
     {
-        $this->assertTrue(true);
+        $update = new UpdateBuilder($this->connection, 'products');
+        $update->update([
+           'price' => ':price',
+           'title' => ':title'
+        ]);
+
+        $update->set('isbn', ':isbn');
+        $update->where('id = :id');
+
+        $update->setParameters([
+            'price' => 345,
+            'title' => 'some title',
+            'isbn'  => md5(uniqid()),
+            'id'    => 3
+        ]);
+
+
+        $this->assertSame(
+   'UPDATE products SET price = :price, title = :title, isbn = :isbn WHERE id = :id;',
+            $update->getSQL()
+        );
     }
 
 
