@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Database\Builder\SQL\Contract\DQL;
+namespace Laventure\Component\Database\Builder\SQL\DQL\Contract;
 
+
+use Laventure\Component\Database\Builder\SQL\BuilderInterface;
 
 /**
  * SelectBuilderInterface
@@ -12,9 +14,9 @@ namespace Laventure\Component\Database\Builder\SQL\Contract\DQL;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Database\Builder\SQL\DQL
+ * @package  Laventure\Component\Database\Builder\SQL\DQL\Contract
 */
-interface SelectBuilderInterface
+interface SelectBuilderInterface extends BuilderInterface
 {
     /**
      * select columns
@@ -170,23 +172,23 @@ interface SelectBuilderInterface
 
 
 
-    //
-    //    /**
-    //     * @param string $condition
-    //     * @return $this
-    //    */
-    //    public function andHaving(string $condition): static;
-    //
-    //
-    //
-    //
-    //
-    //
-    //    /**
-    //     * @param string $condition
-    //     * @return $this
-    //    */
-    //    public function orHaving(string $condition): static;
+
+    /**
+     * @param string $condition
+     * @return $this
+    */
+    public function andHaving(string $condition): static;
+
+
+
+
+
+
+    /**
+     * @param string $condition
+     * @return $this
+    */
+    public function orHaving(string $condition): static;
 
 
 
@@ -232,17 +234,4 @@ interface SelectBuilderInterface
      * @return $this
     */
     public function offset(int $offset): static;
-
-
-
-
-
-
-
-    /**
-     * Returns select query
-     *
-     * @return string
-    */
-    public function buildSelectQuery(): string;
 }

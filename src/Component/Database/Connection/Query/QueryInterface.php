@@ -89,7 +89,7 @@ interface QueryInterface
      * @param array $params
      * @return $this
      */
-    public function params(array $params): static;
+    public function withParams(array $params): static;
 
 
 

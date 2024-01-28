@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Database\Builder\SQL\Contract\Conditions;
+namespace Laventure\Component\Database\Builder\SQL\Conditions\Contract;
 
 /**
  * ConditionInterface
@@ -52,5 +52,5 @@ interface ConditionInterface
      *
      * @return string
     */
-    public function buildConditionsQuery(): string;
+    public function whereSQL(): string;
 }

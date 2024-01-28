@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Database\Builder\SQL\Contract;
+namespace Laventure\Component\Database\Builder\SQL;
 
 /**
  * SettableInterface
@@ -16,9 +16,9 @@ namespace Laventure\Component\Database\Builder\SQL\Contract;
 interface SettableInterface
 {
     /**
-     * @param string $column
+     * @param $column
      * @param $value
      * @return $this
     */
-    public function set(string $column, $value): static;
+    public function set($column, $value): static;
 }

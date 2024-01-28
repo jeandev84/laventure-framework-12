@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Database\Builder\SQL\Contract;
+namespace Laventure\Component\Database\Builder\SQL;
 
 use Laventure\Component\Database\Connection\Query\QueryInterface;
 use Stringable;
@@ -18,6 +18,15 @@ use Stringable;
 */
 interface BuilderInterface extends Stringable
 {
+
+
+    /**
+     * @return string
+    */
+    public function getTable(): string;
+
+
+
     /**
      * @return string
     */
@@ -30,10 +39,9 @@ interface BuilderInterface extends Stringable
     /**
      * @param $id
      * @param $value
-     * @param $type
      * @return $this
     */
-    public function setParameter($id, $value, $type = null): static;
+    public function setParameter($id, $value): static;
 
 
 
@@ -46,6 +54,17 @@ interface BuilderInterface extends Stringable
      */
     public function getParameter($id): mixed;
 
+
+
+
+
+    /**
+     * @param $id
+     * @param $value
+     * @param $type
+     * @return $this
+    */
+    public function bindParam($id, $value, $type = null): static;
 
 
 

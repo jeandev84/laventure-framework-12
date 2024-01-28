@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Database\Builder\SQL\Contract\DML;
+namespace Laventure\Component\Database\Builder\SQL\DML\Contract;
+
+use Laventure\Component\Database\Builder\SQL\BuilderInterface;
 
 /**
  * DeleteBuilderInterface
@@ -11,12 +13,13 @@ namespace Laventure\Component\Database\Builder\SQL\Contract\DML;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Database\Builder\SQL\DML
+ * @package  Laventure\Component\Database\Builder\SQL\DML\Contract
  */
-interface DeleteBuilderInterface
+interface DeleteBuilderInterface extends BuilderInterface
 {
     /**
      * @param string $table
+     *
      * @return $this
     */
     public function delete(string $table): static;

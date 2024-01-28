@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Database\Builder\SQL\Traits\Conditions;
+namespace Laventure\Component\Database\Builder\SQL\Conditions\Traits;
 
 /**
  * ConditionTrait
@@ -12,6 +12,8 @@ namespace Laventure\Component\Database\Builder\SQL\Traits\Conditions;
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
  * @package  Laventure\Component\Database\Builder\SQL\Conditions\Traits
+ *
+ * //TODO refactoring check AND operator via andX, orX ...
 */
 trait ConditionTrait
 {
@@ -73,7 +75,7 @@ trait ConditionTrait
      *
      * @return string
     */
-    public function buildConditionsQuery(): string
+    public function whereSQL(): string
     {
          if (! $this->wheres) {
              return '';

@@ -1,43 +1,51 @@
 <?php
-
 declare(strict_types=1);
 
-namespace Laventure\Component\Database\Builder\SQL\Traits\DQL;
+namespace Laventure\Component\Database\Builder\SQL\DQL;
+
+use Laventure\Component\Database\Builder\SQL\BuilderTrait;
+use Laventure\Component\Database\Builder\SQL\Conditions\Contract\ConditionInterface;
+use Laventure\Component\Database\Builder\SQL\Conditions\Traits\ConditionTrait;
+use Laventure\Component\Database\Builder\SQL\DQL\Contract\SelectBuilderInterface;
 
 /**
- * SelectBuilderTrait
+ * SelectBuilder
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Database\Builder\SQL\DQL\Traits
+ * @package  Laventure\Component\Database\Builder\SQL\Contract\DQL
 */
-trait SelectBuilderTrait
+class SelectBuilder implements SelectBuilderInterface, ConditionInterface
 {
+
+    use BuilderTrait, ConditionTrait;
+
+
     /**
      * @var array
-    */
+     */
     protected array $selected = [];
 
 
     /**
      * @var array
-    */
+     */
     protected array $from = [];
 
 
 
     /**
      * @var string[]
-    */
+     */
     protected array $joins = [];
 
 
 
     /**
      * @var array
-    */
+     */
     protected array $groupBy = [];
 
 
@@ -45,7 +53,7 @@ trait SelectBuilderTrait
 
     /**
      * @var string[]
-    */
+     */
     protected array $having = [];
 
 
@@ -53,14 +61,14 @@ trait SelectBuilderTrait
 
     /**
      * @var string[]
-    */
+     */
     protected array $orderBy = [];
 
 
 
     /**
      * @var int
-    */
+     */
     protected int $offset = 0;
 
 
@@ -68,8 +76,9 @@ trait SelectBuilderTrait
 
     /**s
      * @var int
-    */
+     */
     protected int $limit = 0;
+
 
 
 
@@ -78,7 +87,7 @@ trait SelectBuilderTrait
 
     /**
      * @inheritdoc
-    */
+     */
     public function select(string ...$columns): static
     {
         $this->selected = array_merge($this->selected, $columns);
@@ -91,7 +100,7 @@ trait SelectBuilderTrait
 
     /**
      * @inheritdoc
-    */
+     */
     public function addSelect(string $columns): static
     {
         $this->selected[] = $columns;
@@ -105,7 +114,7 @@ trait SelectBuilderTrait
 
     /**
      * @inheritdoc
-    */
+     */
     public function from(string $table, string $alias = null): static
     {
         $this->from[$table] = $alias ? "$table $alias" : $table;
@@ -120,7 +129,7 @@ trait SelectBuilderTrait
 
     /**
      * @inheritdoc
-    */
+     */
     public function join(string $table, string $condition): static
     {
         return $this->addJoin("JOIN $table ON $condition");
@@ -133,7 +142,7 @@ trait SelectBuilderTrait
 
     /**
      * @inheritdoc
-    */
+     */
     public function leftJoin(string $table, string $condition): static
     {
         return $this->addJoin("LEFT JOIN $table ON $condition");
@@ -145,7 +154,7 @@ trait SelectBuilderTrait
 
     /**
      * @inheritdoc
-    */
+     */
     public function rightJoin(string $table, string $condition): static
     {
         return $this->addJoin("RIGHT JOIN $table ON $condition");
@@ -157,7 +166,7 @@ trait SelectBuilderTrait
 
     /**
      * @inheritdoc
-    */
+     */
     public function innerJoin(string $table, string $condition): static
     {
         return $this->addJoin("INNER JOIN $table ON $condition");
@@ -169,7 +178,7 @@ trait SelectBuilderTrait
 
     /**
      * @inheritdoc
-    */
+     */
     public function fullJoin(string $table, string $condition): static
     {
         return $this->addJoin("FULL JOIN $table ON $condition");
@@ -181,7 +190,7 @@ trait SelectBuilderTrait
 
     /**
      * @inheritdoc
-    */
+     */
     public function addJoin(string $join): static
     {
         $this->joins[] = $join;
@@ -195,7 +204,7 @@ trait SelectBuilderTrait
 
     /**
      * @inheritdoc
-    */
+     */
     public function groupBy(string $column): static
     {
         return $this->addGroupBy($column);
@@ -207,7 +216,7 @@ trait SelectBuilderTrait
 
     /**
      * @inheritdoc
-    */
+     */
     public function addGroupBy(array|string $groupBy): static
     {
         $this->groupBy[] = join(', ', (array)$groupBy);
@@ -221,7 +230,7 @@ trait SelectBuilderTrait
 
     /**
      * @inheritdoc
-    */
+     */
     public function having(string $condition): static
     {
         $this->having[] = $condition;
@@ -235,7 +244,7 @@ trait SelectBuilderTrait
 
     /**
      * @inheritDoc
-    */
+     */
     public function andHaving(string $condition): static
     {
         return $this;
@@ -246,7 +255,7 @@ trait SelectBuilderTrait
 
     /**
      * @inheritDoc
-    */
+     */
     public function orHaving(string $condition): static
     {
         return $this;
@@ -259,7 +268,7 @@ trait SelectBuilderTrait
 
     /**
      * @inheritdoc
-    */
+     */
     public function orderBy(string $column, string $direction = null): static
     {
         return $this->addOrderBy($column, $direction);
@@ -271,7 +280,7 @@ trait SelectBuilderTrait
 
     /**
      * @inheritdoc
-    */
+     */
     public function addOrderBy(string $column, string $direction = null): static
     {
         $this->orderBy[] = "$column " . ($direction ?: 'asc');
@@ -285,7 +294,7 @@ trait SelectBuilderTrait
 
     /**
      * @inheritdoc
-    */
+     */
     public function limit(int $limit): static
     {
         $this->limit = $limit;
@@ -298,7 +307,7 @@ trait SelectBuilderTrait
 
     /**
      * @inheritdoc
-    */
+     */
     public function offset(int $offset): static
     {
         $this->offset = $offset;
@@ -310,16 +319,47 @@ trait SelectBuilderTrait
 
 
 
+
+    /**
+     * @inheritDoc
+    */
+    public function getSQL(): string
+    {
+        $sql[] = $this->selectSQL();
+        $sql[] = $this->joinSQL();
+        $sql[] = $this->whereSQL();
+        $sql[] = $this->groupBySQL();
+        $sql[] = $this->havingSQL();
+        $sql[] = $this->orderBySQL();
+        $sql[] = $this->limitSQL();
+
+        return join(' ', array_filter($sql));
+    }
+
+
+
+
+
+    /**
+     * @return string
+    */
+    public function getTable(): string
+    {
+        return join(', ', array_values($this->from));
+    }
+
+
+
+
     /**
      * @return string
     */
     protected function selectSQL(): string
     {
-        $selects  =  join(', ', array_filter($this->selected));
-        $table    =  join(', ', array_values($this->from));
-        $columns  =  empty($this->selected) ? "*" : $selects;
+        $selected =  join(', ', array_filter($this->selected));
+        $columns  =  empty($this->selected) ? "*" : $selected;
 
-        return sprintf('SELECT %s FROM %s', $columns, $table);
+        return sprintf('SELECT %s FROM %s', $columns, $this->getTable());
     }
 
 
@@ -329,7 +369,7 @@ trait SelectBuilderTrait
 
     /**
      * @return string
-    */
+     */
     protected function joinSQL(): string
     {
         return ($this->joins ? join(' ', $this->joins) : '');
@@ -341,7 +381,7 @@ trait SelectBuilderTrait
 
     /**
      * @return string
-    */
+     */
     protected function groupBySQL(): string
     {
         return ($this->groupBy ? sprintf('GROUP BY %s', join($this->groupBy)) : '');
@@ -353,7 +393,7 @@ trait SelectBuilderTrait
 
     /**
      * @return string
-    */
+     */
     protected function havingSQL(): string
     {
         return ($this->having ? sprintf('HAVING %s', join($this->having)) : '');
@@ -363,7 +403,7 @@ trait SelectBuilderTrait
 
     /**
      * @return string
-    */
+     */
     protected function orderBySQL(): string
     {
         return ($this->orderBy ? rtrim(sprintf('ORDER BY %s', join(',', $this->orderBy))) : '');
@@ -389,5 +429,4 @@ trait SelectBuilderTrait
 
         return $limit;
     }
-
 }

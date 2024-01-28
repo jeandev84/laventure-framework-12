@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Database\Builder\SQL\Contract;
+namespace Laventure\Component\Database\Builder\SQL;
 
-use Laventure\Component\Database\Builder\SQL\Contract\DML\DeleteBuilderInterface;
-use Laventure\Component\Database\Builder\SQL\Contract\DML\InsertBuilderInterface;
-use Laventure\Component\Database\Builder\SQL\Contract\DML\UpdateBuilderInterface;
-use Laventure\Component\Database\Builder\SQL\Contract\DQL\SelectBuilderInterface;
+use Laventure\Component\Database\Builder\SQL\DML\Contract\DeleteBuilderInterface;
+use Laventure\Component\Database\Builder\SQL\DML\Contract\InsertBuilderInterface;
+use Laventure\Component\Database\Builder\SQL\DML\Contract\UpdateBuilderInterface;
+use Laventure\Component\Database\Builder\SQL\DQL\Contract\SelectBuilderInterface;
 
 /**
  * SqlQueryBuilderInterface

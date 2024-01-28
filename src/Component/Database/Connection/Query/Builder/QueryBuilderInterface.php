@@ -17,7 +17,7 @@ use Stringable;
  *
  * @package  Laventure\Component\Database\Connection\Query\Builder
 */
-interface QueryBuilderInterface extends Stringable
+interface QueryBuilderInterface
 {
     /**
      * select columns
@@ -414,14 +414,4 @@ interface QueryBuilderInterface extends Stringable
      * @return QueryInterface
     */
     public function getQuery(): QueryInterface;
-
-
-
-
-
-
-    /**
-     * @return array
-    */
-    public function toArray(): array;
 }
