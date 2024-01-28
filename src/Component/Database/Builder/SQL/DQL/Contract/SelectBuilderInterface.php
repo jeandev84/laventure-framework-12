@@ -6,6 +6,7 @@ namespace Laventure\Component\Database\Builder\SQL\DQL\Contract;
 
 
 use Laventure\Component\Database\Builder\SQL\BuilderInterface;
+use Laventure\Component\Database\Builder\SQL\Conditions\Contract\HasConditionInterface;
 
 /**
  * SelectBuilderInterface
@@ -16,7 +17,7 @@ use Laventure\Component\Database\Builder\SQL\BuilderInterface;
  *
  * @package  Laventure\Component\Database\Builder\SQL\DQL\Contract
 */
-interface SelectBuilderInterface extends BuilderInterface
+interface SelectBuilderInterface extends HasConditionInterface, BuilderInterface
 {
     /**
      * select columns
@@ -49,7 +50,6 @@ interface SelectBuilderInterface extends BuilderInterface
      * @return $this
      */
     public function from(string $table, string $alias = null): static;
-
 
 
 

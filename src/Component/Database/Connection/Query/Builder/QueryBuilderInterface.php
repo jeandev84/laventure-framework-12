@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Laventure\Component\Database\Connection\Query\Builder;
 
 
-use Laventure\Component\Database\Connection\Query\QueryInterface;
+
 use Stringable;
 
 /**
- * QueryBuilderInterface
+ * QueryBuilderInterface (Decorate query builder)
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
@@ -17,7 +17,7 @@ use Stringable;
  *
  * @package  Laventure\Component\Database\Connection\Query\Builder
 */
-interface QueryBuilderInterface
+interface QueryBuilderInterface extends Stringable
 {
     /**
      * select columns
@@ -229,7 +229,7 @@ interface QueryBuilderInterface
      * @param int $limit
      * @return $this
     */
-    public function limit(int $limit): static;
+    public function setMaxResults(int $limit): static;
 
 
 
@@ -241,7 +241,7 @@ interface QueryBuilderInterface
      * @param int $offset
      * @return $this
     */
-    public function offset(int $offset): static;
+    public function setFirstResult(int $offset): static;
 
 
 
@@ -251,7 +251,7 @@ interface QueryBuilderInterface
     /**
      * @param string $table
      * @return $this
-     */
+    */
     public function insert(string $table): static;
 
 
@@ -260,6 +260,7 @@ interface QueryBuilderInterface
 
     /**
      * @param array $values
+     *
      * @return $this
     */
     public function values(array $values): static;
@@ -269,11 +270,11 @@ interface QueryBuilderInterface
 
 
     /**
-     * @param $column
+     * @param string $column
      * @param $value
      * @return $this
     */
-    public function setValue($column, $value): static;
+    public function setValue(string $column, $value): static;
 
 
 
@@ -305,13 +306,14 @@ interface QueryBuilderInterface
 
 
 
-
-
     /**
      * @param string $table
+     * @param string $alias
      * @return $this
     */
-    public function delete(string $table): static;
+    public function delete(string $table, string $alias = ''): static;
+
+
 
 
 
@@ -354,10 +356,9 @@ interface QueryBuilderInterface
     /**
      * @param $id
      * @param $value
-     * @param $type
      * @return $this
     */
-    public function setParameter($id, $value, $type = null): static;
+    public function setParameter($id, $value): static;
 
 
 
@@ -411,7 +412,7 @@ interface QueryBuilderInterface
 
 
     /**
-     * @return QueryInterface
+     * @return mixed
     */
-    public function getQuery(): QueryInterface;
+    public function getQuery(): mixed;
 }

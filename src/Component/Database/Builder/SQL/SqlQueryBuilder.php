@@ -6,6 +6,9 @@ namespace Laventure\Component\Database\Builder\SQL;
 use Laventure\Component\Database\Builder\SQL\DML\Contract\DeleteBuilderInterface;
 use Laventure\Component\Database\Builder\SQL\DML\Contract\InsertBuilderInterface;
 use Laventure\Component\Database\Builder\SQL\DML\Contract\UpdateBuilderInterface;
+use Laventure\Component\Database\Builder\SQL\DML\DeleteBuilder;
+use Laventure\Component\Database\Builder\SQL\DML\InsertBuilder;
+use Laventure\Component\Database\Builder\SQL\DML\UpdateBuilder;
 use Laventure\Component\Database\Builder\SQL\DQL\Contract\SelectBuilderInterface;
 use Laventure\Component\Database\Builder\SQL\DQL\SelectBuilder;
 use Laventure\Component\Database\Connection\ConnectionInterface;
@@ -59,9 +62,11 @@ class SqlQueryBuilder implements SqlQueryBuilderInterface
     /**
      * @inheritDoc
     */
-    public function insert(string $table): InsertBuilderInterface
+    public function insert(string $table, array $attributes): InsertBuilderInterface
     {
-
+        $builder = new InsertBuilder($this->connection, $table);
+        $builder->values($attributes);
+        return $builder;
     }
 
 
@@ -70,9 +75,11 @@ class SqlQueryBuilder implements SqlQueryBuilderInterface
     /**
      * @inheritDoc
     */
-    public function update(string $table): UpdateBuilderInterface
+    public function update(string $table, array $attributes): UpdateBuilderInterface
     {
-
+        $builder = new UpdateBuilder($this->connection, $table);
+        $builder->update($attributes);
+        return $builder;
     }
 
 
@@ -83,6 +90,6 @@ class SqlQueryBuilder implements SqlQueryBuilderInterface
     */
     public function delete(string $table): DeleteBuilderInterface
     {
-
+        return new DeleteBuilder($this->connection, $table);
     }
 }

@@ -72,6 +72,21 @@ trait BuilderTrait
 
 
     /**
+     * @param string $table
+     *
+     * @return $this
+    */
+    public function table(string $table): static
+    {
+        $this->table = $table;
+
+        return $this;
+    }
+
+
+
+
+    /**
      * @return string
     */
     public function getTable(): string

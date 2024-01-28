@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Laventure\Component\Database\Builder\SQL\Conditions\Contract;
 
 /**
- * ConditionInterface
+ * HasConditionInterface
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
@@ -13,7 +13,7 @@ namespace Laventure\Component\Database\Builder\SQL\Conditions\Contract;
  *
  * @package  Laventure\Component\Database\Builder\SQL\Conditions
  */
-interface ConditionInterface
+interface HasConditionInterface
 {
     /**
      * @param string $condition

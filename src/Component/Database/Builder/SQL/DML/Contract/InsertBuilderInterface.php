@@ -15,11 +15,12 @@ namespace Laventure\Component\Database\Builder\SQL\DML\Contract;
  */
 interface InsertBuilderInterface
 {
+
     /**
-     * @param array $attributes
+     * @param array $values
      * @return $this
-   */
-    public function insert(array $attributes): static;
+    */
+    public function values(array $values): static;
 
 
 
@@ -29,5 +30,5 @@ interface InsertBuilderInterface
      * @param $value
      * @return $this
      */
-    public function set($column, $value): static;
+    public function setValue($column, $value): static;
 }

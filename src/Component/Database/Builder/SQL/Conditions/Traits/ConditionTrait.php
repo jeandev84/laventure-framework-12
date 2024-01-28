@@ -25,8 +25,6 @@ trait ConditionTrait
 
 
 
-    protected array $whereOperators = ['AND', 'OR'];
-
 
     /**
      * @param string $condition

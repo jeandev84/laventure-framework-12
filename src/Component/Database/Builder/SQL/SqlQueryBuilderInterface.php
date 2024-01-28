@@ -30,25 +30,22 @@ interface SqlQueryBuilderInterface
 
 
 
-
-
     /**
      * @param string $table
+     * @param array $attributes
      * @return InsertBuilderInterface
-     */
-    public function insert(string $table): InsertBuilderInterface;
-
-
-
+    */
+    public function insert(string $table, array $attributes): InsertBuilderInterface;
 
 
 
 
     /**
      * @param string $table
+     * @param array $attributes
      * @return UpdateBuilderInterface
-     */
-    public function update(string $table): UpdateBuilderInterface;
+    */
+    public function update(string $table, array $attributes): UpdateBuilderInterface;
 
 
 

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Database\Builder\SQL\DML\Contract;
 
+use Laventure\Component\Database\Builder\SQL\Conditions\Contract\HasConditionInterface;
 use Laventure\Component\Database\Builder\SQL\SettableInterface;
 
 /**
@@ -15,7 +16,7 @@ use Laventure\Component\Database\Builder\SQL\SettableInterface;
  *
  * @package  Laventure\Component\Database\Builder\SQL\DML
  */
-interface UpdateBuilderInterface extends SettableInterface
+interface UpdateBuilderInterface extends HasConditionInterface, SettableInterface
 {
     /**
      * @param array $attributes

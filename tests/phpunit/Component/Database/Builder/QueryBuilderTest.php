@@ -115,19 +115,19 @@ class QueryBuilderTest extends TestCase
     public function testInsertQuery(): void
     {
          $insert1 = new InsertBuilder($this->connection, 'users');
-         $insert1->insert([
+         $insert1->values([
             'username' => 'Brown',
             'password' => md5('brown'),
             'city'     => 'Moscow'
-         ])->set('age', 25);
+         ])->setValue('age', 25);
 
          $insert2 = new InsertBuilder($this->connection, 'users');
-         $insert2->insert([
+         $insert2->values([
             'username' => ':username',
             'password' => ':password',
             'city'     => ':city'
          ])
-         ->set('age', ':age')
+         ->setValue('age', ':age')
          ->setParameters([
              'username' => 'Brown',
              'password' =>  md5('brown'),

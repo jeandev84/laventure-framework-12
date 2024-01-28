@@ -16,7 +16,7 @@ use Laventure\Component\Database\Builder\SQL\SettableInterface;
  *
  * @package  Laventure\Component\Database\Builder\SQL\DML
  */
-class InsertBuilder implements InsertBuilderInterface, SettableInterface
+class InsertBuilder implements InsertBuilderInterface
 {
 
     use BuilderTrait;
@@ -41,6 +41,27 @@ class InsertBuilder implements InsertBuilderInterface, SettableInterface
     /**
      * @inheritDoc
     */
+    public function values(array $values): static
+    {
+        if (!empty($values[0])) {
+            foreach ($values as $attributes) {
+                $this->insert($attributes);
+            }
+        } else {
+            $this->insert($values);
+        }
+
+        return $this;
+    }
+
+
+
+
+
+    /**
+     * @param array $attributes
+     * @return $this
+    */
     public function insert(array $attributes): static
     {
         $this->columns  = array_keys($attributes);
@@ -52,11 +73,10 @@ class InsertBuilder implements InsertBuilderInterface, SettableInterface
 
 
 
-
     /**
      * @inheritdoc
     */
-    public function set($column, $value): static
+    public function setValue($column, $value): static
     {
         $this->columns[] = $column;
         $this->values[]  = $value;
