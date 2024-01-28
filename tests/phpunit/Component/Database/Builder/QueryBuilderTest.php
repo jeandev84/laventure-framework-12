@@ -101,7 +101,7 @@ class QueryBuilderTest extends TestCase
          JOIN products p ON p.id = u.product_id
          WHERE u.id = :id AND u.username = :username OR u.email = :email
          GROUP BY p.price HAVING count(p.price) > 500
-         ORDER BY p.title asc
+         ORDER BY p.title asc;
         */
 
         $this->assertSame($sql, $builder->getSQL());
@@ -112,25 +112,45 @@ class QueryBuilderTest extends TestCase
 
     public function testInsertQuery(): void
     {
-         $builder = new InsertBuilder($this->connection, 'users');
+         $insert1 = new InsertBuilder($this->connection, 'users');
+         $insert1->insert([
+            'username' => 'Brown',
+            'password' => md5('brown'),
+            'city'     => 'Moscow'
+         ])->set('age', 25);
 
-         $builder->insert([
+         $insert2 = new InsertBuilder($this->connection, 'users');
+         $insert2->insert([
             'username' => ':username',
             'password' => ':password',
             'city'     => ':city'
-         ]);
-         $builder->set('age', ':age');
-
-         $builder->setParameters([
+         ])
+         ->set('age', ':age')
+         ->setParameters([
              'username' => 'Brown',
              'password' =>  md5('brown'),
              'city'     => 'Moscow',
              'age'      => 25
          ]);
+         echo $insert2. PHP_EOL;
 
-         echo $builder . PHP_EOL;
+         $this->assertSame(
+    'INSERT INTO users (username, password, city, age) VALUES (Brown, 6ff47afa5dc7daa42cc705a03fca8a9b, Moscow, 25);',
+             $insert1->getSQL()
+         );
 
-         $this->assertTrue(true);
+        $this->assertSame(
+   'INSERT INTO users (username, password, city, age) VALUES (:username, :password, :city, :age);',
+            $insert2->getSQL()
+        );
+    }
+
+
+
+
+    public function testUpdateQuery(): void
+    {
+        $this->assertTrue(true);
     }
 
 
