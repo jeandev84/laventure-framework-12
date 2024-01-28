@@ -26,59 +26,59 @@ class SelectBuilder implements SelectBuilderInterface, ConditionInterface
 
     /**
      * @var array
-     */
-    protected array $selected = [];
+    */
+    public array $selected = [];
 
 
     /**
      * @var array
-     */
-    protected array $from = [];
+    */
+    public array $from = [];
 
 
 
     /**
      * @var string[]
-     */
-    protected array $joins = [];
+    */
+    public array $joins = [];
 
 
 
     /**
      * @var array
-     */
-    protected array $groupBy = [];
+    */
+    public array $groupBy = [];
 
 
 
 
     /**
      * @var string[]
-     */
-    protected array $having = [];
+    */
+    public array $having = [];
 
 
 
 
     /**
      * @var string[]
-     */
-    protected array $orderBy = [];
+    */
+    public array $orderBy = [];
 
 
 
     /**
      * @var int
-     */
-    protected int $offset = 0;
+    */
+    public int $offset = 0;
 
 
 
 
     /**s
      * @var int
-     */
-    protected int $limit = 0;
+    */
+    public int $limit = 0;
 
 
 
@@ -205,7 +205,7 @@ class SelectBuilder implements SelectBuilderInterface, ConditionInterface
 
     /**
      * @inheritdoc
-     */
+    */
     public function groupBy(string $column): static
     {
         return $this->addGroupBy($column);
@@ -350,6 +350,7 @@ class SelectBuilder implements SelectBuilderInterface, ConditionInterface
     {
         return join(', ', array_values($this->from));
     }
+
 
 
 

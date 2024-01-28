@@ -43,8 +43,8 @@ class InsertBuilder implements InsertBuilderInterface, SettableInterface
     */
     public function insert(array $attributes): static
     {
-        $this->columns   = array_keys($attributes);
-        $this->values[]  = '('. join(', ', array_values($attributes)) . ')';
+        $this->columns  = array_keys($attributes);
+        $this->values   = array_merge($this->values, array_values($attributes));
 
         return $this;
     }
@@ -58,7 +58,10 @@ class InsertBuilder implements InsertBuilderInterface, SettableInterface
     */
     public function set($column, $value): static
     {
-        return $this->insert([$column => $value]);
+        $this->columns[] = $column;
+        $this->values[]  = $value;
+
+        return $this;
     }
 
 
@@ -97,7 +100,7 @@ class InsertBuilder implements InsertBuilderInterface, SettableInterface
     public function getSQL(): string
     {
         $columns = join(', ', $this->getColumns());
-        $values  = join(', ', $this->getValues());
+        $values  = '('. join(', ', $this->getValues()) . ')';
 
         return sprintf("INSERT INTO {$this->getTable()} (%s) VALUES %s;", $columns, $values);
     }

@@ -66,6 +66,13 @@ trait ConditionTrait
     }
 
 
+    /**
+     * @return array
+    */
+    public function getConditions(): array
+    {
+        return $this->wheres;
+    }
 
 
 

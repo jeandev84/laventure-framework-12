@@ -26,7 +26,8 @@ class LoggerTest extends TestCase
 
         #$dto     = new LoggerWriterDto(date('Y-m-d H:i:s'), __DIR__.'/temp/log', 'dev');
         #$dto     = new LoggerWriterDto(date('Y-m-d H:i:s'), __DIR__.'/temp/log', 'local');
-        $dto     = new LoggerWriterDto(date('Y-m-d H:i:s'), __DIR__.'/temp/log', 'prod');
+        #$dto     = new LoggerWriterDto(date('Y-m-d H:i:s'), __DIR__.'/temp/log', 'prod');
+        $dto     = new LoggerWriterDto(date('Y-m-d H:i:s'), __DIR__.'/temp/log', 'test');
         $writer  = new LoggerWriter($dto);
         $logger  = new Logger($writer);
 

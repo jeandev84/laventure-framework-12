@@ -11,6 +11,7 @@ use Laventure\Component\Database\Connection\Client\PDO\PdoConnectionInterface;
 use Laventure\Component\Database\Connection\ConnectionInterface;
 use Laventure\Component\Database\Manager\DatabaseManager;
 use PDO;
+use PHP_CodeSniffer\Tokenizers\PHP;
 use PHPUnit\Framework\TestCase;
 use PHPUnitTest\App\Entity\Product;
 
@@ -113,24 +114,21 @@ class QueryBuilderTest extends TestCase
     {
          $builder = new InsertBuilder($this->connection, 'users');
 
-
          $builder->insert([
             'username' => ':username',
             'password' => ':password',
             'city'     => ':city'
          ]);
+         $builder->set('age', ':age');
 
          $builder->setParameters([
              'username' => 'Brown',
              'password' =>  md5('brown'),
-             'city'     => 'Moscow'
+             'city'     => 'Moscow',
+             'age'      => 25
          ]);
 
-
-         #echo $builder;
-         #echo PHP_EOL;
-         #die;
-         echo __FILE__. PHP_EOL;
+         echo $builder . PHP_EOL;
 
          $this->assertTrue(true);
     }
