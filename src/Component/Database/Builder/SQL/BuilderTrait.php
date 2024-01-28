@@ -177,25 +177,6 @@ trait BuilderTrait
 
 
 
-    /**
-     * @param QueryInterface $statement
-     * @return QueryInterface
-    */
-    private function bindParams(QueryInterface $statement): QueryInterface
-    {
-        if ($this->bindingParams) {
-            foreach ($this->bindingParams as $params) {
-                [$id, $value, $type] = $params;
-                $statement->bindParam($id, $value, $type);
-            }
-        }
-
-        return $statement;
-    }
-
-
-
-
 
 
     /**
