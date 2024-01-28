@@ -127,9 +127,10 @@ class QueryBuilderTest extends TestCase
          ]);
 
 
-         echo $builder;
-         echo PHP_EOL;
-         die;
+         #echo $builder;
+         #echo PHP_EOL;
+         #die;
+         echo __FILE__. PHP_EOL;
 
          $this->assertTrue(true);
     }
