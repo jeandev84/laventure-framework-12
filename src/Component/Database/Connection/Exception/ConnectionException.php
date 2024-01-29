@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Database\Connection;
+namespace Laventure\Component\Database\Connection\Exception;
 
 use Laventure\Exceptions\BaseException;
 
@@ -13,7 +13,7 @@ use Laventure\Exceptions\BaseException;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Database\Connection
+ * @package  Laventure\Component\Database\Connection\Exception;
 */
 class ConnectionException extends BaseException
 {

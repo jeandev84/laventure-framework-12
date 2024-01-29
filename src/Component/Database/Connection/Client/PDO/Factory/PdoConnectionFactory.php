@@ -9,8 +9,8 @@ use Laventure\Component\Database\Connection\Client\PDO\Drivers\PdoConnectionInte
 use Laventure\Component\Database\Connection\Client\PDO\Drivers\Pgsql\PgsqlConnection;
 use Laventure\Component\Database\Connection\Client\PDO\Drivers\Sqlite\SqliteConnection;
 use Laventure\Component\Database\Connection\Client\PDO\PdoClient;
-use Laventure\Component\Database\Connection\ConnectionException;
 use Laventure\Component\Database\Connection\Drivers\UnavailableDriverException;
+use Laventure\Component\Database\Connection\Exception\ConnectionException;
 
 /**
  * PdoConnectionFactory

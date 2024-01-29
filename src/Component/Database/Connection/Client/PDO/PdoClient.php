@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Laventure\Component\Database\Connection\Client\PDO;
 
 use Laventure\Component\Database\Configuration\Contract\ConfigurationInterface;
-use Laventure\Component\Database\Connection\ConnectionException;
+use Laventure\Component\Database\Connection\Exception\ConnectionException;
 use PDO;
 use PDOException;
 

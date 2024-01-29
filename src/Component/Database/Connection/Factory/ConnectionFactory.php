@@ -7,9 +7,9 @@ use Laventure\Component\Database\Connection\Client\Mysqli\Drivers\MysqliConnecti
 use Laventure\Component\Database\Connection\Client\Mysqli\Factory\MysqliConnectionFactory;
 use Laventure\Component\Database\Connection\Client\PDO\Drivers\PdoConnectionInterface;
 use Laventure\Component\Database\Connection\Client\PDO\Factory\PdoConnectionFactory;
-use Laventure\Component\Database\Connection\ConnectionException;
 use Laventure\Component\Database\Connection\ConnectionInterface;
 use Laventure\Component\Database\Connection\Drivers\UnavailableDriverException;
+use Laventure\Component\Database\Connection\Exception\ConnectionException;
 
 /**
  * ConnectionFactory
