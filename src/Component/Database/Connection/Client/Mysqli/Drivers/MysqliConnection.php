@@ -1,26 +1,30 @@
 <?php
 declare(strict_types=1);
 
-namespace Laventure\Component\Database\Connection\Client\Mysqli\Drivers\Mysql;
+namespace Laventure\Component\Database\Connection\Client\Mysqli\Drivers;
 
 use Laventure\Component\Database\Configuration\Contract\ConfigurationInterface;
-use Laventure\Component\Database\Connection\Client\Mysqli\Drivers\MysqliConnectionInterface;
+use Laventure\Component\Database\Configuration\NullConfiguration;
 use Laventure\Component\Database\Connection\Client\Mysqli\MysqliClientInterface;
+use Laventure\Component\Database\Connection\Drivers\Mysql\MysqlDatabase;
+use Laventure\Component\Database\Connection\Exception\ConnectionException;
+use Laventure\Component\Database\Connection\Query\Builder\NullQueryBuilder;
 use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
+use Laventure\Component\Database\Connection\Query\NullQuery;
 use Laventure\Component\Database\Connection\Query\QueryInterface;
 use Laventure\Component\Database\DatabaseInterface;
 use mysqli;
 
 /**
- * MysqlConnection
+ * MysqliConnection
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Database\Connection\Client\Mysqli\Drivers\Mysql
+ * @package  Laventure\Component\Database\Connection\Client\Mysqli\Drivers
  */
-class MysqlConnection implements MysqliConnectionInterface
+class MysqliConnection implements MysqliConnectionInterface
 {
 
 
@@ -31,14 +35,22 @@ class MysqlConnection implements MysqliConnectionInterface
 
 
     /**
-     * @var mysqli
+     * @var mysqli|null
     */
-    protected mysqli $connection;
+    protected ?mysqli $connection;
+
+
+    /**
+     * @var ConfigurationInterface
+   */
+    protected ConfigurationInterface $config;
+
 
 
     public function __construct(MysqliClientInterface $client)
     {
         $this->client = $client;
+        $this->config = new NullConfiguration();
     }
 
 
@@ -47,7 +59,7 @@ class MysqlConnection implements MysqliConnectionInterface
     */
     public function getName(): string
     {
-        return 'mysql';
+        return 'mysqli';
     }
 
 
@@ -58,6 +70,7 @@ class MysqlConnection implements MysqliConnectionInterface
     public function connect(ConfigurationInterface $config): void
     {
         $this->connection = $this->client->makeConnection($config);
+        $this->config     = $config;
     }
 
 
@@ -66,137 +79,196 @@ class MysqlConnection implements MysqliConnectionInterface
 
     /**
      * @inheritDoc
-     */
+    */
     public function connected(): bool
     {
-        // TODO: Implement connected() method.
+        return $this->connection instanceof mysqli;
     }
+
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function disconnect(): void
     {
-        // TODO: Implement disconnect() method.
+         // TODO reviews
+         $this->connection = null;
     }
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function purge(): void
     {
-        // TODO: Implement purge() method.
+
     }
+
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function disconnected(): bool
     {
-        // TODO: Implement disconnected() method.
+        return false;
     }
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function createQuery(): QueryInterface
     {
-        // TODO: Implement createQuery() method.
+        return new NullQuery();
     }
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function createQueryBuilder(): QueryBuilderInterface
     {
-        // TODO: Implement createQueryBuilder() method.
+        return new NullQueryBuilder();
     }
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function statement(string $sql): QueryInterface
     {
-        // TODO: Implement statement() method.
+        return $this->createQuery()->prepare($sql);
     }
+
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function executeQuery(string $sql): bool
     {
-        // TODO: Implement executeQuery() method.
+        return $this->createQuery()->exec($sql);
     }
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function configs(): ConfigurationInterface
     {
-        // TODO: Implement configs() method.
+        return $this->config;
     }
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function config($key, $default = null): mixed
     {
-        // TODO: Implement config() method.
+         return $this->config->get($key, $default);
     }
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function getDatabase(): DatabaseInterface
     {
-        // TODO: Implement getDatabase() method.
+        return new MysqlDatabase($this, $this->config->database());
     }
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function getConnection(): mysqli
     {
-        // TODO: Implement getConnection() method.
+        return $this->connection;
     }
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function beginTransaction(): bool
     {
-        // TODO: Implement beginTransaction() method.
+        return $this->connection->begin_transaction();
     }
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function hasActiveTransaction(): bool
     {
-        // TODO: Implement hasActiveTransaction() method.
+        return false;
     }
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function commit(): bool
     {
-        // TODO: Implement commit() method.
+        return $this->connection->commit();
     }
+
+
+
+
 
     /**
      * @inheritDoc
-     */
+    */
     public function rollback(): bool
     {
-        // TODO: Implement rollback() method.
+        return $this->connection->rollback();
     }
+
+
+
 
     /**
      * @inheritDoc
-     */
-    public function transaction(callable $func): mixed
+    */
+    public function transaction(callable $func): bool
     {
-        // TODO: Implement transaction() method.
+        try {
+            $this->beginTransaction();
+            $func($this);
+            return $this->commit();
+        } catch (\Throwable $e) {
+            $this->rollback();
+            throw new ConnectionException($e->getMessage(), [], 500);
+        }
     }
 }

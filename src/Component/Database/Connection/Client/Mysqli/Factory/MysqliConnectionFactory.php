@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client\Mysqli\Factory;
 
-use Laventure\Component\Database\Connection\Client\Mysqli\Drivers\Mysql\MysqlConnection;
+use Laventure\Component\Database\Connection\Client\Mysqli\Drivers\MysqliConnection;
 use Laventure\Component\Database\Connection\Client\Mysqli\Drivers\MysqliConnectionInterface;
 use Laventure\Component\Database\Connection\Client\Mysqli\MysqliClient;
 
@@ -24,7 +24,7 @@ class MysqliConnectionFactory implements MysqliConnectionFactoryInterface
     */
     public function createMysqli(): MysqliConnectionInterface
     {
-        return new MysqlConnection(
+        return new MysqliConnection(
             new MysqliClient()
         );
     }

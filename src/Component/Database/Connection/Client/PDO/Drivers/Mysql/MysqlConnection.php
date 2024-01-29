@@ -10,7 +10,7 @@ use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
 use Laventure\Component\Database\DatabaseInterface;
 
 /**
- * MysqlConnection
+ * MysqliConnection
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
