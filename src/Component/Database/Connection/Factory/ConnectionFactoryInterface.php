@@ -1,8 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Laventure\Component\Database\Connection;
+namespace Laventure\Component\Database\Connection\Factory;
 
+
+use Laventure\Component\Database\Connection\ConnectionInterface;
 
 /**
  * ConnectionFactoryInterface

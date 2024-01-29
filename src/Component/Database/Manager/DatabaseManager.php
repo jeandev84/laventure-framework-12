@@ -5,11 +5,9 @@ declare(strict_types=1);
 namespace Laventure\Component\Database\Manager;
 
 use Laventure\Component\Database\Configuration\Configuration;
-use Laventure\Component\Database\Connection\ConnectionException;
-use Laventure\Component\Database\Connection\ConnectionFactory;
 use Laventure\Component\Database\Connection\ConnectionInterface;
-use Laventure\Component\Database\Connection\Drivers\UnavailableDriverException;
 use Laventure\Component\Database\Connection\ExtensionException;
+use Laventure\Component\Database\Connection\Factory\ConnectionFactory;
 use Laventure\Component\Database\DatabaseException;
 
 /**
