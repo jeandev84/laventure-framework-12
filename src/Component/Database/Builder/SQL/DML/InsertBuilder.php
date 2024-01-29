@@ -38,24 +38,6 @@ class InsertBuilder implements InsertBuilderInterface
 
 
 
-    /**
-     * @inheritDoc
-    */
-    public function values(array $values): static
-    {
-        if (!empty($values[0])) {
-            foreach ($values as $attributes) {
-                $this->insert($attributes);
-            }
-        } else {
-            $this->insert($values);
-        }
-
-        return $this;
-    }
-
-
-
 
 
     /**
@@ -65,21 +47,7 @@ class InsertBuilder implements InsertBuilderInterface
     public function insert(array $attributes): static
     {
         $this->columns  = array_keys($attributes);
-        $this->values   = array_merge($this->values, array_values($attributes));
-
-        return $this;
-    }
-
-
-
-
-    /**
-     * @inheritdoc
-    */
-    public function setValue($column, $value): static
-    {
-        $this->columns[] = $column;
-        $this->values[]  = $value;
+        $this->values[] = '('. join(', ', array_values($attributes)) . ')';
 
         return $this;
     }
@@ -120,7 +88,7 @@ class InsertBuilder implements InsertBuilderInterface
     public function getSQL(): string
     {
         $columns = join(', ', $this->getColumns());
-        $values  = '('. join(', ', $this->getValues()) . ')';
+        $values  = join(', ', $this->getValues());
 
         return sprintf("INSERT INTO {$this->getTable()} (%s) VALUES %s;", $columns, $values);
     }

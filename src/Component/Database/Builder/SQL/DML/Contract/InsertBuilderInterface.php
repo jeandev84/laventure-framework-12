@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Database\Builder\SQL\DML\Contract;
 
+use Laventure\Component\Database\Builder\SQL\SettableInterface;
+
 /**
  * InserBuilderInterface
  *
@@ -17,18 +19,8 @@ interface InsertBuilderInterface
 {
 
     /**
-     * @param array $values
+     * @param array $attributes
      * @return $this
     */
-    public function values(array $values): static;
-
-
-
-
-    /**
-     * @param $column
-     * @param $value
-     * @return $this
-     */
-    public function setValue($column, $value): static;
+    public function insert(array $attributes): static;
 }

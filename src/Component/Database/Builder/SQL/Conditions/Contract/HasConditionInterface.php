@@ -47,6 +47,7 @@ interface HasConditionInterface
 
 
 
+
     /**
      * Returns conditions query
      *

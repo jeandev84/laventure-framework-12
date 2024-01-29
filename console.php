@@ -1,14 +1,42 @@
 <?php
 
+use Laventure\Component\Database\Builder\SQL\DML\InsertBuilder;
+use PHPUnitTest\App\Services\ConnectionMaker;
+
 require 'vendor/autoload.php';
 
+/*
+$manager    = ConnectionMaker::make();
+$connection = $manager->connection();
 
-$select = "SELECT * FROM users WHERE id = :id";
+$insert1 = new InsertBuilder($connection, 'users');
+$insert1->insert([
+    'username' => 'Brown',
+    'password' => md5('brown'),
+    'city'     => 'Moscow',
+    'age'      => 25
+]);
 
-$insert = "INSERT INTO users (username, password) VALUES (:username, :password)";
+echo $insert1->getSQL(), PHP_EOL;
 
-$update = "UPDATE users SET username = :username WHERE id = :id";
+$insert2 = new InsertBuilder($this->connection, 'users');
+$insert2->insert([
+    'username' => ':username',
+    'password' => ':password',
+    'city'     => ':city',
+    'age'      => ':age'
+])
+->setParameters([
+    'username' => 'Brown',
+    'password' =>  md5('brown'),
+    'city'     => 'Moscow',
+    'age'      => 25
+]);
+*/
 
-$delete = "DELETE FROM users WHERE id = :id";
+
+
+
+
 
 

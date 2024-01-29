@@ -65,7 +65,7 @@ class SqlQueryBuilder implements SqlQueryBuilderInterface
     public function insert(string $table, array $attributes): InsertBuilderInterface
     {
         $builder = new InsertBuilder($this->connection, $table);
-        $builder->values($attributes);
+        $builder->insert($attributes);
         return $builder;
     }
 

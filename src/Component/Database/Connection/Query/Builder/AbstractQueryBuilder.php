@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Database\Connection\Client\PDO\Query;
+namespace Laventure\Component\Database\Connection\Query\Builder;
 
 
-use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
 
 /**
  * AbstractQueryBuilder
@@ -16,15 +15,28 @@ use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
  *
  * @package  Laventure\Component\Database\Connection\Client\PDO\Query
 */
-class QueryBuilder implements QueryBuilderInterface
+abstract class AbstractQueryBuilder implements QueryBuilderInterface
 {
+
+    /**
+     * @var Criteria
+    */
+    protected Criteria $criteria;
+
+
+    public function __construct()
+    {
+        $this->criteria = new Criteria();
+    }
+
+
 
     /**
      * @inheritDoc
     */
     public function select(string ...$columns): static
     {
-
+        return $this->addSelect(...$columns);
     }
 
 
@@ -33,9 +45,11 @@ class QueryBuilder implements QueryBuilderInterface
     /**
      * @inheritDoc
     */
-    public function addSelect(string $columns): static
+    public function addSelect(string ...$columns): static
     {
+        $this->criteria->select->addColumns($columns);
 
+        return $this;
     }
 
 
@@ -47,7 +61,7 @@ class QueryBuilder implements QueryBuilderInterface
     */
     public function from(string $table, string $alias = null): static
     {
-
+        return $this;
     }
 
 

@@ -70,6 +70,7 @@ trait ConditionTrait
 
 
 
+
     /**
      * @return array
     */

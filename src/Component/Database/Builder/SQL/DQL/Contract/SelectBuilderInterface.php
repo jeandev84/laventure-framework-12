@@ -58,7 +58,7 @@ interface SelectBuilderInterface extends HasConditionInterface, BuilderInterface
 
 
     /**
-     * Join table
+     * Joins table
      * @param string $table
      * @param string $condition
      * @return $this
@@ -72,7 +72,7 @@ interface SelectBuilderInterface extends HasConditionInterface, BuilderInterface
 
 
     /**
-     * Join table
+     * Joins table
      * @param string $table
      * @param string $condition
      * @return $this
@@ -86,7 +86,7 @@ interface SelectBuilderInterface extends HasConditionInterface, BuilderInterface
 
 
     /**
-     * Join table
+     * Joins table
      * @param string $table
      * @param string $condition
      * @return $this
@@ -100,7 +100,7 @@ interface SelectBuilderInterface extends HasConditionInterface, BuilderInterface
 
 
     /**
-     * Join table
+     * Joins table
      * @param string $table
      * @param string $condition
      * @return $this
@@ -115,7 +115,7 @@ interface SelectBuilderInterface extends HasConditionInterface, BuilderInterface
 
 
     /**
-     * Join table
+     * Joins table
      * @param string $table
      * @param string $condition
      * @return $this

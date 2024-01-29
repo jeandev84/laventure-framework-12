@@ -59,7 +59,7 @@ interface QueryBuilderInterface extends Stringable
 
 
     /**
-     * Join table
+     * Joins table
      * @param string $table
      * @param string $condition
      * @return $this
@@ -73,7 +73,7 @@ interface QueryBuilderInterface extends Stringable
 
 
     /**
-     * Join table
+     * Joins table
      * @param string $table
      * @param string $condition
      * @return $this
@@ -87,7 +87,7 @@ interface QueryBuilderInterface extends Stringable
 
 
     /**
-     * Join table
+     * Joins table
      * @param string $table
      * @param string $condition
      * @return $this
@@ -101,7 +101,7 @@ interface QueryBuilderInterface extends Stringable
 
 
     /**
-     * Join table
+     * Joins table
      * @param string $table
      * @param string $condition
      * @return $this
@@ -116,7 +116,7 @@ interface QueryBuilderInterface extends Stringable
 
 
     /**
-     * Join table
+     * Joins table
      * @param string $table
      * @param string $condition
      * @return $this
@@ -308,10 +308,9 @@ interface QueryBuilderInterface extends Stringable
 
     /**
      * @param string $table
-     * @param string $alias
      * @return $this
     */
-    public function delete(string $table, string $alias = ''): static;
+    public function delete(string $table): static;
 
 
 
@@ -399,6 +398,7 @@ interface QueryBuilderInterface extends Stringable
 
 
 
+
     /**
      * Returns query string
      *
@@ -415,4 +415,14 @@ interface QueryBuilderInterface extends Stringable
      * @return mixed
     */
     public function getQuery(): mixed;
+
+
+
+
+
+
+    /**
+     * @return Criteria
+    */
+    public function getCriteria(): Criteria;
 }

@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  PHPUnitTest\Component\Database\Connection\Client\PDO\Dsn
+ * @package  PHPUnitTest\Component\Database\ConnectionMaker\Client\PDO\Dsn
  */
 class PdoDsnBuilderTest extends TestCase
 {
