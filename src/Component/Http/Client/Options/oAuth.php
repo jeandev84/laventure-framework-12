@@ -13,7 +13,7 @@ use Laventure\Component\Http\Client\Options\Auth\AuthToken;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Http\Client\DTO
+ * @package  Laventure\Component\Http\Extensions\DTO
  */
 class oAuth extends AuthToken
 {

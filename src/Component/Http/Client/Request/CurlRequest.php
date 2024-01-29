@@ -38,7 +38,7 @@ use Psr\Http\Message\UriInterface;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Http\Client\Request
+ * @package  Laventure\Component\Http\Extensions\Request
  *
  * @see https://snipp.ru/php/curl
 */

@@ -14,7 +14,7 @@ use Psr\Http\Client\ClientInterface;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Http\Client\Factory
+ * @package  Laventure\Component\Http\Extensions\Factory
  */
 class HttpClientFactory implements HttpClientFactoryInterface
 {

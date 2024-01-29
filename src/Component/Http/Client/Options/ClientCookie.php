@@ -11,7 +11,7 @@ namespace Laventure\Component\Http\Client\Options;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Http\Client\Options
+ * @package  Laventure\Component\Http\Extensions\Options
  */
 class ClientCookie
 {

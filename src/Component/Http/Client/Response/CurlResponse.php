@@ -13,7 +13,7 @@ use Laventure\Component\Http\Message\Response\Response;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Http\Client\Response
+ * @package  Laventure\Component\Http\Extensions\Response
  */
 class CurlResponse extends Response
 {

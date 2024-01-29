@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  PHPUnitTest\Component\Database\ConnectionMaker\Client\PDO\Query
+ * @package  PHPUnitTest\Component\Database\ConnectionMaker\Extensions\PDO\Query
  */
 class QueryBuilderTest extends TestCase
 {

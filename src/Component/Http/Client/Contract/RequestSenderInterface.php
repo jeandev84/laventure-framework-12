@@ -13,7 +13,7 @@ use Psr\Http\Message\ResponseInterface;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Http\Client\Writer
+ * @package  Laventure\Component\Http\Extensions\Writer
  */
 interface RequestSenderInterface
 {

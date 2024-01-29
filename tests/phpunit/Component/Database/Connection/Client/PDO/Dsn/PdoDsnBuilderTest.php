@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PHPUnitTest\Component\Database\Connection\Client\PDO\Dsn;
 
-use Laventure\Component\Database\Client\PDO\Dsn\PdoDsnBuilder;
+use Laventure\Component\Database\Connection\Client\PDO\Dsn\PdoDsnBuilder;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  PHPUnitTest\Component\Database\ConnectionMaker\Client\PDO\Dsn
+ * @package  PHPUnitTest\Component\Database\ConnectionMaker\Extensions\PDO\Dsn
  */
 class PdoDsnBuilderTest extends TestCase
 {

@@ -15,7 +15,7 @@ use Psr\Http\Message\ResponseInterface;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Http\Client\Adapters
+ * @package  Laventure\Component\Http\Extensions\Adapters
  */
 class GuzzleClientAdapter implements HttpClientInterface
 {

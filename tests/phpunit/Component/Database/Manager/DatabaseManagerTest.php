@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PHPUnitTest\Component\Database\Manager;
 
-use Laventure\Component\Database\Client\PDO\Drivers\Mysql\MysqlConnection;
+use Laventure\Component\Database\Connection\Client\PDO\Drivers\Mysql\MysqlConnection;
 use Laventure\Component\Database\Connection\Client\PDO\Drivers\PdoConnectionInterface;
 use Laventure\Component\Database\Connection\ConnectionInterface;
 use Laventure\Component\Database\Manager\DatabaseManager;

@@ -13,7 +13,7 @@ use Laventure\Utils\Parameter\Parameter;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Http\Client\Traits
+ * @package  Laventure\Component\Http\Extensions\Traits
 */
 trait HasOptionsTrait
 {

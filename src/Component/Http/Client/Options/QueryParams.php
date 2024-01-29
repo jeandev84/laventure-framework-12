@@ -13,7 +13,7 @@ use Laventure\Utils\Parameter\Parameter;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Http\Client\Options
+ * @package  Laventure\Component\Http\Extensions\Options
  */
 class QueryParams extends Parameter
 {

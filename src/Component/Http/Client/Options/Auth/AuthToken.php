@@ -11,7 +11,7 @@ namespace Laventure\Component\Http\Client\Options\Auth;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Http\Client\Options\Auth
+ * @package  Laventure\Component\Http\Extensions\Options\Auth
  */
 class AuthToken
 {

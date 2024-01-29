@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  PHPUnit\Component\Database\ConnectionMaker\Client\PDO
+ * @package  PHPUnit\Component\Database\ConnectionMaker\Extensions\PDO
 */
 class PdoClientTest extends TestCase
 {
