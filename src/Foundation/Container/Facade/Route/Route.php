@@ -21,7 +21,7 @@ use Laventure\Component\Routing\Router\RouterInterface;
  * @method static RouteCollector namespace(string $module)
  * @method static RouteCollector name(string $name)
  * @method static RouteCollector middleware(array $middlewares)
- * @method static RouteCollector resource(string $name, string $controller)
+ * @method static RouteCollector storage(string $name, string $controller)
  * @method static RouteCollector resources(array $resources)
  * @method static RouteCollector apiResource(string $name, string $controller)
  * @method static RouteCollector apiResources(array $resources)

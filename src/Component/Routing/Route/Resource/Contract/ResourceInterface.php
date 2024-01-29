@@ -19,7 +19,7 @@ use Laventure\Component\Routing\Route\RouteInterface;
 interface ResourceInterface
 {
     /**
-     * Returns resource name
+     * Returns storage name
      *
      * @return string
     */
@@ -29,7 +29,7 @@ interface ResourceInterface
 
 
     /**
-     * Returns resource controller
+     * Returns storage controller
      *
      * @return string
     */
@@ -39,7 +39,7 @@ interface ResourceInterface
 
 
     /**
-     * Returns resource type
+     * Returns storage type
      *
      * @return string
     */

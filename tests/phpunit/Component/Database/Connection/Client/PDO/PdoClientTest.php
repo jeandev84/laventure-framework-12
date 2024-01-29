@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace PHPUnitTest\Component\Database\Connection\Client\PDO;
 
 use Laventure\Component\Database\Configuration\Configuration;
+use Laventure\Component\Database\Connection\Client\PDO\Drivers\PdoConnectionInterface;
 use Laventure\Component\Database\Connection\Client\PDO\PdoClient;
-use Laventure\Component\Database\Connection\Client\PDO\PdoConnectionInterface;
 use Laventure\Component\Database\Connection\ConnectionInterface;
 use PDO;
 use PHPUnit\Framework\TestCase;

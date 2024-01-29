@@ -25,7 +25,7 @@ class StreamFactory implements StreamFactoryInterface
      */
     public function createStream(string $content = ''): StreamInterface
     {
-        $stream = new Stream('php://temp', 'w');
+        $stream = new Stream('php://storage', 'w');
         if ($content) {
             $stream->write($content);
         }

@@ -11,7 +11,7 @@ namespace Laventure\Component\Database\Connection\Query\Result;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Database\Connection\Query\Contract
+ * @package  Laventure\Component\Database\Connection\Query\Result
 */
 interface QueryResultInterface
 {

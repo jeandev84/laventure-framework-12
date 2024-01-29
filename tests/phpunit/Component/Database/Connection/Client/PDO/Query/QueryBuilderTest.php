@@ -3,11 +3,6 @@
 
 namespace PHPUnitTest\Component\Database\Connection\Client\PDO\Query;
 
-use Laventure\Component\Database\Connection\Client\PDO\PdoConnectionInterface;
-use Laventure\Component\Database\Connection\Client\PDO\Query\QueryBuilder;
-use Laventure\Component\Database\Connection\ConnectionInterface;
-use Laventure\Component\Database\Manager\DatabaseManager;
-use PDO;
 use PHPUnit\Framework\TestCase;
 
 /**

@@ -33,11 +33,11 @@ class IsStream
     public function __construct($value)
     {
         if (!is_resource($value)) {
-            throw new \InvalidArgumentException("Invalid resource type provide.");
+            throw new \InvalidArgumentException("Invalid storage type provide.");
         }
 
         if (get_resource_type($value) !== 'stream') {
-            throw new StreamException('Invalid stream provided. must be string or resource stream type provided.');
+            throw new StreamException('Invalid stream provided. must be string or storage stream type provided.');
         }
 
         $this->value = $value;

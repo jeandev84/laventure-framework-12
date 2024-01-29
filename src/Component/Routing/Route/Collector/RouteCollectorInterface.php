@@ -142,7 +142,7 @@ interface RouteCollectorInterface
 
 
     /**
-     * Collect api resource
+     * Collect api storage
      *
      * @param string $name
      *
@@ -244,7 +244,7 @@ interface RouteCollectorInterface
 
 
     /**
-     * Returns web resource
+     * Returns web storage
      *
      * @param string $name
      *

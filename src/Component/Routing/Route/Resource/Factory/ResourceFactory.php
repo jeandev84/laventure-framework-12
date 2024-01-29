@@ -30,7 +30,7 @@ class ResourceFactory implements ResourceFactoryInterface
         return match ($type) {
             ResourceType::WEB => $this->createWebResource($name, $controller),
             ResourceType::API => $this->createApiResource($name, $controller),
-            default           => new Exception("Could not create resource type $type")
+            default           => new Exception("Could not create storage type $type")
         };
     }
 

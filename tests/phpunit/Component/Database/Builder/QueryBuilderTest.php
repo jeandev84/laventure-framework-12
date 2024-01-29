@@ -4,18 +4,7 @@ declare(strict_types=1);
 
 namespace PHPUnitTest\Component\Database\Builder;
 
-use Laventure\Component\Database\Builder\SQL\DML\DeleteBuilder;
-use Laventure\Component\Database\Builder\SQL\DML\InsertBuilder;
-use Laventure\Component\Database\Builder\SQL\DML\UpdateBuilder;
-use Laventure\Component\Database\Builder\SQL\DQL\SelectBuilder;
-use Laventure\Component\Database\Connection\Client\PDO\Drivers\Mysql\MysqlConnection;
-use Laventure\Component\Database\Connection\Client\PDO\PdoConnectionInterface;
-use Laventure\Component\Database\Connection\ConnectionInterface;
-use Laventure\Component\Database\Manager\DatabaseManager;
-use PDO;
-use PHP_CodeSniffer\Tokenizers\PHP;
 use PHPUnit\Framework\TestCase;
-use PHPUnitTest\App\Entity\Product;
 
 /**
  * DatabaseManagerTest

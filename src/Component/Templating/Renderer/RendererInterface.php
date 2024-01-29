@@ -16,7 +16,7 @@ namespace Laventure\Component\Templating\Renderer;
 interface RendererInterface
 {
     /**
-     * Set resource path
+     * Set storage path
      *
      * @param string $path
      * @return mixed

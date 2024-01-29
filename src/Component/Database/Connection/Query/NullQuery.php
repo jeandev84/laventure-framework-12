@@ -15,7 +15,7 @@ use Laventure\Component\Database\Connection\Query\Result\QueryResultInterface;
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
  * @package  Laventure\Component\Database\Connection\Query
- */
+*/
 class NullQuery implements QueryInterface
 {
     /**
@@ -43,7 +43,7 @@ class NullQuery implements QueryInterface
     /**
      * @inheritDoc
      */
-    public function bindParam($param, $value, int $type): static
+    public function bindParam($param, $value, int $type = 0): static
     {
         return $this;
     }
@@ -54,7 +54,7 @@ class NullQuery implements QueryInterface
     /**
      * @inheritDoc
      */
-    public function bindValue($param, $value, int $type): static
+    public function bindValue($param, $value, int $type = 0): static
     {
         return $this;
     }
@@ -65,7 +65,34 @@ class NullQuery implements QueryInterface
     /**
      * @inheritDoc
      */
-    public function bindColumn($column, $value, int $type): static
+    public function bindColumn($column, $value, int $type = 0): static
+    {
+        return $this;
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+     */
+    public function bindParams(array $params): static
+    {
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function bindValues(array $values): static
+    {
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function bindColumns(array $columns): static
     {
         return $this;
     }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PHPUnitTest\Component\Database\Connection\Client\PDO\Dsn;
 
-use Laventure\Component\Database\Connection\Client\PDO\Dsn\PdoDsnBuilder;
+use Laventure\Component\Database\Client\PDO\Dsn\PdoDsnBuilder;
 use PHPUnit\Framework\TestCase;
 
 /**
