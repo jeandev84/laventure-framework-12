@@ -29,7 +29,7 @@ class NullQueryBuilder implements QueryBuilderInterface
     /**
      * @inheritDoc
     */
-    public function addSelect(string $columns): static
+    public function addSelect(string ...$columns): static
     {
         return $this;
     }
@@ -116,7 +116,7 @@ class NullQueryBuilder implements QueryBuilderInterface
     /**
      * @inheritDoc
     */
-    public function groupBy(string $column): static
+    public function groupBy(string ...$columns): static
     {
         return $this;
     }
@@ -127,7 +127,7 @@ class NullQueryBuilder implements QueryBuilderInterface
     /**
      * @inheritDoc
     */
-    public function addGroupBy(array|string $groupBy): static
+    public function addGroupBy(string ...$columns): static
     {
         return $this;
     }
@@ -184,7 +184,7 @@ class NullQueryBuilder implements QueryBuilderInterface
     /**
      * @inheritDoc
     */
-    public function addOrderBy(string $column, string $direction = null): static
+    public function addOrderBy(string $orderBy): static
     {
         return $this;
     }

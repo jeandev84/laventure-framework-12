@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace Laventure\Component\Database\Connection\Query\Builder;
 
 
-use Laventure\Component\Database\Connection\Query\Builder\Criteria\CriteriaInterface;
 use Stringable;
 
 /**

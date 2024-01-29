@@ -15,5 +15,6 @@ namespace Laventure\Component\Database\Builder\SQL\DML\Insert;
 class InsertCriteria
 {
     public string $table;
-    public array $values = [];
+    public array $columns = [];
+    public array $values  = [];
 }
