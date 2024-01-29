@@ -15,7 +15,7 @@ use Laventure\Component\Database\Builder\SQL\Expr\Contract\ExpressionInterface;
  *
  * @package  Laventure\Component\Database\Builder\SQL\DQL\Parts
 */
-class Selected implements ExpressionInterface
+class Select implements ExpressionInterface
 {
 
     /**

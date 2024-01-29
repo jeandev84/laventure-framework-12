@@ -10,7 +10,7 @@ use Laventure\Component\Database\Builder\SQL\DQL\Expr\Having;
 use Laventure\Component\Database\Builder\SQL\DQL\Expr\Join;
 use Laventure\Component\Database\Builder\SQL\DQL\Expr\Limit;
 use Laventure\Component\Database\Builder\SQL\DQL\Expr\OrderBy;
-use Laventure\Component\Database\Builder\SQL\DQL\Expr\Selected;
+use Laventure\Component\Database\Builder\SQL\DQL\Expr\Select;
 use Laventure\Component\Database\Builder\SQL\Utils\QueryFormatter;
 use Laventure\Component\Database\Connection\Query\Builder\Criteria;
 use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
@@ -42,7 +42,8 @@ class QueryBuilder implements QueryBuilderInterface
 
     public function __construct()
     {
-        $this->criteria = new Criteria();
+        $this->criteria  = new Criteria();
+        $this->formatter = new QueryFormatter();
     }
 
 
@@ -359,9 +360,7 @@ class QueryBuilder implements QueryBuilderInterface
     */
     public function where(string $condition): static
     {
-        $this->criteria->wheres[] = $condition;
-
-        return $this;
+        return $this->andWhere($condition);
     }
 
 
@@ -369,9 +368,11 @@ class QueryBuilder implements QueryBuilderInterface
 
     /**
      * @inheritDoc
-     */
+    */
     public function andWhere(string $condition): static
     {
+        $this->criteria->wheres['AND'][] = $condition;
+
         return $this;
     }
 
@@ -383,6 +384,8 @@ class QueryBuilder implements QueryBuilderInterface
      */
     public function orWhere(string $condition): static
     {
+        $this->criteria->wheres['OR'][] = $condition;
+
         return $this;
     }
 
@@ -506,7 +509,7 @@ class QueryBuilder implements QueryBuilderInterface
         $offset  = $this->criteria->select->offset;
 
         $format = $this->formatter->withExpressions([
-            new Selected($columns, $from),
+            new Select($columns, $from),
             new Join($this->criteria->select->joins),
             new Where($this->criteria->wheres),
             new GroupBy($this->criteria->select->groupBy),

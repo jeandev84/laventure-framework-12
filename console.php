@@ -19,7 +19,18 @@ $qb = $qb->select('u.username, u.birthday, u.email')
           ->orderBy('p.title');
 
 
-dd($qb->getCriteria());
+dump($qb->getCriteria());
+echo $qb->getSQL(), PHP_EOL;
+
+/*
+SELECT u.username, u.birthday, u.email
+FROM users u
+JOIN products p ON p.id = u.product_id
+WHERE u.id = :id AND u.username = :username OR u.email = :email
+GROUP BY p.price
+HAVING count(p.price) > 500
+ORDER BY p.title asc;
+*/
 
 
 

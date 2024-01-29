@@ -43,6 +43,12 @@ class Criteria
     /**
      * @var array
     */
+    public array $criteria = [];
+
+
+    /**
+     * @var array
+    */
     public array $parameters = [];
 
 
