@@ -25,9 +25,12 @@ $qb = $qb->insert('users')
          ]);
 
 
-/* dd(array_unique($qb->getCriteria()->insert->columns)); */
+# INSERT INTO users (username, password, age) VALUES (:username_0, :password_0, :age_0), (:username_1, :password_1, :age_1);
 
-dump($qb->getCriteria()->insert);
-dump($qb->getParameters());
+dd(array_unique($qb->getCriteria()->insert->columns));
+
+#dump($qb->getCriteria()->insert);
+#dump($qb->getParameters());
+
 
 

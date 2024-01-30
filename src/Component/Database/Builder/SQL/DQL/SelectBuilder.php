@@ -3,8 +3,10 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Database\Builder\SQL\DQL;
 
+use Laventure\Component\Database\Builder\SQL\DQL\Contract\SelectBuilderInterface;
+
 /**
- * SelectCriteria
+ * SelectBuilder
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
@@ -12,31 +14,31 @@ namespace Laventure\Component\Database\Builder\SQL\DQL;
  *
  * @package  Laventure\Component\Database\Builder\SQL\DQL
  */
-class SelectCriteria
+class SelectBuilder implements SelectBuilderInterface
 {
     /**
      * @var array
-    */
+     */
     public array $columns = [];
 
 
     /**
      * @var array
-    */
+     */
     public array $from = [];
 
 
 
     /**
      * @var string[]
-    */
+     */
     public array $joins = [];
 
 
 
     /**
      * @var array
-    */
+     */
     public array $groupBy = [];
 
 
@@ -44,7 +46,7 @@ class SelectCriteria
 
     /**
      * @var string[]
-    */
+     */
     public array $having = [];
 
 
@@ -65,8 +67,8 @@ class SelectCriteria
 
 
 
-    /**s
+    /**
      * @var int
-     */
+    */
     public int $limit = 0;
 }

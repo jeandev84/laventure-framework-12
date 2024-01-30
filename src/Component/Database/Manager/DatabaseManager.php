@@ -6,7 +6,6 @@ namespace Laventure\Component\Database\Manager;
 
 use Laventure\Component\Database\Configuration\Configuration;
 use Laventure\Component\Database\Connection\ConnectionInterface;
-use Laventure\Component\Database\Connection\ExtensionException;
 use Laventure\Component\Database\Connection\Factory\ConnectionFactory;
 use Laventure\Component\Database\DatabaseException;
 
@@ -195,7 +194,7 @@ class DatabaseManager implements DatabaseManagerInterface
             );
         }
 
-        return $this->connect($name, new Configuration($credentials));
+        return $this->connect($name, $credentials);
     }
 
 
@@ -328,13 +327,13 @@ class DatabaseManager implements DatabaseManagerInterface
 
     /**
      * @param string $name
-     * @param Configuration $config
+     * @param array $credentials
      * @return ConnectionInterface
      * @throws DatabaseException
-     */
-    private function connect(string $name, Configuration $config): ConnectionInterface
+    */
+    private function connect(string $name, array $credentials): ConnectionInterface
     {
-        $this->connections[$name]->connect($config);
+        $this->connections[$name]->connect(new Configuration($credentials));
 
         if (!$this->connections[$name]->connected()) {
             throw new DatabaseException("no connection detected for '$name'.");

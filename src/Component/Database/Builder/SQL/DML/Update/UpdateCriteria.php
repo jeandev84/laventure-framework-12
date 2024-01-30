@@ -14,6 +14,6 @@ namespace Laventure\Component\Database\Builder\SQL\DML\Update;
  */
 class UpdateCriteria
 {
-     public string $table;
-     public array $set = [];
+    public string $table;
+    public array $set = [];
 }

@@ -32,8 +32,11 @@ interface SelectBuilderInterface
      *
      * @param string ...$columns
      * @return $this
-     */
+    */
     public function addSelect(string ...$columns): static;
+
+
+
 
 
 
@@ -44,7 +47,7 @@ interface SelectBuilderInterface
      * @param string $table
      * @param string|null $alias
      * @return $this
-     */
+    */
     public function from(string $table, string $alias = null): static;
 
 
@@ -58,7 +61,7 @@ interface SelectBuilderInterface
      * @param string $table
      * @param string $condition
      * @return $this
-     */
+    */
     public function join(string $table, string $condition): static;
 
 
@@ -72,7 +75,7 @@ interface SelectBuilderInterface
      * @param string $table
      * @param string $condition
      * @return $this
-     */
+    */
     public function leftJoin(string $table, string $condition): static;
 
 
@@ -86,7 +89,7 @@ interface SelectBuilderInterface
      * @param string $table
      * @param string $condition
      * @return $this
-     */
+    */
     public function rightJoin(string $table, string $condition): static;
 
 
@@ -100,7 +103,7 @@ interface SelectBuilderInterface
      * @param string $table
      * @param string $condition
      * @return $this
-     */
+    */
     public function innerJoin(string $table, string $condition): static;
 
 
@@ -115,7 +118,7 @@ interface SelectBuilderInterface
      * @param string $table
      * @param string $condition
      * @return $this
-     */
+    */
     public function fullJoin(string $table, string $condition): static;
 
 
@@ -136,12 +139,15 @@ interface SelectBuilderInterface
 
 
 
+
     /**
-     * @param string $column
-     *
+     * @param string ...$columns
      * @return $this
-     */
-    public function groupBy(string $column): static;
+    */
+    public function groupBy(string ...$columns): static;
+
+
+
 
 
 
@@ -156,10 +162,13 @@ interface SelectBuilderInterface
 
 
 
+
+
+
     /**
      * @param string $condition
      * @return $this
-     */
+    */
     public function having(string $condition): static;
 
 
@@ -212,10 +221,10 @@ interface SelectBuilderInterface
     /**
      * Set max results
      *
-     * @param int $limit
+     * @param $limit
      * @return $this
      */
-    public function limit(int $limit): static;
+    public function limit($limit): static;
 
 
 
@@ -224,18 +233,8 @@ interface SelectBuilderInterface
     /**
      * Set min results
      *
-     * @param int $offset
+     * @param $offset
      * @return $this
     */
-    public function offset(int $offset): static;
-
-
-
-
-
-
-     /**
-      * @return mixed
-     */
-     public function getCriteria(): mixed;
+    public function offset($offset): static;
 }

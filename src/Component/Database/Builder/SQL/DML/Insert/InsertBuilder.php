@@ -4,17 +4,30 @@ declare(strict_types=1);
 namespace Laventure\Component\Database\Builder\SQL\DML\Insert;
 
 /**
- * InsertCriteria
+ * InsertBuilder
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Database\Builder\SQL\DML\Criteria
+ * @package  Laventure\Component\Database\Builder\SQL\DML\Insert
  */
-class InsertCriteria
+class InsertBuilder implements InsertBuilderInterface
 {
-    public string $table;
+
+    /**
+     * @var array
+    */
     public array $columns = [];
     public array $values  = [];
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function insert(array $attributes): static
+    {
+
+    }
 }
