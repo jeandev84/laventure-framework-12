@@ -6,6 +6,7 @@ namespace Laventure\Component\Database\Query\Builder\SQL\DML\Insert;
 
 use Laventure\Component\Database\Connection\ConnectionInterface;
 use Laventure\Component\Database\Query\Builder\SQL\BuilderTrait;
+use Laventure\Component\Database\Query\Builder\SQL\Utils\QueryFormatter;
 
 /**
  * InsertBuilder
@@ -41,20 +42,6 @@ class InsertBuilder implements InsertBuilderInterface
     */
     public array $values  = [];
 
-
-    /**
-     * @param ConnectionInterface $connection
-     *
-     * @param string $table
-    */
-    public function __construct(
-        ConnectionInterface $connection,
-        string $table
-    )
-    {
-        parent::__construct($connection);
-        $this->insert($table);
-    }
 
 
 
@@ -111,7 +98,8 @@ class InsertBuilder implements InsertBuilderInterface
     */
     public function getSQL(): string
     {
-        return $this->formatter->withExpression(
+        $formatter = new QueryFormatter();
+        return $formatter->withExpression(
             new Insert($this->table, $this->columns, $this->values)
         )->format();
     }

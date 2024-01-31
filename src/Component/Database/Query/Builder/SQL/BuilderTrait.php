@@ -46,11 +46,6 @@ trait BuilderTrait
     protected ConnectionInterface $connection;
 
 
-    /**
-     * @var QueryFormatter
-    */
-    protected QueryFormatter $formatter;
-
 
 
     /**
@@ -59,7 +54,6 @@ trait BuilderTrait
     public function __construct(ConnectionInterface $connection)
     {
         $this->connection = $connection;
-        $this->formatter  = new QueryFormatter();
     }
 
 
@@ -142,9 +136,7 @@ trait BuilderTrait
     */
     public function setParameters(array $parameters): static
     {
-        foreach ($parameters as $id => $value) {
-            $this->setParameter($id, $value);
-        }
+        $this->parameters = array_merge($this->parameters, $parameters);
 
         return $this;
     }

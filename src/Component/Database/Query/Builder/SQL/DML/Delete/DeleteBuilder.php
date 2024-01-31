@@ -8,6 +8,7 @@ use Laventure\Component\Database\Connection\ConnectionInterface;
 use Laventure\Component\Database\Query\Builder\SQL\BuilderTrait;
 use Laventure\Component\Database\Query\Builder\SQL\Conditions\Expr\Where;
 use Laventure\Component\Database\Query\Builder\SQL\Conditions\Traits\ConditionTrait;
+use Laventure\Component\Database\Query\Builder\SQL\Utils\QueryFormatter;
 
 /**
  * DeleteBuilder
@@ -29,13 +30,6 @@ class DeleteBuilder implements DeleteBuilderInterface
     public string $table;
 
 
-    public function __construct(ConnectionInterface $connection, string $table)
-    {
-        parent::__construct($connection);
-        $this->delete($table);
-    }
-
-
 
 
     /**
@@ -55,7 +49,8 @@ class DeleteBuilder implements DeleteBuilderInterface
     */
     public function getSQL(): string
     {
-        return $this->formatter->withExpressions([
+        $formatter = new QueryFormatter();
+        return $formatter->withExpressions([
             new Delete($this->table),
             new Where($this->wheres)
         ])->format();

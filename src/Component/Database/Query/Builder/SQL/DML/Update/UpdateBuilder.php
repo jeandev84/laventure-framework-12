@@ -9,6 +9,7 @@ use Laventure\Component\Database\Query\Builder\SQL\BuilderTrait;
 use Laventure\Component\Database\Query\Builder\SQL\Conditions\Expr\Where;
 use Laventure\Component\Database\Query\Builder\SQL\Conditions\Traits\ConditionTrait;
 use Laventure\Component\Database\Query\Builder\SQL\Expr\Set\Set;
+use Laventure\Component\Database\Query\Builder\SQL\Utils\QueryFormatter;
 
 /**
  * UpdateBuilder
@@ -30,18 +31,6 @@ class UpdateBuilder implements UpdateBuilderInterface
 
 
 
-    /**
-     * @param ConnectionInterface $connection
-     * @param string $table
-    */
-    public function __construct(
-        ConnectionInterface $connection,
-        string $table
-    )
-    {
-        parent::__construct($connection);
-        $this->update($table);
-    }
 
 
     /**
@@ -73,7 +62,8 @@ class UpdateBuilder implements UpdateBuilderInterface
     */
     public function getSQL(): string
     {
-        return $this->formatter->withExpressions([
+        $formatter = new QueryFormatter();
+        return $formatter->withExpressions([
             new Update($this->table),
             new Set($this->set),
             new Where($this->wheres)

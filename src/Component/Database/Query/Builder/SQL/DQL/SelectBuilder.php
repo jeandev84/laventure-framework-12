@@ -16,6 +16,7 @@ use Laventure\Component\Database\Query\Builder\SQL\DQL\Expr\Join;
 use Laventure\Component\Database\Query\Builder\SQL\DQL\Expr\Limit;
 use Laventure\Component\Database\Query\Builder\SQL\DQL\Expr\OrderBy;
 use Laventure\Component\Database\Query\Builder\SQL\DQL\Expr\Select;
+use Laventure\Component\Database\Query\Builder\SQL\Utils\QueryFormatter;
 
 /**
  * SelectBuilder
@@ -89,20 +90,6 @@ class SelectBuilder implements SelectBuilderInterface
     public $limit = null;
 
 
-
-
-    /**
-     * @param ConnectionInterface $connection
-     * @param array $selects
-    */
-    public function __construct(
-        ConnectionInterface $connection,
-        array $selects = []
-    )
-    {
-        parent::__construct($connection);
-        $this->addSelect(...$selects);
-    }
 
 
 
@@ -310,7 +297,8 @@ class SelectBuilder implements SelectBuilderInterface
     */
     public function getSQL(): string
     {
-        return $this->formatter->withExpressions([
+        $formatter = new QueryFormatter();
+        return $formatter->withExpressions([
             new Select($this->columns),
             new From($this->from),
             new Join($this->joins),
