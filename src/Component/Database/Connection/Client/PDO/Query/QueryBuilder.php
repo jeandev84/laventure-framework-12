@@ -69,7 +69,15 @@ class QueryBuilder extends AbstractQueryBuilder
     */
     public function update(string $table, array $attributes, array $criteria): UpdateBuilderInterface
     {
+        $qb = $this->builder->update($table);
 
+        foreach ($attributes as $column => $value) {
+            $qb->set($column, ":$column");
+            $qb->setParameter($column, $value);
+        }
+
+        $criteriaResolver = new CriteriaResolver($qb, $this->expr());
+        return $criteriaResolver->resolve($criteria);
     }
 
 
@@ -80,6 +88,8 @@ class QueryBuilder extends AbstractQueryBuilder
     */
     public function delete(string $table, array $criteria): DeleteBuilderInterface
     {
-
+         $qb = $this->builder->delete($table);
+         $criteriaResolver = new CriteriaResolver($qb, $this->expr());
+         return $criteriaResolver->resolve($criteria);
     }
 }

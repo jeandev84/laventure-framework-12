@@ -199,7 +199,9 @@ class Expr
      */
     public function in(string $column, string|array $value): Func
     {
-        $value = is_array($value) ? '(' . join(', ', $value) . ')' : $value;
+        if (is_array($value)) {
+            $value = '(' . join(', ', $value) . ')';
+        }
 
         return new Func("$column IN $value");
     }

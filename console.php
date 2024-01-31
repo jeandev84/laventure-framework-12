@@ -69,5 +69,12 @@ $insertSQL = $qb->insert('users', [
 
 
 #dd($insertSQL->values, $insertSQL->getParameters());
+#echo $insertSQL, PHP_EOL;
 
-echo $insertSQL, PHP_EOL;
+$deleteSQL = $qb->delete('users', [
+    'id' => 3
+]);
+
+
+echo $deleteSQL->getSQL(), PHP_EOL;
+dump($deleteSQL->getParameters());
