@@ -46,6 +46,8 @@ interface HasConditionInterface
 
 
 
+
+
     /**
      * Returns all conditions
      *

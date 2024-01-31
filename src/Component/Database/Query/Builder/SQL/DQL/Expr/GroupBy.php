@@ -36,15 +36,4 @@ class GroupBy implements ExpressionInterface
 
         return sprintf('GROUP BY %s', join($this->groupBy));
     }
-
-
-
-
-    /**
-     * @inheritDoc
-     */
-    public function getName(): string
-    {
-        return 'groupBy';
-    }
 }

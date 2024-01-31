@@ -42,16 +42,4 @@ class Limit implements ExpressionInterface
 
         return ($this->offset ? "$limit OFFSET $this->offset" : $limit);
     }
-
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function getName(): string
-    {
-        return 'limit';
-    }
 }

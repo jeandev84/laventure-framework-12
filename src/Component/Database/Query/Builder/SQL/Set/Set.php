@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Laventure\Component\Database\Query\Builder\SQL\Expr\Set;
+namespace Laventure\Component\Database\Query\Builder\SQL\Set;
 
 use Laventure\Component\Database\Query\Builder\SQL\Expr\ExpressionInterface;
 
@@ -24,18 +24,6 @@ class Set implements ExpressionInterface
     public function __construct(public array $set)
     {
     }
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function getName(): string
-    {
-        return 'set';
-    }
-
-
 
 
     /**

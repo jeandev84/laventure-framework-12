@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Database\Query\Builder\SQL;
+namespace Laventure\Component\Database\Query\Builder\SQL\Set;
 
 /**
  * SettableInterface
@@ -11,7 +11,7 @@ namespace Laventure\Component\Database\Query\Builder\SQL;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Database\Builder\SQL
+ * @package  Laventure\Component\Database\Builder\SQL\Set
 */
 interface SettableInterface
 {

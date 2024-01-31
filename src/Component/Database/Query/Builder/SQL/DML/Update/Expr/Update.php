@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Laventure\Component\Database\Query\Builder\SQL\DML\Update;
+namespace Laventure\Component\Database\Query\Builder\SQL\DML\Update\Expr;
 
 use Laventure\Component\Database\Query\Builder\SQL\Expr\ExpressionInterface;
 
@@ -12,7 +12,7 @@ use Laventure\Component\Database\Query\Builder\SQL\Expr\ExpressionInterface;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Database\Query\Builder\SQL\DML\Update
+ * @package  Laventure\Component\Database\Query\Builder\SQL\DML\Update\Expr
  */
 class Update implements ExpressionInterface
 {
@@ -25,17 +25,6 @@ class Update implements ExpressionInterface
     {
     }
 
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function getName(): string
-    {
-        return 'update';
-    }
 
 
 

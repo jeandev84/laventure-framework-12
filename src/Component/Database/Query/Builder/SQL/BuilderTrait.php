@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Laventure\Component\Database\Query\Builder\SQL;
 
 use Laventure\Component\Database\Connection\ConnectionInterface;
-use Laventure\Component\Database\Query\Builder\SQL\Utils\QueryFormatter;
 use Laventure\Component\Database\Query\QueryInterface;
 
 /**
@@ -182,6 +181,14 @@ trait BuilderTrait
         return $this->getSQL();
     }
 
+
+
+
+
+    public function expr()
+    {
+
+    }
 
 
 

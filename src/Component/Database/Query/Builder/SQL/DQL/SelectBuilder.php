@@ -14,7 +14,7 @@ use Laventure\Component\Database\Query\Builder\SQL\DQL\Expr\Join;
 use Laventure\Component\Database\Query\Builder\SQL\DQL\Expr\Limit;
 use Laventure\Component\Database\Query\Builder\SQL\DQL\Expr\OrderBy;
 use Laventure\Component\Database\Query\Builder\SQL\DQL\Expr\Select;
-use Laventure\Component\Database\Query\Builder\SQL\Utils\QueryFormatter;
+use Laventure\Component\Database\Query\Builder\Utils\QueryFormatter;
 
 /**
  * SelectBuilder

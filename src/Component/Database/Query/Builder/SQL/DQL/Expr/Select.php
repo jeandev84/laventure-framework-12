@@ -37,16 +37,4 @@ class Select implements ExpressionInterface
 
         return "SELECT $selects";
     }
-
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function getName(): string
-    {
-        return 'selected';
-    }
 }

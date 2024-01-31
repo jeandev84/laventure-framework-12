@@ -13,12 +13,8 @@ use Stringable;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Database\Builder\SQL\Expr\Contract
+ * @package  Laventure\Component\Database\Builder\SQL
 */
 interface ExpressionInterface extends Stringable
 {
-    /**
-     * @return string
-    */
-    public function getName(): string;
 }

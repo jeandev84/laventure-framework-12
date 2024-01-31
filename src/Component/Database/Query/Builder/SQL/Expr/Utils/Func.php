@@ -1,36 +1,35 @@
 <?php
-
 declare(strict_types=1);
 
-namespace Laventure\Component\Database\Query\Builder\SQL\DQL\Expr;
+namespace Laventure\Component\Database\Query\Builder\SQL\Expr\Utils;
 
 use Laventure\Component\Database\Query\Builder\SQL\Expr\ExpressionInterface;
 
 /**
- * Join
+ * Func
  *
  * @author Jean-Claude <jeanyao@ymail.com>
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Database\Builder\SQL\DQL\Expr\Join
+ * @package  Laventure\Component\Database\Query\Builder\SQL\Expr\Utils
 */
-class Join implements ExpressionInterface
+class Func implements ExpressionInterface
 {
+
     /**
-     * @param array $joins
+     * @param string $function
     */
-    public function __construct(public array $joins)
+    public function __construct(protected string $function)
     {
     }
 
 
-
     /**
-     * @inheritDoc
+     * @return string
     */
     public function __toString(): string
     {
-        return ($this->joins ? join(' ', $this->joins) : '');
+        return $this->function;
     }
 }

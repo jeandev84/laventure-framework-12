@@ -37,14 +37,4 @@ class OrderBy implements ExpressionInterface
 
         return rtrim(sprintf('ORDER BY %s', join(',', $this->orders)));
     }
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function getName(): string
-    {
-        return 'orderBy';
-    }
 }

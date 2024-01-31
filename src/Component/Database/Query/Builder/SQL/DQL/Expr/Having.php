@@ -38,14 +38,4 @@ class Having implements ExpressionInterface
 
         return sprintf('HAVING %s', join($this->having));
     }
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function getName(): string
-    {
-        return 'having';
-    }
 }

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Laventure\Component\Database\Query\Builder\SQL\DML\Insert;
+namespace Laventure\Component\Database\Query\Builder\SQL\DML\Insert\Expr;
 
 use Laventure\Component\Database\Query\Builder\SQL\Expr\ExpressionInterface;
 
@@ -12,7 +12,7 @@ use Laventure\Component\Database\Query\Builder\SQL\Expr\ExpressionInterface;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Database\Query\Builder\SQL\DML\Insert
+ * @package  Laventure\Component\Database\Query\Builder\SQL\DML\Insert\Expr
 */
 class Insert implements ExpressionInterface
 {
@@ -28,17 +28,6 @@ class Insert implements ExpressionInterface
         public array $values
     )
     {
-    }
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function getName(): string
-    {
-        return 'insert';
     }
 
 

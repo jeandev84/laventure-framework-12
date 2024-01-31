@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laventure\Component\Database\Query\Builder\SQL\Utils;
+namespace Laventure\Component\Database\Query\Builder\Utils;
 
 use Laventure\Component\Database\Query\Builder\SQL\Expr\ExpressionInterface;
 
@@ -13,7 +13,7 @@ use Laventure\Component\Database\Query\Builder\SQL\Expr\ExpressionInterface;
  *
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
- * @package  Laventure\Component\Database\Builder\SQL\Utils
+ * @package  Laventure\Component\Database\Query\Builder\Utils
 */
 class QueryFormatter
 {

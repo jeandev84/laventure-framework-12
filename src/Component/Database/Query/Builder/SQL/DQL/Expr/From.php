@@ -30,15 +30,4 @@ class From implements ExpressionInterface
     {
         return "FROM ". join(', ', array_values($this->from));
     }
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function getName(): string
-    {
-        return 'from';
-    }
 }

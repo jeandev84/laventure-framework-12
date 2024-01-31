@@ -58,15 +58,4 @@ class Where implements ExpressionInterface
 
         return  join(' ', $wheres);
     }
-
-
-
-
-    /**
-     * @inheritDoc
-    */
-    public function getName(): string
-    {
-        return 'where';
-    }
 }

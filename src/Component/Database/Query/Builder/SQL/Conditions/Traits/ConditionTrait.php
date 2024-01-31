@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Database\Query\Builder\SQL\Conditions\Traits;
 
-use Laventure\Component\Database\Query\Builder\SQL\Conditions\Expr\Where;
-
 /**
  * ConditionTrait
  *

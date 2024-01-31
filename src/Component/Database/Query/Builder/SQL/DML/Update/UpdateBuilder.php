@@ -8,8 +8,9 @@ namespace Laventure\Component\Database\Query\Builder\SQL\DML\Update;
 use Laventure\Component\Database\Query\Builder\SQL\BuilderTrait;
 use Laventure\Component\Database\Query\Builder\SQL\Conditions\Expr\Where;
 use Laventure\Component\Database\Query\Builder\SQL\Conditions\Traits\ConditionTrait;
-use Laventure\Component\Database\Query\Builder\SQL\Expr\Set\Set;
-use Laventure\Component\Database\Query\Builder\SQL\Utils\QueryFormatter;
+use Laventure\Component\Database\Query\Builder\SQL\DML\Update\Expr\Update;
+use Laventure\Component\Database\Query\Builder\SQL\Set\Set;
+use Laventure\Component\Database\Query\Builder\Utils\QueryFormatter;
 
 /**
  * UpdateBuilder
