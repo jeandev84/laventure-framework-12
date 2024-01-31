@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Database\Query\Builder\SQL\DML\Delete;
 
+use Laventure\Component\Database\Query\Builder\SQL\BuilderHasConditions;
 use Laventure\Component\Database\Query\Builder\SQL\BuilderTrait;
 use Laventure\Component\Database\Query\Builder\SQL\Conditions\Expr\Where;
 use Laventure\Component\Database\Query\Builder\SQL\Conditions\Traits\ConditionTrait;
@@ -21,8 +22,7 @@ use Laventure\Component\Database\Query\Builder\Utils\QueryFormatter;
 */
 class DeleteBuilder implements DeleteBuilderInterface
 {
-    use ConditionTrait;
-    use BuilderTrait;
+    use BuilderHasConditions;
 
     /**
      * @var string

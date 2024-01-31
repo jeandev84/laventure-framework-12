@@ -12,6 +12,7 @@ use Laventure\Component\Database\Query\Builder\SQL\DML\Update\UpdateBuilder;
 use Laventure\Component\Database\Query\Builder\SQL\DML\Update\UpdateBuilderInterface;
 use Laventure\Component\Database\Query\Builder\SQL\DQL\Contract\SelectBuilderInterface;
 use Laventure\Component\Database\Query\Builder\SQL\DQL\SelectBuilder;
+use Laventure\Component\Database\Query\Builder\SQL\Expr\Expr;
 
 /**
  * SqlQueryBuilder
@@ -39,6 +40,22 @@ class SqlQueryBuilder implements SqlQueryBuilderInterface
     {
         $this->connection = $connection;
     }
+
+
+
+
+
+    /**
+     * @return Expr
+    */
+    public function expr(): Expr
+    {
+        return new Expr();
+    }
+
+
+
+
 
 
 

@@ -6,7 +6,7 @@ namespace Laventure\Component\Database\Connection\Client\PDO\Drivers\Mysql;
 
 use Laventure\Component\Database\Connection\Client\PDO\Drivers\Connection;
 use Laventure\Component\Database\Connection\Drivers\Mysql\MysqlDatabase;
-use Laventure\Component\Database\Connection\Query\QueryBuilderInterface;
+use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
 use Laventure\Component\Database\DatabaseInterface;
 
 /**

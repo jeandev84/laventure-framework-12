@@ -84,6 +84,7 @@ class InsertBuilder implements InsertBuilderInterface
             $this->values[$index] = [];
         }
 
+        $this->columns[$column] = $column;
         $this->values[$index][$column] = $value;
 
         return $this;

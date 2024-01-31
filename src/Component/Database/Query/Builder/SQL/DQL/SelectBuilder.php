@@ -3,9 +3,8 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Database\Query\Builder\SQL\DQL;
 
-use Laventure\Component\Database\Query\Builder\SQL\BuilderTrait;
+use Laventure\Component\Database\Query\Builder\SQL\BuilderHasConditions;
 use Laventure\Component\Database\Query\Builder\SQL\Conditions\Expr\Where;
-use Laventure\Component\Database\Query\Builder\SQL\Conditions\Traits\ConditionTrait;
 use Laventure\Component\Database\Query\Builder\SQL\DQL\Contract\SelectBuilderInterface;
 use Laventure\Component\Database\Query\Builder\SQL\DQL\Expr\From;
 use Laventure\Component\Database\Query\Builder\SQL\DQL\Expr\GroupBy;
@@ -27,8 +26,8 @@ use Laventure\Component\Database\Query\Builder\Utils\QueryFormatter;
 */
 class SelectBuilder implements SelectBuilderInterface
 {
-    use ConditionTrait;
-    use BuilderTrait;
+
+    use BuilderHasConditions;
 
 
     /**
@@ -125,6 +124,8 @@ class SelectBuilder implements SelectBuilderInterface
 
         return $this;
     }
+
+
 
 
 

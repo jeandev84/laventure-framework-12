@@ -1,10 +1,11 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Query\Builder\SQL;
 
+
 use Laventure\Component\Database\Connection\ConnectionInterface;
+use Laventure\Component\Database\Query\Builder\SQL\Expr\Expr;
 use Laventure\Component\Database\Query\QueryInterface;
 
 /**
@@ -15,20 +16,23 @@ use Laventure\Component\Database\Query\QueryInterface;
  * @license https://github.com/jeandev84/laventure-framework/blob/master/LICENSE
  *
  * @package  Laventure\Component\Database\Query\Builder\SQL
-*/
+ */
 trait BuilderTrait
 {
+
     /**
      * @var array
-     */
+    */
     protected array $parameters = [];
 
 
 
     /**
      * @var array
-     */
+    */
     protected array $bindingParams = [];
+
+
 
 
     /**
@@ -47,9 +51,11 @@ trait BuilderTrait
 
 
 
+
+
     /**
      * @param ConnectionInterface $connection
-    */
+     */
     public function __construct(ConnectionInterface $connection)
     {
         $this->connection = $connection;
@@ -65,7 +71,7 @@ trait BuilderTrait
      * @param $id
      * @param $value
      * @return $this
-    */
+     */
     public function setParameter($id, $value): static
     {
         $this->parameters[$id] = $value;
@@ -83,7 +89,7 @@ trait BuilderTrait
      * @param $value
      * @param $type
      * @return $this
-    */
+     */
     public function bindParam($id, $value, $type = null): static
     {
         $this->bindingParams[$id] = [$id, $value, intval($type)];
@@ -101,7 +107,7 @@ trait BuilderTrait
      * @param $value
      * @param $type
      * @return $this
-    */
+     */
     public function bindValue($id, $value, $type = null): static
     {
         $this->bindingValues[$id] = [$id, $value, intval($type)];
@@ -118,7 +124,7 @@ trait BuilderTrait
     /**
      * @param $id
      * @return mixed
-    */
+     */
     public function getParameter($id): mixed
     {
         return $this->parameters[$id] ?? null;
@@ -132,7 +138,7 @@ trait BuilderTrait
     /**
      * @param array $parameters
      * @return $this
-    */
+     */
     public function setParameters(array $parameters): static
     {
         $this->parameters = array_merge($this->parameters, $parameters);
@@ -185,10 +191,15 @@ trait BuilderTrait
 
 
 
-    public function expr()
+    /**
+     * @return Expr
+    */
+    public function expr(): Expr
     {
-
+        return new Expr();
     }
+
+
 
 
 

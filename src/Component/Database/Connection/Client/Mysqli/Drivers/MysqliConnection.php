@@ -10,7 +10,7 @@ use Laventure\Component\Database\Connection\Client\Mysqli\MysqliClientInterface;
 use Laventure\Component\Database\Connection\Drivers\Mysql\MysqlDatabase;
 use Laventure\Component\Database\Connection\Exception\ConnectionException;
 use Laventure\Component\Database\Connection\Query\Builder\NullQueryBuilder;
-use Laventure\Component\Database\Connection\Query\QueryBuilderInterface;
+use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
 use Laventure\Component\Database\DatabaseInterface;
 use Laventure\Component\Database\Query\NullQuery;
 use Laventure\Component\Database\Query\QueryInterface;

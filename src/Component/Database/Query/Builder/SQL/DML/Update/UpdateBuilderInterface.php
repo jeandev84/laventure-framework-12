@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Database\Query\Builder\SQL\DML\Update;
 
-use Laventure\Component\Database\Query\Builder\SQL\BuilderInterface;
-use Laventure\Component\Database\Query\Builder\SQL\Conditions\Contract\HasConditionInterface;
+
+use Laventure\Component\Database\Query\Builder\SQL\Conditions\Contract\BuilderHasConditionInterface;
 use Laventure\Component\Database\Query\Builder\SQL\Set\SettableInterface;
 
 /**
@@ -17,7 +17,7 @@ use Laventure\Component\Database\Query\Builder\SQL\Set\SettableInterface;
  *
  * @package  Laventure\Component\Database\Builder\SQL\DML\Update
  */
-interface UpdateBuilderInterface extends SettableInterface, HasConditionInterface, BuilderInterface
+interface UpdateBuilderInterface extends SettableInterface, BuilderHasConditionInterface
 {
     /**
      * @param string $table
