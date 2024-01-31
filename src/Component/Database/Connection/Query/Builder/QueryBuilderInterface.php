@@ -49,7 +49,7 @@ interface QueryBuilderInterface
       * @param array $criteria
       * @return UpdateBuilderInterface
      */
-     public function update(string $table, array $attributes, array $criteria): UpdateBuilderInterface;
+     public function update(string $table, array $attributes, array $criteria = []): UpdateBuilderInterface;
 
 
 
@@ -62,5 +62,5 @@ interface QueryBuilderInterface
       * @param array $criteria
       * @return DeleteBuilderInterface
      */
-     public function delete(string $table, array $criteria): DeleteBuilderInterface;
+     public function delete(string $table, array $criteria = []): DeleteBuilderInterface;
 }

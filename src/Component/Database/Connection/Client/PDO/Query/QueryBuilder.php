@@ -67,7 +67,7 @@ class QueryBuilder extends AbstractQueryBuilder
     /**
      * @inheritDoc
     */
-    public function update(string $table, array $attributes, array $criteria): UpdateBuilderInterface
+    public function update(string $table, array $attributes, array $criteria = []): UpdateBuilderInterface
     {
         $qb = $this->builder->update($table);
 
@@ -86,7 +86,7 @@ class QueryBuilder extends AbstractQueryBuilder
     /**
      * @inheritDoc
     */
-    public function delete(string $table, array $criteria): DeleteBuilderInterface
+    public function delete(string $table, array $criteria = []): DeleteBuilderInterface
     {
          $qb = $this->builder->delete($table);
          $criteriaResolver = new CriteriaResolver($qb, $this->expr());
