@@ -3,9 +3,7 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Database\Query\Builder\SQL\DQL;
 
-use Laventure\Component\Database\Connection\ConnectionInterface;
 use Laventure\Component\Database\Query\Builder\SQL\BuilderTrait;
-use Laventure\Component\Database\Query\Builder\SQL\Conditions\Contract\HasConditionInterface;
 use Laventure\Component\Database\Query\Builder\SQL\Conditions\Expr\Where;
 use Laventure\Component\Database\Query\Builder\SQL\Conditions\Traits\ConditionTrait;
 use Laventure\Component\Database\Query\Builder\SQL\DQL\Contract\SelectBuilderInterface;

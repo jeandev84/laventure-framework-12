@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Database\Query\Builder\SQL\DML\Insert;
 
-use Laventure\Component\Database\Connection\ConnectionInterface;
 use Laventure\Component\Database\Query\Builder\SQL\BuilderTrait;
 use Laventure\Component\Database\Query\Builder\SQL\Utils\QueryFormatter;
 
