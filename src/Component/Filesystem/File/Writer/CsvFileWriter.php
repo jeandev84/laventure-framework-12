@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Filesystem\File\Writer;
@@ -16,7 +17,6 @@ use Laventure\Contract\Writer\WriterInterface;
  */
 class CsvFileWriter implements WriterInterface
 {
-
     /**
      * @inheritDoc
      */

@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client;
-
 
 use Laventure\Component\Database\Configuration\Contract\ConfigurationInterface;
 
@@ -17,19 +17,18 @@ use Laventure\Component\Database\Configuration\Contract\ConfigurationInterface;
 */
 interface ClientInterface
 {
-
-      /**
-       * @return string
-      */
-      public function getName(): string;
-
+    /**
+     * @return string
+    */
+    public function getName(): string;
 
 
-     /**
-       * Returns something like PDO, mysqli ...
-       *
-       * @param ConfigurationInterface $config
-       * @return mixed
-     */
-     public function makeConnection(ConfigurationInterface $config): mixed;
+
+    /**
+      * Returns something like PDO, mysqli ...
+      *
+      * @param ConfigurationInterface $config
+      * @return mixed
+    */
+    public function makeConnection(ConfigurationInterface $config): mixed;
 }

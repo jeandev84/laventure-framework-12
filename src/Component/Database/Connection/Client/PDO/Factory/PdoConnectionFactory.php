@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client\PDO\Factory;
@@ -23,11 +24,10 @@ use Laventure\Component\Database\Connection\Exception\ConnectionException;
 */
 class PdoConnectionFactory implements PdoConnectionFactoryInterface
 {
-
     /**
      * @inheritDoc
     */
-    public function createPdo(string $driver): PdoConnectionInterface
+    public function create(string $driver): PdoConnectionInterface
     {
         $client = new PdoClient();
 

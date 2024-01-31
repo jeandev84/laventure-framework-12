@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Factory;
@@ -51,7 +52,7 @@ class ConnectionFactory implements ConnectionFactoryInterface
     */
     public function makeFromPdo(string $name): PdoConnectionInterface
     {
-        return (new PdoConnectionFactory())->createPdo($name);
+        return (new PdoConnectionFactory())->create($name);
     }
 
 
@@ -62,7 +63,7 @@ class ConnectionFactory implements ConnectionFactoryInterface
     */
     public function makeFromMysqli(): MysqliConnectionInterface
     {
-        return (new MysqliConnectionFactory())->createMysqli();
+        return (new MysqliConnectionFactory())->create();
     }
 
 

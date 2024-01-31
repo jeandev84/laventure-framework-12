@@ -9,7 +9,7 @@ use Laventure\Component\Database\Configuration\NullConfiguration;
 use Laventure\Component\Database\Connection\Client\PDO\Dsn\PdoDsnBuilder;
 use Laventure\Component\Database\Connection\Client\PDO\PdoClientInterface;
 use Laventure\Component\Database\Connection\Client\PDO\Query\Query;
-use Laventure\Component\Database\Connection\Query\QueryInterface;
+use Laventure\Component\Database\Query\QueryInterface;
 use PDO;
 use PDOException;
 use RuntimeException;

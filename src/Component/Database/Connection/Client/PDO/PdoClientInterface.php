@@ -19,7 +19,6 @@ use PDO;
 */
 interface PdoClientInterface extends ClientInterface
 {
-
     /**
      * @param string $dsn
      * @param string|null $username

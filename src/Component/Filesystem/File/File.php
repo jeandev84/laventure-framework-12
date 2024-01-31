@@ -167,14 +167,27 @@ class File implements FileInterface
     /**
      * @inheritDoc
     */
-    public function write(string $content, bool $append = false): false|int
+    public function write(string $content, int $flags = 0): false|int
     {
-        if ($append) {
-            $content .= PHP_EOL;
-            $this->writer->flags(FILE_APPEND | LOCK_EX);
-        }
+        return $this->writer
+                    ->flags($flags)
+                    ->content($content)
+                    ->write();
+    }
 
-        return $this->writer->content($content)->write();
+
+
+
+    /**
+     * @param string $content
+     * @return false|int
+    */
+    public function append(string $content): false|int
+    {
+         return $this->write(
+       $content . PHP_EOL,
+         FILE_APPEND|LOCK_EX
+         );
     }
 
 

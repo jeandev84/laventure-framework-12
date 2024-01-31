@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client\Mysqli\Drivers;
-
 
 use Laventure\Component\Database\Connection\ConnectionInterface;
 use mysqli;
@@ -18,9 +18,8 @@ use mysqli;
  */
 interface MysqliConnectionInterface extends ConnectionInterface
 {
-
-       /**
-        * @return mysqli
-       */
-       public function getConnection(): mysqli;
+    /**
+     * @return mysqli
+    */
+    public function getConnection(): mysqli;
 }

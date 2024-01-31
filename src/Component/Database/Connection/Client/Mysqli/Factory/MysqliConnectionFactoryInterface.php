@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client\Mysqli\Factory;
-
 
 use Laventure\Component\Database\Connection\Client\Mysqli\Drivers\MysqliConnectionInterface;
 
@@ -17,8 +17,8 @@ use Laventure\Component\Database\Connection\Client\Mysqli\Drivers\MysqliConnecti
  */
 interface MysqliConnectionFactoryInterface
 {
-     /**
-      * @return MysqliConnectionInterface
-     */
-     public function createMysqli(): MysqliConnectionInterface;
+    /**
+     * @return MysqliConnectionInterface
+    */
+    public function create(): MysqliConnectionInterface;
 }

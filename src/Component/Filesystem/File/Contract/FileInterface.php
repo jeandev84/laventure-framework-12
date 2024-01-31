@@ -90,19 +90,14 @@ interface FileInterface
     public function readAsArray(): array;
 
 
-
-
-
     /**
      * Write content into file
      *
      * @param string $content
-     *
-     * @param bool $append
-     *
+     * @param int $flags
      * @return false|int
     */
-    public function write(string $content, bool $append = false): false|int;
+    public function write(string $content, int $flags = 0): false|int;
 
 
 

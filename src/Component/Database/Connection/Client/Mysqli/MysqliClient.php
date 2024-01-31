@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client\Mysqli;
@@ -17,7 +18,6 @@ use mysqli;
  */
 class MysqliClient implements MysqliClientInterface
 {
-
     /**
      * @inheritDoc
     */

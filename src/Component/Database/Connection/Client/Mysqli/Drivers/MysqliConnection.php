@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client\Mysqli\Drivers;
@@ -9,10 +10,10 @@ use Laventure\Component\Database\Connection\Client\Mysqli\MysqliClientInterface;
 use Laventure\Component\Database\Connection\Drivers\Mysql\MysqlDatabase;
 use Laventure\Component\Database\Connection\Exception\ConnectionException;
 use Laventure\Component\Database\Connection\Query\Builder\NullQueryBuilder;
-use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
-use Laventure\Component\Database\Connection\Query\NullQuery;
-use Laventure\Component\Database\Connection\Query\QueryInterface;
 use Laventure\Component\Database\DatabaseInterface;
+use Laventure\Component\Database\Query\Builder\QueryBuilderInterface;
+use Laventure\Component\Database\Query\NullQuery;
+use Laventure\Component\Database\Query\QueryInterface;
 use mysqli;
 
 /**
@@ -26,8 +27,6 @@ use mysqli;
  */
 class MysqliConnection implements MysqliConnectionInterface
 {
-
-
     /**
      * @var MysqliClientInterface
     */
@@ -94,8 +93,8 @@ class MysqliConnection implements MysqliConnectionInterface
     */
     public function disconnect(): void
     {
-         // TODO reviews
-         $this->connection = null;
+        // TODO reviews
+        $this->connection = null;
     }
 
 
@@ -185,7 +184,7 @@ class MysqliConnection implements MysqliConnectionInterface
     */
     public function config($key, $default = null): mixed
     {
-         return $this->config->get($key, $default);
+        return $this->config->get($key, $default);
     }
 
 

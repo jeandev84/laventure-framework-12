@@ -44,7 +44,7 @@ class LoggerWriter extends AbstractLoggerWriter
     {
         $file  = new File($this->getLogPath());
         $file->make();
-        return $file->write($this->getDetails(), true);
+        return $file->append($this->getDetails());
     }
 
 

@@ -314,11 +314,11 @@ class DatabaseManager implements DatabaseManagerInterface
      */
     public function close(): void
     {
-       $this->config      = [];
-       $this->connections = [];
-       $this->connected   = [];
-       $this->extension   = null;
-       $this->connection  = null;
+        $this->config      = [];
+        $this->connections = [];
+        $this->connected   = [];
+        $this->extension   = null;
+        $this->connection  = null;
     }
 
 

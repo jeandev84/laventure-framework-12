@@ -6,7 +6,7 @@ return [
     'connections' => [
         'pdo' => [
             'mysql' => [
-                'dsn' => 'mysql:host=127.0.0.1;dbname=grafikart_shopping_cart;charset=utf8',
+                'dsn' => 'mysql:host=127.0.0.1;dbname=laventure_test;charset=utf8',
                 'username' => 'root',
                 'password' => 'secret',
                 'options' => [

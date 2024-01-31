@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client\PDO\Query;
 
-use Laventure\Component\Database\Connection\Query\QueryException;
-use Laventure\Component\Database\Connection\Query\QueryInterface;
-use Laventure\Component\Database\Connection\Query\Result\QueryResultInterface;
+use Laventure\Component\Database\Query\QueryException;
+use Laventure\Component\Database\Query\QueryInterface;
+use Laventure\Component\Database\Query\Result\QueryResultInterface;
 use PDO;
 use PDOException;
 use PDOStatement;

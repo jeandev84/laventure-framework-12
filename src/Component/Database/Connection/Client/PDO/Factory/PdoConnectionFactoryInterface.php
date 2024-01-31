@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client\PDO\Factory;
-
 
 use Laventure\Component\Database\Connection\Client\PDO\Drivers\PdoConnectionInterface;
 
@@ -17,11 +17,9 @@ use Laventure\Component\Database\Connection\Client\PDO\Drivers\PdoConnectionInte
 */
 interface PdoConnectionFactoryInterface
 {
-
-
-     /**
-      * @param string $driver
-      * @return PdoConnectionInterface
-     */
-     public function createPdo(string $driver): PdoConnectionInterface;
+    /**
+     * @param string $driver
+     * @return PdoConnectionInterface
+    */
+    public function create(string $driver): PdoConnectionInterface;
 }

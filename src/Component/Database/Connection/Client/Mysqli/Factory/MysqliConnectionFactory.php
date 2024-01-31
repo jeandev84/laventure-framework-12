@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client\Mysqli\Factory;
@@ -18,11 +19,10 @@ use Laventure\Component\Database\Connection\Client\Mysqli\MysqliClient;
  */
 class MysqliConnectionFactory implements MysqliConnectionFactoryInterface
 {
-
     /**
      * @inheritDoc
     */
-    public function createMysqli(): MysqliConnectionInterface
+    public function create(): MysqliConnectionInterface
     {
         return new MysqliConnection(
             new MysqliClient()

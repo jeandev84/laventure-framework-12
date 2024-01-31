@@ -66,7 +66,7 @@ class DotenvExporter implements DotenvExporterInterface
         }
 
         foreach ($this->environment->all() as $name => $value) {
-            $file->write("$name=$value". PHP_EOL, true);
+            $file->append("$name=$value");
         }
 
         return !$this->environment->empty();
