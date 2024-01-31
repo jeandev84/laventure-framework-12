@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Database\Query\Builder\SQL\DML\Delete;
 
+use Laventure\Component\Database\Connection\ConnectionInterface;
+use Laventure\Component\Database\Query\Builder\SQL\BuilderTrait;
+use Laventure\Component\Database\Query\Builder\SQL\Conditions\Expr\Where;
+use Laventure\Component\Database\Query\Builder\SQL\Conditions\Traits\ConditionTrait;
+
 /**
  * DeleteBuilder
  *
@@ -15,4 +20,44 @@ namespace Laventure\Component\Database\Query\Builder\SQL\DML\Delete;
 */
 class DeleteBuilder implements DeleteBuilderInterface
 {
+    use ConditionTrait;
+    use BuilderTrait;
+
+    /**
+     * @var string
+    */
+    public string $table;
+
+
+    public function __construct(ConnectionInterface $connection, string $table)
+    {
+        parent::__construct($connection);
+        $this->delete($table);
+    }
+
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function delete(string $table): static
+    {
+        $this->table = $table;
+
+        return $this;
+    }
+
+
+
+    /**
+     * @inheritDoc
+    */
+    public function getSQL(): string
+    {
+        return $this->formatter->withExpressions([
+            new Delete($this->table),
+            new Where($this->wheres)
+        ])->format();
+    }
 }

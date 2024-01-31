@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Database\Query\Builder\SQL\DML\Insert;
 
+use Laventure\Component\Database\Connection\ConnectionInterface;
 use Laventure\Component\Database\Query\Builder\SQL\BuilderTrait;
-use Laventure\Component\Database\Query\Builder\SQL\DML\Insert\Expr\Insert;
 
 /**
  * InsertBuilder
@@ -40,6 +40,22 @@ class InsertBuilder implements InsertBuilderInterface
      * @var array
     */
     public array $values  = [];
+
+
+    /**
+     * @param ConnectionInterface $connection
+     *
+     * @param string $table
+    */
+    public function __construct(
+        ConnectionInterface $connection,
+        string $table
+    )
+    {
+        parent::__construct($connection);
+        $this->insert($table);
+    }
+
 
 
 

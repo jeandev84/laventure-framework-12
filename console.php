@@ -22,9 +22,8 @@ $connection->connect(new Configuration([
     ]
 ]));
 
-$qb = new InsertBuilder($connection);
-$qb = $qb->insert('users')
-         ->values([
+$qb = new InsertBuilder($connection, 'users');
+$qb = $qb->values([
              'username' => ":username_1",
              'password' => ":password_1",
              'city'     => ":city_1"

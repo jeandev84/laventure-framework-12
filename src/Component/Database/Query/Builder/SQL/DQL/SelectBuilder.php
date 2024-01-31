@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Database\Query\Builder\SQL\DQL;
 
+use Laventure\Component\Database\Connection\ConnectionInterface;
 use Laventure\Component\Database\Query\Builder\SQL\BuilderTrait;
 use Laventure\Component\Database\Query\Builder\SQL\Conditions\Contract\HasConditionInterface;
 use Laventure\Component\Database\Query\Builder\SQL\Conditions\Expr\Where;
@@ -25,7 +26,7 @@ use Laventure\Component\Database\Query\Builder\SQL\DQL\Expr\Select;
  *
  * @package  Laventure\Component\Database\Builder\SQL\DQL
 */
-class SelectBuilder implements SelectBuilderInterface, HasConditionInterface
+class SelectBuilder implements SelectBuilderInterface
 {
     use ConditionTrait;
     use BuilderTrait;
@@ -89,6 +90,19 @@ class SelectBuilder implements SelectBuilderInterface, HasConditionInterface
 
 
 
+
+    /**
+     * @param ConnectionInterface $connection
+     * @param array $selects
+    */
+    public function __construct(
+        ConnectionInterface $connection,
+        array $selects = []
+    )
+    {
+        parent::__construct($connection);
+        $this->addSelect(...$selects);
+    }
 
 
 

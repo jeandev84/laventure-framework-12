@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Laventure\Component\Database\Query\Builder\SQL\DQL\Contract;
 
 use Laventure\Component\Database\Query\Builder\SQL\BuilderInterface;
+use Laventure\Component\Database\Query\Builder\SQL\Conditions\Contract\HasConditionInterface;
 
 /**
  * SelectBuilderInterface
@@ -15,7 +16,7 @@ use Laventure\Component\Database\Query\Builder\SQL\BuilderInterface;
  *
  * @package  Laventure\Component\Database\Builder\SQL\DQL\Contract
 */
-interface SelectBuilderInterface extends BuilderInterface
+interface SelectBuilderInterface extends HasConditionInterface, BuilderInterface
 {
     /**
      * select columns

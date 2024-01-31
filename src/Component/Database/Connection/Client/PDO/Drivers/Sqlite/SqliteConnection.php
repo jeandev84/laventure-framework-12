@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Laventure\Component\Database\Connection\Client\PDO\Drivers\Sqlite;
 
 use Laventure\Component\Database\Connection\Client\PDO\Drivers\Connection;
+use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
 use Laventure\Component\Database\DatabaseInterface;
-use Laventure\Component\Database\Query\Builder\QueryBuilderInterface;
 
 /**
  * SqliteConnection

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Laventure\Component\Database\Connection\Client\PDO\Query;
 
+use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderInterface;
 use Laventure\Component\Database\Connection\Query\Builder\QueryBuilderTrait;
-use Laventure\Component\Database\Query\Builder\QueryBuilderInterface;
 
 /**
  * QueryBuilder
