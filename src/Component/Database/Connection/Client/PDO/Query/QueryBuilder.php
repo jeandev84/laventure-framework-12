@@ -44,7 +44,8 @@ class QueryBuilder extends AbstractQueryBuilder
     public function select($selects = null, array $criteria = []): SelectBuilderInterface
     {
          $qb = $this->builder->select($selects);
-         return $this->criteriaResolver($qb, $criteria);
+         $criteriaResolver = new CriteriaResolver($qb, $this->expr());
+         return $criteriaResolver->resolve($criteria);
     }
 
 
@@ -78,7 +79,8 @@ class QueryBuilder extends AbstractQueryBuilder
             $qb->setParameter($column, $value);
         }
 
-        return $this->criteriaResolver($qb, $criteria);
+        $criteriaResolver = new CriteriaResolver($qb, $this->expr());
+        return $criteriaResolver->resolve($criteria);
     }
 
 
@@ -89,23 +91,8 @@ class QueryBuilder extends AbstractQueryBuilder
     */
     public function delete(string $table, array $criteria = []): DeleteBuilderInterface
     {
-         return $this->criteriaResolver(
-             $this->builder->delete($table),
-             $criteria
-         );
-    }
-
-
-
-
-    /**
-     * @param $qb
-     * @param array $criteria
-     * @return mixed
-    */
-    protected function criteriaResolver($qb, array $criteria): mixed
-    {
-        $criteriaResolver = new CriteriaResolver($qb, $this->expr());
-        return $criteriaResolver->resolve($criteria);
+         $qb = $this->builder->delete($table);
+         $criteriaResolver = new CriteriaResolver($qb, $this->expr());
+         return $criteriaResolver->resolve($criteria);
     }
 }
