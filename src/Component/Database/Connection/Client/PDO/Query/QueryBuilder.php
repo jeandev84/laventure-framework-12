@@ -50,6 +50,8 @@ class QueryBuilder extends AbstractQueryBuilder
 
 
 
+
+
     /**
      * @inheritDoc
     */
@@ -59,6 +61,7 @@ class QueryBuilder extends AbstractQueryBuilder
         $insertResolver = new InsertResolver($qb);
         return $insertResolver->resolve($attributes);
     }
+
 
 
 

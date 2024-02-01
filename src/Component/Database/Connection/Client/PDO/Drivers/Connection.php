@@ -242,10 +242,9 @@ abstract class Connection implements PdoConnectionInterface
     */
     public function transaction(callable $func): bool
     {
-        $this->beginTransaction();
-
         try {
 
+            $this->beginTransaction();
             $func($this);
             return $this->commit();
 
