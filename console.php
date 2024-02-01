@@ -39,8 +39,17 @@ $selectSQL = $qb->select('count(p.price), u.username, u.birthday, u.email')
                 ->getSQL();
 
 
-#echo $selectSQL, PHP_EOL;
+echo $selectSQL, PHP_EOL;
 
+/*
+SELECT count(p.price), u.username, u.birthday, u.email
+FROM users u
+JOIN products p ON p.id = u.product_id
+WHERE u.id = :id AND u.username = :username OR u.email = :email
+GROUP BY p.price
+HAVING count(p.price) > 500
+ORDER BY p.title asc;
+*/
 $insertSQL = $qb->insert('users', [
     [
         'username' => "User#1",
@@ -57,9 +66,16 @@ $insertSQL = $qb->insert('users', [
         'password' => md5(uniqid()),
         'city'     => "City#1"
     ]
-])->getSQL();
+]);
+
+echo $insertSQL->getSQl(), PHP_EOL;
 
 /*
+INSERT INTO users (username, password, city)
+VALUES (:username_0, :password_0, :city_0),
+       (:username_1, :password_1, :city_1),
+       (:username_2, :password_2, :city_2);
+============================================
 $insertSQL = $qb->insert('users', [
     'username' => "User#1",
     'password' => md5(uniqid()),
@@ -67,6 +83,22 @@ $insertSQL = $qb->insert('users', [
 ]);
 */
 
+
+$updateSQL = $qb->update('users', [
+    'username' => "User#1",
+    'password' => md5(uniqid()),
+    'city'     => "City#1"
+], [
+    'id' => 5
+]);
+
+echo $updateSQL->getSQL(), PHP_EOL;
+
+/*
+UPDATE users
+SET username = :username, password = :password, city = :city
+WHERE id = :id;
+*/
 
 #dd($insertSQL->values, $insertSQL->getParameters());
 #echo $insertSQL, PHP_EOL;
@@ -77,4 +109,7 @@ $deleteSQL = $qb->delete('users', [
 
 
 echo $deleteSQL->getSQL(), PHP_EOL;
-dump($deleteSQL->getParameters());
+# dump($deleteSQL->getParameters());
+/*
+DELETE FROM users WHERE id = :id;
+*/
