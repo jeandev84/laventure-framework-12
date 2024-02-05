@@ -100,22 +100,38 @@ class Response extends Message implements ResponseInterface, Stringable
 
 
 
+    /**
+     * @return string
+    */
+    public function getContent(): string
+    {
+        return strval($this->getBody());
+    }
+
+
+
+
 
     /**
      * @inheritDoc
     */
     public function __toString(): string
     {
-        return (string)$this->getBody();
+        return $this->getContent();
     }
 
 
 
 
+    /**
+     * @return void
+    */
     public function send(): void
     {
-        $this->sendResponseCode();
+        ob_start();
         $this->sendHeaders();
+        $this->sendContent();
+        ob_end_flush();
     }
 
 
@@ -127,25 +143,33 @@ class Response extends Message implements ResponseInterface, Stringable
     protected function sendResponseCode(): void
     {
         if ($this->reasonPhrase) {
-            header(
-                sprintf(
-                    '%s %s %s',
-                    $this->version,
-                    $this->statusCode,
-                    $this->reasonPhrase
-                )
-            );
+            header(sprintf('%s %s %s', $this->version, $this->statusCode, $this->reasonPhrase));
         } else {
             http_response_code($this->statusCode);
         }
     }
 
 
-
+    /**
+     * @return void
+    */
     protected function sendHeaders(): void
     {
+        // send status message
+        $this->sendResponseCode();
+
+        // send others headers
         foreach ($this->getHeaders() as $name => $values) {
             header(sprintf('%s: %s', $name, join(", ", $values)));
         }
+    }
+
+
+    /**
+     * @return void
+    */
+    protected function sendContent(): void
+    {
+        echo $this->getContent();
     }
 }
