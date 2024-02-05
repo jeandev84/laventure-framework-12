@@ -54,22 +54,10 @@ final class Application extends Container implements ApplicationInterface, Termi
     */
     public function terminate($request, $response): void
     {
-        $this->emit($request, $response);
-    }
-
-
-
-
-    /**
-     * @param Request $request
-     * @param Response $response
-     * @return void
-    */
-    private function emit(Request $request, Response $response): void
-    {
         //echo __CLASS__ . " works! with next response :)";
         //echo '<hr>';
     }
+
 
 
 
