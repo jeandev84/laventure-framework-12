@@ -22,11 +22,11 @@ interface QueryBuilderInterface
 {
 
      /**
-      * @param $selects
+      * @param $fields
       * @param array $criteria
       * @return SelectBuilderInterface
      */
-     public function select($selects = null, array $criteria = []): SelectBuilderInterface;
+     public function select($fields = null, array $criteria = []): SelectBuilderInterface;
 
 
 

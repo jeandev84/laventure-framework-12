@@ -41,9 +41,9 @@ class QueryBuilder extends AbstractQueryBuilder
     /**
      * @inheritDoc
     */
-    public function select($selects = null, array $criteria = []): SelectBuilderInterface
+    public function select($fields = null, array $criteria = []): SelectBuilderInterface
     {
-         $qb = $this->builder->select($selects);
+         $qb = $this->builder->select($fields);
          $criteriaResolver = new CriteriaResolver($qb, $this->expr());
          return $criteriaResolver->resolve($criteria);
     }
