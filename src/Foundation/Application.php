@@ -69,8 +69,6 @@ final class Application extends Container implements ApplicationInterface, Termi
     {
         //echo __CLASS__ . " works! with next response :)";
         //echo '<hr>';
-
-        echo $response;
     }
 
 
